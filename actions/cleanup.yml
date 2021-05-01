@@ -1,0 +1,12 @@
+- hosts: docker:compose
+  become: true
+  tasks:
+    - name: Clean Docker Images (all)
+      command: docker image prune -a -f
+    - name: Clean Docker images
+      community.docker.docker_prune:
+        containers: no
+        builder_cache: yes
+        images: yes
+        images_filters:
+          dangling: false

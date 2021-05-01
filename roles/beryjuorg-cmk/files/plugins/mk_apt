@@ -1,0 +1,53 @@
+#!/bin/bash
+# Copyright (C) 2019 tribe29 GmbH - License: GNU General Public License v2
+# This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
+# conditions defined in the file COPYING, which is part of this source code package.
+
+# Reason for this no-op: shellcheck disable=... before the first command disables the error for the
+# entire script.
+:
+
+# Disable unused variable error (needed to keep track of version)
+# shellcheck disable=SC2034
+CMK_VERSION="2.0.0p3"
+
+# Check for APT updates (Debian, Ubuntu)
+# TODO:
+# Einstellungen:
+# - upgrade oder dist-upgrade
+# - vorher ein update machen
+# Bakery:
+# - Bakelet anlegen
+# - Async-Zeit einstellbar machen und das Ding immer async laufen lassen
+# Check programmieren:
+#   * Schwellwerte auf Anzahlen
+#   * Regexen auf Pakete, die zu CRIT/WARN führen
+# - Graph malen mit zwei Kurven
+
+# This variable can either be "upgrade" or "dist-upgrade"
+UPGRADE=upgrade
+DO_UPDATE=yes
+
+
+function check_apt_update {
+    if [ "$DO_UPDATE" = yes ] ; then
+        # NOTE: Even with -qq, apt-get update can output several lines to
+        # stderr, e.g.:
+        #
+        # W: There is no public key available for the following key IDs:
+        # 1397BC53640DB551
+        apt-get update -qq 2> /dev/null
+    fi
+    apt-get -o 'Debug::NoLocking=true' -o 'APT::Get::Show-User-Simulation-Note=false' -s -qq "$UPGRADE" | grep -v '^Conf'
+}
+
+
+if type apt-get > /dev/null ; then
+    echo '<<<apt:sep(0)>>>'
+    out=$(check_apt_update)
+    if [ -z "$out" ]; then
+        echo "No updates pending for installation"
+    else
+        echo "$out"
+    fi
+fi

@@ -1,0 +1,18 @@
+- name: make sure some packages are installed
+  apt:
+    pkg:
+      - open-vm-tools
+      - vim
+      - htop
+      - sudo
+      - nmap
+      - xkb-data # For /usr/share/X11/xkb/symbols/us, to fix console-setup service
+    state: present
+    update_cache: yes
+- name: make sure some packages are not installed
+  apt:
+    pkg:
+      - snapd
+      - unattended-upgrades # Prevent APT errors in ansible
+    state: absent
+    purge: yes

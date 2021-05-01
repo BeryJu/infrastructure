@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    # ports:
+    #   - "53:53/tcp"
+    #   - "53:53/udp"
+    #   - "67:67/udp"
+    #   - "80:80/tcp"
+    #   - "443:443/tcp"
+    environment:
+      TZ: 'Europe/Berlin'
+      ServerIP: 10.120.20.78
+    hostname: pihole1
+    volumes:
+      - '/srv/etc-pihole/:/etc/pihole/'
+      - '/srv/etc-dnsmasq.d/:/etc/dnsmasq.d/'
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+  piholeinflux:
+    image: registry.gitlab.com/janw/pi-hole-influx
+    container_name: piholeinflux
+    restart: unless-stopped
+    environment:
+      # Replace details with your InfluxDB's hostname and credentials
+      PIHOLE_INFLUXDB_HOST: "mon1.prod.beryju.org"
+      PIHOLE_INFLUXDB_PORT: "8086"
+      PIHOLE_INFLUXDB_USERNAME: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/influx/pihole:username') }}"
+      PIHOLE_INFLUXDB_PASSWORD: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/influx/pihole:password') }}"
+      PIHOLE_INFLUXDB_DATABASE: "pihole"
+      # Replace with your Pi-Hole's address including path to API below
+      PIHOLE_INSTANCES: "pihole=http://10.120.20.78/admin/api.php"

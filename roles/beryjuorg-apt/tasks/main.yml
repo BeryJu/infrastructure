@@ -1,0 +1,12 @@
+- name: Install sources file
+  template:
+    src: "templates/{{ ansible_distribution|lower }}.list.j2"
+    dest: /etc/apt/sources.list
+    mode: 0644
+    owner: root
+    group: root
+  register: apt_sources_list
+- name: apt-update
+  apt:
+    update_cache: yes
+  when: apt_sources_list is changed

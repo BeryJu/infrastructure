@@ -1,0 +1,14 @@
+- name: Install NFS-Server
+  apt:
+    package:
+      - nfs-kernel-server
+- name: Ensure all exports exist
+  file:
+    path: "{{ item.path }}"
+    state: directory
+  loop: "{{ nfs_exports }}"
+- name: Generate exports file
+  template:
+    dest: /etc/exports
+    src: ./templates/exports.j2
+  notify: Reload NFS Server

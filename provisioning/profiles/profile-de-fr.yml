@@ -1,0 +1,7 @@
+vm_config:
+  nameserver: "10.120.20.32"
+  network: "ds-defr-lan"
+  manual_ip: false
+  mirror: http://de.archive.ubuntu.com/ubuntu
+bootstrap_dc: de-freiburg
+bootstrap_host: esxi3.prod.beryju.org

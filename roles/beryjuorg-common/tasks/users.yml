@@ -1,0 +1,13 @@
+- name: ansible user
+  user:
+    name: ansible
+    groups: sudo
+    shell: /bin/bash
+- name: ansible user | authorized_key
+  authorized_key:
+    user: ansible
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/ZiCsd/xEQo8VtkN8/TjHzkFwii5HIyx6a79C6Mu/g3zkEt8e9u3UVkxLZL2v0ghjIOxJQQoy4ogv1NcH+rneyG0T5xobSTy71wogLF8ctF8RBNk+poYBaDiYabgGtfM2IyPQJPrjGnPfoMkSxTxttM//yFHvOpAPr4Uz5yGYvLsY8BZUEsIljKHUUfb2Fi5oKOMZZ0iPRJHIh9t+FCj1kuZUaJd6DqSj//TJTnQR0/l5Q8uawbw6uoePoRtqVBO/96cnOnQ/0Gf7kk2irtyLkVkE44g+KWwsHbgsAdaWzrFuYBBwQplPZNMjugsHTPQqMoDwdIMGxWSGvOMnYas7 ansible
+- name: delete vagrant
+  user:
+    name: vagrant
+    state: absent

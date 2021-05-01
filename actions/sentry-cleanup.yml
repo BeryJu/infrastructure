@@ -1,0 +1,16 @@
+- hosts: sentry1.prod.beryju.org
+  become: true
+  tasks:
+    - name: Run sentry inbuilt cleanup
+      community.docker.docker_container_exec:
+        container: sentry_onpremise_worker_1
+        command: sentry cleanup --days 30
+      ignore_errors: yes
+    - name: Vacuum database (first pass)
+      community.docker.docker_container_exec:
+        container: sentry_onpremise_postgres_1
+        command: psql -U sentry -c "vacuum public.nodestore_node;"
+    - name: Vacuum database (second pass)
+      community.docker.docker_container_exec:
+        container: sentry_onpremise_postgres_1
+        command: psql -U sentry -c "vacuum full public.nodestore_node;"

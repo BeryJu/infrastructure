@@ -1,0 +1,4 @@
+collections:
+  - name: community.docker
+  - name: community.hashi_vault
+  - name: community.vmware

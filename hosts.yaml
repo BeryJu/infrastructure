@@ -1,0 +1,101 @@
+all:
+  hosts:
+    hass1.prod.beryju.org:
+
+storage:
+  children:
+    nfs_server:
+      hosts:
+        nas1.prod.beryju.org:
+          nfs_exports:
+            - path: /bigpool/media
+              client: 10.120.20.0/24
+              opts: ro,async,no_subtree_check,no_root_squash
+            - path: /bigpool/media
+              client: plex1.prod.beryju.org
+  hosts:
+    backup-s3.beryju.org:
+  vars:
+    cmk_extra_packages:
+      - smartmontools
+    cmk_plugins:
+      - mk_apt
+      - nfsexports
+      - smart
+
+media:
+  hosts:
+    plex1.prod.beryju.org:
+  vars:
+    cmk_plugins:
+      - mk_apt
+      - mk_nfsiostat
+
+docker:
+  hosts:
+    k8s-cprd1-m1.prod.beryju.org:
+    k8s-cprd1-w1.prod.beryju.org:
+    k8s-cprd1-w2.prod.beryju.org:
+    k8s-cprd1-w3.prod.beryju.org:
+    k8s-prd-w1.prod.beryju.org:
+    k8s-prd-w2.prod.beryju.org:
+    k8s-defr-c1.lab.beryju.org:
+    k8s-defr-w1.lab.beryju.org:
+    k8s-defr-w2.lab.beryju.org:
+    ak-dev-k3s1.lab.beryju.org:
+  vars:
+    cmk_extra_packages:
+      - python3-docker
+    cmk_plugins:
+      - mk_apt
+      - mk_docker
+      - mk_nfsiostat
+  children:
+    compose:
+      hosts:
+        pihole1.prod.beryju.org:
+          compose_stacks:
+            - name: pihole
+              template: templates/compose/pihole-main.yml
+        plex1.prod.beryju.org:
+          compose_stacks:
+            - name: plex
+              template: templates/compose/plex-main.yml
+        unifi1.prod.beryju.org:
+          compose_stacks:
+            - name: unifi
+              template: templates/compose/unifi-main.yml
+        gitlab1.prod.beryju.org:
+          compose_stacks:
+            - name: gitlab
+              template: templates/compose/gitlab-main.yml
+        mon1.prod.beryju.org:
+          compose_stacks:
+            - name: checkmk
+              template: templates/compose/mon-checkmk.yml
+            - name: influx
+              template: templates/compose/mon-influx.yml
+            - name: grafana
+              template: templates/compose/mon-grafana.yml
+            - name: oxidized
+              template: templates/compose/mon-oxidized.yml
+        rancher1.prod.beryju.org:
+          compose_stacks:
+            - name: rancher
+              template: templates/compose/mgmt-rancher.yml
+        log1.prod.beryju.org:
+          compose_stacks:
+            - name: graylog
+              template: templates/compose/log-graylog.yml
+        # These systems use docker-compose, but with stacks that are managed otherwise
+        sentry1.prod.beryju.org:
+        netbox1.prod.beryju.org:
+        ak-dev-dc1.lab.beryju.org:
+        vault1.prod.beryju.org:
+          compose_stacks:
+            - name: vault
+              template: templates/compose/vault-main.yml
+        mc1.prod.beryju.org:
+          compose_stacks:
+            - name: minecraft
+              template: templates/compose/minecraft.yaml

@@ -1,0 +1,59 @@
+version: '3'
+services:
+  mongo:
+    image: docker.beryju.org/proxy/library/mongo:3
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - graylog
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    environment:
+      http.host: "0.0.0.0"
+      transport.host: "localhost"
+      network.host: "0.0.0.0"
+      cluster.routing.allocation.disk.threshold_enabled: "false"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - graylog
+  # Graylog: https://hub.docker.com/r/graylog/graylog/
+  graylog:
+    image: docker.beryju.org/proxy/graylog/graylog:4.0
+    volumes:
+      - graylog_journal:/usr/share/graylog/data/journal
+      - ./map:/etc/graylog/server/map
+    environment:
+      GRAYLOG_PASSWORD_SECRET: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/graylog:password_secret') }}"
+      GRAYLOG_ROOT_USERNAME: "pbadmin"
+      GRAYLOG_ROOT_PASSWORD_SHA2: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/graylog:root_password') }}"
+      GRAYLOG_HTTP_EXTERNAL_URI: "https://log.beryju.org/"
+    networks:
+      - graylog
+    depends_on:
+      - mongo
+      - elasticsearch
+    ports:
+      # Graylog web interface and REST API
+      - 4180:9000
+      # vyos syslog tcp
+      - 514:10000
+      - 10001-10100:10001-10100
+      - 10001-10100:10001-10100/udp
+
+networks:
+  graylog:
+    driver: bridge
+
+volumes:
+  mongo_data:
+    driver: local
+  es_data:
+    driver: local
+  graylog_journal:
+    driver: local

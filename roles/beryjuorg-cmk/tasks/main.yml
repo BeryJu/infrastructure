@@ -1,0 +1,36 @@
+- name: Copy check_mk Agent
+  copy:
+    src: "files/{{ cmk_agent_file }}"
+    dest: /var/tmp
+- name: Install extra packages
+  apt:
+    name: "{{ cmk_extra_packages }}"
+  register: check_mk_dep_pkg
+- name: Install check_mk Agent
+  apt:
+    deb: "/var/tmp/{{ cmk_agent_file }}"
+    state: present
+    force: yes
+  register: check_mk_agent_pkg
+- name: Configure encryption
+  template:
+    dest: "/etc/check_mk/encryption.cfg"
+    src: templates/encryption.cfg
+    owner: root
+    group: root
+    mode: 0640
+- name: Reconfigure package on change
+  command: dpkg-reconfigure check-mk-agent
+  when: "check_mk_agent_pkg.changed or check_mk_dep_pkg.changed"
+- name: Clean systemd-failed
+  command: systemd reset-failed
+  when: "check_mk_agent_pkg.changed or check_mk_dep_pkg.changed"
+  failed_when: false
+- name: Install Plugin
+  copy:
+    src: "files/plugins/{{ item }}"
+    dest: "/usr/lib/check_mk_agent/plugins/{{ item }}"
+    owner: root
+    group: root
+    mode: '0770'
+  loop: "{{ cmk_plugins }}"

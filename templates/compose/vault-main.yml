@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+  traefik:
+    image: traefik:v2.4
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv/traefik:/letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+    command:
+      - "--api"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
+      - "--entrypoints.http=true"
+      - "--entrypoints.http.address=:80"
+      - "--entrypoints.http.http.redirections.entrypoint.to=https"
+      - "--entrypoints.http.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.https=true"
+      - "--entrypoints.https.address=:443"
+      - "--log=true"
+      - "--accesslog=true"
+      - "--accesslog.format=json"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=http"
+      - "--certificatesresolvers.myresolver.acme.email=admin@beryju.org"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+  vault:
+    image: vault
+    ports:
+      - "127.0.0.1:8200:8200"
+    volumes:
+      - /srv/vault/data:/vault/data:rw
+      - /srv/vault/files:/vault/file:rw
+      - /srv/vault/config:/vault/config:rw
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config/vault.hcl
+    labels:
+      traefik.enable: true
+      traefik.http.routers.vault.rule: "Host(`vault.beryju.org`)"
+      traefik.http.routers.vault.entrypoints: https
+      traefik.http.routers.vault.tls: "true"
+      traefik.http.routers.vault.tls.certresolver: myresolver

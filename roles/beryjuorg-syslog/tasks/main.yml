@@ -1,0 +1,13 @@
+- name: Ensure rsyslog is installed
+  apt:
+    pkg:
+      - rsyslog
+    state: present
+- name: Set forwarding
+  copy:
+    dest: /etc/rsyslog.d/10-graylog.conf
+    mode: 0644
+    owner: root
+    group: root
+    content: '*.* action(type="omfwd" target="log1.prod.beryju.org" port="10007" protocol="tcp")'
+  notify: restart rsyslog

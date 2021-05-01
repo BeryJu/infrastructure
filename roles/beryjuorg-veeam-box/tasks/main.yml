@@ -1,0 +1,10 @@
+- name: veeam user
+  user:
+    name: veeam
+    groups:
+      - sudo
+    shell: /bin/bash
+- name: veeam user | authorized_key
+  authorized_key:
+    user: veeam
+    key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC48OssSG2s52UHw7HblWiXJpWODP0kDskg/YM4vmAHkCmABVAs0AnQ7GcWDqnjqmmA4nRVm/4CImaKL0UuBVjlxgkenKfRVDt1J8GS/vDGfwXRzvEk38Eehcs0WdQuqy4To8GMkANkkRuD3WuiMTYNfsWBX5vMvVCGPOJn7EPvcJ+QKbYk8cGsd2eYLocGiXjnZUZKQg8DulMfZnyLLCEbx88zLvbzoXDNjwCohAxMUUGANpr5r+AgA52MYJhss+FehyjuyBqfrINxleAzuJuEjbDAXZlLZ+U0O4j9DwagN3FsGafyW6CoxXT1KzoAaYPPRnkrg9e0joHdh9mifPx5 veeam

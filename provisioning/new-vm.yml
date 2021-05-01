@@ -1,0 +1,157 @@
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: no
+
+  collections:
+    - community.vmware
+  vars:
+    vcenter: &vcenter
+      hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
+      username: "{{ lookup('env', 'VMWARE_USER') }}"
+      password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+      esxi_hostname: "{{ bootstrap_host }}"
+      datacenter: "{{ bootstrap_dc }}"
+      validate_certs: False
+      name: "{{ bootstrap_name }}"
+    # vm_config:
+    #   nameserver: ""
+    #   network: ""
+
+  tasks:
+    - name: Load profile
+      include_vars: "./profiles/profile-{{ bootstrap_profile }}.yml"
+
+    - name: Prepare meta-data and user-data
+      set_fact:
+        meta_data: "{{ lookup('template', './templates/meta-data.j2.yml') | b64encode }}"
+        user_data: "{{ lookup('template', './templates/user-data.j2.yml') | b64encode }}"
+
+    - name: Debug metadata
+      debug:
+        msg: "{{ meta_data }}"
+
+    - name: Clone VM from Template
+      vmware_guest:
+        template: "/{{ bootstrap_dc }}/{{ bootstrap_template }}"
+        folder: /
+        state: poweredoff
+        resource_pool: "{{ bootstrap_resource_pool|default() }}"
+        <<: *vcenter
+
+    - name: Reconfigure VM | vCPU and Memory
+      vmware_guest:
+        hardware:
+          memory_mb: "{{ bootstrap_memory }}"
+          num_cpus: "{{ bootstrap_cpu }}"
+        networks:
+          - name: "{{ vm_config.network }}"
+        advanced_settings:
+          - key: guestinfo.metadata
+            value: "{{ meta_data }}"
+          - key: guestinfo.metadata.encoding
+            value:  base64
+          - key: guestinfo.userdata
+            value: "{{ user_data }}"
+          - key: guestinfo.userdata.encoding
+            value:  base64
+        <<: *vcenter
+
+    - name: Power On VM
+      vmware_guest:
+        state: poweredon
+        <<: *vcenter
+
+    - name: Wait until vCenter is responding IP Address
+      vmware_guest:
+        wait_for_ip_address: yes
+        <<: *vcenter
+      register: result
+      ignore_errors: True
+      until: result.instance.hw_eth0.ipaddresses[0] is defined
+      retries: 50
+      delay: 10
+
+    - name: vSphere VM Check
+      debug:
+        msg: "Found IP of VM {{ result.instance.hw_eth0.ipaddresses[0] }}"
+
+    - name: Add created VM to Inventory (Memory only)
+      add_host:
+        name: "{{ result.instance.hw_eth0.ipaddresses[0] }}"
+        groups: created_vms
+
+    - name: Wait until VM is up again
+      become: False
+      local_action: wait_for port=22 host="{{ result.instance.hw_eth0.ipaddresses[0] }}" search_regex=OpenSSH delay=15
+
+##############################################
+#  Configure VM
+#############
+- hosts: created_vms
+  connection: paramiko
+  user: vagrant
+  become: True
+  gather_facts: yes
+
+  vars:
+    # default insecure ssh user, is deleted below
+    ansible_ssh_user: "vagrant"
+    ansible_ssh_pass: "vagrant"
+    ansible_sudo_pass: "vagrant"
+
+  tasks:
+    - name: Load profile
+      include_vars: "./profiles/profile-{{ bootstrap_profile }}.yml"
+
+    ### SSH Host Keys
+    - name: Regenerate SSHD Host Keys
+      shell: rm -rf /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
+
+    ### SSH User
+    - name: Create user
+      user:
+        name: "{{ bootstrap_vm_user|default('jens') }}"
+        createhome: yes
+        groups: sudo,adm
+        append: yes
+        shell: /bin/bash
+        state: present
+        move_home: yes
+
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: "{{ bootstrap_vm_user|default('jens') }}"
+        state: present
+        key: "{{ bootstrap_vm_ssh_key|default('ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+kSfa9FWWsLxzqkojz28w7xu6PntQd09+1fACTkHOI+9opduAGNJx3+0FbEiOA309HRRyeodpBe6lmzFluMb3ZrvI+r1uwOC8G+O1eiO0+CG28wGTqa/Ww6KaqdEog9EgAIpHZvewwte4t4UBs3BYjF9vf+QpjdtD3zXaKEPsVledUlFQLLiEWW1uTGHBbbPdxKqPtyurEAvoorMKtqB/+NfskkqJoJzZj/M+qHE5Ga5izaUNt11gx4C+AM7RxHYHUuXEo7cOJFfDsJFSbEgCJe947pC7WBAdKXt1yF0i78H4wD19byI4i9+G2ZGHU/wLLU+VfKWGCv5k5thUfMLt') }}"
+
+    ### Sudo
+    - name: sudo without password
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: "^%sudo"
+        line: "%sudo ALL=(ALL) NOPASSWD: ALL"
+        validate: "visudo -cf %s"
+
+    - name: Performing Dist-Upgrade
+      apt:
+        upgrade: dist
+        update_cache: yes
+      register: result
+      ignore_errors: True
+      retries: 20
+      delay: 10
+      until: result is success
+
+    - name: Performing Dist-Upgrade - Autoremove old Packages
+      apt:
+        autoremove: yes
+
+    ### Network
+    - name: Static network config
+      template:
+        src: templates/netplan.j2.yaml
+        dest: /etc/netplan/00-installer-config.yaml
+
+    - name: Reboot in 1 minute (don't wait)
+      shell: "passwd -d vagrant && shutdown -r +1"

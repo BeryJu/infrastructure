@@ -1,0 +1,4 @@
+- name: restart console-setup
+  service:
+    name: console-setup
+    state: restarted

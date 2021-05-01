@@ -1,0 +1,13 @@
+version: "2"
+services:
+  unifi-controller:
+    image: linuxserver/unifi-controller
+    container_name: unifi-controller
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MEM_LIMIT=1024M #optional
+    volumes:
+      - /srv/unifi:/config
+    network_mode: host
+    restart: unless-stopped

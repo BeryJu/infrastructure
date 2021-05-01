@@ -1,0 +1,27 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: apt | update cache
+      apt:
+        update_cache: yes
+    - name: apt | full-upgrade
+      apt:
+        upgrade: safe
+      register: apt_res
+      retries: 5
+      until: apt_res is success
+    - name: apt | autoremove
+      apt:
+        autoremove: yes
+    - name: check_mk | remove cache
+      file:
+        path: "/var/lib/check_mk_agent/cache/{{ item }}"
+        state: absent
+      loop:
+        - "plugins_86400\\mk_apt.cache"
+        - "plugins_7200\\mk_apt.cache"
+    - name: Clean apt cache
+      command: apt-get clean
+      register: result
+      retries: 5
+      until: result.rc == 0

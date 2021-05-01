@@ -1,0 +1,32 @@
+- name: create stack directory
+  file:
+    state: directory
+    path: "{{ docker_compose_stacks_path }}/{{ stack.name }}"
+
+# Stack file
+- name: copy stack file
+  copy:
+    src: "{{ stack.file }}"
+    dest: "{{ docker_compose_stacks_path }}/{{ stack.name }}/docker-compose.yml"
+  when: "stack.file is defined"
+
+# Stack template
+- name: copy template stack file
+  template:
+    src: "{{ stack.template }}"
+    dest: "{{ docker_compose_stacks_path }}/{{ stack.name }}/docker-compose.yml"
+  when: "stack.template is defined"
+
+# Stack repo
+- name: clone stack repo
+  git:
+    repo: "{{ stack.repo }}"
+    dest: "{{ docker_compose_stacks_path }}/{{ stack.name }}/"
+    version: "{{ stack.branch | default('master') }}"
+  when: "stack.repo is defined"
+
+- name: start stack
+  docker_compose:
+    project_src: "{{ docker_compose_stacks_path }}/{{ stack.name }}"
+    remove_orphans: yes
+    pull: yes
