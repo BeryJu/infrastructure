@@ -1,5 +1,3 @@
-venv38/**
-
 # Created by https://www.gitignore.io/api/python,ansible
 # Edit at https://www.gitignore.io/?templates=python,ansible
 
@@ -133,4 +131,3 @@ dmypy.json
 .pyre/
 
 # End of https://www.gitignore.io/api/python,ansible
-awx/

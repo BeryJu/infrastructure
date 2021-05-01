@@ -53,6 +53,7 @@
         path: /plex-transcode
         owner: '1000'
         group: '1000'
+        mode: 0755
     - name: Plex | Mount Media
       mount:
         state: mounted

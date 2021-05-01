@@ -2,6 +2,7 @@
   become: true
   tasks:
     - name: Clean Docker Images (all)
+      # noqa 301
       command: docker image prune -a -f
     - name: Clean Docker images
       community.docker.docker_prune:

@@ -3,7 +3,7 @@
     package:
       - nfs-kernel-server
 - name: Ensure all exports exist
-  file: # noqa risky-file-permissions
+  file: # noqa 208
     path: "{{ item.path }}"
     state: directory
   loop: "{{ nfs_exports }}"
