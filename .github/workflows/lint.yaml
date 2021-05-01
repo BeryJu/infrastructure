@@ -1,0 +1,29 @@
+---
+name: Lint
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - master
+  pull_request:
+
+jobs:
+  ansible:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Lint Ansible Playbooks
+      uses: ansible/ansible-lint-action@v4.1.0
+      with:
+        targets: |
+          site.yml
+          actions/cleanup.yml
+          actions/update.yml
+          actions/sentry-cleanup.yml
+          provisioning/new-vm.yml
+        override-deps: |
+          ansible==2.9
+          ansible-lint<5.0
