@@ -8,6 +8,14 @@ See also https://github.com/BeryJu/k8s, repository for GitOps with flux.
 - HashiCorp Vault (for credentials)
 - VMware vSphere (for provisioning)
 
+## Installation
+
+```shell
+pipenv shell
+pipenv install # (--dev if you want to lint)
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with hvac on macOS
+```
+
 ## Non-ansible files
 
 - `ee/`:
