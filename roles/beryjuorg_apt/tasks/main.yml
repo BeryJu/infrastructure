@@ -5,8 +5,4 @@
     mode: 0644
     owner: root
     group: root
-  register: apt_sources_list
-- name: apt-update
-  apt:
-    update_cache: yes
-  when: apt_sources_list is changed
+  notify: apt-update

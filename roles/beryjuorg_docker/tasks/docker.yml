@@ -31,4 +31,7 @@
   copy:
     src: files/docker.json
     dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
   notify: reload docker

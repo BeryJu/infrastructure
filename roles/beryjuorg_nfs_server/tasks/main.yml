@@ -3,7 +3,7 @@
     package:
       - nfs-kernel-server
 - name: Ensure all exports exist
-  file:
+  file: # noqa risky-file-permissions
     path: "{{ item.path }}"
     state: directory
   loop: "{{ nfs_exports }}"
@@ -11,4 +11,7 @@
   template:
     dest: /etc/exports
     src: ./templates/exports.j2
+    owner: root
+    group: root
+    mode: 0644
   notify: Reload NFS Server

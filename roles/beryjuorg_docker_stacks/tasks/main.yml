@@ -2,12 +2,18 @@
   file:
     state: directory
     path: "{{ docker_compose_stacks_path }}/{{ stack.name }}"
+    owner: root
+    group: root
+    mode: 0755
 
 # Stack file
 - name: copy stack file
   copy:
     src: "{{ stack.file }}"
     dest: "{{ docker_compose_stacks_path }}/{{ stack.name }}/docker-compose.yml"
+    owner: root
+    group: root
+    mode: 0644
   when: "stack.file is defined"
 
 # Stack template
@@ -15,6 +21,9 @@
   template:
     src: "{{ stack.template }}"
     dest: "{{ docker_compose_stacks_path }}/{{ stack.name }}/docker-compose.yml"
+    owner: root
+    group: root
+    mode: 0644
   when: "stack.template is defined"
 
 # Stack repo

@@ -2,7 +2,7 @@
   pip:
     name:
       - docker
-      - "docker-compose=={{ docker_compose_version}}"
+      - "docker-compose=={{ docker_compose_version }}"
     extra_args: -U
   when: "docker_compose is defined"
 - name: docker-compose | download
