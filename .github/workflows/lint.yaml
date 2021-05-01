@@ -24,6 +24,3 @@ jobs:
           actions/update.yml
           actions/sentry-cleanup.yml
           provisioning/new-vm.yml
-        override-deps: |
-          ansible==2.9
-          ansible-lint<5.0
