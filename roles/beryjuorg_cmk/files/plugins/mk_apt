@@ -26,7 +26,7 @@ CMK_VERSION="2.0.0p3"
 
 # This variable can either be "upgrade" or "dist-upgrade"
 UPGRADE=upgrade
-DO_UPDATE=yes
+DO_UPDATE=no
 
 
 function check_apt_update {
