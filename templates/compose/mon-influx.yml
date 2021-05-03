@@ -10,10 +10,3 @@ services:
     ports:
       - 10.120.0.57:8086:8086
       - 10.120.0.57:2003:2003
-  # Define a Chronograf service
-  chronograf:
-    image: chronograf
-    volumes:
-      - /srv/chronograf:/var/lib/chronograf
-    ports:
-      - 10.120.0.57:8889:8888
