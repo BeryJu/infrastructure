@@ -1,13 +1,14 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Install SSH Server
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends openssh-server && \
 	ssh-keygen -A && \
-        mkdir -p /run/sshd
+	mkdir -p /run/sshd
 
 # Install base packages
 RUN apt-get update && \
+	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get install -y --no-install-recommends zsh nano git openssh-client apt-transport-https curl bash nmap gnupg sudo man-db python3 python3-pip python3-venv bash-completion wget unzip python3-setuptools mtr-tiny locales file pwgen host htop && \
 	pip3 install wheel && \
 	pip3 install pipenv && \
