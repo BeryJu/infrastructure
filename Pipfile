@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-ansible-lint = "<5"
+ansible-lint = "<6"
 
 [packages]
 hvac = "*"
