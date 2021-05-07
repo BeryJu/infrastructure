@@ -33,6 +33,7 @@ services:
       GRAYLOG_ROOT_USERNAME: "pbadmin"
       GRAYLOG_ROOT_PASSWORD_SHA2: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/graylog:root_password') }}"
       GRAYLOG_HTTP_EXTERNAL_URI: "https://log.beryju.org/"
+      GRAYLOG_TRUSTED_PROXIES: "10.120.0.0/24"
     networks:
       - graylog
     depends_on:
