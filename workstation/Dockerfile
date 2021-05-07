@@ -17,6 +17,9 @@ RUN apt-get update && \
 	echo "en_UK.UTF-8 UTF-8" >> /etc/locale.gen && \
 	locale-gen
 
+# Python
+RUN apt-get install -y --no-install-recommends python3.9
+
 RUN groupadd -g 999 -r docker
 
 # User jens

@@ -7,32 +7,32 @@ networks:
 
 services:
   traefik:
-    image: traefik:1.7-alpine
-    container_name: traefik
-    command:
-      - "--logLevel=INFO"
-      - "--defaultentrypoints=http,https"
-      - "--entryPoints=Name:http Address::80 Redirect.EntryPoint:https"
-      - "--entryPoints=Name:https Address::443 TLS"
-      - "--docker"
-      - "--docker.exposedbydefault=false"
-      - "--docker.domain=beryju.org"
-      - "--acme=true"
-      - "--acme.acmelogging=true"
-      - "--acme.email=jens@beryju.org"
-      - "--acme.storage=acme.json"
-      - "--acme.entryPoint=https"
-      - "--acme.onhostrule=true"
-      - "--acme.httpchallenge=true"
-      - "--acme.httpchallenge.entrypoint=http"
+    image: traefik:v2.4
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv/traefik:/letsencrypt
     ports:
       - "194.56.224.172:80:80"
       - "194.56.224.172:443:443"
+    command:
+      - "--pilot.token=3b368b01-63fc-4014-9e73-6437bed25b0e"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
+      - "--entrypoints.http=true"
+      - "--entrypoints.http.address=:80"
+      - "--entrypoints.http.http.redirections.entrypoint.to=https"
+      - "--entrypoints.http.http.redirections.entrypoint.scheme=https"
+      - "--entrypoints.https=true"
+      - "--entrypoints.https.address=:443"
+      - "--log=true"
+      - "--accesslog=true"
+      - "--accesslog.format=json"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=http"
+      - "--certificatesresolvers.myresolver.acme.email=admin@beryju.org"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     networks:
       - traefik
-    volumes:
-      - "/srv/traefik/acme.json:/acme.json"
-      - "/var/run/docker.sock:/var/run/docker.sock"
     restart: always
 
   check_mk:
@@ -49,7 +49,9 @@ services:
     ulimits:
       nofile: 1024
     labels:
-      - "traefik.enable=true"
-      - "traefik.port=5000"
-      - "traefik.frontend.rule=Host:monitoring.beryju.org"
-      - "traefik.docker.network=traefik"
+      traefik.enable: true
+      traefik.docker.network: traefik
+      traefik.http.routers.cmk.rule: "Host(`monitoring.beryju.org`)"
+      traefik.http.routers.cmk.entrypoints: https
+      traefik.http.routers.cmk.tls: "true"
+      traefik.http.routers.cmk.tls.certresolver: myresolver

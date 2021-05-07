@@ -9,7 +9,7 @@ services:
       - 80:80
       - 443:443
     command:
-      - "--api"
+      - "--pilot.token=2346f1de-82d5-4cbb-b66b-9c9f9ee3b40b"
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
       - "--entrypoints.http=true"
@@ -37,7 +37,7 @@ services:
       - IPC_LOCK
     entrypoint: vault server -config=/vault/config/vault.hcl
     labels:
-      traefik.enable: true
+      traefik.enable: "true"
       traefik.http.routers.vault.rule: "Host(`vault.beryju.org`)"
       traefik.http.routers.vault.entrypoints: https
       traefik.http.routers.vault.tls: "true"

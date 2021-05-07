@@ -32,6 +32,10 @@ services:
       GF_AUTH_OAUTH_AUTO_LOGIN: "true"
     labels:
       traefik.enable: "true"
-      traefik.port: "3000"
-      traefik.frontend.rule: "PathPrefixStrip:/grafana/,Host:monitoring.beryju.org"
-      traefik.docker.network: "traefik"
+      traefik.http.routers.grafana.entrypoints: https
+      traefik.http.routers.grafana.tls: "true"
+      traefik.http.routers.grafana.tls.certresolver: myresolver
+      traefik.http.routers.grafana.rule: Host(`monitoring.beryju.org`) && PathPrefix(`/grafana`)
+      traefik.http.routers.grafana.middlewares: grafana-stripprefix
+      traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes: /grafana
+      traefik.docker.network: traefik
