@@ -48,6 +48,10 @@ services:
     tmpfs: /opt/omd/sites/cmk/tmp:uid=1000,gid=1000
     ulimits:
       nofile: 1024
+  authentik_proxy:
+    restart: always
+    networks:
+      - traefik
     labels:
       traefik.enable: true
       traefik.docker.network: traefik
@@ -55,3 +59,11 @@ services:
       traefik.http.routers.cmk.entrypoints: https
       traefik.http.routers.cmk.tls: "true"
       traefik.http.routers.cmk.tls.certresolver: myresolver
+      traefik.http.services.cmk.loadbalancer.server.port: 4180
+    image: ghcr.io/goauthentik/proxy:2021.5.1
+    ports:
+      - 10.120.0.57:4180:4180
+      - 10.120.0.57:4443:4443
+    environment:
+      AUTHENTIK_HOST: https://id.beryju.org
+      AUTHENTIK_TOKEN: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/cmk/proxy:token') }}"
