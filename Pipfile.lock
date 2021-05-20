@@ -70,11 +70,11 @@
     "develop": {
         "ansible-lint": {
             "hashes": [
-                "sha256:34807c973613ab14d9bd64f0df2b24169bb0347574aeb365294cd4d5a17ea2f6",
-                "sha256:b67b9628407ae9bc15bb0bb71f79871bdf593fefe6b0684c0cc44be5fc90803f"
+                "sha256:6e8cb500b33939b7498d7601d51b6799bd7ddd3d9709a8788df8d69ed2687811",
+                "sha256:d32d9da5653bd016c8352aa2df6da20ed0e4ae00c81222bb269415187f42c8de"
             ],
             "index": "pypi",
-            "version": "==5.0.8"
+            "version": "==5.0.9"
         },
         "bracex": {
             "hashes": [
