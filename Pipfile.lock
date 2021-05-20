@@ -70,11 +70,11 @@
     "develop": {
         "ansible-lint": {
             "hashes": [
-                "sha256:34807c973613ab14d9bd64f0df2b24169bb0347574aeb365294cd4d5a17ea2f6",
-                "sha256:b67b9628407ae9bc15bb0bb71f79871bdf593fefe6b0684c0cc44be5fc90803f"
+                "sha256:6e8cb500b33939b7498d7601d51b6799bd7ddd3d9709a8788df8d69ed2687811",
+                "sha256:d32d9da5653bd016c8352aa2df6da20ed0e4ae00c81222bb269415187f42c8de"
             ],
             "index": "pypi",
-            "version": "==5.0.8"
+            "version": "==5.0.9"
         },
         "bracex": {
             "hashes": [
@@ -161,10 +161,10 @@
         },
         "rich": {
             "hashes": [
-                "sha256:60cd6d6ea697a1704f2057e791e3062b506b5c74a6e2ad2ced71eccb37557259",
-                "sha256:8f05431091601888c50341697cfc421dc398ce37b12bca0237388ef9c7e2c9e9"
+                "sha256:17b3f486c38e79cc219d8848974b277ef532a82d12b3ad6eb37bb8c6f22ab5fc",
+                "sha256:203e79c9012f57e0148a2132d0b43fe070a5c213cf080982c186e1d3ae4f8e1d"
             ],
-            "version": "==10.1.0"
+            "version": "==10.2.2"
         },
         "ruamel.yaml": {
             "hashes": [
@@ -224,14 +224,6 @@
                 "sha256:a0ce48587271515db7d3a5e700df9ae69cce98c4b57c23a4886da15243603dd8"
             ],
             "version": "==7.0.0"
-        },
-        "typing-extensions": {
-            "hashes": [
-                "sha256:0ac0f89795dd19de6b97debb0c6af1c70987fd80a2d62d1958f7e56fcc31b497",
-                "sha256:50b6f157849174217d0656f99dc82fe932884fb250826c18350e159ec6cdf342",
-                "sha256:779383f6086d90c99ae41cf0ff39aac8a7937a9283ce0a414e5dd782f4c94a84"
-            ],
-            "version": "==3.10.0.0"
         },
         "wcmatch": {
             "hashes": [
