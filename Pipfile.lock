@@ -32,11 +32,11 @@
         },
         "hvac": {
             "hashes": [
-                "sha256:4c4e0e3d5cd95438ab5d1d9375a2d5a9dd798840549819682f7a25292401457a",
-                "sha256:bdccaad536f607054dcb9059234cf7ef6e9945d5a21a6ffc34e1e95a2da22681"
+                "sha256:09adc69d7d3be6d3651510a739a1ea893e776fa86b77499e8b767a981dfa6536",
+                "sha256:d66771c3d54bd8bec7ddb549ebf0a7d67d06168379c3d3a8f680212da85418b7"
             ],
             "index": "pypi",
-            "version": "==0.10.12"
+            "version": "==0.10.13"
         },
         "idna": {
             "hashes": [
