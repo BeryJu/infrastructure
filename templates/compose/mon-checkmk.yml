@@ -60,7 +60,7 @@ services:
       traefik.http.routers.cmk.tls: "true"
       traefik.http.routers.cmk.tls.certresolver: myresolver
       traefik.http.services.cmk.loadbalancer.server.port: 4180
-    image: ghcr.io/goauthentik/proxy:2021.5.1
+    image: ghcr.io/goauthentik/proxy:2021.5.3
     ports:
       - 10.120.0.57:4180:4180
       - 10.120.0.57:4443:4443
