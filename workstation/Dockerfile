@@ -63,11 +63,13 @@ RUN curl -L https://releases.rancher.com/cli2/v2.4.10/rancher-linux-amd64-v2.4.1
 	mv rancher /usr/bin/rancher && \
 	chmod +x /usr/bin/rancher
 
-# terraform and vault
+# terraform, vault and packer
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 	echo "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" > /etc/apt/sources.list.d/hashicorp.list && \
 	apt-get update && \
-	apt-get install -y terraform vault
+	apt-get install -y terraform vault packer && \
+	# Allow running of vault without root
+	setcap cap_ipc_lock= /usr/bin/vault
 
 # powershell
 RUN curl -L https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb > packages-microsoft-prod.deb && \
