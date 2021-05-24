@@ -70,11 +70,11 @@
     "develop": {
         "ansible-lint": {
             "hashes": [
-                "sha256:6e8cb500b33939b7498d7601d51b6799bd7ddd3d9709a8788df8d69ed2687811",
-                "sha256:d32d9da5653bd016c8352aa2df6da20ed0e4ae00c81222bb269415187f42c8de"
+                "sha256:a7b42c1dd8f44d611ea960c78e03436100fdb64d54bc69f5a82c0a1d33af8f4e",
+                "sha256:e7dab22d7826ac623c7c2566e17ee5420633afc844a3a0c0db3adaaa72bc6a82"
             ],
             "index": "pypi",
-            "version": "==5.0.9"
+            "version": "==5.0.10"
         },
         "bracex": {
             "hashes": [
@@ -227,10 +227,10 @@
         },
         "wcmatch": {
             "hashes": [
-                "sha256:7e112f62e2482d8417bbfa8f7bb715e98841fd15132a46c0a657ceb59302d24d",
-                "sha256:efda751de15201b395b6d6e64e6ae3b6b03dc502a64c3c908aa5cad14c27eee5"
+                "sha256:4d54ddb506c90b5a5bba3a96a1cfb0bb07127909e19046a71d689ddfb18c3617",
+                "sha256:9146b1ab9354e0797ef6ef69bc89cb32cb9f46d1b9eeef69c559aeec8f3bffb6"
             ],
-            "version": "==8.1.2"
+            "version": "==8.2"
         }
     }
 }
