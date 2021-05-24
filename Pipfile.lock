@@ -32,11 +32,11 @@
         },
         "hvac": {
             "hashes": [
-                "sha256:09adc69d7d3be6d3651510a739a1ea893e776fa86b77499e8b767a981dfa6536",
-                "sha256:d66771c3d54bd8bec7ddb549ebf0a7d67d06168379c3d3a8f680212da85418b7"
+                "sha256:0c616f29d6642adaabcd408a04469374ed83be12b24501bb337e8f37badfef22",
+                "sha256:31b1884546e88c1fe0d6a827c464b9544ac186e06e01e45d16fe3e7275dd0e0f"
             ],
             "index": "pypi",
-            "version": "==0.10.13"
+            "version": "==0.10.14"
         },
         "idna": {
             "hashes": [
@@ -227,10 +227,10 @@
         },
         "wcmatch": {
             "hashes": [
-                "sha256:7e112f62e2482d8417bbfa8f7bb715e98841fd15132a46c0a657ceb59302d24d",
-                "sha256:efda751de15201b395b6d6e64e6ae3b6b03dc502a64c3c908aa5cad14c27eee5"
+                "sha256:4d54ddb506c90b5a5bba3a96a1cfb0bb07127909e19046a71d689ddfb18c3617",
+                "sha256:9146b1ab9354e0797ef6ef69bc89cb32cb9f46d1b9eeef69c559aeec8f3bffb6"
             ],
-            "version": "==8.1.2"
+            "version": "==8.2"
         }
     }
 }
