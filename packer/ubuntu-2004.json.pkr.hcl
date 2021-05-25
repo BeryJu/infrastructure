@@ -4,20 +4,14 @@ variable "vcenter_address" {
   default = "vc1.prod.beryju.org"
 }
 
-variable "vcenter_password" {
-  type      = string
-  default   = vault("/kv/data/vsphere/local/administrator", "password")
-  sensitive = true
-}
-
-variable "vcenter_user" {
-  type    = string
-  default = vault("/kv/data/vsphere/local/administrator", "username")
+locals {
+  vcenter_user = vault("/kv/data/vsphere/local/administrator", "username")
+  vcenter_password = vault("/kv/data/vsphere/local/administrator", "password")
 }
 
 variable "vcenter_ignore_ssl" {
-  type    = string
-  default = "true"
+  type    = bool
+  default = false
 }
 
 # Location settings
@@ -48,8 +42,8 @@ variable "vm_name" {
 # https://www.packer.io/docs/from-1.5/blocks/source
 source "vsphere-iso" "vm" {
   vcenter_server      = "${var.vcenter_address}"
-  username            = "${var.vcenter_user}"
-  password            = "${var.vcenter_password}"
+  username            = "${local.vcenter_user}"
+  password            = "${local.vcenter_password}"
   insecure_connection = "${var.vcenter_ignore_ssl}"
 
   datacenter = "${var.vcenter_dc}"
@@ -65,7 +59,7 @@ source "vsphere-iso" "vm" {
     network      = "${var.vcenter_network}"
     network_card = "vmxnet3"
   }
-  iso_paths           = ["[${vcenter_datastore}] ISO/ubuntu-20.04-live-server-amd64.iso"]
+  iso_paths           = ["[${var.vcenter_datastore}] ISO/ubuntu-20.04-live-server-amd64.iso"]
   convert_to_template = true
   storage {
     disk_size             = 8192
