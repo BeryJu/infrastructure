@@ -6,11 +6,15 @@
         container: sentry_onpremise_worker_1
         command: sentry cleanup --days 30
       ignore_errors: yes
-    - name: Vacuum database (first pass)
+    - name: Vacuum database (complete, first pass)
+      community.docker.docker_container_exec:
+        container: sentry_onpremise_postgres_1
+        command: vacuumdb -U sentry -d sentry -v -f --analyze
+    - name: Vacuum nodestore_node (first pass)
       community.docker.docker_container_exec:
         container: sentry_onpremise_postgres_1
         command: psql -U sentry -c "vacuum public.nodestore_node;"
-    - name: Vacuum database (second pass)
+    - name: Vacuum nodestore_node (second pass)
       community.docker.docker_container_exec:
         container: sentry_onpremise_postgres_1
         command: psql -U sentry -c "vacuum full public.nodestore_node;"
