@@ -36,7 +36,7 @@ services:
     restart: always
 
   check_mk:
-    image: docker.beryju.org/k8s/check-mk-enterprise:2.0.0p4
+    image: beryju.org/k8s/check-mk-enterprise:2.0.0p5
     restart: always
     ports:
       - 10.120.0.57:5000:5000
