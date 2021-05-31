@@ -8,6 +8,7 @@ ansible-lint = "<6"
 
 [packages]
 hvac = "*"
+ansible = "*"
 
 [requires]
 python_version = "3.9"
