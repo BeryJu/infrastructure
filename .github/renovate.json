@@ -4,5 +4,6 @@
     "fileMatch": [
       "^templates/compose/.*\\.yaml$"
     ]
-  }
+  },
+  "dependencyDashboard": true
 }
