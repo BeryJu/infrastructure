@@ -19,3 +19,8 @@
     state: stopped
     enabled: no
   when: "'multipathd' in services"
+- name: configure systemd-journald max usage
+  copy:
+    src: ./files/journald.conf
+    dest: /etc/systemd/journald.conf
+  notify: restart systemd-journald
