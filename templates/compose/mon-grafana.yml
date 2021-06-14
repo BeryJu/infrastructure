@@ -7,7 +7,7 @@ networks:
 
 services:
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:8.0.0
     container_name: grafana
     volumes:
       - /srv/grafana:/var/lib/grafana

@@ -1,7 +1,7 @@
 version: '3'
 services:
   mongo:
-    image: docker.beryju.org/proxy/library/mongo:3
+    image: beryju.org/proxy/library/mongo:3
     volumes:
       - mongo_data:/data/db
     networks:
@@ -24,7 +24,7 @@ services:
       - graylog
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
-    image: docker.beryju.org/proxy/graylog/graylog:4.0
+    image: beryju.org/proxy/graylog/graylog:4.0.8
     volumes:
       - graylog_journal:/usr/share/graylog/data/journal
       - ./map:/etc/graylog/server/map

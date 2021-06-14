@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   gitlab:
-    image: 'gitlab/gitlab-ce:latest'
+    image: gitlab/gitlab-ce:13.12.3-ce.0
     restart: always
     hostname: 'code.beryju.org'
     environment:
@@ -33,7 +33,7 @@ services:
             name: 'saml',
             args: {
               assertion_consumer_service_url: 'https://code.beryju.org/users/auth/saml/callback',
-              idp_cert_fingerprint: '73:A1:04:5A:BF:EB:7F:68:96:CD:B7:0B:AB:EE:24:5A:E7:71:DE:3E',
+              idp_cert_fingerprint: '01:db:bd:a8:45:b7:27:8f:e5:7b:6d:d6:3e:13:b5:d6:b3:db:1f:78:28:6b:a9:36:b9:ef:cc:d7:4d:a1:c3:2e',
               idp_sso_target_url: 'https://id.beryju.org/application/saml/gitlab/sso/binding/redirect/',
               issuer: 'https://code.beryju.org',
               name_identifier_format: 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
