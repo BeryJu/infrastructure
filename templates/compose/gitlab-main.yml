@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   gitlab:
-    image: gitlab/gitlab-ce:13.12.3-ce.0
+    image: gitlab/gitlab-ce:13.12.4-ce.0
     restart: always
     hostname: 'code.beryju.org'
     environment:
