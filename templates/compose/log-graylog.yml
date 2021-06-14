@@ -1,7 +1,7 @@
 version: '3'
 services:
   mongo:
-    image: beryju.org/proxy/library/mongo:3
+    image: beryju.org/proxy/library/mongo:4
     volumes:
       - mongo_data:/data/db
     networks:
