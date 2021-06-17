@@ -26,7 +26,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.email=admin@beryju.org"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
   vault:
-    image: vault:1.7.2
+    image: vault:1.7.3
     ports:
       - "10.120.0.69:8200:8200"
     volumes:
