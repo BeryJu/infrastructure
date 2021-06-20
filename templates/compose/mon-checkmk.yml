@@ -1,47 +1,11 @@
 version: "3.5"
 
-networks:
-  traefik:
-    external:
-      name: traefik
-
 services:
-  traefik:
-    image: traefik:v2.4
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /srv/traefik:/letsencrypt
-    ports:
-      - "194.56.224.172:80:80"
-      - "194.56.224.172:443:443"
-    command:
-      - "--pilot.token=3b368b01-63fc-4014-9e73-6437bed25b0e"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedByDefault=false"
-      - "--entrypoints.http=true"
-      - "--entrypoints.http.address=:80"
-      - "--entrypoints.http.http.redirections.entrypoint.to=https"
-      - "--entrypoints.http.http.redirections.entrypoint.scheme=https"
-      - "--entrypoints.https=true"
-      - "--entrypoints.https.address=:443"
-      - "--log=true"
-      - "--accesslog=true"
-      - "--accesslog.format=json"
-      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
-      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=http"
-      - "--certificatesresolvers.myresolver.acme.email=admin@beryju.org"
-      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-    networks:
-      - traefik
-    restart: always
-
   check_mk:
     image: beryju.org/k8s/check-mk-enterprise:2.0.0p5
     restart: always
     ports:
       - 10.120.0.57:5000:5000
-    networks:
-      - traefik
     volumes:
       - /srv/checkmk:/omd/sites
     container_name: monitoring
@@ -50,16 +14,6 @@ services:
       nofile: 1024
   authentik_proxy:
     restart: always
-    networks:
-      - traefik
-    labels:
-      traefik.enable: true
-      traefik.docker.network: traefik
-      traefik.http.routers.cmk.rule: "Host(`monitoring.beryju.org`)"
-      traefik.http.routers.cmk.entrypoints: https
-      traefik.http.routers.cmk.tls: "true"
-      traefik.http.routers.cmk.tls.certresolver: myresolver
-      traefik.http.services.cmk.loadbalancer.server.port: 4180
     image: ghcr.io/goauthentik/proxy:latest
     ports:
       - 10.120.0.57:4180:4180

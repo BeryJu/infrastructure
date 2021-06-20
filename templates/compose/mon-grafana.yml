@@ -1,10 +1,5 @@
 version: "3.5"
 
-networks:
-  traefik:
-    external:
-      name: traefik
-
 services:
   grafana:
     image: grafana/grafana:8.0.3
@@ -13,8 +8,6 @@ services:
       - /srv/grafana:/var/lib/grafana
     ports:
       - 10.120.0.57:3000:3000
-    networks:
-      - traefik
     environment:
       GF_SERVER_DOMAIN: "monitoring.beryju.org"
       GF_INSTALL_PLUGINS: "vonage-status-panel,grafana-polystat-panel,jdbranham-diagram-panel"
@@ -30,12 +23,3 @@ services:
       GF_AUTH_SIGNOUT_REDIRECT_URL: "https://id.beryju.org/application/o/grafana/end-session/"
       # Optionally enable auto-login
       GF_AUTH_OAUTH_AUTO_LOGIN: "true"
-    labels:
-      traefik.enable: "true"
-      traefik.http.routers.grafana.entrypoints: https
-      traefik.http.routers.grafana.tls: "true"
-      traefik.http.routers.grafana.tls.certresolver: myresolver
-      traefik.http.routers.grafana.rule: Host(`monitoring.beryju.org`) && PathPrefix(`/grafana`)
-      traefik.http.routers.grafana.middlewares: grafana-stripprefix
-      traefik.http.middlewares.grafana-stripprefix.stripprefix.prefixes: /grafana
-      traefik.docker.network: traefik
