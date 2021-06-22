@@ -47,9 +47,9 @@ services:
           }
         ]
     ports:
-      - '194.56.224.174:80:80'
-      - '194.56.224.174:443:443'
-      - '194.56.224.174:22:22'
+      - '80:80'
+      - '443:443'
+      - '23:22'
     volumes:
       - /srv/gitlab/config:/etc/gitlab
       - /srv/gitlab/logs:/var/log/gitlab
