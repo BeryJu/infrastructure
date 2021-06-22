@@ -10,6 +10,7 @@ services:
       - 10.120.0.57:3000:3000
     environment:
       GF_SERVER_DOMAIN: "grafana.beryju.org"
+      GF_SERVER_ROOT_URL: "https://grafana.beryju.org/"
       GF_INSTALL_PLUGINS: "vonage-status-panel,grafana-polystat-panel,jdbranham-diagram-panel"
       GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
       GF_AUTH_GENERIC_OAUTH_NAME: "authentik"
