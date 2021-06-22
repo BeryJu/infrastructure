@@ -9,9 +9,8 @@ services:
     ports:
       - 10.120.0.57:3000:3000
     environment:
-      GF_SERVER_DOMAIN: "monitoring.beryju.org"
+      GF_SERVER_DOMAIN: "grafana.beryju.org"
       GF_INSTALL_PLUGINS: "vonage-status-panel,grafana-polystat-panel,jdbranham-diagram-panel"
-      GF_SERVER_ROOT_URL: "https://monitoring.beryju.org/grafana/"
       GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
       GF_AUTH_GENERIC_OAUTH_NAME: "authentik"
       GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/grafana:oauth_client_id') }}"
