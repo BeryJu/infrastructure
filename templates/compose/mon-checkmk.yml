@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   check_mk:
-    image: beryju.org/k8s/check-mk-enterprise:2.0.0p5
+    image: beryju.org/k8s/check-mk-enterprise:2.0.0p6
     restart: always
     ports:
       - 10.120.0.57:5000:5000
