@@ -5,7 +5,7 @@ resource "aws_route53_record" "adc" {
   ttl     = "300"
   records = [local.pub_adc_ip]
 }
-resource "aws_route53_record" "grafama" {
+resource "aws_route53_record" "grafana" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "grafana.beryju.org"
   type    = "A"
