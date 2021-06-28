@@ -10,7 +10,7 @@ resource "aws_route53_record" "grafama" {
   name    = "grafana.beryju.org"
   type    = "A"
   alias {
-    name = "adc._aliases.beryju.org"
+    name                   = "adc._aliases.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
@@ -20,7 +20,7 @@ resource "aws_route53_record" "monitoring" {
   name    = "monitoring.beryju.org"
   type    = "A"
   alias {
-    name = "adc._aliases.beryju.org"
+    name                   = "adc._aliases.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
