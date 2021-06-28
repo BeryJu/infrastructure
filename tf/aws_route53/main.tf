@@ -1,5 +1,5 @@
 data "vault_generic_secret" "aws_auth" {
-  path = "kv/aws/route53"
+  path = "kv/aws/tf"
 }
 
 provider "aws" {
