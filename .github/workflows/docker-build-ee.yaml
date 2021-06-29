@@ -3,10 +3,6 @@ name: docker-build-ee
 on:
   push:
     branches: [ master ]
-    paths: [ ee/ ]
-  pull_request:
-    branches: [ master ]
-    paths: [ ee/ ]
 
 jobs:
   build:

@@ -3,10 +3,6 @@ name: docker-build-workstation
 on:
   push:
     branches: [ master ]
-    paths: [ workstation/ ]
-  pull_request:
-    branches: [ master ]
-    paths: [ workstation/ ]
 
 jobs:
   build:
