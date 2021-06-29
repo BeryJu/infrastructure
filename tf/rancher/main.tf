@@ -12,9 +12,9 @@ data "vault_generic_secret" "rancher_auth" {
 }
 
 provider "rancher2" {
+  api_url = "https://rancher.beryju.org"
   access_key = data.vault_generic_secret.rancher_auth.data["access_key"]
   secret_key = data.vault_generic_secret.rancher_auth.data["secret_key"]
-  api_url = "https://rancher.beryju.org"
 }
 
 resource "rancher2_cluster" "beryjuorg-prd" {
@@ -23,6 +23,9 @@ resource "rancher2_cluster" "beryjuorg-prd" {
 
 resource "rancher2_cluster" "beryjuorg-backup" {
   name = "beryjuorg-backup"
+  k3s_config {
+    version = "v1.19.4+k3s1"
+  }
 }
 
 resource "rancher2_cluster" "beryjuorg-defr" {
