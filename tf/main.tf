@@ -25,3 +25,6 @@ provider "vault" {
 module "aws_route53" {
   source = "./aws_route53/"
 }
+module "rancher" {
+  source = "./rancher/"
+}
