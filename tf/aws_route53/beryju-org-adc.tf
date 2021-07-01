@@ -8,7 +8,17 @@ resource "aws_route53_record" "adc" {
 
 resource "aws_route53_record" "grafana" {
   zone_id = aws_route53_zone.beryju-org.zone_id
-  name    = "grafana.beryju.org"
+  name    = "grafana.infra.beryju.org"
+  type    = "A"
+  alias {
+    name                   = "adc._aliases.beryju.org"
+    zone_id                = aws_route53_zone.beryju-org.zone_id
+    evaluate_target_health = true
+  }
+}
+resource "aws_route53_record" "oxidized" {
+  zone_id = aws_route53_zone.beryju-org.zone_id
+  name    = "oxidized.infra.beryju.org"
   type    = "A"
   alias {
     name                   = "adc._aliases.beryju.org"
