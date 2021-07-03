@@ -33,7 +33,7 @@ services:
             name: 'saml',
             args: {
               assertion_consumer_service_url: 'https://code.beryju.org/users/auth/saml/callback',
-              idp_cert_fingerprint: '01:db:bd:a8:45:b7:27:8f:e5:7b:6d:d6:3e:13:b5:d6:b3:db:1f:78:28:6b:a9:36:b9:ef:cc:d7:4d:a1:c3:2e',
+              idp_cert_fingerprint: '7E:6E:91:39:2E:79:60:BF:AB:1A:2D:0F:49:4B:D4:B9:D3:58:B3:47',
               idp_sso_target_url: 'https://id.beryju.org/application/saml/gitlab/sso/binding/redirect/',
               issuer: 'https://code.beryju.org',
               name_identifier_format: 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
