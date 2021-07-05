@@ -77,6 +77,10 @@ docker:
             - name: gitlab
               template: templates/compose/gitlab-main.yml
         mon1.prod.beryju.org:
+          docker_registries:
+            - registry: beryju.org
+              username: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/k8s-global:harbor_username") }}'
+              password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/k8s-global:harbor_password") }}'
           compose_stacks:
             - name: checkmk
               template: templates/compose/mon-checkmk.yml
