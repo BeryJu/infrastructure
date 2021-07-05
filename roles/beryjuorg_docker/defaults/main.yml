@@ -1,2 +1,3 @@
 docker_allowed_users: []
 docker_compose_version: '1.29.1'
+docker_registries: []
