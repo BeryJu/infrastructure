@@ -7,7 +7,7 @@ services:
     volumes:
       - /srv/grafana:/var/lib/grafana
     ports:
-      - 10.120.0.57:3000:3000
+      - 3000:3000
     environment:
       GF_SERVER_DOMAIN: "grafana.infra.beryju.org"
       GF_SERVER_ROOT_URL: "https://grafana.infra.beryju.org/"

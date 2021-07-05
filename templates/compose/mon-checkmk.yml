@@ -5,7 +5,7 @@ services:
     image: beryju.org/k8s/check-mk-enterprise:2.0.0p6
     restart: always
     ports:
-      - 10.120.0.57:5000:5000
+      - 5000:5000
     volumes:
       - /srv/checkmk:/omd/sites
     container_name: monitoring
@@ -16,8 +16,8 @@ services:
     restart: always
     image: ghcr.io/goauthentik/proxy:latest
     ports:
-      - 10.120.0.57:4180:4180
-      - 10.120.0.57:4443:4443
+      - 4180:4180
+      - 4443:4443
     environment:
       AUTHENTIK_HOST: https://id.beryju.org
       AUTHENTIK_TOKEN: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/cmk/proxy:token') }}"

@@ -5,7 +5,7 @@ services:
     restart: always
     image: oxidized/oxidized:latest
     ports:
-      - 10.120.0.57:8888:8888/tcp
+      - 8888:8888
     environment:
       CONFIG_RELOAD_INTERVAL: 600
     volumes:

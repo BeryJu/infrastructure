@@ -8,5 +8,5 @@ services:
       - /srv/influxdb:/var/lib/influxdb
       - ./influx.conf:/etc/influxdb/influxdb.conf
     ports:
-      - 10.120.0.57:8086:8086
-      - 10.120.0.57:2003:2003
+      - 8086:8086
+      - 2003:2003
