@@ -29,5 +29,7 @@ jobs:
           beryju.org/jens/workstation:auto-${{ steps.time.outputs.time }}
         push: ${{ github.ref == 'refs/heads/master' }}
         build-args: |
-          HOST_RSA_KEY=${{ secrets.HOST_RSA_KEY }}
+          HOST_DSA_KEY=${{ secrets.HOST_ECDSA_KEY }}
           HOST_ECDSA_KEY=${{ secrets.HOST_ECDSA_KEY }}
+          HOST_ED25519_KEY=${{ secrets.HOST_ED25519_KEY }}
+          HOST_RSA_KEY=${{ secrets.HOST_RSA_KEY }}
