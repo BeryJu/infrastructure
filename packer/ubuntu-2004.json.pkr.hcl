@@ -5,17 +5,11 @@ variable "vcenter_address" {
 }
 
 locals {
-  vcenter_user = vault("/kv/data/vsphere/local/administrator", "username")
+  vcenter_user     = vault("/kv/data/vsphere/local/administrator", "username")
   vcenter_password = vault("/kv/data/vsphere/local/administrator", "password")
 }
 
-variable "vcenter_ignore_ssl" {
-  type    = bool
-  default = false
-}
-
 # Location settings
-
 variable "vcenter_dc" {
   type    = string
   default = "uk-coventry"
@@ -23,7 +17,7 @@ variable "vcenter_dc" {
 
 variable "vcenter_datastore" {
   type    = string
-  default = "ssd-b"
+  default = "hdd-a"
 }
 
 variable "vcenter_network" {
@@ -33,42 +27,41 @@ variable "vcenter_network" {
 
 variable "vm_name" {
   type    = string
-  default = "ubuntu2004-beryjuorg-base-test"
+  default = "ubuntu2004-beryjuorg-base"
 }
 
-# source blocks are generated from your builders; a source can be referenced in
-# build blocks. A build block runs provisioner and post-processors on a
-# source. Read the documentation for source blocks here:
-# https://www.packer.io/docs/from-1.5/blocks/source
 source "vsphere-iso" "vm" {
-  vcenter_server      = "${var.vcenter_address}"
-  username            = "${local.vcenter_user}"
-  password            = "${local.vcenter_password}"
-  insecure_connection = "${var.vcenter_ignore_ssl}"
+  vcenter_server      = var.vcenter_address
+  username            = local.vcenter_user
+  password            = local.vcenter_password
+  insecure_connection = false
 
-  datacenter = "${var.vcenter_dc}"
+  datacenter = var.vcenter_dc
   cluster    = "prod"
-  datastore  = "${var.vcenter_datastore}"
-  vm_name    = "${var.vm_name}"
+  datastore  = var.vcenter_datastore
+  vm_name    = var.vm_name
 
   CPUs                 = 2
   RAM                  = 2048
   disk_controller_type = ["pvscsi"]
   guest_os_type        = "ubuntu64Guest"
   network_adapters {
-    network      = "${var.vcenter_network}"
+    network      = var.vcenter_network
     network_card = "vmxnet3"
   }
   iso_paths           = ["[${var.vcenter_datastore}] ISO/ubuntu-20.04-live-server-amd64.iso"]
   convert_to_template = true
   storage {
-    disk_size             = 8192
+    disk_size             = 10240
     disk_thin_provisioned = true
   }
 
-  http_directory = "cloud-init"
-  http_port_min  = 8000
-  http_port_max  = 8000
+  cd_files = [
+    "./cloud-init/meta-data",
+    "./cloud-init/user-data"
+  ]
+  cd_label = "cidata"
+
   boot_command = [
     "<esc><esc><esc>",
     "<enter><wait>",
@@ -76,13 +69,12 @@ source "vsphere-iso" "vm" {
     "root=/dev/sr0 ",
     "initrd=/casper/initrd ",
     "autoinstall ",
-    "ds=nocloud-net;s=http://wks.jela.io:8000/",
     "<enter>"
   ]
   boot_wait = "2s"
 
   ip_wait_timeout  = "3600s"
-  shutdown_command = "echo 'vagrant' |sudo -S shutdown -P now"
+  shutdown_command = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_password     = "vagrant"
   ssh_port         = 22
   ssh_timeout      = "15m"
