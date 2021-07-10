@@ -9,7 +9,16 @@ RUN apt-get update && \
 # Install base packages
 RUN apt-get update && \
 	export DEBIAN_FRONTEND=noninteractive && \
-	apt-get install -y --no-install-recommends zsh nano git openssh-client apt-transport-https curl bash nmap gnupg sudo man-db python3 python3-pip python3-venv bash-completion wget unzip python3-setuptools mtr-tiny locales file pwgen host htop && \
+	apt-get install -y --no-install-recommends \
+		# Base system utils
+		zsh nano git openssh-client apt-transport-https curl bash \
+		gnupg sudo man-db bash-completion wget unzip \
+		locales file pwgen htop jq  ldap-utils \
+		# Network tools
+		nmap mtr-tiny host arp net-tools \
+		# Required for packer to create iso files
+		genisoimage
+		&& \
 	pip3 install wheel && \
 	pip3 install pipenv && \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
@@ -18,7 +27,7 @@ RUN apt-get update && \
 	locale-gen
 
 # Python
-RUN apt-get install -y --no-install-recommends python3.9
+RUN apt-get install -y --no-install-recommends python3.9 python3-pip python3-venv python3-setuptools
 
 RUN groupadd -g 999 -r docker
 
