@@ -17,7 +17,7 @@ variable "vcenter_dc" {
 
 variable "vcenter_datastore" {
   type    = string
-  default = "hdd-a"
+  default = "ssd-a"
 }
 
 variable "vcenter_network" {
@@ -49,7 +49,8 @@ source "vsphere-iso" "vm" {
     network      = var.vcenter_network
     network_card = "vmxnet3"
   }
-  iso_paths           = ["[${var.vcenter_datastore}] ISO/ubuntu-20.04-live-server-amd64.iso"]
+  iso_url             = "https://releases.ubuntu.com/20.04.2/ubuntu-20.04.2-live-server-amd64.iso"
+  iso_checksum        = "file:https://releases.ubuntu.com/20.04.2/SHA256SUMS"
   convert_to_template = true
   storage {
     disk_size             = 10240
@@ -64,6 +65,7 @@ source "vsphere-iso" "vm" {
 
   boot_command = [
     "<esc><esc><esc>",
+    "<esc><esc><esc>",
     "<enter><wait>",
     "/casper/vmlinuz ",
     "root=/dev/sr0 ",
@@ -71,7 +73,7 @@ source "vsphere-iso" "vm" {
     "autoinstall ",
     "<enter>"
   ]
-  boot_wait = "2s"
+  boot_wait = "5s"
 
   ip_wait_timeout  = "3600s"
   shutdown_command = "echo 'vagrant' | sudo -S shutdown -P now"
