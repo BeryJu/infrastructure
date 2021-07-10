@@ -21,15 +21,16 @@ RUN apt-get update && \
 		nmap mtr-tiny host net-tools \
 		# Required for packer to create iso files
 		genisoimage	&& \
-	pip3 install wheel && \
-	pip3 install pipenv && \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
 	echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 	echo "en_UK.UTF-8 UTF-8" >> /etc/locale.gen && \
 	locale-gen
 
 # Python
-RUN apt-get install -y --no-install-recommends python3.9 python3-pip python3-venv python3-setuptools
+RUN apt-get install -y --no-install-recommends \
+		python3.9 python3-pip python3-venv python3-setuptools && \
+	pip3 install wheel && \
+	pip3 install pipenv && \
 
 RUN groupadd -g 999 -r docker
 
