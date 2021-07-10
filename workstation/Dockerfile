@@ -17,8 +17,7 @@ RUN apt-get update && \
 		# Network tools
 		nmap mtr-tiny host arp net-tools \
 		# Required for packer to create iso files
-		genisoimage
-		&& \
+		genisoimage	&& \
 	pip3 install wheel && \
 	pip3 install pipenv && \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
