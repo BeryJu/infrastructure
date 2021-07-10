@@ -1,11 +1,13 @@
 FROM ubuntu:20.04
 
 ARG HOST_RSA_KEY
+ARG HOST_ECDSA_KEY
 
 # Install SSH Server
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends openssh-server && \
 	echo $HOST_RSA_KEY > /etc/ssh/ssh_host_rsa_key && \
+	echo $HOST_ECDSA_KEY > /etc/ssh/ssh_host_ecdsa_key && \
 	ssh-keygen -A && \
 	mkdir -p /run/sshd
 

@@ -30,3 +30,4 @@ jobs:
         push: ${{ github.ref == 'refs/heads/master' }}
         build-args: |
           HOST_RSA_KEY=${{ secrets.HOST_RSA_KEY }}
+          HOST_ECDSA_KEY=${{ secrets.HOST_ECDSA_KEY }}
