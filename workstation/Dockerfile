@@ -1,8 +1,11 @@
 FROM ubuntu:20.04
 
+ARG HOST_RSA_KEY
+
 # Install SSH Server
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends openssh-server && \
+	echo $HOST_RSA_KEY > /etc/ssh/ssh_host_rsa_key && \
 	ssh-keygen -A && \
 	mkdir -p /run/sshd
 
@@ -12,10 +15,10 @@ RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 		# Base system utils
 		zsh nano git openssh-client apt-transport-https curl bash \
-		gnupg sudo man-db bash-completion wget unzip \
-		locales file pwgen htop jq  ldap-utils \
+		gnupg sudo man-db bash-completion wget unzip less \
+		locales file pwgen htop jq ldap-utils \
 		# Network tools
-		nmap mtr-tiny host arp net-tools \
+		nmap mtr-tiny host net-tools \
 		# Required for packer to create iso files
 		genisoimage	&& \
 	pip3 install wheel && \

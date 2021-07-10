@@ -23,3 +23,5 @@ jobs:
         context: workstation/
         tags: beryju.org/jens/workstation:latest
         push: ${{ github.ref == 'refs/heads/master' }}
+        build-args: |
+          HOST_RSA_KEY=${{ secrets.HOST_RSA_KEY }}
