@@ -12,7 +12,7 @@ data "vault_generic_secret" "rancher_auth" {
 }
 
 provider "rancher2" {
-  api_url = "https://rancher.beryju.org"
+  api_url    = "https://rancher.beryju.org"
   access_key = data.vault_generic_secret.rancher_auth.data["access_key"]
   secret_key = data.vault_generic_secret.rancher_auth.data["secret_key"]
 }
