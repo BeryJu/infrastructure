@@ -13,7 +13,7 @@ RUN apt-get update && \
 		# Base system utils
 		zsh nano git openssh-client apt-transport-https curl bash \
 		gnupg sudo man-db bash-completion wget unzip less \
-		locales file pwgen htop jq ldap-utils \
+		locales file pwgen htop jq ldap-utils iputils-ping \
 		# Network tools
 		nmap mtr-tiny host net-tools \
 		# Required for packer to create iso files
