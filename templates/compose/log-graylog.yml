@@ -33,6 +33,8 @@ services:
       GRAYLOG_ROOT_PASSWORD_SHA2: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/graylog:root_password') }}"
       GRAYLOG_HTTP_EXTERNAL_URI: "https://log.beryju.org/"
       GRAYLOG_TRUSTED_PROXIES: "10.120.0.0/24"
+      GRAYLOG_PROMETHEUS_EXPORTER_ENABLED: "true"
+      GRAYLOG_PROMETHEUS_EXPORTER_BIND_ADDRESS: "0.0.0.0:9001"
     networks:
       - graylog
     depends_on:
@@ -41,10 +43,12 @@ services:
     ports:
       # Graylog web interface and REST API
       - 4180:9000
+      - 9001:9001
       # vyos syslog tcp
       - 514:10000
       - 10001-10100:10001-10100
       - 10001-10100:10001-10100/udp
+
 
 networks:
   graylog:
