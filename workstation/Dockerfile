@@ -54,6 +54,11 @@ RUN curl -L https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx > /u
 	chmod +x /usr/local/bin/kubectx && \
 	chmod +x /usr/local/bin/kubens
 
+# Kubernetes stern
+RUN curl -L https://github.com/stern/stern/releases/download/v1.19.0/stern_1.19.0_linux_amd64.tar.gz | tar xvzf - --strip-components=1 && \
+	mv stern /usr/bin/stern && \
+	chmod +x /usr/bin/stern
+
 # docker-cli
 RUN curl -s https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
 	echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" > /etc/apt/sources.list.d/docker-ce.list && \
