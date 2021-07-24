@@ -65,12 +65,11 @@ source "vsphere-iso" "vm" {
 
   boot_command = [
     "<esc><esc><esc>",
-    "<esc><esc><esc>",
     "<enter><wait>",
     "/casper/vmlinuz ",
     "root=/dev/sr0 ",
     "initrd=/casper/initrd ",
-    "autoinstall ",
+    "autoinstall",
     "<enter>"
   ]
   boot_wait = "5s"

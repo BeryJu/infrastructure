@@ -4,6 +4,7 @@ autoinstall:
   early-commands:
     # Stop ssh for packer
     - sudo systemctl stop ssh
+    - sudo systemctl stop open-vm-tools
   locale: en_US
   keyboard:
     layout: en
@@ -18,3 +19,7 @@ autoinstall:
   storage:
     layout:
       name: direct
+  apt:
+    primary:
+      - arches: [default]
+        uri: http://mirror.mmr.lon.as212711.net/ubuntu/
