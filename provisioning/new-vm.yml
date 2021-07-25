@@ -32,7 +32,7 @@
 
     - name: Clone VM from Template
       vmware_guest:
-        template: "/{{ bootstrap_dc }}/templates/{{ bootstrap_template }}"
+        template: "/{{ bootstrap_dc }}/{{ bootstrap_template }}"
         folder: /
         state: poweredoff
         resource_pool: "{{ bootstrap_resource_pool|default() }}"
