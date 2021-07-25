@@ -2,7 +2,7 @@ vm_config:
   nameserver: "1.1.1.1"
   network: "vs-int-102-pub"
   manual_ip: true
-  mirror: http://mirror.cov.ukservers.com/ubuntu
+  mirror: mirror://mirrors.ubuntu.com/mirrors.txt
 bootstrap_dc: uk-coventry
 bootstrap_host: esxi4.prod.beryju.org
 bootstrap_resource_pool: VPS

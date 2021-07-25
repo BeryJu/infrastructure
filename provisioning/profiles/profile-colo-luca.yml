@@ -1,0 +1,8 @@
+vm_config:
+  nameserver: "192.168.0.1"
+  network: "vs-int-101-srv"
+  manual_ip: false
+  mirror: mirror://mirrors.ubuntu.com/mirrors.txt
+bootstrap_dc: vs-int-300-luca
+bootstrap_host: esxi4.prod.beryju.org
+bootstrap_vm_ssh_key: sh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJIWTwp+Jut741vOViUT9anPw1OhWBCFpjZFhWANe19nD9ZSm6/+xhc7dg/ar37B9qYpnvJcJZ/hIgEI4pF7k9jOjdNodR86yoAlRqoSU7i2sB7z2CksKUmUieBHJqADSC03lr2JXZUh1I9fuY1oiFpN0DvhWeUFXElGoOoNwesSKdlQtiO1UIs7WL472V9aB5V78vHYRngvfs7pscPuLt1asv1tNqwWo81ObUI1iTdYbR0a/PaYPoQfCmyKJfOP3YY2hFqIR0xg3GIHrE0XVS9rNOPgkaM4RnHWxZi2peWHIPaKmfaJfRJVqQGMTr5WetS0KduX1BvELC4YBV81tZ luca
