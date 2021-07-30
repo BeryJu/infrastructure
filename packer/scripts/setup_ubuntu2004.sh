@@ -17,10 +17,11 @@ curl -sSL https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/m
 # Ensure cloud-init can configure network
 rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
 rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg
+rm -f /etc/cloud/cloud.cfg.d/99-installer.cfg
 
 # Make sure all datasources are loaded, as rancher uses the NoCloud config
 rm -f /etc/cloud/cloud.cfg.d/99-DataSourceVMwareGuestInfo.cfg
-echo "datasource_list: ['NoCloud', 'ConfigDrive', 'VMwareGuestInfo']" >/etc/cloud/cloud.cfg.d/99-DataSourceVMwareGuestInfo.cfg
+echo "datasource_list: ['NoCloud', 'ConfigDrive', 'VMwareGuestInfo']" > /etc/cloud/cloud.cfg.d/90_dpkg.cfg
 
 # Reset Cloud-init state (https://stackoverflow.com/questions/57564641/openstack-packer-cloud-init)
 systemctl stop cloud-init
