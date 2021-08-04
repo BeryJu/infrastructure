@@ -13,9 +13,9 @@ RUN apt-get update && \
 		# Base system utils
 		zsh nano git openssh-client apt-transport-https curl bash \
 		gnupg sudo man-db bash-completion wget unzip less \
-		locales file pwgen htop jq ldap-utils iputils-ping \
+		locales file pwgen htop jq ldap-utils \
 		# Network tools
-		nmap mtr-tiny host net-tools \
+		nmap mtr-tiny host net-tools iputils-ping traceroute \
 		# Required for packer to create iso files
 		genisoimage	&& \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
