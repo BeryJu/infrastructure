@@ -36,6 +36,11 @@ RUN useradd -m -s /bin/zsh -G sudo,docker jens && \
 	su -c "ssh-keygen -b 2048 -f /home/jens/.ssh/id_rsa -t rsa -q -N ''" jens && \
 	passwd -d jens
 
+# Korb
+RUN curl -L https://github.com/BeryJu/korb/releases/latest/download/korb_linux_amd64 > korb && \
+	mv korb /usr/bin/korb && \
+	chmod +x /usr/bin/korb
+
 # minio mc
 RUN curl -L https://dl.min.io/client/mc/release/linux-amd64/mc > /usr/bin/mc && \
 	chmod +x /usr/bin/mc
