@@ -28,3 +28,6 @@ module "aws_route53" {
 module "rancher" {
   source = "./rancher/"
 }
+module "authentik" {
+  source = "./authentik/"
+}
