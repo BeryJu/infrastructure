@@ -23,3 +23,7 @@ data "authentik_group" "acl_beryjuorg" {
 data "authentik_certificate_key_pair" "generated" {
   name = "authentik self-signed v2"
 }
+
+data "authentik_flow" "default-authorization-flow" {
+  slug = "default-provider-authorization-implicit-consent"
+}

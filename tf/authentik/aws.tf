@@ -1,7 +1,15 @@
-# Create an application with a provider attached and policies applied
+resource "authentik_property_mapping_saml" "aws-role" {
+  name = "SAML AWS Role"
+  saml_name = "https://aws.amazon.com/SAML/Attributes/Role"
+  expression = <<EOF
+return "arn:aws:iam::471432361072:role/saml_role,arn:aws:iam::471432361072:saml-provider/passbook-prod"
+EOF
+}
 
-data "authentik_flow" "default-authorization-flow" {
-  slug = "default-provider-authorization-implicit-consent"
+resource "authentik_property_mapping_saml" "aws-role-session-name" {
+  name = "SAML AWS RoleSessionName"
+  saml_name = "https://aws.amazon.com/SAML/Attributes/RoleSessionName"
+  expression = "return user.email"
 }
 
 resource "authentik_provider_saml" "aws" {
@@ -15,8 +23,8 @@ resource "authentik_provider_saml" "aws" {
   issuer                          = "authentik"
   # TODO: Use data source to get IDs
   property_mappings = [
-    "222d3112-3b95-443a-a92a-8a4a74749611",
-    "7b253c9b-52b2-4aac-b5f6-f797f64ea358",
+    authentik_property_mapping_saml.aws-role-session-name.id,
+    authentik_property_mapping_saml.aws-role.id,
     "04e7f3c5-d60c-4888-875c-f7ced7323b62",
     "81e16d58-ce7a-4215-803f-6690ae4f87ab",
     "529f7dac-2bf4-4a13-860c-f4d0f89c0547",
