@@ -2,7 +2,7 @@ terraform {
   required_providers {
     authentik = {
       source  = "goauthentik/authentik"
-      version = "0.3.0"
+      version = "0.4.0"
     }
   }
 }
@@ -18,4 +18,8 @@ provider "authentik" {
 
 data "authentik_group" "acl_beryjuorg" {
   name = "_acl_pb_beryjuorg"
+}
+
+data "authentik_certificate_key_pair" "generated" {
+  name = "authentik self-signed v2"
 }

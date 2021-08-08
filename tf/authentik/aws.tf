@@ -26,8 +26,7 @@ resource "authentik_provider_saml" "aws" {
   ]
   session_valid_not_on_or_after = "minutes=86400"
   signature_algorithm           = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
-  # TODO: Use data source to get ID
-  signing_kp = "2892f99d-3097-415e-a5e3-f332fd85be2f"
+  signing_kp = data.authentik_certificate_key_pair.generated.id
   sp_binding = "post"
 }
 
@@ -35,7 +34,7 @@ resource "authentik_application" "aws" {
   name              = "Amazon Web Services"
   slug              = "amazon-web-services"
   protocol_provider = authentik_provider_saml.aws.id
-  # meta_icon         = "https://public.s3.beryju.org/authentik-icons/aws.png"
+  meta_icon         = "https://public.s3.beryju.org/authentik-icons/aws.png"
   meta_publisher     = "Amazon Web Services, Inc."
   policy_engine_mode = "all"
 }
