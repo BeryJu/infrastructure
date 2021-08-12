@@ -22,6 +22,9 @@ terraform {
 provider "vault" {
 }
 
+module "aws" {
+  source = "./aws/"
+}
 module "aws_route53" {
   source = "./aws_route53/"
 }
