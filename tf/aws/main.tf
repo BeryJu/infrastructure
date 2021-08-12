@@ -10,6 +10,7 @@ provider "aws" {
 
 resource "aws_vpc" "main" {
   cidr_block = "10.121.0.0/16"
+  default    = true
   tags = {
     Name = "beryjuorg-default"
   }
