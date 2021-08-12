@@ -28,7 +28,7 @@
     mode: 0640
 - name: run handlers
   meta: flush_handlers
-- name: Install Plugin
+- name: Install Plugins
   copy:
     src: "files/plugins/{{ item }}"
     dest: "/usr/lib/check_mk_agent/plugins/{{ item }}"
@@ -36,3 +36,8 @@
     group: root
     mode: '0770'
   loop: "{{ cmk_plugins }}"
+- name: Remove Plugins
+  file:
+    path: "/usr/lib/check_mk_agent/plugins/{{ item }}"
+    state: absent
+  loop: "{{ cmk_plugins_absent }}"
