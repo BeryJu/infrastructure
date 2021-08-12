@@ -3,7 +3,7 @@ data "vault_generic_secret" "aws_auth" {
 }
 
 provider "aws" {
-  region     = "us-east-1"
+  region     = "eu-central-1"
   access_key = data.vault_generic_secret.aws_auth.data["access_key"]
   secret_key = data.vault_generic_secret.aws_auth.data["secret_key"]
 }
