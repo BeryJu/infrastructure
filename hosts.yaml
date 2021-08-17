@@ -1,8 +1,9 @@
 all:
   hosts:
     hass1.prod.beryju.org:
-  cmk_plugins:
-    - mk_apt
+  vars:
+    cmk_plugins:
+      - mk_apt
 
 storage:
   children:
