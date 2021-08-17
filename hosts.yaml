@@ -1,6 +1,8 @@
 all:
   hosts:
     hass1.prod.beryju.org:
+  cmk_plugins:
+    - mk_apt
 
 storage:
   children:
@@ -25,7 +27,6 @@ storage:
     cmk_extra_packages:
       - smartmontools
     cmk_plugins:
-      - mk_apt
       - nfsexports
       - smart
 
@@ -34,7 +35,6 @@ media:
     plex1.prod.beryju.org:
   vars:
     cmk_plugins:
-      - mk_apt
       - mk_nfsiostat
 
 docker:
@@ -53,8 +53,7 @@ docker:
   vars:
     cmk_extra_packages:
       - python3-docker
-    cmk_plugins:
-      - mk_apt
+    cmk_plugins_absent:
       - mk_docker
       - mk_nfsiostat
   children:
