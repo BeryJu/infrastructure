@@ -58,6 +58,10 @@ docker:
       - mk_nfsiostat
   children:
     compose:
+      vars:
+        cmk_plugins:
+          - mk_docker
+        cmk_plugins_absent: []
       hosts:
         pihole1.prod.beryju.org:
           compose_stacks:
