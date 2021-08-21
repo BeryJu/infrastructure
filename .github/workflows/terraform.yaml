@@ -70,3 +70,6 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: terraform -chdir=tf apply -auto-approve
+        with:
+          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+          VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
