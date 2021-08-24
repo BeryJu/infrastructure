@@ -29,6 +29,9 @@ RUN apt-get install -y --no-install-recommends \
 	pip3 install wheel && \
 	pip3 install pipenv
 
+# Install custom scripts
+COPY ./scripts/* /usr/bin
+
 RUN groupadd -g 999 -r docker
 
 # User jens
@@ -78,7 +81,7 @@ RUN curl -L https://github.com/rancher/rke/releases/latest/download/rke_linux-am
 RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 # rancher
-RUN curl -L https://releases.rancher.com/cli2/v2.4.10/rancher-linux-amd64-v2.4.10.tar.gz | tar xvzf - --strip-components=2 && \
+RUN curl -L https://releases.rancher.com/cli2/v2.4.11/rancher-linux-amd64-v2.4.11.tar.gz | tar xvzf - --strip-components=2 && \
 	mv rancher /usr/bin/rancher && \
 	chmod +x /usr/bin/rancher
 
