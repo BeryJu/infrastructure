@@ -18,7 +18,7 @@ resource "authentik_flow" "ldap-flow" {
   name        = "LDAP"
   title       = "LDAP"
   slug        = "ldap-flow"
-  designation = "authorization"
+  designation = "authentication"
 }
 
 resource "authentik_flow_stage_binding" "ldap-identification-binding" {
