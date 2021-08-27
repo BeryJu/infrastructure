@@ -23,6 +23,27 @@ provider "registry.terraform.io/goauthentik/authentik" {
   ]
 }
 
+provider "registry.terraform.io/grafana/grafana" {
+  version     = "1.13.4"
+  constraints = "1.13.4"
+  hashes = [
+    "h1:fg4G47EbsjsTerDMfzRuWWJ50F7sUxQzZW0omuaNJ/8=",
+    "zh:0dc5f1fd740179f35ed1f2c8d6f8eebe950d4f4b051cf6ec318747ab538dc6d3",
+    "zh:139a0c88d86a591196cceb7580da7857b1219bf16b30133df82cebde9113345c",
+    "zh:1c0840f994eeeaeb230293afac67e63e3961f104d758e38bd2101f7fbc886da1",
+    "zh:1c38be87c228a458b9b140cf6e08dee9589cc428013c2d30816a224ae5984a84",
+    "zh:4799ac8ccd0d42a3c3da7d6a0c1ff89583eca443512c96be4477ebc60ea3d613",
+    "zh:64d07318a3a2b4d4710738da751b57fa428ad183056bf1502c564093f6250964",
+    "zh:70953228fe040e6bd60cd954babf6a264924bd819a6678744141b1c96bfeced9",
+    "zh:7acc394d3d703b344c342a2868aa75b299c565a8360d0eaea7e69c557b43c327",
+    "zh:7e4bdda761e8246d3dea8df08dab29ec6c135ddd3b9e5fe908561e47036bdd5c",
+    "zh:b49da8372ede35ea0fa7c0443235f8e0315d664fb2c900517eb45d7d71d3f0f0",
+    "zh:c4295f52b1b18690ce6a18222a29c3f3e47b1becfe110d12181fe5efbf8b38eb",
+    "zh:ee2008c792950e60576b12836f98b0267014b2e3341900a95f4a05ca2fca138d",
+    "zh:f2727feedaa3b04d8aedf455a9c5a8a97208e0db67417aa97a26ccf167e58877",
+  ]
+}
+
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "3.56.0"
   constraints = "~> 3.0"
@@ -39,6 +60,25 @@ provider "registry.terraform.io/hashicorp/aws" {
     "zh:a6002ecc23ebc468ccac6f36c0ed7cc95de3223ef6b100e6c81762d22cc14077",
     "zh:b0880c82bc2ad395ef3dbf5a592a23e65bf943df8995d5d4238740f96a02f529",
     "zh:ee65f3d2c13653e0828222a63fb832f98e9835b84443eeca00ce36ae39783c08",
+  ]
+}
+
+provider "registry.terraform.io/hashicorp/http" {
+  version     = "2.1.0"
+  constraints = "2.1.0"
+  hashes = [
+    "h1:GYoVrTtiSAE3AlP1fad3fFmHoPaXAPhm/DJyMcVCwZA=",
+    "zh:03d82dc0887d755b8406697b1d27506bc9f86f93b3e9b4d26e0679d96b802826",
+    "zh:0704d02926393ddc0cfad0b87c3d51eafeeae5f9e27cc71e193c141079244a22",
+    "zh:095ea350ea94973e043dad2394f10bca4a4bf41be775ba59d19961d39141d150",
+    "zh:0b71ac44e87d6964ace82979fc3cbb09eb876ed8f954449481bcaa969ba29cb7",
+    "zh:0e255a170db598bd1142c396cefc59712ad6d4e1b0e08a840356a371e7b73bc4",
+    "zh:67c8091cfad226218c472c04881edf236db8f2dc149dc5ada878a1cd3c1de171",
+    "zh:75df05e25d14b5101d4bc6624ac4a01bb17af0263c9e8a740e739f8938b86ee3",
+    "zh:b4e36b2c4f33fdc44bf55fa1c9bb6864b5b77822f444bd56f0be7e9476674d0e",
+    "zh:b9b36b01d2ec4771838743517bc5f24ea27976634987c6d5529ac4223e44365d",
+    "zh:ca264a916e42e221fddb98d640148b12e42116046454b39ede99a77fc52f59f4",
+    "zh:fe373b2fb2cc94777a91ecd7ac5372e699748c455f44f6ea27e494de9e5e6f92",
   ]
 }
 
@@ -67,6 +107,7 @@ provider "registry.terraform.io/rancher/rancher2" {
   constraints = "1.17.2"
   hashes = [
     "h1:0ouGd6r51yB1GHwt/oPjisilqVRqaJTxjFWfOp46HUQ=",
+    "h1:ua8nWSBGRlbuf/FM7RZxeESmocVZRlsFlIKzv+WZwk4=",
     "zh:0124345e2a901e338ed0643255c9a70ed2a5b198982accf2f5551db6d3876cd2",
     "zh:0c8617aac79bc98601722ff52cdc0e2655ae15b25200f2dcec7b5a97aa12743c",
     "zh:0e3524a6e0f8a7eeaeba9bb415d4b6feec379457bee2f8e1a871e9ad7b95c83c",

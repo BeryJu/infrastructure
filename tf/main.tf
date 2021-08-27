@@ -34,3 +34,6 @@ module "rancher" {
 module "authentik" {
   source = "./authentik/"
 }
+module "grafana" {
+  source = "./grafana/"
+}
