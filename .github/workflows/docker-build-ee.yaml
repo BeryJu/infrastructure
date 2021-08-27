@@ -3,6 +3,9 @@ name: docker-build-ee
 on:
   push:
     branches: [ master ]
+    paths: [ ee/** ]
+  schedule:
+    - cron: '0 5 * * *'
 
 jobs:
   build:

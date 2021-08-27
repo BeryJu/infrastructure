@@ -3,6 +3,9 @@ name: docker-build-workstation
 on:
   push:
     branches: [ master ]
+    paths: [ workstation/** ]
+  schedule:
+    - cron: '0 5 * * *'
 
 jobs:
   build:
