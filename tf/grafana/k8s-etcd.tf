@@ -4,5 +4,6 @@ data "http" "k8s-etcd-dashboard" {
 
 resource "grafana_dashboard" "k8s-etcd" {
   folder      = grafana_folder.beryjuorg-k8s-preset.id
-  config_json = data.http.k8s-etcd-dashboard.body
+  # For some reason that json file is a dashboard wrapped in { "etcd.json": {}  }
+  config_json = jsonencode(jsondecode(data.http.k8s-etcd-dashboard.body)["etcd.json"])
 }
