@@ -19,7 +19,3 @@ provider "grafana" {
   url  = "https://grafana.infra.beryju.org/"
   auth = data.vault_generic_secret.grafana_auth.data["terraform_token"]
 }
-
-resource "grafana_folder" "beryjuorg-k8s-preset" {
-  title = "BeryJu.org Preset dashboards"
-}
