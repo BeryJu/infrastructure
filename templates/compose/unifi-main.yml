@@ -11,3 +11,12 @@ services:
       - /srv/unifi:/config
     network_mode: host
     restart: unless-stopped
+  unifi-poller:
+    restart: always
+    image: golift/unifi-poller
+    ports:
+      - 9130:9130
+    environment:
+      UP_UNIFI_DEFAULT_USER: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/unifi:poller_username') }}"
+      UP_UNIFI_DEFAULT_PASS: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/unifi:poller_password') }}"
+      UP_UNIFI_DEFAULT_URL: https://unifi1.prod.beryju.org:8443
