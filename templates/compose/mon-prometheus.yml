@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.27.1
+    command:
+      - --web.enable-lifecycle
+      - --config.file=/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --enable-feature=remote-write-receiver
+    volumes:
+      - ./prometheus.yml:/prometheus.yml
+      - /srv/prometheus-data:/prometheus
+    ports:
+      - 9090:9090
+    restart: always
+  graphite_exporter:
+    image: quay.io/prometheus/graphite-exporter:latest
+    command:
+      - --graphite.mapping-config=/tmp/graphite.yaml
+    volumes:
+      - ./graphite.yaml:/tmp/graphite.yaml
+    ports:
+      - 9108:9108
+      - 9109:9109
+      - 9109:9109/udp

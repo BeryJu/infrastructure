@@ -88,8 +88,8 @@ docker:
           compose_stacks:
             - name: checkmk
               template: templates/compose/mon-checkmk.yml
-            - name: influx
-              template: templates/compose/mon-influx.yml
+            - name: prometheus
+              template: templates/compose/mon-prometheus.yml
             - name: grafana
               template: templates/compose/mon-grafana.yml
             - name: oxidized
