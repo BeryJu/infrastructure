@@ -1,22 +1,13 @@
 version: "3"
 
 services:
-  pihole:
-    container_name: pihole
-    image: pihole/pihole:latest
-    # ports:
-    #   - "53:53/tcp"
-    #   - "53:53/udp"
-    #   - "67:67/udp"
-    #   - "80:80/tcp"
-    #   - "443:443/tcp"
-    environment:
-      TZ: 'Europe/Berlin'
-      ServerIP: 10.120.20.78
+  adguard:
+    container_name: adguard
+    image: adguard/adguardhome
     hostname: pihole1
     volumes:
-      - '/srv/etc-pihole/:/etc/pihole/'
-      - '/srv/etc-dnsmasq.d/:/etc/dnsmasq.d/'
+      - /srv/adguard/work:/opt/adguardhome/work
+      - /srv/adguard/conf:/opt/adguardhome/conf
     dns:
       - 127.0.0.1
       - 1.1.1.1
@@ -24,10 +15,15 @@ services:
     cap_add:
       - NET_ADMIN
     restart: unless-stopped
-  pihole_prom:
-    image: ekofr/pihole-exporter:latest
-    restart: unless-stopped
+  adguard_exporter:
+    image: ebrianne/adguard-exporter:latest
+    restart: always
     ports:
-      - 9617:9617
+      - "9617:9617"
     environment:
-      PIHOLE_HOSTNAME: 10.120.20.78
+      adguard_protocol: http
+      adguard_hostname: pihole1.prod.beryju.org
+      adguard_username: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/adguard:username') }}"
+      adguard_password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/adguard:password') }}"
+      interval: 10s
+      log_limit: 10000
