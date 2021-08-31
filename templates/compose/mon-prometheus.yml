@@ -5,11 +5,12 @@ services:
     image: prom/prometheus:v2.29.2
     command:
       - --web.enable-lifecycle
-      - --config.file=/prometheus.yml
+      - --config.file=/etc/prometheus/prometheus.yml
       - --storage.tsdb.path=/prometheus
       - --enable-feature=remote-write-receiver
     volumes:
-      - ./prometheus.yml:/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./rules:/etc/prometheus/rules
       - /srv/prometheus-data:/prometheus
     ports:
       - 9090:9090
