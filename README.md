@@ -36,6 +36,13 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with 
 
     Remove unused docker images (executed on a schedule by AWX)
 
+- `actions/kick-cmk.yml`:
+
+    Resets and restart the check_mk agent when
+
+    - Check_MK says "Empty output"
+    - Systemd says "Too many incoming connections (4) from source"
+
 - `actions/sentry-cleanup.yml`:
 
     Cleanup sentry data and vacuum the database (run once a day by AWX).
