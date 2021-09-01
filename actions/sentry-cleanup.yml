@@ -10,11 +10,7 @@
       community.docker.docker_container_exec:
         container: sentry_onpremise_postgres_1
         command: vacuumdb -U sentry -d sentry -v -f --analyze
-    - name: Vacuum nodestore_node (first pass)
+    - name: Run pg-repack
       community.docker.docker_container_exec:
         container: sentry_onpremise_postgres_1
-        command: psql -U sentry -c "vacuum public.nodestore_node;"
-    - name: Vacuum nodestore_node (second pass)
-      community.docker.docker_container_exec:
-        container: sentry_onpremise_postgres_1
-        command: psql -U sentry -c "vacuum full public.nodestore_node;"
+        command: apt update && apt install -y --no-install-recommends postgresql-9.6-repack && su postgres -c 'pg_repack -E info -t nodestore_node'
