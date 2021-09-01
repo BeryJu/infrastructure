@@ -37,3 +37,6 @@ module "authentik" {
 module "grafana" {
   source = "./grafana/"
 }
+module "vault" {
+  source = "./vault/"
+}
