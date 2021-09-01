@@ -1,7 +1,5 @@
 # Sentry disk cleanup
 
-See https://develop.sentry.dev/self-hosted/troubleshooting/
-
 ```
 docker-compose exec worker sentry cleanup --days 30
 ```
