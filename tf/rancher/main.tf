@@ -25,10 +25,10 @@ resource "rancher2_cluster" "beryjuorg-prd" {
   }
 }
 
-resource "rancher2_cluster" "beryjuorg-backup" {
-  name = "beryjuorg-backup"
+resource "rancher2_cluster" "beryjuorg-offsite" {
+  name = "beryjuorg-offsite"
   k3s_config {
-    version = "v1.20.7+k3s1"
+    version = "v1.21.3+k3s1"
   }
 
   lifecycle {
@@ -50,7 +50,7 @@ resource "rancher2_cluster" "beryjuorg-ak-dev-k3s" {
   name = "beryjuorg-ak-dev-k3s"
 
   k3s_config {
-    version = "v1.20.6+k3s1"
+    version = "v1.21.2+k3s1"
   }
 
   lifecycle {
