@@ -43,7 +43,6 @@ docker:
     k8s-cprd1-m1.prod.beryju.org:
     k8s-cprd1-w1.prod.beryju.org:
     k8s-cprd1-w2.prod.beryju.org:
-    k8s-cprd1-w3.prod.beryju.org:
     k8s-prd-w1.prod.beryju.org:
     k8s-prd-w2.prod.beryju.org:
     k8s-defr-c1.lab.beryju.org:
