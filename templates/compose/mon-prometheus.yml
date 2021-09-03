@@ -25,3 +25,14 @@ services:
       - 9108:9108
       - 9109:9109
       - 9109:9109/udp
+  alertmanager:
+    image: prom/alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/prometheus/alertmanager.yml
+      - /srv/prom-alertmanager/:/data
+    command:
+      - '--config.file=/etc/prometheus/alertmanager.yml'
+      - '--storage.path=/data'
+    ports:
+      - 9093:9093
+    restart: always
