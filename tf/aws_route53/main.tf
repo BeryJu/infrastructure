@@ -1,11 +1,12 @@
-data "vault_generic_secret" "aws_auth" {
-  path = "kv/aws/tf"
+data "vault_aws_access_credentials" "creds" {
+  backend = "aws"
+  role    = "route53"
 }
 
 provider "aws" {
   region     = "eu-central-1"
-  access_key = data.vault_generic_secret.aws_auth.data["access_key"]
-  secret_key = data.vault_generic_secret.aws_auth.data["secret_key"]
+  access_key = data.vault_aws_access_credentials.creds.access_key
+  secret_key = data.vault_aws_access_credentials.creds.secret_key
 }
 
 locals {
