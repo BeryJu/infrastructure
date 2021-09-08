@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   grafana:
-    image: grafana/grafana:8.1.2
+    image: grafana/grafana:8.1.3
     container_name: grafana
     volumes:
       - /srv/grafana:/var/lib/grafana
