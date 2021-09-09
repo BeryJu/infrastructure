@@ -14,7 +14,7 @@ services:
       nofile: 1024
   authentik_proxy:
     restart: always
-    image: ghcr.io/goauthentik/proxy:latest
+    image: beryju.org/authentik/outpost-proxy:gh-next
     ports:
       - 4180:4180
       - 4443:4443
