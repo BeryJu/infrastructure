@@ -16,8 +16,8 @@ services:
     restart: always
     image: beryju.org/authentik/outpost-proxy:gh-next
     ports:
-      - 4180:4180
-      - 4443:4443
+      - 4180:9000
+      - 4443:9443
     environment:
       AUTHENTIK_HOST: https://id.beryju.org
       AUTHENTIK_TOKEN: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/cmk/proxy:token') }}"
