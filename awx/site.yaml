@@ -3,8 +3,8 @@
   vars:
     awx_connection: &awx_connection
       controller_host: https://awx.beryju.org
-      controller_username: "{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/awx:username") }}"
-      controller_password: "{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/awx:password") }}"
+      controller_username: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/awx:username") }}'
+      controller_password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/awx:password") }}'
   tasks:
     - name: EE | Add EE with hvac for vault
       awx.awx.execution_environment:
