@@ -51,6 +51,10 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with 
 
     Update all systems
 
+- `awx/site.yml`:
+
+    Configure awx.beryju.org
+
 - `site.yml`:
 
     Main playbook, install common packages, set settings and ssh keys.
