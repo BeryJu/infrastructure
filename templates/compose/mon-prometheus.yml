@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   prometheus:
-    image: prom/prometheus:v2.29.2
+    image: prom/prometheus:v2.30.0
     command:
       - --web.enable-lifecycle
       - --config.file=/etc/prometheus/prometheus.yml
