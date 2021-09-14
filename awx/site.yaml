@@ -1,0 +1,168 @@
+- hosts: localhost
+  become: false
+  vars:
+    awx_connection: &awx_connection
+      controller_host: https://awx.beryju.org
+      controller_username: "{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/awx:username") }}"
+      controller_password: "{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/awx:password") }}"
+  tasks:
+    - name: EE | Add EE with hvac for vault
+      awx.awx.execution_environment:
+        name: "AWX EE latest with hvac"
+        image: beryju.org/k8s-pub/awx-ee:latest
+        pull: always
+        <<: *awx_connection
+    - name: Project | infrastructure
+      awx.awx.project:
+        name: "infrastructure"
+        state: present
+        scm_branch: master
+        scm_clean: true
+        scm_type: git
+        scm_update_on_launch: yes
+        scm_url: https://github.com/BeryJu/infrastructure.git
+        default_environment: AWX EE latest with hvac
+        organization: "Default"
+        <<: *awx_connection
+    - name: Inventory | infrastructure
+      awx.awx.inventory:
+        name: "git"
+        state: present
+        organization: "Default"
+        <<: *awx_connection
+    - name: Inventory Source | infrastructure
+      awx.awx.inventory_source:
+        name: "git"
+        state: present
+        inventory: git
+        source: scm
+        source_project: infrastructure
+        source_path: hosts.yaml
+        update_on_project_update: yes
+        overwrite_vars: yes
+        overwrite: yes
+        organization: "Default"
+        <<: *awx_connection
+    - name: Jobs | Static
+      awx.awx.job_template:
+        name: "{{ item.name }}"
+        state: "present"
+        organization: "Default"
+        job_type: "run"
+        inventory: "git"
+        project: "infrastructure"
+        playbook: "{{ item.playbook }}"
+        credentials:
+          - "ansible-ssh"
+          - "hc-vault"
+        diff_mode: yes
+        extra_vars:
+          ansible_python_interpreter: /usr/bin/python3
+        <<: *awx_connection
+      loop:
+        - name: infrastructure-full
+          playbook: site.yml
+        - name: infrastructure-actions-docker-cleanup
+          playbook: actions/cleanup.yml
+        - name: infrastructure-actions-sentry-cleanup
+          playbook: actions/sentry-cleanup.yml
+        - name: infrastructure-actions-system-update
+          playbook: actions/update.yml
+    - name: Jobs | Survey
+      awx.awx.job_template:
+        name: "{{ item.name }}"
+        state: "present"
+        organization: "Default"
+        job_type: "run"
+        inventory: "git"
+        project: "infrastructure"
+        playbook: "{{ item.playbook }}"
+        credentials:
+          - "ansible-ssh"
+          - "hc-vault"
+        diff_mode: yes
+        survey_enabled: yes
+        survey_spec: "{{ item.survey }}"
+        extra_vars:
+          ansible_python_interpreter: /usr/bin/python3
+        <<: *awx_connection
+      loop:
+        - name: new-vm
+          playbook: provisioning/new-vm.yml
+          survey: "{{ lookup('file', 'new-vm.json') }}"
+        - name: new-vm (VPS)
+          playbook: provisioning/new-vm.yml
+          survey: "{{ lookup('file', 'new-vm-vps.json') }}"
+    - name: Job Schedules
+      awx.awx.schedule:
+        name: "{{ item.name }}"
+        state: present
+        unified_job_template: "{{ item.job }}"
+        rrule: "{{ item.rrule }}"
+        enabled: true
+        <<: *awx_connection
+      loop:
+        - name: infrastructure-actions-docker-cleanup-hourly
+          job: "infrastructure-actions-docker-cleanup"
+          rrule: "DTSTART;TZID=Europe/Berlin:20200220T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
+        - name: infrastructure-actions-sentry-cleanup-daily
+          job: "infrastructure-actions-sentry-cleanup"
+          rrule: "DTSTART;TZID=Etc/UTC:20210105T230400 RRULE:INTERVAL=12;FREQ=HOURLY"
+        - name: infrastructure-actions-system-update-hourly
+          job: "infrastructure-actions-system-update"
+          rrule: "DTSTART;TZID=Europe/Berlin:20210715T011300 RRULE:INTERVAL=1;FREQ=HOURLY"
+        - name: infrastructure-hourly
+          job: "infrastructure-full"
+          rrule: "DTSTART;TZID=Europe/Berlin:20191227T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
+    - name: Settings
+      awx.awx.settings:
+        settings:
+          TOWER_URL_BASE: https://awx.beryju.org/
+          LOGIN_REDIRECT_OVERRIDE: https://awx.beryju.org/sso/login/saml/?idp=authentik
+          SAML_AUTO_CREATE_OBJECTS: true
+          SOCIAL_AUTH_SAML_CALLBACK_URL: https://awx.beryju.org/sso/complete/saml/
+          SOCIAL_AUTH_SAML_METADATA_URL: https://awx.beryju.org/sso/metadata/saml/
+          SOCIAL_AUTH_SAML_SP_ENTITY_ID: awx
+          SOCIAL_AUTH_SAML_SP_PUBLIC_CERT: |-
+            -----BEGIN CERTIFICATE-----
+            MIIDEjCCAfqgAwIBAgIRAJZ9pOZ1g0xjiHtQAAejsMEwDQYJKoZIhvcNAQELBQAw
+            MDEuMCwGA1UEAwwlcGFzc2Jvb2sgU2VsZi1zaWduZWQgU0FNTCBDZXJ0aWZpY2F0
+            ZTAeFw0xOTEyMjYyMDEwNDFaFw0yMDEyMjYyMDEwNDFaMFkxLjAsBgNVBAMMJXBh
+            c3Nib29rIFNlbGYtc2lnbmVkIFNBTUwgQ2VydGlmaWNhdGUxETAPBgNVBAoMCHBh
+            c3Nib29rMRQwEgYDVQQLDAtTZWxmLXNpZ25lZDCCASIwDQYJKoZIhvcNAQEBBQAD
+            ggEPADCCAQoCggEBAO/ktBYZkY9xAijF4acvzX6Q1K8KoIZeyde8fVgcWBz4L5Fg
+            DQ4/dni4k2YAcPdwteGL4nKVzetUzjbRCBUNuO6lqU4J4WNNX4Xg4Ir7XLRoAQeo
+            +omTPBdpJ1p02HjtN5jT01umN3bK2yto1e37CJhK6WJiaXqRewPxh4lI4aqdj3Bh
+            FkJ3I3r2qxaWOAXQ6X7fg3w/ny7QP53//ouZo7hSLY3GIcRKgvdjjVM3OW5C3WLp
+            Oq5Dez5GWVJ17aeFCfGQ8bwFKde6qfYqyGcU9xHB36TtVHB9hSFP/tUFhkiSOxts
+            rYwCgCyXm4UTSpP+wiNyjKfFw7qGLBvA2hGTNw8CAwEAATANBgkqhkiG9w0BAQsF
+            AAOCAQEAh9PeAqPRQk1/SSygIFADZBi08O/DPCshFwEHvJATIcTzcDD8UGAjXh+H
+            5OlkDyX7KyrcaNvYaafCUo63A+WprdtdY5Ty6SBEwTYyiQyQfwM9BfK+imCoif1A
+            i7xAelD7p9lNazWq7JU+H/Ep7U7Q7LvpxAbK0JArt+IWTb2NcMb3OWE1r0gFbs44
+            O1l6W9UbJTbyLMzbGbe5i+NHlgnwPwuhtRMh0NUYabGHKcHbhwyFhfGAQv2dAp5K
+            F1E5gu6ZzCiFePzc0FrqXQyb2zpFYcJHXquiqaOeG7cZxRHYcjrl10Vxzki64XVA
+            9BpdELgKSnupDGUEJsRUt3WVOmvZuA==
+            -----END CERTIFICATE-----
+          SOCIAL_AUTH_SAML_ORG_INFO:
+            en-US:
+              name: authentik
+              displayname: authentik
+              url: https://id.beryju.org
+          SOCIAL_AUTH_SAML_TECHNICAL_CONTACT:
+            givenName: Jens Langhammer
+            emailAddress: jens@beryju.org
+          SOCIAL_AUTH_SAML_SUPPORT_CONTACT:
+            givenName: Jens Langhammer
+            emailAddress: jens@beryju.org
+          SOCIAL_AUTH_SAML_ENABLED_IDPS:
+            authentik:
+              attr_first_name: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name
+              attr_username: http://schemas.goauthentik.io/2021/02/saml/username
+              url: https://id.beryju.org/application/saml/ansible-awx/sso/binding/redirect/
+              entity_id: https://awx.beryju.org/sso/metadata/saml/
+              x509cert: MIIDCDCCAfCgAwIBAgIRAKWp133udEXhjJ9/HcHOlt8wDQYJKoZIhvcNAQELBQAwKzEpMCcGA1UEAwwgcGFzc2Jvb2sgU2VsZi1zaWduZWQgQ2VydGlmaWNhdGUwHhcNMjAwNDA5MTk0NDE1WhcNMjEwNDEwMTk0NDE1WjBUMSkwJwYDVQQDDCBwYXNzYm9vayBTZWxmLXNpZ25lZCBDZXJ0aWZpY2F0ZTERMA8GA1UECgwIcGFzc2Jvb2sxFDASBgNVBAsMC1NlbGYtc2lnbmVkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy16spOlHa9/7mKvgzLN+os7BqHeRWdzKzRdwThqfwZHsLKf3V/ZwxfXWhUHTfFk9n6OO1h3VLv3I6yyFnOSdrOMjuXYJ+trB7JxeseNKSqrGD115+jYMvKm3nmj+vKSzZNexdmXw73eM1O89FhsLqxBG5KhTq7nfNvOfutpX2NP70F3nfHF1/38t3h5Gz+QAaEMhkPNOfHoXyN0Gk6XEk2FyM4Icn/c0eCWVAuyc1iJkKyz97Ly7XDoWxjYwVx7g1QYAFD6fMHrYCbeCdpLWFznfcNsMCYY0lHXDatecvF99cuutSBauF8WLoJBgNcL9k56ZhqjkzyOoZDaoIfDv1QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQC6nHqcU2OBJrwDI6cwHYouUyfB5hihZlWkXwBDBQhxVKtVIEJu7JDhKuIZq4JZXbisTdVcSNVZaZ6dLqgeUOMP2JZkCmPn99Oysdf7pnqv/eD4KiPUS9rrnUm4dJjuZxH5Ldl6oTLzi1XAf2+ZOCuhSf1r5v2xFoN+s/TWrZicC3cTHo3mTxpyMesktFTD8w689l/CCFsRTxo7OGzTsOPVQjvO0ptlQu0rkvHLXBYsSczjn1yuWjMYfuArwcph09RbCzS2nY2DPIeeBQvFGU4ZPIax1IRbONTEbvMo3/04uy66iEo2fEj2lEEPC+JxZpuOqSQlflgdwPVfWyy+r9Ia
+              attr_email: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress
+              attr_user_permanent_id: http://schemas.goauthentik.io/2021/02/saml/uid
+          SOCIAL_AUTH_SAML_SECURITY_CONFIG:
+            requestedAuthnContext: false
+        <<: *awx_connection

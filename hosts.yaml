@@ -61,7 +61,7 @@ docker:
       vars:
         cmk_plugins: []
         cmk_plugins_absent:
-         - mk_docker
+          - mk_docker
       hosts:
         pihole1.prod.beryju.org:
           compose_stacks:
