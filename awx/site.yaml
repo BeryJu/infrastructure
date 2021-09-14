@@ -62,6 +62,8 @@
       loop:
         - name: infrastructure-full
           playbook: site.yml
+        - name: infrastructure-awx
+          playbook: awx/site.yaml
         - name: infrastructure-actions-docker-cleanup
           playbook: actions/cleanup.yml
         - name: infrastructure-actions-sentry-cleanup
@@ -107,6 +109,9 @@
           rrule: "DTSTART;TZID=Europe/Berlin:20200220T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
         - name: infrastructure-actions-sentry-cleanup-daily
           job: "infrastructure-actions-sentry-cleanup"
+          rrule: "DTSTART;TZID=Etc/UTC:20210105T230400 RRULE:INTERVAL=12;FREQ=HOURLY"
+        - name: infrastructure-awx-daily
+          job: "infrastructure-awx"
           rrule: "DTSTART;TZID=Etc/UTC:20210105T230400 RRULE:INTERVAL=12;FREQ=HOURLY"
         - name: infrastructure-actions-system-update-hourly
           job: "infrastructure-actions-system-update"
