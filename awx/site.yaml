@@ -104,19 +104,19 @@
         enabled: true
         <<: *awx_connection
       loop:
-        - name: infrastructure-actions-docker-cleanup-hourly
+        - name: infrastructure-actions-docker-cleanup
           job: "infrastructure-actions-docker-cleanup"
           rrule: "DTSTART;TZID=Europe/Berlin:20200220T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
-        - name: infrastructure-actions-sentry-cleanup-daily
+        - name: infrastructure-actions-sentry-cleanup
           job: "infrastructure-actions-sentry-cleanup"
-          rrule: "DTSTART;TZID=Etc/UTC:20210105T230400 RRULE:INTERVAL=12;FREQ=HOURLY"
-        - name: infrastructure-awx-daily
+          rrule: "DTSTART;TZID=Etc/UTC:20210909T010400 RRULE:INTERVAL=3;FREQ=DAILY"
+        - name: infrastructure-awx
           job: "infrastructure-awx"
-          rrule: "DTSTART;TZID=Etc/UTC:20210105T230400 RRULE:INTERVAL=12;FREQ=HOURLY"
-        - name: infrastructure-actions-system-update-hourly
+          rrule: "DTSTART;TZID=Europe/Berlin:20191227T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
+        - name: infrastructure-actions-system-update
           job: "infrastructure-actions-system-update"
           rrule: "DTSTART;TZID=Europe/Berlin:20210715T011300 RRULE:INTERVAL=1;FREQ=HOURLY"
-        - name: infrastructure-hourly
+        - name: infrastructure
           job: "infrastructure-full"
           rrule: "DTSTART;TZID=Europe/Berlin:20191227T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
     - name: Settings
