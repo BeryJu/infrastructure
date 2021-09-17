@@ -92,6 +92,8 @@
           playbook: actions/sentry-cleanup.yml
         - name: infrastructure-actions-system-update
           playbook: actions/update.yml
+        - name: infrastructure-git-backup
+          playbook: backups/site.yaml
     - name: Jobs | Survey
       awx.awx.job_template:
         name: "{{ item.name }}"
@@ -144,6 +146,9 @@
           rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
         - name: infrastructure
           job: "infrastructure-full"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+        - name: infrastructure-git-backup
+          job: "infrastructure-git-backup"
           rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
     - name: Settings
       awx.awx.settings:
