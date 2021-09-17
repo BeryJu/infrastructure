@@ -8,7 +8,7 @@ data "http" "citrix-adc-system-status" {
 
 resource "grafana_dashboard" "citrix-adc-system-status" {
   folder      = grafana_folder.beryjuorg-citrix-adc.id
-  config_json = data.http.citrix-adc-system-status.body
+  config_json = replace(data.http.citrix-adc-system-status.body, "prometheus", "Prometheus")
 }
 
 data "http" "citrix-adc-lb-status" {
