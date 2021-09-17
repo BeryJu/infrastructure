@@ -9,6 +9,9 @@ ansible-lint = "<6"
 [packages]
 hvac = "*"
 ansible = "*"
+python-gitlab = "*"
+python-dateutil = "*"
+pytz = "*"
 
 [requires]
 python_version = "3.9"

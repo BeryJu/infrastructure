@@ -1,0 +1,38 @@
+- hosts: localhost
+  vars:
+    gitlab_connection: &gitlab_connection
+      api_url: https://code.beryju.org
+      api_token: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/awx/git-backup:gitlab-token") }}'
+    projects:
+      - src: BeryJu/korb
+        dst: korb
+      - src: BeryJu/k8s
+        dst: k8s
+      - src: BeryJu/infrastructure
+        dst: infrastructure
+      - src: goauthentik/authentik
+        dst: authentik
+      - src: BeryJu/beryju.org
+        dst: beryju.org
+  tasks:
+    - name: Dst | Ensure gitlab project exists
+      community.general.gitlab_project:
+        name: "{{ item.dst }}"
+        group: "backups"
+        <<: *gitlab_connection
+      loop: "{{ projects }}"
+    - name: Src | get source
+      ansible.builtin.git:
+        repo: 'https://github.com/{{ item.src }}.git'
+        dest: "/tmp/{{ item.dst }}"
+        force: yes
+      loop: "{{ projects }}"
+    - name: Src | full fetch
+      command: git -C '/tmp/{{ item.dst }}' pull --all
+      loop: "{{ projects }}"
+    - name: Src | add backup remote
+      command: git -C '/tmp/{{ item.dst }}' remote add backup '{{ gitlab_connection.api_url }}/backups/{{ item.dst }}'
+      loop: "{{ projects }}"
+    - name: Dst | push
+      command: git -C '/tmp/{{ item.dst }}' push --repo 'https://git:{{ gitlab_connection.api_token }}@code.beryju.org/backups/{{ item.dst }}'
+      loop: "{{ projects }}"
