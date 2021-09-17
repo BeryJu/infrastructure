@@ -132,19 +132,19 @@
       loop:
         - name: infrastructure-actions-docker-cleanup
           job: "infrastructure-actions-docker-cleanup"
-          rrule: "DTSTART;TZID=Europe/Berlin:20200220T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
         - name: infrastructure-actions-sentry-cleanup
           job: "infrastructure-actions-sentry-cleanup"
-          rrule: "DTSTART;TZID=Etc/UTC:20210909T010400 RRULE:INTERVAL=3;FREQ=DAILY"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'day', every='3', timezone='Etc/UTC') }}"
         - name: infrastructure-awx
           job: "infrastructure-awx"
-          rrule: "DTSTART;TZID=Europe/Berlin:20191227T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
         - name: infrastructure-actions-system-update
           job: "infrastructure-actions-system-update"
-          rrule: "DTSTART;TZID=Europe/Berlin:20210715T011300 RRULE:INTERVAL=1;FREQ=HOURLY"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
         - name: infrastructure
           job: "infrastructure-full"
-          rrule: "DTSTART;TZID=Europe/Berlin:20191227T000000 RRULE:FREQ=HOURLY;INTERVAL=1"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
     - name: Settings
       awx.awx.settings:
         settings:
