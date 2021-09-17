@@ -9,6 +9,15 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://code.beryju.org'
         letsencrypt['enable'] = true
+        prometheus['remote_write'] = [
+          {
+            url: 'https://monitoring.beryju.org/api/v1/write',
+            basic_auth: {
+              username: '{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/prometheus-pub:user') }}'
+              password: '{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/prometheus-pub:password') }}'
+            }
+          }
+        ]
 
         gitlab_rails['smtp_enable'] = true
         gitlab_rails['smtp_address'] = "email-smtp.eu-central-1.amazonaws.com"
