@@ -43,6 +43,25 @@
         overwrite: yes
         organization: "Default"
         <<: *awx_connection
+    - name: Notifications | Get email credentials
+      set_fact:
+        aws_creds: '{{ lookup("community.hashi_vault.hashi_vault", "secret=aws/creds/ses-send") }}'
+    - name: Notifications | Email
+      awx.awx.notification_template:
+        name: ses
+        notification_type: email
+        notification_configuration:
+          username: '{{ aws_creds.access_key }}'
+          password: '{{ aws_creds.secret_key }}'
+          sender: awx@services.beryju.org
+          recipients:
+            - jens@beryju.org
+          host: email-smtp.eu-central-1.amazonaws.com
+          port: 587
+          use_tls: yes
+          use_ssl: no
+        state: present
+        <<: *awx_connection
     - name: Jobs | Static
       awx.awx.job_template:
         name: "{{ item.name }}"
@@ -58,6 +77,8 @@
         diff_mode: yes
         extra_vars:
           ansible_python_interpreter: /usr/bin/python3
+        notification_templates_error:
+          - ses
         <<: *awx_connection
       loop:
         - name: infrastructure-full
@@ -87,6 +108,10 @@
         survey_spec: "{{ item.survey }}"
         extra_vars:
           ansible_python_interpreter: /usr/bin/python3
+        notification_templates_error:
+          - ses
+        notification_templates_success:
+          - ses
         <<: *awx_connection
       loop:
         - name: new-vm
