@@ -66,7 +66,10 @@ docker:
         adguard1.prod.beryju.org:
           compose_stacks:
             - name: adguard
-              template: compose/adguard-main.yml
+              template: compose/adguard/adguard-main.yaml
+              files:
+                - src: compose/adguard/adguard.yaml
+                  dest: conf/AdGuardHome.yaml
         plex1.prod.beryju.org:
           compose_stacks:
             - name: plex

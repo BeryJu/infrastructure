@@ -7,7 +7,7 @@ services:
     hostname: adguard1
     volumes:
       - /srv/adguard/work:/opt/adguardhome/work
-      - /srv/adguard/conf:/opt/adguardhome/conf
+      - ./conf/:/opt/adguardhome/conf/
     dns:
       - 1.1.1.1
     network_mode: host
