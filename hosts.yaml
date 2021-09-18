@@ -103,6 +103,7 @@ docker:
               template: templates/compose/log-graylog.yml
         # These systems use docker-compose, but with stacks that are managed otherwise
         sentry1.prod.beryju.org:
+        analytics1.prod.beryju.org:
         netbox1.prod.beryju.org:
         ak-dev-dc1.lab.beryju.org:
         dev1.lab.beryju.org:

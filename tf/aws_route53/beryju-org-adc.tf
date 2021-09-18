@@ -56,3 +56,13 @@ resource "aws_route53_record" "vault" {
     evaluate_target_health = true
   }
 }
+resource "aws_route53_record" "analytics" {
+  zone_id = aws_route53_zone.beryju-org.zone_id
+  name    = "analytics.beryju.org"
+  type    = "A"
+  alias {
+    name                   = "adc._aliases.beryju.org"
+    zone_id                = aws_route53_zone.beryju-org.zone_id
+    evaluate_target_health = true
+  }
+}
