@@ -34,6 +34,20 @@
     version: "{{ stack.branch | default('master') }}"
   when: "stack.repo is defined"
 
+# Stack files
+- name: Copy additional stack files
+  template:
+    src: "{{ file.src }}"
+    dest: "{{ docker_compose_stacks_path }}/{{ stack.name }}/{{ file.dest }}"
+    mode: "{{ file.mode|default('0644') }}"
+    owner: "{{ file.owner|default('root') }}"
+    group: "{{ file.group|default('root') }}"
+  loop: "{{ stack.files }}"
+  loop_control:
+    loop_var: file
+  when: "stack.files is defined"
+  notify: restart stack
+
 - name: start stack
   docker_compose:
     project_src: "{{ docker_compose_stacks_path }}/{{ stack.name }}"

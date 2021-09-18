@@ -12,6 +12,7 @@ ansible = "*"
 python-gitlab = "*"
 python-dateutil = "*"
 pytz = "*"
+passlib = "*"
 
 [requires]
 python_version = "3.9"
