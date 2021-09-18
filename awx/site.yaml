@@ -6,6 +6,55 @@
       controller_username: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/awx:username") }}'
       controller_password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/awx:password") }}'
   tasks:
+    - name: Credentials | Create vault type
+      awx.awx.credential_type:
+        name: HashiCorp Vault
+        description: Vault but sane
+        inputs:
+          fields:
+            - id: vault_server
+              type: string
+              label: URL for Vault Server
+            - id: vault_token
+              type: string
+              label: Vault token
+          required:
+            - vault_server
+            - vault_role_id
+            - vault_secret_id
+        injectors:
+          env:
+            VAULT_ADDR: "{{ '{{' }} vault_server {{ '}}' }}"
+            VAULT_TOKEN: "{{ '{{' }} vault_token {{ '}}' }}"
+        state: present
+        <<: *awx_connection
+    - name: Credentials | Vault
+      awx.awx.credential:
+        name: hc-vault
+        credential_type: HashiCorp Vault
+        inputs:
+          vault_server: 'https://vault.beryju.org'
+          vault_token: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/awx/meta:token") }}'
+        organization: Default
+        <<: *awx_connection
+    - name: Credentials | Machine SSH
+      awx.awx.credential:
+        name: ansible-ssh
+        credential_type: Machine
+        inputs:
+          ssh_key_data: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/awx/ssh:private") }}'
+        organization: Default
+        <<: *awx_connection
+    - name: Credentials | vCenter
+      awx.awx.credential:
+        name: vc-vc1
+        credential_type: "VMware vCenter"
+        inputs:
+          host: 'vc1.prod.beryju.org'
+          username: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/vsphere/local/administrator:username") }}'
+          password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/vsphere/local/administrator:password") }}'
+        organization: Default
+        <<: *awx_connection
     - name: EE | Add EE with hvac for vault
       awx.awx.execution_environment:
         name: "AWX EE latest with hvac"
