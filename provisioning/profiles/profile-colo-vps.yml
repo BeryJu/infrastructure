@@ -3,7 +3,7 @@ vm_config:
   network: "vs-int-102-pub"
   manual_ip: true
   mirror: mirror://mirrors.ubuntu.com/mirrors.txt
-bootstrap_dc: uk-coventry
+bootstrap_dc: uk-london
 bootstrap_host: esxi4.prod.beryju.org
 bootstrap_resource_pool: VPS
 bootstrap_vm_gw: 194.56.224.225

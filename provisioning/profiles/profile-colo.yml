@@ -3,5 +3,5 @@ vm_config:
   network: "vs-int-101-srv"
   manual_ip: false
   mirror: mirror://mirrors.ubuntu.com/mirrors.txt
-bootstrap_dc: uk-coventry
+bootstrap_dc: uk-london
 bootstrap_host: esxi4.prod.beryju.org

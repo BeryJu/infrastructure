@@ -12,7 +12,7 @@ locals {
 # Location settings
 variable "vcenter_dc" {
   type    = string
-  default = "uk-coventry"
+  default = "uk-london"
 }
 
 variable "vcenter_datastore" {
