@@ -63,10 +63,10 @@ docker:
         cmk_plugins_absent:
           - mk_docker
       hosts:
-        pihole1.prod.beryju.org:
+        adguard1.prod.beryju.org:
           compose_stacks:
-            - name: pihole
-              template: templates/compose/pihole-main.yml
+            - name: adguard
+              template: templates/compose/adguard-main.yml
         plex1.prod.beryju.org:
           compose_stacks:
             - name: plex

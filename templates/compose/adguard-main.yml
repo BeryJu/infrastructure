@@ -4,12 +4,11 @@ services:
   adguard:
     container_name: adguard
     image: adguard/adguardhome
-    hostname: pihole1
+    hostname: adguard1
     volumes:
       - /srv/adguard/work:/opt/adguardhome/work
       - /srv/adguard/conf:/opt/adguardhome/conf
     dns:
-      - 127.0.0.1
       - 1.1.1.1
     network_mode: host
     cap_add:
@@ -22,7 +21,7 @@ services:
       - "9617:9617"
     environment:
       adguard_protocol: http
-      adguard_hostname: pihole1.prod.beryju.org
+      adguard_hostname: adguard1.prod.beryju.org
       adguard_username: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/adguard:username') }}"
       adguard_password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/adguard:password') }}"
       interval: 10s
