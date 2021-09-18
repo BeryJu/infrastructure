@@ -2,8 +2,8 @@
   "enabled": true,
   "docker-compose": {
     "fileMatch": [
-      "^templates/compose/.*\\.yaml$",
-      "^templates/compose/.*\\.yml$"
+      "^compose/.*\\.yaml$",
+      "^compose/.*\\.yml$"
     ]
   },
   "dependencyDashboard": true

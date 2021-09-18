@@ -66,19 +66,19 @@ docker:
         adguard1.prod.beryju.org:
           compose_stacks:
             - name: adguard
-              template: templates/compose/adguard-main.yml
+              template: compose/adguard-main.yml
         plex1.prod.beryju.org:
           compose_stacks:
             - name: plex
-              template: templates/compose/plex-main.yml
+              template: compose/plex-main.yml
         unifi1.prod.beryju.org:
           compose_stacks:
             - name: unifi
-              template: templates/compose/unifi-main.yml
+              template: compose/unifi-main.yml
         gitlab1.prod.beryju.org:
           compose_stacks:
             - name: gitlab
-              template: templates/compose/gitlab-main.yml
+              template: compose/gitlab-main.yml
         mon1.prod.beryju.org:
           docker_registries:
             - registry: beryju.org
@@ -86,21 +86,21 @@ docker:
               password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/k8s-global:harbor_password") }}'
           compose_stacks:
             - name: checkmk
-              template: templates/compose/mon-checkmk.yml
+              template: compose/mon-checkmk.yml
             - name: prometheus
-              template: templates/compose/mon-prometheus.yml
+              template: compose/mon-prometheus.yml
             - name: grafana
-              template: templates/compose/mon-grafana.yml
+              template: compose/mon-grafana.yml
             - name: oxidized
-              template: templates/compose/mon-oxidized.yml
+              template: compose/mon-oxidized.yml
         rancher1.prod.beryju.org:
           compose_stacks:
             - name: rancher
-              template: templates/compose/mgmt-rancher.yml
+              template: compose/mgmt-rancher.yml
         log1.prod.beryju.org:
           compose_stacks:
             - name: graylog
-              template: templates/compose/log-graylog.yml
+              template: compose/log-graylog.yml
         # These systems use docker-compose, but with stacks that are managed otherwise
         sentry1.prod.beryju.org:
         analytics1.prod.beryju.org:
@@ -110,8 +110,8 @@ docker:
         vault1.prod.beryju.org:
           compose_stacks:
             - name: vault
-              template: templates/compose/vault-main.yml
+              template: compose/vault-main.yml
         mc1.prod.beryju.org:
           compose_stacks:
             - name: minecraft
-              template: templates/compose/minecraft.yaml
+              template: compose/minecraft.yaml
