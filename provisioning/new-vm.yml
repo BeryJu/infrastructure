@@ -6,9 +6,9 @@
     - community.vmware
   vars:
     vcenter: &vcenter
-      hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
-      username: "{{ lookup('env', 'VMWARE_USER') }}"
-      password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
+      hostname: "vc1.prod.beryju.org"
+      username: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/vsphere/local/administrator:username") }}'
+      password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/vsphere/local/administrator:password") }}'
       esxi_hostname: "{{ bootstrap_host }}"
       datacenter: "{{ bootstrap_dc }}"
       validate_certs: False
