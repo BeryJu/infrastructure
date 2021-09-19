@@ -7,7 +7,8 @@
 - name: ansible user | authorized_key
   authorized_key:
     user: ansible
-    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/ZiCsd/xEQo8VtkN8/TjHzkFwii5HIyx6a79C6Mu/g3zkEt8e9u3UVkxLZL2v0ghjIOxJQQoy4ogv1NcH+rneyG0T5xobSTy71wogLF8ctF8RBNk+poYBaDiYabgGtfM2IyPQJPrjGnPfoMkSxTxttM//yFHvOpAPr4Uz5yGYvLsY8BZUEsIljKHUUfb2Fi5oKOMZZ0iPRJHIh9t+FCj1kuZUaJd6DqSj//TJTnQR0/l5Q8uawbw6uoePoRtqVBO/96cnOnQ/0Gf7kk2irtyLkVkE44g+KWwsHbgsAdaWzrFuYBBwQplPZNMjugsHTPQqMoDwdIMGxWSGvOMnYas7 ansible" # noqa 204
+    exclusive: True
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8qE50n9zhBb7Z6riPt59Hh8ZyTKfHmSOZ2mkLWO7XW4k41kUBNUb0rb8LHsJ9ZvLXziAuKBmemUX3SYnRINvK187zei0+fu753g5djs3uPka1NOKuRKHt0EJNo4GdZn/SLPktYI0LBhbVY0tDlkLHlTa57UCUr4eKao/0pzhSGGDqocsHkpAK8SWQsHZLQVJ8Kc+hsq+HGGiBGQcWSz7ZvwdCv0VZbeYyecSEtPdhwcyjw+Wgxod6LdwVU+EXJC9nrK1ak+TGD86/HHoEY+qQCRXrQpoemN4+Ina7OeH0Dts5aqszdVDDd1HXIC8OsENrgTVKsL+3liONRHnmMg8tOIaMyV53bQFddsap3V7v1FQIv6UKJo2ePETg0bStjsh5UcUHXqGK+FJvIV2VRKUzjIlLDibWliUvEDz3e50177dVwKYWU8luBtAm3c95RNYLbj63DWgHITbdx6Dx9pJfXiJAh3es1/0q87cRfnstTFvsjXz4Fg/jtKKJs1P2dx0= ansible" # noqa 204
 - name: delete vagrant
   user:
     name: vagrant
