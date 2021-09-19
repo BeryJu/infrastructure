@@ -24,8 +24,8 @@
             - vault_secret_id
         injectors:
           env:
-            VAULT_ADDR: "{{ '{{' }} vault_server {{ '}}' }}"
-            VAULT_TOKEN: "{{ '{{' }} vault_token {{ '}}' }}"
+            VAULT_ADDR: "{{ '{{' }} vault_server {{ '}}' }}" # noqa 207
+            VAULT_TOKEN: "{{ '{{' }} vault_token {{ '}}' }}" # noqa 207
         state: present
         <<: *awx_connection
     - name: Credentials | Vault
