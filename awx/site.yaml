@@ -141,6 +141,8 @@
           playbook: actions/sentry-cleanup.yml
         - name: infrastructure-actions-system-update
           playbook: actions/update.yml
+        - name: infrastructure-actions-kick-cmk
+          playbook: actions/kick-cmk.yml
         - name: infrastructure-git-backup
           playbook: backups/site.yaml
     - name: Jobs | Survey
@@ -183,6 +185,9 @@
       loop:
         - name: infrastructure-actions-docker-cleanup
           job: "infrastructure-actions-docker-cleanup"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+        - name: infrastructure-actions-kick-cmk
+          job: "infrastructure-actions-kick-cmk"
           rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
         - name: infrastructure-actions-sentry-cleanup
           job: "infrastructure-actions-sentry-cleanup"
