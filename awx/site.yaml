@@ -42,6 +42,7 @@
         name: ansible-ssh
         credential_type: Machine
         inputs:
+          username: ansible
           ssh_key_data: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/awx/ssh:private") }}'
         organization: Default
         <<: *awx_connection
