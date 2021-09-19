@@ -156,7 +156,7 @@
     - name: Static network config
       template:
         src: templates/netplan.j2.yaml
-        dest: /etc/netplan/00-installer-config.yaml
+        dest: /etc/netplan/50-cloud-init.yaml
         owner: root
         group: root
         mode: 0644
