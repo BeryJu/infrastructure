@@ -96,6 +96,8 @@ docker:
               template: compose/mon-grafana.yml
             - name: oxidized
               template: compose/mon-oxidized.yml
+            - name: adc-exporter
+              template: compose/mon-adc.yml
         rancher1.prod.beryju.org:
           compose_stacks:
             - name: rancher
