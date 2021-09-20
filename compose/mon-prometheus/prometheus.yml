@@ -1,0 +1,68 @@
+global:
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  evaluation_interval: 1m
+
+rule_files:
+- /etc/prometheus/rules/*.yaml
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - alertmanager:9093
+
+scrape_configs:
+  - job_name: harvest
+    static_configs:
+      - targets:
+          - 'mon1.prod.beryju.org:12990'
+          - 'mon1.prod.beryju.org:12991'
+          - 'mon1.prod.beryju.org:12992'
+          - 'mon1.prod.beryju.org:12993'
+  - job_name: graphite
+    static_configs:
+      - targets:
+          - 'mon1.prod.beryju.org:9108'
+  - job_name: alertmanager
+    static_configs:
+      - targets:
+          - 'mon1.prod.beryju.org:9093'
+  - job_name: adc
+    static_configs:
+      - targets:
+          - 'mon1.prod.beryju.org:8890'
+          - 'mon1.prod.beryju.org:8891'
+  - job_name: adguard
+    static_configs:
+      - targets:
+          - 'adguard1.prod.beryju.org:9617'
+  - job_name: graylog
+    static_configs:
+      - targets:
+          - 'log1.prod.beryju.org:9001'
+  - job_name: unifi
+    static_configs:
+      - targets:
+          - 'unifi1.prod.beryju.org:9130'
+  - job_name: vault
+    metrics_path: /v1/sys/metrics
+    params:
+      format:
+      - prometheus
+    bearer_token: "s.WTME8CJmEzAYCkndzSiKg0IN"
+    scheme: https
+    static_configs:
+      - targets:
+          - 'vault.beryju.org:443'
+  - job_name: "hass"
+    metrics_path: "/api/prometheus"
+    bearer_token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/hass/monitoring:token') }}"
+    scheme: http
+    static_configs:
+      - targets: ["hass1.prod.beryju.org:8123"]
+  - job_name: node
+    static_configs:
+      - targets:
+          - 'dev1.lab.beryju.org:9100'
+          - 'nas1.prod.beryju.org:9100'

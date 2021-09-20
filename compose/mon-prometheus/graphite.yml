@@ -1,0 +1,6 @@
+mappings:
+- match: 'cmk_(.*org)\.(.*)'
+  match_type: regex
+  name: '${2}'
+  labels:
+    hostname: ${1}

@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   prometheus:
-    image: prom/prometheus:v2.30.0
+    image: quay.io/prometheus/prometheus:v2.30.0
     command:
       - --web.enable-lifecycle
       - --config.file=/etc/prometheus/prometheus.yml
@@ -17,17 +17,17 @@ services:
       - 9090:9090
     restart: always
   graphite_exporter:
-    image: quay.io/prometheus/graphite-exporter:latest
+    image: quay.io/prometheus/graphite-exporter:v0.11.0
     command:
-      - --graphite.mapping-config=/tmp/graphite.yaml
+      - --graphite.mapping-config=/tmp/graphite.yml
     volumes:
-      - ./graphite.yaml:/tmp/graphite.yaml
+      - ./graphite.yml:/tmp/graphite.yml
     ports:
       - 9108:9108
       - 9109:9109
       - 9109:9109/udp
   alertmanager:
-    image: prom/alertmanager
+    image: quay.io/prometheus/alertmanager:v0.23.0
     volumes:
       - ./alertmanager.yml:/etc/prometheus/alertmanager.yml
       - /srv/prom-alertmanager/:/data

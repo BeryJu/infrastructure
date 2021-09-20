@@ -66,7 +66,7 @@ docker:
         adguard1.prod.beryju.org:
           compose_stacks:
             - name: adguard
-              template: compose/adguard/adguard-main.yaml
+              template: compose/adguard-main/docker-compose.yaml
               files:
                 - src: compose/adguard/adguard.yaml
                   dest: conf/AdGuardHome.yaml
@@ -91,7 +91,12 @@ docker:
             - name: checkmk
               template: compose/mon-checkmk.yml
             - name: prometheus
-              template: compose/mon-prometheus.yml
+              template: compose/mon-prometheus/docker-compose.yml
+              files:
+                - src: compose/mon-prometheus/prometheus.yml
+                  dest: prometheus.yml
+                - src: compose/mon-prometheus/graphite.yml
+                  dest: graphite.yml
             - name: grafana
               template: compose/mon-grafana.yml
             - name: oxidized
