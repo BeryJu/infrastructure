@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   adc_exporter_1:
-    image: quay.io/citrix/citrix-adc-metrics-exporter:1.4.7
+    image: quay.io/citrix/citrix-adc-metrics-exporter:1.4.8
     volumes:
       - ./config.yaml:/exporter/config.yaml
     ports:
@@ -14,7 +14,7 @@ services:
       NS_USER: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/citrix/adc:username') }}"
       NS_PASSWORD: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/citrix/adc:password') }}"
   adc_exporter_2:
-    image: quay.io/citrix/citrix-adc-metrics-exporter:1.4.7
+    image: quay.io/citrix/citrix-adc-metrics-exporter:1.4.8
     volumes:
       - ./config.yaml:/exporter/config.yaml
     ports:
