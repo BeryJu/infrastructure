@@ -130,6 +130,8 @@
           ansible_python_interpreter: /usr/bin/python3
         notification_templates_error:
           - ses
+        webhook_service: github
+        webhook_credential: gh
         <<: *awx_connection
       loop:
         - name: infrastructure-full
