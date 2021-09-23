@@ -4,7 +4,7 @@ See also https://github.com/BeryJu/k8s, repository for GitOps with flux.
 
 ## Requirements
 
-- Ansible 2.10
+- Ansible latest
 - HashiCorp Vault (for credentials)
 - VMware vSphere (for provisioning)
 

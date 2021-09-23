@@ -49,6 +49,7 @@ docker:
     k8s-defr-w1.lab.beryju.org:
     k8s-defr-w2.lab.beryju.org:
     ak-dev-k3s1.lab.beryju.org:
+    lb1.prod.beryju.org:
     #ak-dev-freeipa1.lab.beryju.org:
   vars:
     cmk_extra_packages:
