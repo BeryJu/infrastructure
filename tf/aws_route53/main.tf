@@ -11,5 +11,4 @@ provider "aws" {
 
 locals {
   pub_k8s_ip = "194.56.224.176"
-  pub_adc_ip = "194.56.224.150"
 }

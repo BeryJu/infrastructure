@@ -28,11 +28,6 @@ scrape_configs:
     static_configs:
       - targets:
           - 'mon1.prod.beryju.org:9093'
-  - job_name: adc
-    static_configs:
-      - targets:
-          - 'mon1.prod.beryju.org:8890'
-          - 'mon1.prod.beryju.org:8891'
   - job_name: adguard
     static_configs:
       - targets:

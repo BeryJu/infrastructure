@@ -10,7 +10,7 @@ resource "aws_route53_record" "jela-requests" {
   name    = "requests.jela.io"
   type    = "A"
   ttl     = "300"
-  records = [local.pub_adc_ip]
+  records = [local.pub_k8s_ip]
 }
 resource "aws_route53_record" "jela-wks" {
   zone_id = aws_route53_zone.jela-io.zone_id
