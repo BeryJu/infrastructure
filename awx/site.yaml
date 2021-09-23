@@ -183,7 +183,7 @@
         state: present
         unified_job_template: "{{ item.job }}"
         rrule: "{{ item.rrule }}"
-        enabled: true
+        # enabled: true
         <<: *awx_connection
       loop:
         - name: infrastructure-actions-docker-cleanup
