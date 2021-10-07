@@ -13,7 +13,7 @@ RUN apt-get update && \
 		# Base system utils
 		fish nano git openssh-client apt-transport-https curl bash \
 		gnupg sudo man-db bash-completion wget unzip less \
-		locales file pwgen htop jq ldap-utils \
+		locales file pwgen htop jq ldap-utils bat \
 		# Network tools
 		nmap mtr-tiny host net-tools iputils-ping traceroute \
 		# Required for packer to create iso files
@@ -56,7 +56,7 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
 
 # kubie
 RUN curl -L https://github.com/sbstp/kubie/releases/latest/download/kubie-linux-amd64 > /usr/bin/kubie && \
-	chmod + /usr/bin/kubie
+	chmod +x /usr/bin/kubie
 
 # Kubernetes stern
 RUN curl -L https://github.com/stern/stern/releases/download/v1.19.0/stern_1.19.0_linux_amd64.tar.gz | tar xvzf - --strip-components=1 && \
