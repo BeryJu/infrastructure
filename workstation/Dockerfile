@@ -29,9 +29,6 @@ RUN apt-get install -y --no-install-recommends \
 	pip3 install wheel && \
 	pip3 install pipenv
 
-# Install custom scripts
-COPY ./scripts/* /usr/bin
-
 RUN groupadd -g 999 -r docker
 
 # User jens
