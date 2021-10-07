@@ -11,7 +11,7 @@ RUN apt-get update && \
 	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get install -y --no-install-recommends \
 		# Base system utils
-		zsh nano git openssh-client apt-transport-https curl bash \
+		fish nano git openssh-client apt-transport-https curl bash \
 		gnupg sudo man-db bash-completion wget unzip less \
 		locales file pwgen htop jq ldap-utils \
 		# Network tools
