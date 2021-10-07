@@ -35,7 +35,7 @@ COPY ./scripts/* /usr/bin
 RUN groupadd -g 999 -r docker
 
 # User jens
-RUN useradd -m -s /bin/zsh -G sudo,docker jens && \
+RUN useradd -m -s /bin/fish -G sudo,docker jens && \
 	su -c "ssh-keygen -b 2048 -f /home/jens/.ssh/id_rsa -t rsa -q -N ''" jens && \
 	passwd -d jens
 
