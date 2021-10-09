@@ -75,7 +75,8 @@ RUN curl -L https://github.com/rancher/rke/releases/latest/download/rke_linux-am
 	chmod +x /usr/bin/rke
 
 # helm 3
-RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash && \
+	helm completion fish > /etc/fish/completions/helm.fish
 
 # rancher
 RUN curl -L https://releases.rancher.com/cli2/v2.4.11/rancher-linux-amd64-v2.4.11.tar.gz | tar xvzf - --strip-components=2 && \
@@ -97,7 +98,7 @@ RUN curl -L https://packages.microsoft.com/config/ubuntu/20.04/packages-microsof
 	apt-get install --no-install-recommends -y powershell
 
 # govc
-RUN curl -L https://github.com/vmware/govmomi/releases/latest/download/govc_Linux_x86_64.tar.gz | gunzip - > govc && \
+RUN curl -L https://github.com/vmware/govmomi/releases/latest/download/govc_Linux_x86_64.tar.gz | tar xvzf - && \
 	mv govc /usr/bin/govc && \
 	chmod +x /usr/bin/govc
 
@@ -105,7 +106,8 @@ RUN curl -L https://github.com/vmware/govmomi/releases/latest/download/govc_Linu
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
 # FluxCD
-RUN curl -s https://fluxcd.io/install.sh | sudo bash
+RUN curl -s https://fluxcd.io/install.sh | sudo bash && \
+	flux completion fish > /etc/fish/completions/flux.fish
 
 COPY ./authorized_keys /home/jens/.ssh/authorized_keys
 COPY ./sshd_config /etc/ssh/sshd_config
