@@ -51,9 +51,13 @@ RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add 
 	apt-get update && \
 	apt-get install --no-install-recommends -y kubectl
 
-# kubie
-RUN curl -L https://github.com/sbstp/kubie/releases/latest/download/kubie-linux-amd64 > /usr/bin/kubie && \
-	chmod +x /usr/bin/kubie
+# kubectx && kubens
+RUN curl -L https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx > /usr/local/bin/kubectx && \
+	curl -L https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens > /usr/local/bin/kubens && \
+	curl -L https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubectx.fish > /etc/fish/completions/kubectx.fish && \
+	curl -L https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubens.fish > /etc/fish/completions/kubens.fish && \
+	chmod +x /usr/local/bin/kubectx && \
+	chmod +x /usr/local/bin/kubens
 
 # Kubernetes stern
 RUN curl -L https://github.com/stern/stern/releases/download/v1.19.0/stern_1.19.0_linux_amd64.tar.gz | tar xvzf - --strip-components=1 && \
