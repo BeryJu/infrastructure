@@ -13,9 +13,9 @@ RUN apt-get update && \
 		# Base system utils
 		nano git openssh-client apt-transport-https curl bash \
 		gnupg sudo man-db bash-completion wget unzip less \
-		locales file pwgen htop jq ldap-utils \
+		locales file pwgen htop jq ldap-utils software-properties-common \
 		# Fancy shell stuff
-		fish bat fzf \
+		bat fzf \
 		# Network tools
 		nmap mtr-tiny host net-tools iputils-ping traceroute \
 		# Required for packer to create iso files
@@ -30,6 +30,11 @@ RUN apt-get install -y --no-install-recommends \
 		python3.9 python3-pip python3-venv python3-setuptools && \
 	pip3 install wheel && \
 	pip3 install pipenv
+
+# Fish
+RUN apt-add-repository ppa:fish-shell/release-3 -y && \
+	apt-get update && \
+	apt-get install -y --no-install-recommends fish
 
 RUN groupadd -g 999 -r docker
 
