@@ -12,9 +12,9 @@ data "vault_generic_secret" "artifactory_auth" {
 }
 
 provider "artifactory" {
-  url = "https://registry.beryju.org/artifactory"
-  username = data.vault_generic_secret.artifactory_auth["username"]
-  password = data.vault_generic_secret.artifactory_auth["password"]
+  url      = "https://registry.beryju.org/artifactory"
+  username = data.vault_generic_secret.artifactory_auth.data["username"]
+  password = data.vault_generic_secret.artifactory_auth.data["password"]
 }
 
 resource "artifactory_local_repository" "docker-authentik" {
