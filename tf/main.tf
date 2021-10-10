@@ -22,6 +22,12 @@ terraform {
 provider "vault" {
 }
 
+module "artifactory" {
+  source = "./artifactory/"
+}
+module "authentik" {
+  source = "./authentik/"
+}
 module "aws" {
   source = "./aws/"
 }
@@ -30,9 +36,6 @@ module "aws_route53" {
 }
 module "rancher" {
   source = "./rancher/"
-}
-module "authentik" {
-  source = "./authentik/"
 }
 module "grafana" {
   source = "./grafana/"
