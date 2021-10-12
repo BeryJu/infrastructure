@@ -11,7 +11,7 @@ services:
         letsencrypt['enable'] = true
         prometheus['remote_write'] = [
           {
-            url: 'https://monitoring.beryju.org/api/v1/write',
+            url: 'https://monitoring.beryju.org/api/v1/receive',
             basic_auth: {
               username: '{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/prometheus-pub:user') }}',
               password: '{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/prometheus-pub:password') }}',
