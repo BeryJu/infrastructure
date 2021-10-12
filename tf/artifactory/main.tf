@@ -17,14 +17,6 @@ provider "artifactory" {
   password = data.vault_generic_secret.artifactory_auth.data["password"]
 }
 
-resource "artifactory_local_repository" "docker-authentik" {
-  key          = "docker-authentik"
-  package_type = "docker"
-  property_sets = [
-    "artifactory",
-  ]
-}
-
 resource "artifactory_local_repository" "docker-priv" {
   key          = "docker-priv"
   package_type = "docker"
