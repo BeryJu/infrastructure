@@ -59,7 +59,7 @@
     - name: EE | Add EE with hvac for vault
       awx.awx.execution_environment:
         name: "AWX EE latest with hvac"
-        image: beryju.org/k8s-pub/awx-ee:latest
+        image: beryju.org/awx-ee:latest
         pull: always
         <<: *awx_connection
     - name: Project | infrastructure

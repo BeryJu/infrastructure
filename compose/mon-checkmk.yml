@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   check_mk:
-    image: beryju.org/k8s/check-mk-enterprise:2.0.0p12
+    image: registry.beryju.org/check-mk-enterprise:2.0.0p12
     restart: always
     ports:
       - 5000:5000
@@ -14,7 +14,7 @@ services:
       nofile: 1024
   authentik_proxy:
     restart: always
-    image: beryju.org/authentik/outpost-proxy:gh-next
+    image: goauthentik.io/dev-proxy:gh-next
     ports:
       - 4180:9000
       - 4443:9443
