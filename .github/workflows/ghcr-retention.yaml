@@ -1,0 +1,20 @@
+name: ghcr-retention
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # every day at midnight
+
+jobs:
+  clean-ghcr:
+    name: Delete old unused container images
+    runs-on: ubuntu-latest
+    steps:
+      - uses: sondrelg/container-retention-policy@v1
+        with:
+          image-names: workstation,awx-ee
+          cut-off: One month ago UTC
+          account-type: personal
+          org-name: beryju
+          untagged-only: false
+          token: ${{ secrets.GHCR_CLEANUP_TOKEN }}
+          skip-tags: latest
