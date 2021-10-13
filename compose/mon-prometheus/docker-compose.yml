@@ -1,46 +1,20 @@
 version: '3.7'
 
 services:
-  thanos:
-    container_name: thanos
-    image: quay.io/thanos/thanos:v0.23.1
-    command: |
-      receive
-      --tsdb.path="/data/thanos"
-      --grpc-address=0.0.0.0:10907
-      --http-address=0.0.0.0:10909
-      --receive.replication-factor=1
-      --remote-write.address=0.0.0.0:10908
-      --label 'receive_host="mon1"'
-      --objstore.config-file "/etc/object-store.yml"
-    volumes:
-      - /srv/thanos-data:/data/thanos
-      - ./object-store.yml:/etc/object-store.yml
-    ports:
-      - 10908:10908
-      - 10909:10909
-    restart: always
-  query:
-    image: quay.io/thanos/thanos:v0.23.1
-    command: |
-      query
-      --http-address     "0.0.0.0:9090"
-      --store            "thanos:10907"
-    ports:
-      - 9090:9090
-    restart: always
   prometheus:
     image: quay.io/prometheus/prometheus:v2.30.3
     command:
       - --web.enable-lifecycle
       - --config.file=/etc/prometheus/prometheus.yml
       - --storage.tsdb.path=/prometheus
+      - --enable-feature=remote-write-receiver
+      - --storage.tsdb.retention.time=1y
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./rules:/etc/prometheus/rules
       - /srv/prometheus-data:/prometheus
     ports:
-      - 9091:9090
+      - 9090:9090
     restart: always
   graphite_exporter:
     image: quay.io/prometheus/graphite-exporter:v0.11.0

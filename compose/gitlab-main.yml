@@ -11,7 +11,7 @@ services:
         letsencrypt['enable'] = true
         prometheus['remote_write'] = [
           {
-            url: 'http://mon1.prod.beryju.org:10908/api/v1/receive',
+            url: 'http://mon1.prod.beryju.org:9090/api/v1/write',
           }
         ]
 

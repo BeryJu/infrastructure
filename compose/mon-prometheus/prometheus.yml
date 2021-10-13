@@ -12,9 +12,6 @@ alerting:
     - targets:
       - alertmanager:9093
 
-remote_write:
-  - url: http://thanos:10908/api/v1/receive
-
 scrape_configs:
   - job_name: harvest
     static_configs:
@@ -48,7 +45,7 @@ scrape_configs:
     params:
       format:
       - prometheus
-    bearer_token: ""
+    bearer_token: "s.WTME8CJmEzAYCkndzSiKg0IN"
     scheme: https
     static_configs:
       - targets:
