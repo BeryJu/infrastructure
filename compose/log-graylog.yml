@@ -24,7 +24,7 @@ services:
       - graylog
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
-    image: graylog/graylog:4.1.6
+    image: graylog/graylog:4.2.0
     volumes:
       - graylog_journal:/usr/share/graylog/data/journal
       - ./map:/etc/graylog/server/map
