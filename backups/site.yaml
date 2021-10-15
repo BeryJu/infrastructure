@@ -34,5 +34,5 @@
       command: git -C '/tmp/{{ item.dst }}' remote add backup '{{ gitlab_connection.api_url }}/backups/{{ item.dst }}'
       loop: "{{ projects }}"
     - name: Dst | push
-      command: git -C '/tmp/{{ item.dst }}' push --repo 'https://git:{{ gitlab_connection.api_token }}@code.beryju.org/backups/{{ item.dst }}'
+      command: git -C '/tmp/{{ item.dst }}' push --repo 'https://git:{{ gitlab_connection.api_token }}@code.beryju.org/backups/{{ item.dst }}' --force
       loop: "{{ projects }}"
