@@ -12,8 +12,8 @@ data "vault_generic_secret" "artifactory_auth" {
 }
 
 provider "artifactory" {
-  url          = "https://registry.beryju.org/artifactory"
-  access_token = data.vault_generic_secret.artifactory_auth.data["api_key"]
+  url      = "https://registry.beryju.org/artifactory"
+  api_key = data.vault_generic_secret.artifactory_auth.data["api_key"]
 }
 
 resource "artifactory_local_repository" "docker-priv" {
