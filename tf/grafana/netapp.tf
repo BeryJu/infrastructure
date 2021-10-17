@@ -3,7 +3,7 @@ resource "grafana_folder" "beryjuorg-netapp" {
 }
 
 data "http" "netapp-harvest_dashboard_aggregate" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_aggregate.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_aggregate.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_aggregate" {
@@ -12,7 +12,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_aggregate" {
 }
 
 data "http" "netapp-harvest_dashboard_cluster" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_cluster.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_cluster.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_cluster" {
@@ -21,7 +21,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_cluster" {
 }
 
 data "http" "netapp-harvest_dashboard_disk" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_disk.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_disk.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_disk" {
@@ -30,7 +30,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_disk" {
 }
 
 data "http" "netapp-harvest_dashboard_lun" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_lun.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_lun.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_lun" {
@@ -39,7 +39,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_lun" {
 }
 
 data "http" "netapp-harvest_dashboard_metadata" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_metadata.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_metadata.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_metadata" {
@@ -48,7 +48,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_metadata" {
 }
 
 data "http" "netapp-harvest_dashboard_network" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_network.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_network.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_network" {
@@ -57,7 +57,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_network" {
 }
 
 data "http" "netapp-harvest_dashboard_network_detail" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_network_detail.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_network_detail.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_network_detail" {
@@ -66,7 +66,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_network_detail" {
 }
 
 data "http" "netapp-harvest_dashboard_node" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_node.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_node.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_node" {
@@ -75,7 +75,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_node" {
 }
 
 data "http" "netapp-harvest_dashboard_node_details" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_node_details.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_node_details.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_node_details" {
@@ -84,7 +84,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_node_details" {
 }
 
 data "http" "netapp-harvest_dashboard_nvme_fc" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_nvme_fc.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_nvme_fc.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_nvme_fc" {
@@ -93,7 +93,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_nvme_fc" {
 }
 
 data "http" "netapp-harvest_dashboard_shelf" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_shelf.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_shelf.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_shelf" {
@@ -102,7 +102,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_shelf" {
 }
 
 data "http" "netapp-harvest_dashboard_snapmirror" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_snapmirror.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_snapmirror.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_snapmirror" {
@@ -111,7 +111,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_snapmirror" {
 }
 
 data "http" "netapp-harvest_dashboard_svm" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_svm.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_svm.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_svm" {
@@ -120,7 +120,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_svm" {
 }
 
 data "http" "netapp-harvest_dashboard_svm_details" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_svm_details.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_svm_details.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_svm_details" {
@@ -129,7 +129,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_svm_details" {
 }
 
 data "http" "netapp-harvest_dashboard_volume" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_volume.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_volume.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_volume" {
@@ -138,7 +138,7 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_volume" {
 }
 
 data "http" "netapp-harvest_dashboard_volume_details" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/harvest_dashboard_volume_details.json"
+  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_volume_details.json"
 }
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_volume_details" {
