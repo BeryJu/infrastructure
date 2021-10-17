@@ -45,7 +45,7 @@ scrape_configs:
     params:
       format:
       - prometheus
-    bearer_token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/prometheus/vault:token') }}"
+    bearer_token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/vault:monitoring_token') }}"
     scheme: https
     static_configs:
       - targets:
