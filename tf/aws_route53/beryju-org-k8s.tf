@@ -9,6 +9,7 @@ resource "aws_route53_record" "beryju-org" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "beryju.org"
   type    = "A"
+  ttl     = "3600"
   records = [
     "52.203.36.44",
     "68.183.29.183",
@@ -18,6 +19,7 @@ resource "aws_route53_record" "blog-beryju-org" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "blog.beryju.org"
   type    = "CNAME"
+  ttl     = "3600"
   records = ["beryjuorg.netlify.app"]
 }
 
