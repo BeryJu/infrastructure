@@ -9,21 +9,16 @@ resource "aws_route53_record" "beryju-org" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "beryju.org"
   type    = "A"
-  alias {
-    name                   = "k8s-prd._aliases.beryju.org"
-    zone_id                = aws_route53_zone.beryju-org.zone_id
-    evaluate_target_health = true
-  }
+  records = [
+    "52.203.36.44",
+    "68.183.29.183",
+  ]
 }
 resource "aws_route53_record" "blog-beryju-org" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "blog.beryju.org"
-  type    = "A"
-  alias {
-    name                   = "k8s-prd._aliases.beryju.org"
-    zone_id                = aws_route53_zone.beryju-org.zone_id
-    evaluate_target_health = true
-  }
+  type    = "CNAME"
+  records = ["beryjuorg.netlify.app"]
 }
 
 ## Services
