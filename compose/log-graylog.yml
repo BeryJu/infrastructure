@@ -50,7 +50,15 @@ services:
       - 514:10000
       - 10001-10100:10001-10100
       - 10001-10100:10001-10100/udp
-
+  elasticsearch_exporter:
+    image: quay.io/prometheuscommunity/elasticsearch-exporter:latest
+    command:
+      - '--es.uri=http://elasticsearch:9200'
+    restart: always
+    networks:
+      - graylog
+    ports:
+      - "9114:9114"
 
 networks:
   graylog:
