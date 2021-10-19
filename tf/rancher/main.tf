@@ -50,7 +50,7 @@ resource "rancher2_cluster" "beryjuorg-ak-dev-k3s" {
   name = "beryjuorg-ak-dev-k3s"
 
   k3s_config {
-    version = "v1.21.2+k3s1"
+    version = "v1.22.2+k3s2"
   }
 
   lifecycle {

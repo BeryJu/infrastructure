@@ -22,7 +22,7 @@ resource "aws_route53_record" "jela-wks" {
 resource "aws_route53_record" "jela-dj" {
   zone_id = aws_route53_zone.jela-io.zone_id
   name    = "dj.jela.io"
-  type    = "A"
+  type    = "CNAME"
   ttl     = "300"
-  records = [local.pub_k8s_ip]
+  records = ["jelaio.netlify.app."]
 }
