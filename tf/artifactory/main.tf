@@ -12,7 +12,7 @@ data "vault_generic_secret" "artifactory_auth" {
 }
 
 provider "artifactory" {
-  url      = "https://registry.beryju.org/artifactory"
+  url          = "https://registry.beryju.org/artifactory"
   access_token = data.vault_generic_secret.artifactory_auth.data["api_key"]
 }
 

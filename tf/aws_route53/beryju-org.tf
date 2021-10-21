@@ -11,8 +11,7 @@ resource "aws_route53_record" "beryju-org" {
   type    = "A"
   ttl     = "3600"
   records = [
-    "52.203.36.44",
-    "68.183.29.183",
+    local.pub_netlify_ip,
   ]
 }
 resource "aws_route53_record" "blog-beryju-org" {
@@ -35,9 +34,9 @@ resource "aws_route53_record" "awx-beryju-org" {
     evaluate_target_health = true
   }
 }
-resource "aws_route53_record" "docker-beryju-org" {
+resource "aws_route53_record" "registry-beryju-org" {
   zone_id = aws_route53_zone.beryju-org.zone_id
-  name    = "docker.beryju.org"
+  name    = "registry.beryju.org"
   type    = "A"
   alias {
     name                   = "k8s-prd._aliases.beryju.org"

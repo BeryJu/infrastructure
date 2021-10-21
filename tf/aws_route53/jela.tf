@@ -3,7 +3,9 @@ resource "aws_route53_record" "jela-main" {
   name    = "jela.io"
   type    = "A"
   ttl     = "300"
-  records = ["75.2.60.5"]
+  records = [
+    local.pub_netlify_ip,
+  ]
 }
 resource "aws_route53_record" "jela-requests" {
   zone_id = aws_route53_zone.jela-io.zone_id

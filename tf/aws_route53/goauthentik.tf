@@ -3,7 +3,9 @@ resource "aws_route53_record" "goauthentik-main" {
   name    = "goauthentik.io"
   type    = "A"
   ttl     = "300"
-  records = ["104.198.14.52"]
+  records = [
+    local.pub_netlify_ip,
+  ]
 }
 resource "aws_route53_record" "goauthentik-charts" {
   zone_id = aws_route53_zone.goauthentik-io.zone_id
