@@ -106,9 +106,9 @@ docker:
             - name: rancher
               template: compose/mgmt-rancher.yml
         log1.prod.beryju.org:
-          compose_stacks:
-            - name: graylog
-              template: compose/log-graylog.yml
+          compose_stacks: []
+            # - name: graylog
+            #   template: compose/log-graylog.yml
         # These systems use docker-compose, but with stacks that are managed otherwise
         sentry1.prod.beryju.org:
         analytics1.prod.beryju.org:
