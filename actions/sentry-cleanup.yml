@@ -5,7 +5,7 @@
       community.docker.docker_container_exec:
         container: sentry_onpremise_worker_1
         command: sentry cleanup --days 30
-      ignore_errors: yes
+      failed_when: false
     - name: Vacuum database (complete, first pass)
       community.docker.docker_container_exec:
         container: sentry_onpremise_postgres_1
