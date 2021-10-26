@@ -11,6 +11,12 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
     volumes:
       - es_data:/usr/share/elasticsearch/data
+    deploy:
+      resources:
+        limits:
+          memory: 6g
+        reservations:
+          memory: 6g
     environment:
       http.host: "0.0.0.0"
       transport.host: "localhost"
@@ -25,6 +31,12 @@ services:
       - graylog
     restart: always
   graylog:
+    deploy:
+      resources:
+        limits:
+          memory: 6g
+        reservations:
+          memory: 6g
     restart: always
     image: graylog/graylog:4.2.0
     volumes:
