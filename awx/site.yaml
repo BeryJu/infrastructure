@@ -93,16 +93,13 @@
         overwrite: yes
         organization: "Default"
         <<: *awx_connection
-    - name: Notifications | Get email credentials
-      set_fact:
-        aws_creds: '{{ lookup("community.hashi_vault.hashi_vault", "secret=aws/creds/ses-send") }}'
     - name: Notifications | Email
       awx.awx.notification_template:
         name: ses
         notification_type: email
         notification_configuration:
-          username: '{{ aws_creds.access_key }}'
-          password: '{{ aws_creds.secret_key }}'
+          username: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/awx/aws-email:username") }}'
+          password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/awx/aws-email:password") }}'
           sender: awx@services.beryju.org
           recipients:
             - jens@beryju.org
