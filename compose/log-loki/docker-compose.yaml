@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  loki:
+    image: grafana/loki:2.3.0
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - ./loki.yaml:/etc/loki/local-config.yaml
+      - loki:/loki
+  promtail:
+    image: grafana/promtail:2.3.0
+    volumes:
+      - ./promtail.yaml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+    ports:
+      # vyos syslog tcp
+      - 514:10000
+      - 10001-10100:10001-10100
+      - 10001-10100:10001-10100/udp
+
+volumes:
+  loki: {}
