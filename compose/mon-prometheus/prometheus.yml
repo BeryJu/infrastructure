@@ -32,14 +32,14 @@ scrape_configs:
     static_configs:
       - targets:
           - 'adguard1.prod.beryju.org:9617'
-  - job_name: graylog
+  - job_name: loki
     static_configs:
       - targets:
-          - 'log1.prod.beryju.org:9001'
-  - job_name: graylog_es
+          - 'log1.prod.beryju.org:3100'
+  - job_name: loki_promtail
     static_configs:
       - targets:
-          - 'log1.prod.beryju.org:9114'
+          - 'log1.prod.beryju.org:9080'
   - job_name: unifi
     static_configs:
       - targets:
