@@ -45,15 +45,3 @@ resource "rancher2_cluster" "beryjuorg-defr" {
     ignore_changes = [cluster_monitoring_input, cluster_registration_token, kube_config]
   }
 }
-
-resource "rancher2_cluster" "beryjuorg-ak-dev-k3s" {
-  name = "beryjuorg-ak-dev-k3s"
-
-  k3s_config {
-    version = "v1.22.2+k3s2"
-  }
-
-  lifecycle {
-    ignore_changes = [cluster_monitoring_input, cluster_registration_token, kube_config]
-  }
-}
