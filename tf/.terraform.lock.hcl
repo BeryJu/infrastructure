@@ -48,7 +48,7 @@ provider "registry.terraform.io/grafana/grafana" {
 
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "3.63.0"
-  constraints = "~> 3.0"
+  constraints = "3.63.0"
   hashes = [
     "h1:Z+2GvXLgqQ/uPMH8dv+dXJ/t+jd6sriYjhCJS6kSO6g=",
     "h1:lf8Qex8bhCmh8TUEAU6H4brzjy3+d4BXB6gcOYnNtNY=",
@@ -164,6 +164,7 @@ provider "registry.terraform.io/techbeck03/guacamole" {
   version     = "1.2.7"
   constraints = "1.2.7"
   hashes = [
+    "h1:52bAlFab44LzR+92+Pf/VShHuLky0EWax/vX1gEg7rI=",
     "h1:jQQa0RzWO97HasC+GL9UuTYX743B7ZJ6JMSJbUHRrdw=",
     "zh:09f27284935b46e2f0840e41d7f49783615458c75e7065a0f0cd4cababc7444f",
     "zh:207521dff7ac2da9490e6ad1322ff834f94c645744c29a3c6e00dbd4d6df9916",
