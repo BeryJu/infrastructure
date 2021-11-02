@@ -21,7 +21,7 @@ resource "rancher2_cluster" "beryjuorg-prd" {
   name = "beryjuorg-prd"
 
   lifecycle {
-    ignore_changes = [cluster_monitoring_input, cluster_registration_token, kube_config]
+    ignore_changes = [cluster_monitoring_input, cluster_registration_token, kube_config, labels]
   }
 }
 
@@ -32,7 +32,7 @@ resource "rancher2_cluster" "beryjuorg-offsite" {
   }
 
   lifecycle {
-    ignore_changes = [cluster_monitoring_input, cluster_registration_token, kube_config]
+    ignore_changes = [cluster_monitoring_input, cluster_registration_token, kube_config, labels]
   }
 }
 
@@ -42,6 +42,6 @@ resource "rancher2_cluster" "beryjuorg-defr" {
   cluster_template_revision_id = "cattle-global-data:ctr-wh4hg"
 
   lifecycle {
-    ignore_changes = [cluster_monitoring_input, cluster_registration_token, kube_config]
+    ignore_changes = [cluster_monitoring_input, cluster_registration_token, kube_config, labels]
   }
 }

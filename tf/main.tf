@@ -10,7 +10,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "3.63.0"
     }
     vault = {
       source  = "hashicorp/vault"
@@ -24,6 +24,9 @@ provider "vault" {
 
 module "artifactory" {
   source = "./artifactory/"
+}
+module "guacamole" {
+  source = "./guacamole/"
 }
 module "authentik" {
   source = "./authentik/"
