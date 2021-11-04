@@ -38,7 +38,7 @@ services:
         reservations:
           memory: 6g
     restart: always
-    image: graylog/graylog:4.2.0
+    image: graylog/graylog:4.2.1
     volumes:
       - graylog_journal:/usr/share/graylog/data/journal
       - ./map:/etc/graylog/server/map
