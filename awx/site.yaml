@@ -123,6 +123,7 @@
           - "ansible-ssh"
           - "hc-vault"
         diff_mode: yes
+        timeout: 3600
         extra_vars:
           ansible_python_interpreter: /usr/bin/python3
         notification_templates_error:
@@ -161,6 +162,7 @@
           - "hc-vault"
         diff_mode: yes
         survey_enabled: yes
+        timeout: 3600
         survey_spec: "{{ item.survey }}"
         extra_vars:
           ansible_python_interpreter: /usr/bin/python3
