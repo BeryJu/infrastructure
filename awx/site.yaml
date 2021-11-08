@@ -189,22 +189,22 @@
       loop:
         - name: infrastructure-actions-docker-cleanup
           job: "infrastructure-actions-docker-cleanup"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='6', timezone='Etc/UTC') }}"
         - name: infrastructure-actions-kick-cmk
           job: "infrastructure-actions-kick-cmk"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='12', timezone='Etc/UTC') }}"
         - name: infrastructure-actions-sentry-cleanup
           job: "infrastructure-actions-sentry-cleanup"
           rrule: "{{ query('awx.awx.schedule_rrule', 'day', every='3', timezone='Etc/UTC') }}"
         - name: infrastructure-awx
           job: "infrastructure-awx"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='3', timezone='Etc/UTC') }}"
         - name: infrastructure-actions-system-update
           job: "infrastructure-actions-system-update"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='24', timezone='Etc/UTC') }}"
         - name: infrastructure
           job: "infrastructure-full"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='3', timezone='Etc/UTC') }}"
         - name: infrastructure-git-backup
           job: "infrastructure-git-backup"
           rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
