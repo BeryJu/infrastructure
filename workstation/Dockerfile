@@ -43,6 +43,10 @@ RUN useradd -m -s /bin/fish -G sudo,docker jens && \
 	su -c "ssh-keygen -b 2048 -f /home/jens/.ssh/id_rsa -t rsa -q -N ''" jens && \
 	passwd -d jens
 
+# chezmoi
+RUN curl -L https://github.com/twpayne/chezmoi/releases/latest/download/chezmoi_2.7.5_linux_amd64.deb > chezmoi.deb && \
+	dpkg -i chezmoi.deb
+
 # Korb
 RUN curl -L https://github.com/BeryJu/korb/releases/latest/download/korb_linux_amd64 > korb && \
 	mv korb /usr/bin/korb && \
