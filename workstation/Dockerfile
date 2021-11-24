@@ -44,7 +44,7 @@ RUN useradd -m -s /bin/fish -G sudo,docker jens && \
 	passwd -d jens
 
 # chezmoi
-RUN curl -L https://github.com/twpayne/chezmoi/releases/latest/download/chezmoi_2.7.5_linux_amd64.deb > chezmoi.deb && \
+RUN curl -L https://github.com/twpayne/chezmoi/releases/download/v2.8.0/chezmoi_2.8.0_linux_amd64.deb > chezmoi.deb && \
 	dpkg -i chezmoi.deb
 
 # Korb
