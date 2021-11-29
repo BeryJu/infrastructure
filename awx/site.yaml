@@ -62,6 +62,31 @@
         image: beryju.org/awx-ee:latest
         pull: always
         <<: *awx_connection
+    - name: Instance Group | Pod template
+      awx.awx.instance_group:
+        name: default
+        is_container_group: yes
+        pod_spec_override: |
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            namespace: awx
+          spec:
+            containers:
+              - image: 'beryju.org/awx-ee:latest'
+                name: worker
+                args:
+                  - ansible-runner
+                  - worker
+                  - '--private-data-dir=/runner'
+                resources:
+                  requests:
+                    memory: "250Mi"
+                    cpu: "250m"
+                  limits:
+                    memory: "1024Mi"
+                    cpu: "1"
+        <<: *awx_connection
     - name: Project | infrastructure
       awx.awx.project:
         name: "infrastructure"
