@@ -28,10 +28,6 @@ scrape_configs:
     static_configs:
       - targets:
           - 'mon1.prod.beryju.org:9093'
-  - job_name: adguard
-    static_configs:
-      - targets:
-          - 'adguard1.prod.beryju.org:9617'
   - job_name: loki
     static_configs:
       - targets:

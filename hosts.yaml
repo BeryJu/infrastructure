@@ -63,13 +63,6 @@ docker:
         cmk_plugins_absent:
           - mk_docker
       hosts:
-        adguard1.prod.beryju.org:
-          compose_stacks:
-            - name: adguard
-              template: compose/adguard-main/docker-compose.yaml
-              files:
-                - src: compose/adguard-main/adguard.yaml
-                  dest: conf/AdGuardHome.yaml
         plex1.prod.beryju.org:
           compose_stacks:
             - name: plex
