@@ -47,15 +47,6 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_metadata" {
   config_json = replace(data.http.netapp-harvest_dashboard_metadata.body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
-data "http" "netapp-harvest_dashboard_network" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_network.json"
-}
-
-resource "grafana_dashboard" "netapp-harvest_dashboard_network" {
-  folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_network.body, "$${DS_PROMETHEUS}", "Prometheus")
-}
-
 data "http" "netapp-harvest_dashboard_network_detail" {
   url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_network_detail.json"
 }
@@ -63,15 +54,6 @@ data "http" "netapp-harvest_dashboard_network_detail" {
 resource "grafana_dashboard" "netapp-harvest_dashboard_network_detail" {
   folder      = grafana_folder.beryjuorg-netapp.id
   config_json = replace(data.http.netapp-harvest_dashboard_network_detail.body, "$${DS_PROMETHEUS}", "Prometheus")
-}
-
-data "http" "netapp-harvest_dashboard_node" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_node.json"
-}
-
-resource "grafana_dashboard" "netapp-harvest_dashboard_node" {
-  folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_node.body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_node_details" {
@@ -110,15 +92,6 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_snapmirror" {
   config_json = replace(data.http.netapp-harvest_dashboard_snapmirror.body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
-data "http" "netapp-harvest_dashboard_svm" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_svm.json"
-}
-
-resource "grafana_dashboard" "netapp-harvest_dashboard_svm" {
-  folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_svm.body, "$${DS_PROMETHEUS}", "Prometheus")
-}
-
 data "http" "netapp-harvest_dashboard_svm_details" {
   url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_svm_details.json"
 }
@@ -126,15 +99,6 @@ data "http" "netapp-harvest_dashboard_svm_details" {
 resource "grafana_dashboard" "netapp-harvest_dashboard_svm_details" {
   folder      = grafana_folder.beryjuorg-netapp.id
   config_json = replace(data.http.netapp-harvest_dashboard_svm_details.body, "$${DS_PROMETHEUS}", "Prometheus")
-}
-
-data "http" "netapp-harvest_dashboard_volume" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_volume.json"
-}
-
-resource "grafana_dashboard" "netapp-harvest_dashboard_volume" {
-  folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_volume.body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_volume_details" {
@@ -145,5 +109,3 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_volume_details" {
   folder      = grafana_folder.beryjuorg-netapp.id
   config_json = replace(data.http.netapp-harvest_dashboard_volume_details.body, "$${DS_PROMETHEUS}", "Prometheus")
 }
-
-
