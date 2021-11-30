@@ -40,11 +40,11 @@ media:
 
 docker:
   hosts:
-    k8s-cprd1-m1.prod.beryju.org:
-    k8s-cprd1-w1.prod.beryju.org:
-    k8s-cprd1-w2.prod.beryju.org:
+    k8s-prd-c1.prod.beryju.org:
     k8s-prd-w1.prod.beryju.org:
     k8s-prd-w2.prod.beryju.org:
+    k8s-prd-w3.prod.beryju.org:
+    k8s-prd-w4.prod.beryju.org:
     k8s-defr-c1.lab.beryju.org:
     k8s-defr-w1.lab.beryju.org:
     k8s-defr-w2.lab.beryju.org:

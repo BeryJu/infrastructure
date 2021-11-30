@@ -108,11 +108,6 @@
     - name: Load profile
       include_vars: "./profiles/profile-{{ bootstrap_profile }}.yml"
 
-    - name: Regenerate SSHD Host Keys
-      # Need to use shell here, otherwise the ansible ssh connection breaks
-      # noqa 301 302
-      shell: rm -rf /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
-
     - name: Create user
       user:
         name: "{{ bootstrap_vm_user|default('jens') }}"
@@ -160,6 +155,12 @@
         owner: root
         group: root
         mode: 0644
+
+    - name: Regenerate SSHD Host Keys
+      # Need to use shell here, otherwise the ansible ssh connection breaks
+      # noqa 301 302
+      shell: rm -rf /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
+
     - name: Reboot in 1 minute (don't wait)
       # noqa 301
       shell: "passwd -d vagrant && shutdown -r +1"
