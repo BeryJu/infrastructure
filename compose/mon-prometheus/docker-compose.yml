@@ -17,7 +17,7 @@ services:
       - 9090:9090
     restart: always
   graphite_exporter:
-    image: quay.io/prometheus/graphite-exporter:v0.11.1
+    image: quay.io/prometheus/graphite-exporter:v0.12.0
     command:
       - --graphite.mapping-config=/tmp/graphite.yml
     volumes:
