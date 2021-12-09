@@ -8,7 +8,7 @@ services:
       - --config.file=/etc/prometheus/prometheus.yml
       - --storage.tsdb.path=/prometheus
       - --enable-feature=remote-write-receiver
-      - --storage.tsdb.retention.time=1y
+      - --storage.tsdb.retention.size=80GB
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./rules:/etc/prometheus/rules
