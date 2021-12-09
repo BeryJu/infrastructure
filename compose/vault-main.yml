@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   vault:
-    image: vault:1.9.0
+    image: hashicorp/vault:1.9.1
     ports:
       - "10.120.0.69:8200:8200"
     volumes:
