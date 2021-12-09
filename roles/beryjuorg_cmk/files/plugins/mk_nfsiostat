@@ -9,10 +9,9 @@
 
 # Disable unused variable error (needed to keep track of version)
 # shellcheck disable=SC2034
-CMK_VERSION="2.0.0p3"
+CMK_VERSION="2.0.0p17"
 
 if command nfsiostat > /dev/null ; then
     echo '<<<nfsiostat>>>'
     nfsiostat | paste -sd " " - | tr -s ' '
 fi
-
