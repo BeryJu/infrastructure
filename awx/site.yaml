@@ -9,6 +9,7 @@
     - name: Credentials | Create vault type
       awx.awx.credential_type:
         name: HashiCorp Vault
+        kind: net
         description: Vault but sane
         inputs:
           fields:
@@ -154,8 +155,6 @@
           ansible_python_interpreter: /usr/bin/python3
         notification_templates_error:
           - ses
-        webhook_service: github
-        webhook_credential: gh
         <<: *awx_connection
       loop:
         - name: infrastructure-full
