@@ -163,8 +163,6 @@
           playbook: awx/site.yaml
         - name: infrastructure-actions-docker-cleanup
           playbook: actions/cleanup.yml
-        - name: infrastructure-actions-sentry-cleanup
-          playbook: actions/sentry-cleanup.yml
         - name: infrastructure-actions-system-update
           playbook: actions/update.yml
         - name: infrastructure-actions-kick-cmk
@@ -218,9 +216,6 @@
         - name: infrastructure-actions-kick-cmk
           job: "infrastructure-actions-kick-cmk"
           rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='12', timezone='Etc/UTC') }}"
-        - name: infrastructure-actions-sentry-cleanup
-          job: "infrastructure-actions-sentry-cleanup"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'day', every='3', timezone='Etc/UTC') }}"
         - name: infrastructure-awx
           job: "infrastructure-awx"
           rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='3', timezone='Etc/UTC') }}"
