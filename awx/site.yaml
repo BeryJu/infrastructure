@@ -150,7 +150,7 @@
           - "hc-vault"
         diff_mode: yes
         timeout: 3600
-        job_slice_count: 4
+        job_slice_count: "{{ item.job_slice_count|default(1) }}"
         extra_vars:
           ansible_python_interpreter: /usr/bin/python3
         notification_templates_error:
@@ -159,14 +159,18 @@
       loop:
         - name: infrastructure-full
           playbook: site.yml
+          job_slice_count: 4
         - name: infrastructure-awx
           playbook: awx/site.yaml
         - name: infrastructure-actions-docker-cleanup
           playbook: actions/cleanup.yml
+          job_slice_count: 4
         - name: infrastructure-actions-system-update
           playbook: actions/update.yml
+          job_slice_count: 4
         - name: infrastructure-actions-kick-cmk
           playbook: actions/kick-cmk.yml
+          job_slice_count: 4
         - name: infrastructure-git-backup
           playbook: backups/site.yaml
         - name: infrastructure-vsphere
