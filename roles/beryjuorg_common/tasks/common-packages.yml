@@ -9,6 +9,9 @@
       - xkb-data # For /usr/share/X11/xkb/symbols/us, to fix console-setup service
     state: present
     update_cache: yes
+  register: apt_res
+  retries: 5
+  until: apt_res is success
 - name: make sure some packages are not installed
   apt:
     pkg:
@@ -16,3 +19,6 @@
       - unattended-upgrades # Prevent APT errors in ansible
     state: absent
     purge: yes
+  register: apt_res
+  retries: 5
+  until: apt_res is success

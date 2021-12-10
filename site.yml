@@ -47,6 +47,9 @@
     - name: NFS | common
       apt:
         pkg: nfs-common
+      register: apt_res
+      retries: 5
+      until: apt_res is success
     - name: Plex | create /plex-transcode dir
       file:
         state: directory
