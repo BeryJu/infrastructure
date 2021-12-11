@@ -216,25 +216,25 @@
       loop:
         - name: infrastructure-actions-docker-cleanup
           job: "infrastructure-actions-docker-cleanup"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='6', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='6', timezone='Etc/UTC', start_date='1970-01-01 00:00:00') }}"
         - name: infrastructure-actions-kick-cmk
           job: "infrastructure-actions-kick-cmk"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='12', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='12', timezone='Etc/UTC', start_date='1970-01-01 00:00:00') }}"
         - name: infrastructure-awx
           job: "infrastructure-awx"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='3', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='3', timezone='Etc/UTC', start_date='1970-01-01 00:00:00') }}"
         - name: infrastructure-actions-system-update
           job: "infrastructure-actions-system-update"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='6', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='6', timezone='Etc/UTC', start_date='1970-01-01 00:30:00') }}"
         - name: infrastructure
           job: "infrastructure-full"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='2', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='2', timezone='Etc/UTC', start_date='1970-01-01 01:00:00') }}"
         - name: infrastructure-git-backup
           job: "infrastructure-git-backup"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC', start_date='1970-01-01 00:00:00') }}"
         - name: infrastructure-vsphere
           job: "infrastructure-vsphere"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC') }}"
+          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='1', timezone='Etc/UTC', start_date='1970-01-01 00:00:00') }}"
     - name: Settings
       awx.awx.settings:
         settings:
