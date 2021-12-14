@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   prometheus:
-    image: quay.io/prometheus/prometheus:v2.31.2
+    image: quay.io/prometheus/prometheus:v2.32.0
     command:
       - --web.enable-lifecycle
       - --config.file=/etc/prometheus/prometheus.yml
