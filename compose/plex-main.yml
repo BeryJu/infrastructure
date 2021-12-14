@@ -2,7 +2,7 @@ version: '3.7'
 services:
   plex:
     container_name: plex
-    image: plexinc/pms-docker
+    image: plexinc/pms-docker:1.25.2.5319-c43dc0277
     restart: unless-stopped
     environment:
       - TZ=Europe/Berlin
@@ -13,7 +13,7 @@ services:
       - /media:/data
   tautulli:
     container_name: tautulli
-    image: tautulli/tautulli
+    image: tautulli/tautulli:v2.8.0-beta
     restart: always
     environment:
       - TZ=Europe/Berlin
