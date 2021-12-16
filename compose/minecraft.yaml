@@ -8,6 +8,6 @@ services:
     environment:
       EULA: "TRUE"
       INIT_MEMORY: 1G
-      MAX_MEMORY: 3G
+      MAX_MEMORY: 7G
     volumes:
       - /srv/mc:/data
