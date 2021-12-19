@@ -1,0 +1,64 @@
+- name: MTA | /etc/mailname -> Host FQDN
+  lineinfile:
+    state: present
+    dest: /etc/mailname
+    regexp: ".*"
+    create: yes
+    line: "{{ ansible_fqdn }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: MTA-Postfix | Packages
+  apt:
+    pkg:
+      - postfix
+      - mailutils
+    state: present
+
+- name: MTA-Postfix | main.cf Template
+  template:
+    src: ubuntu-postfix-main.cf.j2
+    dest: /etc/postfix/main.cf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart postfix
+
+- name: MTA | Aliases
+  lineinfile:
+    state: present
+    dest: /etc/aliases
+    regexp: '^root'
+    create: yes
+    line: 'root: {{ mta_alias_root }}'
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - generate newaliases
+
+- name: MTA-Postfix | Create relay_passwd File when smarthost auth is enabled
+  lineinfile:
+    state: present
+    dest: /etc/postfix/relay_passwd
+    regexp: '^{{ mta_forward|regex_escape() }}'
+    create: yes
+    mode: 0640
+    group: root
+    owner: root
+    line: '{{ mta_forward }} {{ mta_forward_auth_user }}:{{ mta_forward_auth_pass }}'
+  when: "mta_forward_auth"
+  notify:
+    - generate relay_passwd
+    - restart postfix
+
+- name: check if relay_passwd.db file exists
+  stat:
+    path: /etc/postfix/relay_passwd.db
+  register: relay_passwd_db
+  changed_when: "not relay_passwd_db.stat.exists"
+  notify:
+    - generate relay_passwd
+    - restart postfix
