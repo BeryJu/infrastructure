@@ -3,40 +3,40 @@
 - hosts: all:!hass1.prod.beryju.org
   become: true
   roles:
-    - beryjuorg_apt
+    - beryjuorg.apt
 
 - hosts: all
   become: true
   roles:
-    - beryjuorg_common
-    - beryjuorg_cmk
+    - beryjuorg.common
+    - beryjuorg.cmk
 
 - hosts: all:!backup-s3.beryju.org
   become: true
   roles:
-    - beryjuorg_syslog
+    - beryjuorg.syslog
 
 - hosts: storage
   become: true
   roles:
-    - beryjuorg_veeam_box
+    - beryjuorg.veeam_box
 
 - hosts: nfs_server
   become: true
   roles:
-    - beryjuorg_nfs_server
+    - beryjuorg.nfs_server
 
 - hosts: docker
   become: true
   roles:
-    - beryjuorg_docker
+    - beryjuorg.docker
 
 - hosts: compose
   become: true
   tasks:
     - name: docker-compose | stacks
       include_role:
-        name: beryjuorg_docker_stacks
+        name: beryjuorg.docker_stacks
       vars:
         stack: "{{ item }}"
       with_items: "{{ compose_stacks }}"
