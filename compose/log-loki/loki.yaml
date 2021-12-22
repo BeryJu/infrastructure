@@ -3,6 +3,13 @@ auth_enabled: false
 server:
   http_listen_port: 3100
   grpc_listen_port: 9096
+compactor:
+  working_directory: /loki/retention
+  shared_store: filesystem
+  compaction_interval: 10m
+  retention_enabled: true
+  retention_delete_delay: 2h
+  retention_delete_worker_count: 150
 
 common:
   path_prefix: /loki
@@ -28,3 +35,5 @@ schema_config:
 
 ruler:
   alertmanager_url: http://localhost:9093
+limits_config:
+  retention_period: 744h
