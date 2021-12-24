@@ -11,7 +11,7 @@ services:
     environment:
       GF_SERVER_DOMAIN: "grafana.infra.beryju.org"
       GF_SERVER_ROOT_URL: "https://grafana.infra.beryju.org/"
-      GF_INSTALL_PLUGINS: "vonage-status-panel,grafana-polystat-panel,jdbranham-diagram-panel"
+      GF_INSTALL_PLUGINS: "vonage-status-panel,grafana-polystat-panel,jdbranham-diagram-panel,grafana-sentry-datasource"
       GF_PLUGINS_ENABLE_ALPHA: "true"
       GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
       GF_AUTH_GENERIC_OAUTH_NAME: "authentik"
