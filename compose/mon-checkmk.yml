@@ -12,12 +12,3 @@ services:
     tmpfs: /opt/omd/sites/cmk/tmp:uid=1000,gid=1000
     ulimits:
       nofile: 1024
-  authentik_proxy:
-    restart: always
-    image: goauthentik.io/dev-proxy:gh-next
-    ports:
-      - 4180:9000
-      - 4443:9443
-    environment:
-      AUTHENTIK_HOST: https://id.beryju.org
-      AUTHENTIK_TOKEN: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/cmk/proxy:token') }}"
