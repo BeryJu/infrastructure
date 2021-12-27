@@ -13,6 +13,10 @@ alerting:
       - alertmanager:9093
 
 scrape_configs:
+  - job_name: imagik_tig
+    static_configs:
+      - targets:
+          - '10.51.110.26:9300'
   - job_name: harvest
     static_configs:
       - targets:
