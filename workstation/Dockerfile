@@ -29,7 +29,7 @@ RUN apt-get update && \
 RUN apt-get install -y --no-install-recommends \
 		python3.9 python3-pip python3-venv python3-setuptools && \
 	pip3 install wheel && \
-	pip3 install pipenv
+	pip3 install poetry
 
 # Fish
 RUN apt-add-repository ppa:fish-shell/release-3 -y && \

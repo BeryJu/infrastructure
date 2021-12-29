@@ -11,8 +11,8 @@ See also https://github.com/BeryJu/k8s, repository for GitOps with flux.
 ## Installation
 
 ```shell
-pipenv shell
-pipenv install # (--dev if you want to lint)
+poetry shell
+poetry install # (--dev if you want to lint)
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with hvac on macOS
 ```
 
