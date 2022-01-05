@@ -247,18 +247,18 @@ six = ">=1.5"
 
 [[package]]
 name = "python-gitlab"
-version = "2.10.1"
+version = "3.0.0"
 description = "Interact with GitLab API"
 category = "main"
 optional = false
-python-versions = ">=3.6.0"
+python-versions = ">=3.7.0"
 
 [package.dependencies]
 requests = ">=2.25.0"
 requests-toolbelt = ">=0.9.1"
 
 [package.extras]
-autocompletion = ["argcomplete (>=1.10.0,<2)"]
+autocompletion = ["argcomplete (>=1.10.0,<3)"]
 yaml = ["PyYaml (>=5.2)"]
 
 [[package]]
@@ -405,7 +405,7 @@ bracex = ">=2.1.1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "99f70f3e6ed88f93b8b9c7cc42b5b7b69eaa2e1b9f1897fa1f7acdea46ca04db"
+content-hash = "93dd7605ae88b727349764ada395e04fb880ce5808e9eda356e1fbc926dbbd16"
 
 [metadata.files]
 ansible = [
@@ -624,8 +624,8 @@ python-dateutil = [
     {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
 ]
 python-gitlab = [
-    {file = "python-gitlab-2.10.1.tar.gz", hash = "sha256:7afa7d7c062fa62c173190452265a30feefb844428efc58ea5244f3b9fc0d40f"},
-    {file = "python_gitlab-2.10.1-py3-none-any.whl", hash = "sha256:581a219759515513ea9399e936ed7137437cfb681f52d2641626685c492c999d"},
+    {file = "python-gitlab-3.0.0.tar.gz", hash = "sha256:89f82740b76820cf407cee9c43b75ca3ddb72f344f595902ee963837d7664986"},
+    {file = "python_gitlab-3.0.0-py3-none-any.whl", hash = "sha256:f6a0719c0d955611d96a1f041e46fbad04f3a9d3312b98c3be8ffe6e0ea9119d"},
 ]
 pytz = [
     {file = "pytz-2021.3-py2.py3-none-any.whl", hash = "sha256:3672058bc3453457b622aab7a1c3bfd5ab0bdae451512f6cf25f64ed37f5b87c"},
