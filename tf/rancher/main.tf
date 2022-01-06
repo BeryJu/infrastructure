@@ -28,7 +28,7 @@ resource "rancher2_cluster" "beryjuorg-prd" {
 resource "rancher2_cluster" "beryjuorg-offsite" {
   name = "beryjuorg-offsite"
   k3s_config {
-    version = "v1.21.3+k3s1"
+    version = "v1.22.4+k3s1"
   }
 
   lifecycle {
