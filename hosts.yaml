@@ -1,119 +1,43 @@
 all:
   hosts:
     hass1.prod.beryju.org:
-  vars:
-    cmk_plugins:
-      - mk_apt
 
 storage:
   children:
     nfs_server:
       hosts:
         nas1.prod.beryju.org:
-          nfs_exports:
-            - path: /bigpool/media
-              client: 10.120.20.0/24
-              opts: ro,async,no_subtree_check,no_root_squash
-            - path: /bigpool/media
-              client: k8s-defr-c1.lab.beryju.org
-            - path: /bigpool/media
-              client: k8s-defr-w1.lab.beryju.org
-            - path: /bigpool/media
-              client: k8s-defr-w2.lab.beryju.org
-            - path: /bigpool/media
-              client: plex1.prod.beryju.org
   hosts:
     backup-s3.beryju.org:
-  vars:
-    cmk_extra_packages:
-      - smartmontools
-    cmk_plugins:
-      - nfsexports
-      - smart
 
 media:
   hosts:
     plex1.prod.beryju.org:
-  vars:
-    cmk_plugins:
-      - mk_nfsiostat
 
 docker:
   hosts:
+    ak-dev-k3s1.lab.beryju.org:
+    k8s-defr-c1.lab.beryju.org:
+    k8s-defr-w1.lab.beryju.org:
+    k8s-defr-w2.lab.beryju.org:
     k8s-prd-c1.prod.beryju.org:
     k8s-prd-w1.prod.beryju.org:
     k8s-prd-w2.prod.beryju.org:
     k8s-prd-w3.prod.beryju.org:
     k8s-prd-w4.prod.beryju.org:
-    k8s-defr-c1.lab.beryju.org:
-    k8s-defr-w1.lab.beryju.org:
-    k8s-defr-w2.lab.beryju.org:
-    ak-dev-k3s1.lab.beryju.org:
-    #ak-dev-freeipa1.lab.beryju.org:
-  vars:
-    cmk_extra_packages:
-      - python3-docker
-    cmk_plugins_absent:
-      - mk_docker
-      - mk_nfsiostat
   children:
     compose:
-      vars:
-        cmk_plugins: []
-        cmk_plugins_absent:
-          - mk_docker
       hosts:
-        plex1.prod.beryju.org:
-          compose_stacks:
-            - name: plex
-              template: compose/plex-main.yml
-        unifi1.prod.beryju.org:
-          compose_stacks:
-            - name: unifi
-              template: compose/unifi-main.yml
-        gitlab1.prod.beryju.org:
-          compose_stacks:
-            - name: gitlab
-              template: compose/gitlab-main.yml
-        mon1.prod.beryju.org:
-          compose_stacks:
-            - name: checkmk
-              template: compose/mon-checkmk.yml
-            - name: prometheus
-              template: compose/mon-prometheus/docker-compose.yml
-              files:
-                - src: compose/mon-prometheus/prometheus.yml
-                  dest: prometheus.yml
-                - src: compose/mon-prometheus/graphite.yml
-                  dest: graphite.yml
-            - name: grafana
-              template: compose/mon-grafana.yml
-            - name: oxidized
-              template: compose/mon-oxidized.yml
-        rancher1.prod.beryju.org:
-          compose_stacks:
-            - name: rancher
-              template: compose/mgmt-rancher.yml
-        log1.prod.beryju.org:
-          compose_stacks:
-            - name: loki
-              template: compose/log-loki/docker-compose.yaml
-              files:
-                - src: compose/log-loki/loki.yaml
-                  dest: loki.yaml
-                - src: compose/log-loki/promtail.yaml
-                  dest: promtail.yaml
-        # These systems use docker-compose, but with stacks that are managed otherwise
-        sentry1.prod.beryju.org:
-        analytics1.prod.beryju.org:
-        netbox1.prod.beryju.org:
         ak-dev-dc1.lab.beryju.org:
+        analytics1.prod.beryju.org:
         dev1.lab.beryju.org:
-        vault1.prod.beryju.org:
-          compose_stacks:
-            - name: vault
-              template: compose/vault-main.yml
+        gitlab1.prod.beryju.org:
+        log1.prod.beryju.org:
         mc1.prod.beryju.org:
-          compose_stacks:
-            - name: minecraft
-              template: compose/minecraft.yaml
+        mon1.prod.beryju.org:
+        netbox1.prod.beryju.org:
+        plex1.prod.beryju.org:
+        rancher1.prod.beryju.org:
+        sentry1.prod.beryju.org:
+        unifi1.prod.beryju.org:
+        vault1.prod.beryju.org:

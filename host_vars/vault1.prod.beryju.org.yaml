@@ -1,0 +1,3 @@
+compose_stacks:
+  - name: vault
+    template: compose/vault-main.yml

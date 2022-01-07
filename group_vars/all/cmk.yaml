@@ -1,0 +1,2 @@
+cmk_plugins:
+  - mk_apt

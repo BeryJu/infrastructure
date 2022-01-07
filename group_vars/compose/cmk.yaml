@@ -1,0 +1,3 @@
+cmk_plugins: []
+cmk_plugins_absent:
+  - mk_docker

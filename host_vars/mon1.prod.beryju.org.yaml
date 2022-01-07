@@ -1,0 +1,14 @@
+compose_stacks:
+  - name: checkmk
+    template: compose/mon-checkmk.yml
+  - name: prometheus
+    template: compose/mon-prometheus/docker-compose.yml
+    files:
+      - src: compose/mon-prometheus/prometheus.yml
+        dest: prometheus.yml
+      - src: compose/mon-prometheus/graphite.yml
+        dest: graphite.yml
+  - name: grafana
+    template: compose/mon-grafana.yml
+  - name: oxidized
+    template: compose/mon-oxidized.yml

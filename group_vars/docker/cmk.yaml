@@ -1,0 +1,5 @@
+cmk_extra_packages:
+  - python3-docker
+cmk_plugins_absent:
+  - mk_docker
+  - mk_nfsiostat

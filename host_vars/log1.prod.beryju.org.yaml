@@ -1,0 +1,8 @@
+compose_stacks:
+  - name: loki
+    template: compose/log-loki/docker-compose.yaml
+    files:
+      - src: compose/log-loki/loki.yaml
+        dest: loki.yaml
+      - src: compose/log-loki/promtail.yaml
+        dest: promtail.yaml

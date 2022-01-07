@@ -1,0 +1,3 @@
+compose_stacks:
+  - name: minecraft
+    template: compose/minecraft.yaml
