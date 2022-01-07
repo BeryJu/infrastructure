@@ -129,6 +129,7 @@ provider "registry.terraform.io/jfrog/artifactory" {
   constraints = "2.6.25"
   hashes = [
     "h1:LE8i8xummgAe+YX07zlbXOdWIzMsE8GqFigr5BqdOro=",
+    "h1:gSyTKTztZz4NDdzGFM+NAOhuC28EczHrI+5+j3oQdK0=",
     "zh:07d65f16eec403f4aaa0d3366ef603c29c5872ca64a9098e1b18d5cc7a2a2118",
     "zh:0b25f16d3f790b1d8d87285fa55d068afadbef49f176fa125f345b2f763fd9d3",
     "zh:0c05d85632aaf7ad018c6d0fa2fb42e835e1ead7392d2c035af11b3fce312c84",
@@ -149,6 +150,7 @@ provider "registry.terraform.io/rancher/rancher2" {
   version     = "1.22.2"
   constraints = "1.22.2"
   hashes = [
+    "h1:3P4HEhHw5otb+HMXxXoINz+v+0DcCrkNbVj92rBqg2A=",
     "h1:wgu+Z+QtPg+V6XG1JKMIBnAx60+SW6Kuw68tmGMabpk=",
     "zh:1cfe57e114f15db4bee6d5ed2f15c4712dbdd03e523ade72898fce838c849bc5",
     "zh:220079903c21bbe1bccab5f166c082909b4eb9cec04554df37201ee9ec792e59",
