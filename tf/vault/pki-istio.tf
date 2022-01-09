@@ -26,10 +26,3 @@ resource "vault_pki_secret_backend_role" "pki-istio-role" {
   allowed_uri_sans  = ["spiffe://*"]
   allowed_domains   = ["istio-ca"]
 }
-
-resource "vault_pki_secret_backend_cert" "istio-root" {
-  backend = vault_mount.pki-istio.path
-  name    = "internal"
-
-  common_name = "istio-ca-vault"
-}
