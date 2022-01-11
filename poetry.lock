@@ -26,7 +26,7 @@ resolvelib = ">=0.5.3,<0.6.0"
 
 [[package]]
 name = "ansible-lint"
-version = "5.3.1"
+version = "5.3.2"
 description = "Checks playbooks for practices and behaviour that could potentially be improved"
 category = "dev"
 optional = false
@@ -415,8 +415,8 @@ ansible-core = [
     {file = "ansible-core-2.12.1.tar.gz", hash = "sha256:a4508707262be11bb4dd98a006f1b14817879a055e6b6c46ad9fca8894fb3073"},
 ]
 ansible-lint = [
-    {file = "ansible-lint-5.3.1.tar.gz", hash = "sha256:7d7bc74b9b90c5982be5c274c2afcba5b8073ec88cce793fab463fe6418a25f6"},
-    {file = "ansible_lint-5.3.1-py3-none-any.whl", hash = "sha256:4793ce6862ef7f85b3aaa7fa21887fd3e45bae43505640523c9b25928ac992de"},
+    {file = "ansible-lint-5.3.2.tar.gz", hash = "sha256:9ba886db4c44e59360bc8d668f0beae6193c0a1fcbb9e76127000ca3aced7c28"},
+    {file = "ansible_lint-5.3.2-py3-none-any.whl", hash = "sha256:4673e55e61809bbebf5a6376cc5ed9cac32ef5fff6a121db70ea5ab0228cd81f"},
 ]
 bracex = [
     {file = "bracex-2.2.1-py3-none-any.whl", hash = "sha256:096c4b788bf492f7af4e90ef8b5bcbfb99759ae3415ea1b83c9d29a5ed8f9a94"},
