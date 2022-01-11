@@ -120,10 +120,10 @@ RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 RUN curl -s https://fluxcd.io/install.sh | sudo bash && \
 	flux completion fish > /etc/fish/completions/flux.fish
 
-COPY ./authorized_keys /home/jens/.ssh/authorized_keys
 COPY ./sshd_config /etc/ssh/sshd_config
 
 RUN chmod 700 /home/jens/.ssh && \
+	curl -L https://github.com/BeryJu.keys > /home/jens/.ssh/authorized_keys && \
 	chown jens: /home/jens/.ssh/authorized_keys && \
 	chmod 600 /home/jens/.ssh/authorized_keys && \
 	chown root: /etc/ssh/sshd_config
