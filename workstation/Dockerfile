@@ -113,6 +113,11 @@ RUN curl -L https://github.com/vmware/govmomi/releases/latest/download/govc_Linu
 	mv govc /usr/bin/govc && \
 	chmod +x /usr/bin/govc
 
+# istioctl
+RUN curl -L https://github.com/istio/istio/releases/download/1.12.1/istio-1.12.1-linux-amd64.tar.gz | tar xvzf - && \
+	mv istio-1.12.1/bin/istioctl /usr/bin/istioctl && \
+	chmod +x /usr/bin/istioctl
+
 # Starship
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
