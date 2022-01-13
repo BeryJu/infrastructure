@@ -18,8 +18,9 @@ docker:
   hosts:
     ak-dev-k3s1.lab.beryju.org:
     k8s-defr-c1.lab.beryju.org:
-    k8s-defr-w1.lab.beryju.org:
-    k8s-defr-w2.lab.beryju.org:
+    k8s-defr-w3.lab.beryju.org:
+    k8s-defr-w4.lab.beryju.org:
+    k8s-defr-w5.lab.beryju.org:
     k8s-prd-c1.prod.beryju.org:
     k8s-prd-w1.prod.beryju.org:
     k8s-prd-w2.prod.beryju.org:
