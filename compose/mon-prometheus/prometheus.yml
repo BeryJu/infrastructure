@@ -13,22 +13,23 @@ alerting:
       - alertmanager:9093
 
 scrape_configs:
-  - job_name: "vmware/node-exporter"
-    basic_auth:
-      username: 'prometheus'
-      password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/prometheus/node_exporter:prometheus") }}'
-    scheme: https
-    tls_config:
-      insecure_skip_verify: true
-    file_sd_configs:
-      - files:
-          - /opt/config/vmware-filesd/vmware-filesd.json
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: instance
-      - source_labels: [__address__]
-        target_label: __address__
-        replacement: "${1}:9100"
+  # Using static nodes below
+  # - job_name: "vmware/node-exporter"
+  #   basic_auth:
+  #     username: 'prometheus'
+  #     password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/prometheus/node_exporter:prometheus") }}'
+  #   scheme: https
+  #   tls_config:
+  #     insecure_skip_verify: true
+  #   file_sd_configs:
+  #     - files:
+  #         - /opt/config/vmware-filesd/vmware-filesd.json
+  #   relabel_configs:
+  #     - source_labels: [__address__]
+  #       target_label: instance
+  #     - source_labels: [__address__]
+  #       target_label: __address__
+  #       replacement: "${1}:9100"
 
   - job_name: static_nodes
     basic_auth:
@@ -39,8 +40,9 @@ scrape_configs:
       insecure_skip_verify: true
     static_configs:
       - targets:
-          - 'backup-s3.beryju.org:9100'
-          - 'sentry1.prod.beryju.org:9100'
+{% for host in groups['all'] %}
+          - '{{ host }}:9100'
+{% endfor %}
 
   - job_name: imagik_tig
     static_configs:
