@@ -9,7 +9,7 @@
   become: true
   roles:
     - beryjuorg_common
-    - beryjuorg_cmk
+    - beryjuorg_node_exporter
     - beryjuorg_mta
 
 - hosts: all:!backup-s3.beryju.org
