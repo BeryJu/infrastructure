@@ -3,7 +3,9 @@
 # them (\\d for \d). If running under systemd, you need to double them again
 # (\\\\d to mean \d), and escape newlines too.
 ARGS=" \
---collector.netdev.device-exclude='^(lo|veth|cni|docker|flannel)' \
+--collector.netdev.device-exclude='^(lo|veth|cni|docker|flannel|br\\\\-)' \
+--collector.netclass.ignored-devices='^(lo|veth|cni|docker|flannel|br\\\\-)' \
+--collector.systemd.unit-exclude='.+\\.(automount|device|mount|scope|slice|target)' \
 --collector.filesystem.ignored-mount-points='^/(dev|proc|run|sys|mnt|media|var/lib/kubelet/pods/.+|var/lib/docker/.+)($|/)' \
 --web.config=/etc/prometheus-node-exporter.yaml
 "
