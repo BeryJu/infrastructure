@@ -13,6 +13,7 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./rules:/etc/prometheus/rules
       - /srv/prometheus-data:/prometheus
+      - /tmp/vmware-filesd.json:/opt/config/vmware-filesd.json
     ports:
       - 9090:9090
     restart: always
@@ -37,3 +38,12 @@ services:
     ports:
       - 9093:9093
     restart: always
+  vmware_file_sd:
+    image: gopaytech/vmware-filesd:latest
+    volumes:
+      - /tmp/vmware-filesd.json:/opt/config/vmware-filesd.json
+    environment:
+      HOSTNAME: "vc1.prod.beryju.org"
+      USERNAME: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/vsphere/local/administrator:username") }}'
+      PASSWORD: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/vsphere/local/administrator:password") }}'
+      OUTPUT: "/opt/config/vmware-filesd.json"
