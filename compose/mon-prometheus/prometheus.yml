@@ -16,7 +16,7 @@ scrape_configs:
   - job_name: "vmware/node-exporter"
     file_sd_configs:
       - files:
-          - /opt/config/vmware-filesd.json
+          - /opt/config/vmware-filesd/vmware-filesd.json
     relabel_configs:
       - source_labels: [__address__]
         target_label: instance
