@@ -14,6 +14,12 @@ alerting:
 
 scrape_configs:
   - job_name: "vmware/node-exporter"
+    basic_auth:
+      username: 'prometheus'
+      password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/prometheus/node_exporter:prometheus") }}'
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
     file_sd_configs:
       - files:
           - /opt/config/vmware-filesd/vmware-filesd.json
