@@ -71,8 +71,3 @@ scrape_configs:
     scheme: http
     static_configs:
       - targets: ["hass1.prod.beryju.org:8123"]
-  - job_name: node
-    static_configs:
-      - targets:
-          - 'dev1.lab.beryju.org:9100'
-          - 'nas1.prod.beryju.org:9100'
