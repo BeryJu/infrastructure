@@ -25,3 +25,5 @@ jobs:
           provisioning/new-vm.yml
           awx/site.yaml
           vsphere/site.yaml
+        override-deps: |
+          rich>=9.5.1,<11.0.0
