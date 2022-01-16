@@ -20,4 +20,4 @@ services:
     command:
       - --mc.rcon-address=mc:25575
       - --mc.rcon-password={{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/minecraft:rcon") }}
-      - --mc.world=/data
+      - --mc.world=/data/world
