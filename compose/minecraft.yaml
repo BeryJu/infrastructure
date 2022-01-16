@@ -11,3 +11,13 @@ services:
       MAX_MEMORY: 7G
     volumes:
       - /srv/mc:/data
+  mc_exporter:
+    image: ghcr.io/dirien/minecraft-exporter:0.7.1-amd64
+    ports:
+      - 10.120.0.59:9150:9150
+    volumes:
+      - /srv/mc:/data:ro
+    command:
+      - --mc.rcon-address=mc:25575
+      - --mc.rcon-password={{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/minecraft:rcon") }}
+      - --mc.world=/data
