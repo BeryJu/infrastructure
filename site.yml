@@ -12,7 +12,7 @@
     - beryjuorg_node_exporter
     - beryjuorg_mta
 
-- hosts: all:!backup-s3.beryju.org
+- hosts: all:!backup-s3.beryju.org:!sentry1.prod.beryju.org
   become: true
   roles:
     - beryjuorg_syslog
