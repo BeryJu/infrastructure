@@ -28,6 +28,8 @@ docker:
     k8s-prd-w3.prod.beryju.org:
     k8s-prd-w4.prod.beryju.org:
     k8s-prd-w5.prod.beryju.org:
+    log1.prod.beryju.org:
+    mon1.prod.beryju.org:
   children:
     compose:
       hosts:
@@ -35,9 +37,7 @@ docker:
         analytics1.prod.beryju.org:
         dev1.lab.beryju.org:
         gitlab1.prod.beryju.org:
-        log1.prod.beryju.org:
         mc1.prod.beryju.org:
-        mon1.prod.beryju.org:
         netbox1.prod.beryju.org:
         plex1.prod.beryju.org:
         rancher1.prod.beryju.org:
