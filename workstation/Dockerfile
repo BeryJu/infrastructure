@@ -7,7 +7,8 @@ RUN apt-get update && \
 	mkdir -p /run/sshd
 
 # Install base packages
-RUN apt-get update && \
+RUN yes | unminimize && \
+	apt-get update && \
 	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get install -y --no-install-recommends \
 		# Base system utils
@@ -19,7 +20,7 @@ RUN apt-get update && \
 		# Network tools
 		nmap mtr-tiny host net-tools iputils-ping traceroute \
 		# Required for packer to create iso files
-		genisoimage	&& \
+		genisoimage && \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
 	echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 	echo "en_UK.UTF-8 UTF-8" >> /etc/locale.gen && \
