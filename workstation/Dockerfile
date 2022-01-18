@@ -127,6 +127,7 @@ RUN curl -s https://fluxcd.io/install.sh | sudo bash && \
 	flux completion fish > /etc/fish/completions/flux.fish
 
 COPY ./sshd_config /etc/ssh/sshd_config
+COPY ./motd-vault.sh /etc/update-motd.d/60-beryjuorg-vault
 
 RUN chmod 700 /home/jens/.ssh && \
 	curl -L https://github.com/BeryJu.keys > /home/jens/.ssh/authorized_keys && \
