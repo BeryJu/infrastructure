@@ -16,5 +16,5 @@
     content: |
       $PreserveFQDN on
       $LocalHostName {{ inventory_hostname }}
-      *.* action(type="omfwd" protocol="tcp" target="log1.prod.beryju.org" port="10007" Template="RSYSLOG_SyslogProtocol23Format" TCP_Framing="octet-counted")
+      *.* action(type="omfwd" protocol="tcp" target="log1.prod.beryju.org" port="10007" TCP_Framing="octet-counted")
   notify: restart rsyslog
