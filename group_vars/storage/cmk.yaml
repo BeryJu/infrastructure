@@ -1,5 +1,0 @@
-cmk_extra_packages:
-  - smartmontools
-cmk_plugins:
-  - nfsexports
-  - smart

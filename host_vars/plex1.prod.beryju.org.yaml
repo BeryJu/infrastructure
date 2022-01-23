@@ -1,5 +1,3 @@
-cmk_plugins:
-  - mk_nfsiostat
 compose_stacks:
   - name: plex
     template: compose/plex-main.yml

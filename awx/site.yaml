@@ -168,9 +168,6 @@
         - name: infrastructure-actions-system-update
           playbook: actions/update.yml
           job_slice_count: 4
-        - name: infrastructure-actions-kick-cmk
-          playbook: actions/kick-cmk.yml
-          job_slice_count: 4
         - name: infrastructure-git-backup
           playbook: backups/site.yaml
         - name: infrastructure-vsphere
@@ -217,9 +214,6 @@
         - name: infrastructure-actions-docker-cleanup
           job: "infrastructure-actions-docker-cleanup"
           rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='6', timezone='Etc/UTC', start_date='1970-01-01 00:00:00') }}"
-        - name: infrastructure-actions-kick-cmk
-          job: "infrastructure-actions-kick-cmk"
-          rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='12', timezone='Etc/UTC', start_date='1970-01-01 00:00:00') }}"
         - name: infrastructure-awx
           job: "infrastructure-awx"
           rrule: "{{ query('awx.awx.schedule_rrule', 'hour', every='3', timezone='Etc/UTC', start_date='1970-01-01 00:00:00') }}"

@@ -1,4 +1,0 @@
-cmk_agent_file: "check-mk-agent.deb"
-cmk_plugins: []
-cmk_plugins_absent: []
-cmk_extra_packages: []

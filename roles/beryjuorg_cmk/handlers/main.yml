@@ -1,5 +1,0 @@
-- name: Reconfigure package on change
-  command: dpkg-reconfigure check-mk-agent
-- name: Clean systemd-failed
-  command: systemd reset-failed
-  failed_when: false
