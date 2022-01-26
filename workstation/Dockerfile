@@ -14,7 +14,7 @@ RUN yes | unminimize && \
 		# Base system utils
 		nano git openssh-client apt-transport-https curl bash \
 		gnupg sudo man-db bash-completion wget unzip less \
-		locales file pwgen htop jq ldap-utils software-properties-common \
+		locales file pwgen htop jq ldap-utils software-properties-common make \
 		# Fancy shell stuff
 		bat fzf \
 		# Network tools
@@ -31,6 +31,10 @@ RUN apt-get install -y --no-install-recommends \
 		python3.9 python3-pip python3-venv python3-setuptools && \
 	pip3 install wheel && \
 	pip3 install poetry
+
+# Node
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
+	apt-get install -y nodejs
 
 # Fish
 RUN apt-add-repository ppa:fish-shell/release-3 -y && \
