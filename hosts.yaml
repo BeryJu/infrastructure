@@ -1,7 +1,6 @@
 all:
   hosts:
     hass1.prod.beryju.org:
-    foreman1.prod.beryju.org:
 
 storage:
   children:
@@ -28,7 +27,6 @@ docker:
     k8s-prd-w3.prod.beryju.org:
     k8s-prd-w4.prod.beryju.org:
     k8s-prd-w5.prod.beryju.org:
-    log1.prod.beryju.org:
     mon1.prod.beryju.org:
   children:
     compose:
