@@ -16,13 +16,6 @@
       register: apt_res
       retries: 5
       until: apt_res is success
-    - name: check_mk | remove cache
-      file:
-        path: "/var/lib/check_mk_agent/cache/{{ item }}"
-        state: absent
-      loop:
-        - "plugins_86400\\mk_apt.cache"
-        - "plugins_7200\\mk_apt.cache"
     - name: Clean apt cache
       # noqa 301 303
       command: apt-get clean
