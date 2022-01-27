@@ -27,8 +27,10 @@ RUN yes | unminimize && \
 	locale-gen
 
 # Python
-RUN apt-get install -y --no-install-recommends \
-		python3.9 python3-pip python3-venv python3-setuptools && \
+RUN add-apt-repository ppa:deadsnakes/ppa -y && \
+	apt update && \
+	apt-get install -y --no-install-recommends \
+		python3.10-venv python3.9 python3-pip python3-venv python3-setuptools && \
 	pip3 install wheel && \
 	pip3 install poetry
 
