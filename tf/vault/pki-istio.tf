@@ -25,4 +25,9 @@ resource "vault_pki_secret_backend_role" "pki-istio-role" {
   require_cn        = false
   allowed_uri_sans  = ["spiffe://*"]
   allowed_domains   = ["istio-ca"]
+  key_usage = [
+    "DigitalSignature",
+    "KeyAgreement",
+    "KeyEncipherment",
+  ]
 }

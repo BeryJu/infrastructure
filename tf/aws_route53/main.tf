@@ -10,7 +10,7 @@ provider "aws" {
 }
 
 locals {
-  pub_k8s_ip     = "194.56.224.176"
-  pub_netlify_ip = "75.2.60.5"
+  pub_k8s_ip       = "194.56.224.176"
+  pub_netlify_ip   = "75.2.60.5"
   pub_k8s_istio_ip = "194.56.224.182"
 }

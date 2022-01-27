@@ -22,4 +22,9 @@ resource "vault_pki_secret_backend_role" "pki-machine-role" {
   key_bits         = 4096
   allowed_domains  = ["beryju.org"]
   allow_subdomains = true
+  key_usage = [
+    "DigitalSignature",
+    "KeyAgreement",
+    "KeyEncipherment",
+  ]
 }
