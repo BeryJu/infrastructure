@@ -32,9 +32,14 @@ RUN apt-get install -y --no-install-recommends \
 	pip3 install wheel && \
 	pip3 install poetry
 
+# Golang
+RUN add-apt-repository ppa:longsleep/golang-backports -y && \
+	apt update && \
+	apt install -y --no-install-recommends golang-go
+
 # Node
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
-	apt-get install -y nodejs
+	apt-get install -y --no-install-recommends nodejs
 
 # Fish
 RUN apt-add-repository ppa:fish-shell/release-3 -y && \
