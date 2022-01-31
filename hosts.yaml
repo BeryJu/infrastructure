@@ -8,7 +8,7 @@ storage:
       hosts:
         nas1.prod.beryju.org:
   hosts:
-    backup-s3.beryju.org:
+    backup-s3.prod.beryju.org:
 
 media:
   hosts:
