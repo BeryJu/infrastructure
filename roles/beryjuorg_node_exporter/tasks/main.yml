@@ -28,6 +28,13 @@
     mode: 0640
   notify:
     - Restart node-exporter
+- name: Configure textfile
+  template:
+    dest: "/var/lib/prometheus/node-exporter/beryjuorg.prom"
+    src: templates/beryjuorg.prom
+    owner: root
+    group: root
+    mode: 0640
 - name: Configure web config
   template:
     dest: "/etc/prometheus-node-exporter.yaml"
