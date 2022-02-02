@@ -1,17 +1,17 @@
 [[package]]
 name = "ansible"
-version = "5.2.0"
+version = "5.3.0"
 description = "Radically simple IT automation"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 
 [package.dependencies]
-ansible-core = ">=2.12.1,<2.13.0"
+ansible-core = ">=2.12.2,<2.13.0"
 
 [[package]]
 name = "ansible-core"
-version = "2.12.1"
+version = "2.12.2"
 description = "Radically simple IT automation"
 category = "main"
 optional = false
@@ -421,14 +421,14 @@ bracex = ">=2.1.1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9cc7e7895c689ba6d881e9fd60ec92491ac4ebe425cc57274873403054b118ea"
+content-hash = "38fc1d2a2e01bbfde08b54c38fb4554d467a13311eae3478c4ad32871867bc6a"
 
 [metadata.files]
 ansible = [
-    {file = "ansible-5.2.0.tar.gz", hash = "sha256:c6d448f229cb4a77a6026bd61bcd5bcf062f4f666f1ed24432ba043d145499cb"},
+    {file = "ansible-5.3.0.tar.gz", hash = "sha256:50020dab43f6c59debdeb57f45c90ec6db78d4fa574edc6d75bc52e05cbd3639"},
 ]
 ansible-core = [
-    {file = "ansible-core-2.12.1.tar.gz", hash = "sha256:a4508707262be11bb4dd98a006f1b14817879a055e6b6c46ad9fca8894fb3073"},
+    {file = "ansible-core-2.12.2.tar.gz", hash = "sha256:bc79e1723a5a92cbc105d581b25b66840d15bb5f4c98925c936ef5a71f92e7c3"},
 ]
 ansible-lint = [
     {file = "ansible-lint-5.3.2.tar.gz", hash = "sha256:9ba886db4c44e59360bc8d668f0beae6193c0a1fcbb9e76127000ca3aced7c28"},
