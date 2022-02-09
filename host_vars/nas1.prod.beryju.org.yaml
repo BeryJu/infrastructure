@@ -7,6 +7,10 @@ nfs_exports:
   - path: /bigpool/media
     client: k8s-defr-w1.lab.beryju.org
   - path: /bigpool/media
-    client: k8s-defr-w2.lab.beryju.org
+    client: k8s-defr-w3.lab.beryju.org
+  - path: /bigpool/media
+    client: k8s-defr-w4.lab.beryju.org
+  - path: /bigpool/media
+    client: k8s-defr-w5.lab.beryju.org
   - path: /bigpool/media
     client: plex1.prod.beryju.org
