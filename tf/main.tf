@@ -1,11 +1,8 @@
 terraform {
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "beryjuorg"
-
-    workspaces {
-      name = "infrastructure"
-    }
+  backend "kubernetes" {
+    secret_suffix = "state"
+    namespace     = "flux-system"
+    config_path   = "~/.kube/config"
   }
   required_providers {
     aws = {
