@@ -1,8 +1,8 @@
 terraform {
   backend "kubernetes" {
-    secret_suffix     = "state"
-    namespace         = "flux-system"
-    in_cluster_config = true
+    secret_suffix = "state"
+    namespace     = "flux-system"
+    config_path   = "~/.kube/config"
   }
   required_providers {
     aws = {
