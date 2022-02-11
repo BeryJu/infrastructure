@@ -1,6 +1,6 @@
 resource "vault_auth_backend" "puppet-cert" {
   type = "cert"
-  path = "puppet-cert"
+  path = "cert"
 }
 
 resource "vault_cert_auth_backend_role" "puppet-root" {
