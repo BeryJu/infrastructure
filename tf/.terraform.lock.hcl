@@ -124,26 +124,6 @@ provider "registry.terraform.io/hashicorp/vault" {
   ]
 }
 
-provider "registry.terraform.io/jfrog/artifactory" {
-  version = "2.16.2"
-  hashes = [
-    "h1:qy/OI2C5gd9D8DnSGo8Yxz0NV8XZWgYCxmTUl3mLQ2k=",
-    "zh:0b2b08c3115bc49579a2d2671bec109b3809000e4ee5d948eca6a63ea467f547",
-    "zh:2e04a3c3f9e0a6ba19c8f83889e8302f4d2c02eafa77b0b1afdb73a60d9e90f4",
-    "zh:3fa8276c013da7007aa573d671820db0fb57063583ec8d4826b56c08bb14ef5a",
-    "zh:44cf7c01571eddce29d9997445b74788dcb4d08feb37410155113ea405d44002",
-    "zh:50f45e6c19b37773887c0d278f12e7256af94bd84e56677a0f4132a113d2683d",
-    "zh:5efe7c4b1c6c500510e560506d1522301270814bd4286f3efa8807e1e1937a36",
-    "zh:70715f6526e886db1bd09e11554a50409deeed2b5d6437a17826e9933ca634c6",
-    "zh:7b59b945c7b0ee3047d09b9b9bfdb8cae958e7f54980f56928bb9a793241659d",
-    "zh:7d88cc64dc1dcd59cef244a5088dd729e1f5c647d8459aae3058a6fd35ceaa2c",
-    "zh:9dd9e4735fbb31d708ee455b1753d922573aa39df104cdd4b6b47591856a0017",
-    "zh:e63ffe1349735e33c3d0c2f2712496e709e0deb11f719cf712cc98c9ab7a54ad",
-    "zh:fc51bca1cb02582a854ac6556f3af5a8cf1acbc0f4d82ae6b5d80c1bae8fa389",
-    "zh:ffec58ebe0c096c30d21a0a1a5ab883d5cf7c959f64c96d4be814f9fa2db579a",
-  ]
-}
-
 provider "registry.terraform.io/rancher/rancher2" {
   version     = "1.22.2"
   constraints = "1.22.2"
