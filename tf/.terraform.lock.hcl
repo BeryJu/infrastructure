@@ -128,6 +128,7 @@ provider "registry.terraform.io/jfrog/artifactory" {
   version = "2.16.2"
   hashes = [
     "h1:jpfqj8XDg89lAE8yOA+o6h4S1eIl6RFZBotc9VbfYTI=",
+    "h1:qy/OI2C5gd9D8DnSGo8Yxz0NV8XZWgYCxmTUl3mLQ2k=",
     "zh:0b2b08c3115bc49579a2d2671bec109b3809000e4ee5d948eca6a63ea467f547",
     "zh:2e04a3c3f9e0a6ba19c8f83889e8302f4d2c02eafa77b0b1afdb73a60d9e90f4",
     "zh:3fa8276c013da7007aa573d671820db0fb57063583ec8d4826b56c08bb14ef5a",
