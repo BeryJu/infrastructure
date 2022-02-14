@@ -22,6 +22,9 @@ terraform {
 provider "vault" {
 }
 
+module "artifactory" {
+  source = "./artifactory/"
+}
 module "guacamole" {
   source = "./guacamole/"
 }
