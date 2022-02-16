@@ -65,15 +65,6 @@ resource "grafana_dashboard" "netapp-harvest_dashboard_node_details" {
   config_json = replace(data.http.netapp-harvest_dashboard_node_details.body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
-data "http" "netapp-harvest_dashboard_nvme_fc" {
-  url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_nvme_fc.json"
-}
-
-resource "grafana_dashboard" "netapp-harvest_dashboard_nvme_fc" {
-  folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_nvme_fc.body, "$${DS_PROMETHEUS}", "Prometheus")
-}
-
 data "http" "netapp-harvest_dashboard_shelf" {
   url = "https://raw.githubusercontent.com/NetApp/harvest/main/grafana/dashboards/cmode/harvest_dashboard_shelf.json"
 }
