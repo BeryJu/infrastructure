@@ -8,7 +8,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "3.74.0"
+      version = "4.2.0"
     }
     vault = {
       source  = "hashicorp/vault"
@@ -28,6 +28,9 @@ module "authentik" {
 }
 module "aws" {
   source = "./aws/"
+}
+module "aws_ses_forwarder" {
+  source = "./aws_ses_forwarder/"
 }
 module "aws_route53" {
   source = "./aws_route53/"
