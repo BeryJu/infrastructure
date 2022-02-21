@@ -3,7 +3,9 @@
 apt-get remove --purge -y snapd
 apt-get autoremove --purge -y
 apt-get update
+apt-get dist-upgrade -y
 apt-get upgrade -y
+apt-get autoremove --purge -y
 
 # Add vagrant user to sudoers.
 echo "vagrant        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers

@@ -22,4 +22,4 @@ autoinstall:
   apt:
     primary:
       - arches: [default]
-        uri: http://mirror.mmr.lon.as212711.net/ubuntu/
+        uri: mirror://mirrors.ubuntu.com/mirrors.txt
