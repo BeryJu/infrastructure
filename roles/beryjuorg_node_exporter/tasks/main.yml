@@ -7,7 +7,9 @@
   meta: flush_handlers
 - name: Install node-exporter
   apt:
-    name: prometheus-node-exporter=1.1.2+ds-2~202107081617~ubuntu20.04.1
+    pkg:
+     - prometheus-node-exporter=1.1.2+ds-2~202107081617~ubuntu20.04.1
+     - ssl-cert
   register: apt_res
   retries: 5
   until: apt_res is success
