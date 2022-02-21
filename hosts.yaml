@@ -1,6 +1,7 @@
 all:
   hosts:
     hass1.prod.beryju.org:
+    puppet1.prod.beryju.org:
 
 storage:
   children:
