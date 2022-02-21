@@ -3,7 +3,7 @@ resource "vault_aws_secret_backend_role" "role-route53" {
   name            = "route53"
   credential_type = "iam_user"
 
-  policy_document = file("./vault/policies/route53.json")
+  policy_document = file("${path.module}/policies/route53.json")
 }
 
 resource "vault_aws_secret_backend_role" "role-ses" {
@@ -11,7 +11,7 @@ resource "vault_aws_secret_backend_role" "role-ses" {
   name            = "ses-send"
   credential_type = "iam_user"
 
-  policy_document = file("./vault/policies/ses-send.json")
+  policy_document = file("${path.module}/policies/ses-send.json")
 }
 
 resource "vault_aws_secret_backend_role" "role-admin" {
@@ -19,5 +19,5 @@ resource "vault_aws_secret_backend_role" "role-admin" {
   name            = "admin"
   credential_type = "iam_user"
 
-  policy_document = file("./vault/policies/admin.json")
+  policy_document = file("${path.module}/policies/admin.json")
 }
