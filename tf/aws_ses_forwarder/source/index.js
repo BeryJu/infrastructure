@@ -44,6 +44,7 @@ var defaultConfig = {
   forwardMapping: {
     "jens@ukch.at": ["jens@beryju.org"],
     "okami@ukch.at": ["okami@doubledash.org"],
+    "kal@ukch.at": ["ukchat@kalinin.uk"],
   }
 };
 
