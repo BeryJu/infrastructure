@@ -53,7 +53,12 @@ RUN groupadd -g 999 -r docker
 # User jens
 RUN useradd -m -s /bin/fish -G sudo,docker jens && \
 	su -c "ssh-keygen -b 2048 -f /home/jens/.ssh/id_rsa -t rsa -q -N ''" jens && \
-	passwd -d jens
+	passwd -d jens && \
+	chmod 700 /home/jens/.ssh && \
+	curl -L https://github.com/BeryJu.keys > /home/jens/.ssh/authorized_keys && \
+	chown jens: /home/jens/.ssh/authorized_keys && \
+	chmod 600 /home/jens/.ssh/authorized_keys && \
+	chown root: /etc/ssh/sshd_config
 
 # chezmoi
 RUN curl -L https://github.com/twpayne/chezmoi/releases/download/v2.8.0/chezmoi_2.8.0_linux_amd64.deb > chezmoi.deb && \
@@ -137,13 +142,10 @@ RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 RUN curl -s https://fluxcd.io/install.sh | sudo bash && \
 	flux completion fish > /etc/fish/completions/flux.fish
 
-COPY ./sshd_config /etc/ssh/sshd_config
+# code-server
+RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
 
-RUN chmod 700 /home/jens/.ssh && \
-	curl -L https://github.com/BeryJu.keys > /home/jens/.ssh/authorized_keys && \
-	chown jens: /home/jens/.ssh/authorized_keys && \
-	chmod 600 /home/jens/.ssh/authorized_keys && \
-	chown root: /etc/ssh/sshd_config
+COPY ./sshd_config /etc/ssh/sshd_config
 
 HEALTHCHECK CMD \
 	bash -c '! ssh -o PasswordAuthentication=No root@localhost true 2>&1 | grep -i -c  refused'
