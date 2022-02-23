@@ -48,18 +48,6 @@ RUN apt-add-repository ppa:fish-shell/release-3 -y && \
 	apt-get update && \
 	apt-get install -y --no-install-recommends fish
 
-RUN groupadd -g 999 -r docker
-
-# User jens
-RUN useradd -m -s /bin/fish -G sudo,docker jens && \
-	su -c "ssh-keygen -b 2048 -f /home/jens/.ssh/id_rsa -t rsa -q -N ''" jens && \
-	passwd -d jens && \
-	chmod 700 /home/jens/.ssh && \
-	curl -L https://github.com/BeryJu.keys > /home/jens/.ssh/authorized_keys && \
-	chown jens: /home/jens/.ssh/authorized_keys && \
-	chmod 600 /home/jens/.ssh/authorized_keys && \
-	chown root: /etc/ssh/sshd_config
-
 # chezmoi
 RUN curl -L https://github.com/twpayne/chezmoi/releases/download/v2.8.0/chezmoi_2.8.0_linux_amd64.deb > chezmoi.deb && \
 	dpkg -i chezmoi.deb
@@ -91,12 +79,6 @@ RUN curl -L https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx > /u
 RUN curl -L https://github.com/stern/stern/releases/download/v1.19.0/stern_1.19.0_linux_amd64.tar.gz | tar xvzf - --strip-components=1 && \
 	mv stern /usr/bin/stern && \
 	chmod +x /usr/bin/stern
-
-# docker-cli
-RUN curl -s https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
-	echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" > /etc/apt/sources.list.d/docker-ce.list && \
-	apt-get update && \
-	apt-get install --no-install-recommends -y docker-ce-cli
 
 # rke
 RUN curl -L https://github.com/rancher/rke/releases/latest/download/rke_linux-amd64 > /usr/bin/rke && \
@@ -147,7 +129,14 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
 
 COPY ./sshd_config /etc/ssh/sshd_config
 
-HEALTHCHECK CMD \
-	bash -c '! ssh -o PasswordAuthentication=No root@localhost true 2>&1 | grep -i -c  refused'
+# User jens
+RUN useradd -m -s /bin/fish -G sudo,docker jens && \
+	su -c "ssh-keygen -b 2048 -f /home/jens/.ssh/id_rsa -t rsa -q -N ''" jens && \
+	passwd -d jens && \
+	chmod 700 /home/jens/.ssh && \
+	curl -L https://github.com/BeryJu.keys > /home/jens/.ssh/authorized_keys && \
+	chown jens: /home/jens/.ssh/authorized_keys && \
+	chmod 600 /home/jens/.ssh/authorized_keys && \
+	chown root: /etc/ssh/sshd_config
 
-CMD ["/bin/bash", "-c", "/usr/sbin/sshd -D -e; su - jens -c /usr/bin/code-server"]
+CMD ["/usr/sbin/sshd", "-D", "-e"]
