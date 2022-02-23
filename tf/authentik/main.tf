@@ -2,7 +2,7 @@ terraform {
   required_providers {
     authentik = {
       source  = "goauthentik/authentik"
-      version = "2021.12.3"
+      version = "2022.2.1"
     }
   }
 }
