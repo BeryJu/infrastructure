@@ -131,8 +131,8 @@ RUN curl -L https://github.com/vmware/govmomi/releases/latest/download/govc_Linu
 	chmod +x /usr/bin/govc
 
 # istioctl
-RUN curl -L https://github.com/istio/istio/releases/download/1.12.1/istio-1.12.1-linux-amd64.tar.gz | tar xvzf - && \
-	mv istio-1.12.1/bin/istioctl /usr/bin/istioctl && \
+RUN curl -L https://github.com/istio/istio/releases/download/1.13.1/istio-1.13.1-linux-amd64.tar.gz | tar xvzf - && \
+	mv istio-1.13.1/bin/istioctl /usr/bin/istioctl && \
 	chmod +x /usr/bin/istioctl
 
 # Starship
@@ -150,4 +150,4 @@ COPY ./sshd_config /etc/ssh/sshd_config
 HEALTHCHECK CMD \
 	bash -c '! ssh -o PasswordAuthentication=No root@localhost true 2>&1 | grep -i -c  refused'
 
-CMD ["/usr/sbin/sshd", "-D", "-e"]
+CMD ["/bin/bash", "-c", "/usr/sbin/sshd -D -e; su - jens -c /usr/bin/code-server"]
