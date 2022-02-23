@@ -130,7 +130,7 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
 COPY ./sshd_config /etc/ssh/sshd_config
 
 # User jens
-RUN useradd -m -s /bin/fish -G sudo,docker jens && \
+RUN useradd -m -s /bin/fish -G sudo jens && \
 	su -c "ssh-keygen -b 2048 -f /home/jens/.ssh/id_rsa -t rsa -q -N ''" jens && \
 	passwd -d jens && \
 	chmod 700 /home/jens/.ssh && \
