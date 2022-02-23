@@ -46,6 +46,7 @@ var defaultConfig = {
     "okami@ukch.at": ["okami@doubledash.org"],
     "kal@ukch.at": ["ukchat@kalinin.uk"],
     "geordiepingu@ukch.at": ["hello@ciaranowens.com"],
+    "tigsmum@ukch.at": ["hello+tigsmum@behn.cc"],
   }
 };
 
