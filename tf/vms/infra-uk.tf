@@ -3,7 +3,7 @@ module "rancher" {
   name   = "rancher1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
@@ -24,7 +24,7 @@ module "gitlab" {
   name   = "gitlab1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
@@ -45,7 +45,7 @@ module "mon" {
   name   = "mon1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
@@ -61,7 +61,7 @@ module "netbox" {
   name   = "netbox1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
@@ -77,7 +77,7 @@ module "puppet" {
   name   = "puppet1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
@@ -98,7 +98,7 @@ module "vault" {
   name   = "vault1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 

@@ -17,13 +17,8 @@ data "vsphere_datacenter" "de-freiburg" {
   name = "de-freiburg"
 }
 
-data "vsphere_datastore" "ssd-london-a" {
-  name          = "ssd-london-a"
-  datacenter_id = data.vsphere_datacenter.uk-london.id
-}
-
-data "vsphere_datastore" "ssd-london-b" {
-  name          = "ssd-london-b"
+data "vsphere_datastore_cluster" "ssd-london" {
+  name          = "ssd-london"
   datacenter_id = data.vsphere_datacenter.uk-london.id
 }
 

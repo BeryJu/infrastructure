@@ -3,7 +3,7 @@ module "k8s-prd-c" {
   name   = "k8s-prd-c1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
@@ -20,7 +20,7 @@ module "k8s-prd-w" {
   name   = "k8s-prd-w${count.index + 1}.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 

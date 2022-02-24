@@ -1,7 +1,7 @@
 resource "vsphere_virtual_machine" "vm" {
-  name             = var.name
-  resource_pool_id = var.vsphere.resource_pool
-  datastore_id     = var.vsphere.datastore
+  name                 = var.name
+  resource_pool_id     = var.vsphere.resource_pool
+  datastore_cluster_id = var.vsphere.datastore
 
   num_cpus = var.spec.cpu
   memory   = var.spec.memory
@@ -23,11 +23,11 @@ resource "vsphere_virtual_machine" "vm" {
   }
 
   extra_config = {
-    "guestinfo.userdata"          = base64encode(templatefile("${path.module}/templates/user-data.yaml", {
+    "guestinfo.userdata" = base64encode(templatefile("${path.module}/templates/user-data.yaml", {
       hostname = var.name
     }))
     "guestinfo.userdata.encoding" = "base64"
-    "guestinfo.metadata"          = base64encode(templatefile("${path.module}/templates/meta-data.yaml", {
+    "guestinfo.metadata" = base64encode(templatefile("${path.module}/templates/meta-data.yaml", {
       hostname = var.name
     }))
     "guestinfo.metadata.encoding" = "base64"

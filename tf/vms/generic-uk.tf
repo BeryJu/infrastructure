@@ -3,7 +3,7 @@ module "dev" {
   name   = "dev1.lab.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
@@ -19,7 +19,7 @@ module "analytics" {
   name   = "analytics1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
@@ -35,7 +35,7 @@ module "mc" {
   name   = "mc1.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
-    datastore     = data.vsphere_datastore.ssd-london-b.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
   }
 
