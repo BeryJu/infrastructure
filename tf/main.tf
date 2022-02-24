@@ -1,10 +1,12 @@
 terraform {
-  backend "s3" {
-    bucket = "beryjuorg-tf-state-primary"
-    key    = "default"
-    region = "eu-central-1"
-  }
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "beryjuorg"
 
+    workspaces {
+      name = "infrastructure"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"

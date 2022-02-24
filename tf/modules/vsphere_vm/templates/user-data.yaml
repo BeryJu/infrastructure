@@ -2,4 +2,4 @@
 apt:
   primary:
     - arches: [default]
-      uri: "{{ vm_config.mirror }}"
+      uri: "mirror://mirrors.ubuntu.com/mirrors.txt"
