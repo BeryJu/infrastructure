@@ -1,0 +1,4 @@
+instance-id: ${hostname}
+local-hostname: ${hostname}
+wait-on-network:
+  ipv4: true

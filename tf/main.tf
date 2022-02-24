@@ -44,3 +44,6 @@ module "grafana" {
 module "vault" {
   source = "./vault/"
 }
+module "vms" {
+  source = "./vms/"
+}
