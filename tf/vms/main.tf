@@ -1,0 +1,43 @@
+data "vault_generic_secret" "vsphere_auth" {
+  path = "kv/vsphere/local/administrator"
+}
+
+provider "vsphere" {
+  user                 = data.vault_generic_secret.vsphere_auth.data["username"]
+  password             = data.vault_generic_secret.vsphere_auth.data["password"]
+  vsphere_server       = "vc1.prod.beryju.org"
+  allow_unverified_ssl = true
+}
+
+data "vsphere_datacenter" "uk-london" {
+  name = "uk-london"
+}
+
+data "vsphere_datacenter" "de-freiburg" {
+  name = "de-freiburg"
+}
+
+data "vsphere_datastore" "ssd-london-a" {
+  name          = "ssd-london-a"
+  datacenter_id = data.vsphere_datacenter.uk-london.id
+}
+
+data "vsphere_datastore" "ssd-london-b" {
+  name          = "ssd-london-b"
+  datacenter_id = data.vsphere_datacenter.uk-london.id
+}
+
+data "vsphere_resource_pool" "uk-heavy" {
+  name          = "prod/Resources/heavy"
+  datacenter_id = data.vsphere_datacenter.uk-london.id
+}
+
+data "vsphere_network" "uk-vs-int-100-dmz" {
+  name          = "vs-int-100-dmz"
+  datacenter_id = data.vsphere_datacenter.uk-london.id
+}
+
+data "vsphere_network" "uk-vs-int-101-srv" {
+  name          = "vs-int-101-srv"
+  datacenter_id = data.vsphere_datacenter.uk-london.id
+}
