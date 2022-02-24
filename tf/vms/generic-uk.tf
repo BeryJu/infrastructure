@@ -1,4 +1,4 @@
-module "dev1" {
+module "dev" {
   source = "../modules/vsphere_vm"
   name   = "dev1.lab.beryju.org"
   vsphere = {
@@ -14,7 +14,7 @@ module "dev1" {
   }
 }
 
-module "analytics1" {
+module "analytics" {
   source = "../modules/vsphere_vm"
   name   = "analytics1.prod.beryju.org"
   vsphere = {
@@ -30,7 +30,7 @@ module "analytics1" {
   }
 }
 
-module "mc1" {
+module "mc" {
   source = "../modules/vsphere_vm"
   name   = "mc1.prod.beryju.org"
   vsphere = {

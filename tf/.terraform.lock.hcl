@@ -6,6 +6,7 @@ provider "registry.terraform.io/goauthentik/authentik" {
   constraints = "2022.2.1"
   hashes = [
     "h1:PHsxgp/MjIR0WNhQ2eLfpXbpF16mLjmiFhimrbC9ySE=",
+    "h1:y/mqjGm5tcZqzsbXmsuFFtN5ZcX2Aa+1HLGEDpgKUmU=",
     "zh:079841fabede1613de04ce29236cb87338f00fa2f76c8c1dc65255a67346ab33",
     "zh:07e26d8b67c610cadd392103a9b6944630d9e4b5acf6035b99f3573e846bdb2e",
     "zh:1a2317d5ae3d8a49b14a379b0ac72957119fce5a6018a084de473c36ca5cb593",
@@ -26,6 +27,7 @@ provider "registry.terraform.io/grafana/grafana" {
   version     = "1.20.1"
   constraints = "~> 1.13, 1.20.1"
   hashes = [
+    "h1:YTaV063tKl84UuJFj63gI58hKd0GLXpbzRvA8N1a23U=",
     "h1:o5F0daopOXRnfhGYUQMv8XIqmkJfQiandQVVl7XUCaM=",
     "zh:09072c2ba8a19d6ff27dc39c29cefdf8d315cb0f136db846d43f6b24c0b512fe",
     "zh:1c52e0f4a8f1dacd392286e722997a55e778be8dfde70e2c4e73499c56bfd514",
@@ -125,6 +127,7 @@ provider "registry.terraform.io/hashicorp/vsphere" {
   version = "2.0.2"
   hashes = [
     "h1:/9qlE9Ni7mhl3cTHLhmYg1AFuyBnXqie53Q5Ujor6oU=",
+    "h1:EAIFpUZQ44V2YRiJTVzIbmZguMMROpsmpGIr9B5KYd4=",
     "zh:0b72856d2a89b118adf64dcfc75a0b0f7d8875e9872c637a9a0549d4a3dd9383",
     "zh:2cf50f17464feeac60039f4d36656835895260798d4d9167a1ff2d4e1e464dce",
     "zh:39d5f1c99bd4024d88b95892711f234afeb2b83700cdbd3df68a60c6b3bb0ac7",
