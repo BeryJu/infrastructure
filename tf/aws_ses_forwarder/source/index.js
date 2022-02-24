@@ -42,11 +42,11 @@ var defaultConfig = {
   emailKeyPrefix: "",
   allowPlusSign: true,
   forwardMapping: {
-    "jens@ukch.at": ["jens@beryju.org"],
     "okami@ukch.at": ["okami@doubledash.org"],
     "kal@ukch.at": ["ukchat@kalinin.uk"],
     "geordiepingu@ukch.at": ["hello@ciaranowens.com"],
     "tigsmum@ukch.at": ["hello+tigsmum@behn.cc"],
+    "@ukch.at": ["jens@beryju.org"],
   }
 };
 
