@@ -118,6 +118,17 @@ provider "registry.terraform.io/hashicorp/vault" {
     "h1:o2ov9xF3LwRY5lDaGfakdalLxxDm5frK7+cMvZqf+BI=",
     "h1:qz/Xltvm5TBzJlBhjLz5FopZb0kiXwZYuilZRH4VW8U=",
     "h1:v4y1OGIJZYw/sWDyNppQcNJPyza60e9v14FxbuwCwyU=",
+    "zh:0fcda21e49cbc93da392e022a8cf647452fcc91e3934a4d1ad8c6d744a75af57",
+    "zh:16c46da47e73486cc71881b0ec39a12e8d8f182eae42c386ad8d3f95de623c34",
+    "zh:33e7586cdcdd262372f2e52514eb27ec106bcdcdf2662fc1e6da03e5a5e82bba",
+    "zh:461ec17cafcaeb62fb56cb75edc8331118b28fb1212d99b710a36f6ecdda7539",
+    "zh:60a80cd2481f2ddd0c4bdc2b03753579dd2693ca1e1f8160bbb80c6d2590098e",
+    "zh:77a32c5cc988f06652d5a03a6b6c6f5693656b35c179d3b0e4b662d7691a3033",
+    "zh:8901aadc6e72432f320027e26e487d0e2c14426a4e07f7201f277519505cc4e9",
+    "zh:99bc6872c39b08b720240ed9c53c58a388e3886412c0cc2f67dbd623468e319f",
+    "zh:9da866bb960727d2cd59d6c1a9eee096593d7a9af782c56ec62bfaacb6ce05ab",
+    "zh:e0e0840662d710a9b012baec22ae37520c9c438e9efafddb1aff33b559f15ecd",
+    "zh:eedcd92e35003c81fb6fa66d66b5b7c4a24278fce3d181f4b9eaf07125f16b9f",
   ]
 }
 
