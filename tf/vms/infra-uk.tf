@@ -29,8 +29,8 @@ module "gitlab" {
   }
 
   spec = {
-    cpu       = 2
-    memory    = 4096
+    cpu       = 3
+    memory    = 8192
     disk_size = 50
     additional_network = [
       {
@@ -50,8 +50,8 @@ module "mon" {
   }
 
   spec = {
-    cpu       = 2
-    memory    = 4096
+    cpu       = 3
+    memory    = 32768
     disk_size = 120
   }
 }
