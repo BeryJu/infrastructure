@@ -1,5 +1,5 @@
 data "vault_generic_secret" "vsphere_auth" {
-  path = "kv/vsphere/local/administrator"
+  path = "kv/vsphere/local/terraform"
 }
 
 provider "vsphere" {
@@ -22,9 +22,19 @@ data "vsphere_datastore_cluster" "ssd-london" {
   datacenter_id = data.vsphere_datacenter.uk-london.id
 }
 
+data "vsphere_datastore_cluster" "ssd-freiburg" {
+  name          = "ssd-freiburg"
+  datacenter_id = data.vsphere_datacenter.de-freiburg.id
+}
+
 data "vsphere_resource_pool" "uk-heavy" {
   name          = "prod/Resources/heavy"
   datacenter_id = data.vsphere_datacenter.uk-london.id
+}
+
+data "vsphere_resource_pool" "de-general" {
+  name          = "prod/Resources"
+  datacenter_id = data.vsphere_datacenter.de-freiburg.id
 }
 
 data "vsphere_network" "uk-vs-int-100-dmz" {
@@ -35,4 +45,9 @@ data "vsphere_network" "uk-vs-int-100-dmz" {
 data "vsphere_network" "uk-vs-int-101-srv" {
   name          = "vs-int-101-srv"
   datacenter_id = data.vsphere_datacenter.uk-london.id
+}
+
+data "vsphere_network" "de-lan" {
+  name          = "ds-defr-lan"
+  datacenter_id = data.vsphere_datacenter.de-freiburg.id
 }
