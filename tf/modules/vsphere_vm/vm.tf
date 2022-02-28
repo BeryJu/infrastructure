@@ -43,6 +43,8 @@ resource "vsphere_virtual_machine" "vm" {
       folder,
       disk.0.thin_provisioned,
       resource_pool_id,
+      pci_device_id,
+      memory_reservation,
     ]
   }
 }

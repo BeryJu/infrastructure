@@ -45,3 +45,13 @@ resource "aws_route53_record" "analytics" {
     evaluate_target_health = true
   }
 }
+resource "aws_route53_record" "hass-ext" {
+  zone_id = aws_route53_zone.beryju-org.zone_id
+  name    = "hass-ext.beryju.org"
+  type    = "A"
+  alias {
+    name                   = "k8s-prd-istio._aliases.beryju.org"
+    zone_id                = aws_route53_zone.beryju-org.zone_id
+    evaluate_target_health = true
+  }
+}
