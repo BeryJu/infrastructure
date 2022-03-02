@@ -49,7 +49,7 @@ source "vsphere-iso" "vm" {
     network      = var.vcenter_network
     network_card = "vmxnet3"
   }
-  iso_url             = "https://releases.ubuntu.com/20.04/ubuntu-20.04.3-live-server-amd64.iso"
+  iso_url             = "https://releases.ubuntu.com/20.04/ubuntu-20.04.4-live-server-amd64.iso"
   iso_checksum        = "file:https://releases.ubuntu.com/20.04/SHA256SUMS"
   convert_to_template = true
   storage {
