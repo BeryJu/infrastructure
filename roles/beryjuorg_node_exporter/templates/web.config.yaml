@@ -1,5 +1,0 @@
-basic_auth_users:
-  prometheus: "{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/prometheus/node_exporter:prometheus") | password_hash('blowfish',lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/prometheus/node_exporter:salt")) }}"
-tls_server_config:
-  cert_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
-  key_file: /etc/ssl/private/ssl-cert-snakeoil.key

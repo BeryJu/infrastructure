@@ -1,3 +1,0 @@
-docker_compose: true
-docker_compose_stacks_path: "/srv/stacks"
-compose_stacks: []

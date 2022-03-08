@@ -1,0 +1,72 @@
+classes:
+  - beryjuorg_docker
+  - beryjuorg_docker::compose
+beryjuorg_docker::stacks:
+  - name: gitlab
+    vault_vars:
+      - aws/ses/gitlab
+    template: |
+      version: '3.7'
+
+      services:
+        gitlab:
+          image: ghcr.io/beryju/gitlab-eee:14.8.2-ee.0
+          restart: always
+          hostname: 'code.beryju.org'
+          environment:
+            GITLAB_OMNIBUS_CONFIG: |
+              external_url 'https://code.beryju.org'
+              letsencrypt['enable'] = true
+              prometheus['remote_write'] = [
+                {
+                  url: 'http://mon1.prod.beryju.org:31678/api/v1/receive',
+                }
+              ]
+              prometheus['external_labels'] = {
+                'cluster' => 'beryjuorg-dc-gitlab',
+              }
+
+              gitlab_rails['smtp_enable'] = true
+              gitlab_rails['smtp_address'] = "email-smtp.eu-central-1.amazonaws.com"
+              gitlab_rails['smtp_port'] = 587
+              gitlab_rails['smtp_user_name'] = "<%= $aws_ses_gitlab.unwrap[data][access_key] %>"
+              gitlab_rails['smtp_password'] = "<%= $aws_ses_gitlab.unwrap[data][secret_key] %>"
+              gitlab_rails['smtp_domain'] = "beryju.org"
+              gitlab_rails['smtp_authentication'] = "login"
+              gitlab_rails['smtp_enable_starttls_auto'] = true
+              gitlab_rails['gitlab_email_from'] = 'gitlab@services.beryju.org'
+
+              gitlab_rails['omniauth_enabled'] = true
+              gitlab_rails['omniauth_allow_single_sign_on'] = ['saml']
+              gitlab_rails['omniauth_sync_email_from_provider'] = 'saml'
+              gitlab_rails['omniauth_sync_profile_from_provider'] = ['saml']
+              gitlab_rails['omniauth_sync_profile_attributes'] = ['email']
+              gitlab_rails['omniauth_auto_sign_in_with_provider'] = 'saml'
+              gitlab_rails['omniauth_block_auto_created_users'] = false
+              gitlab_rails['omniauth_auto_link_saml_user'] = true
+              gitlab_rails['omniauth_providers'] = [
+                {
+                  name: 'saml',
+                  args: {
+                    assertion_consumer_service_url: 'https://code.beryju.org/users/auth/saml/callback',
+                    idp_cert_fingerprint: '42:9E:A3:F5:2E:04:9B:63:4F:B3:14:7C:13:32:E9:51:DB:35:DF:B3',
+                    idp_sso_target_url: 'https://id.beryju.org/application/saml/gitlab/sso/binding/redirect/',
+                    issuer: 'https://code.beryju.org',
+                    name_identifier_format: 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
+                    attribute_statements: {
+                      email: ['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
+                      first_name: ['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
+                      nickname: ['http://schemas.goauthentik.io/2021/02/saml/username']
+                    }
+                  },
+                  label: 'authentik'
+                }
+              ]
+          ports:
+            - '194.56.224.174:80:80'
+            - '194.56.224.174:443:443'
+            - '194.56.224.174:22:22'
+          volumes:
+            - /srv/gitlab/config:/etc/gitlab
+            - /srv/gitlab/logs:/var/log/gitlab
+            - /srv/gitlab/data:/var/opt/gitlab

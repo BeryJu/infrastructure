@@ -1,3 +1,0 @@
-compose_stacks:
-  - name: rancher
-    template: compose/mgmt-rancher.yml

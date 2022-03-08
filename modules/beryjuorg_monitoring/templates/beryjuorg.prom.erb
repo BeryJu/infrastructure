@@ -1,0 +1,5 @@
+# {% for stack in compose_stacks|default([]) %}
+# beryjuorg_machine_stack{name="{{ stack.name }}"} 1
+# {% endfor %}
+beryjuorg_machine{env="<%= @environment %>"} 1
+# beryjuorg_machine_puppet_run{}

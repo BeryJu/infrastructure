@@ -1,3 +1,0 @@
-{% for stack in compose_stacks|default([]) %}
-beryjuorg_machine_stack{name="{{ stack.name }}"} 1
-{% endfor %}
