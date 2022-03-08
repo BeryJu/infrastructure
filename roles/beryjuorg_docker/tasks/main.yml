@@ -1,4 +1,0 @@
-- import_tasks: docker.yml
-- import_tasks: compose.yml
-- import_tasks: system.yml
-- import_tasks: auth.yml

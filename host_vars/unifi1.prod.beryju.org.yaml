@@ -1,3 +1,0 @@
-compose_stacks:
-  - name: unifi
-    template: compose/unifi-main.yml

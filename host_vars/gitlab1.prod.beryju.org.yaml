@@ -1,3 +1,0 @@
-compose_stacks:
-  - name: gitlab
-    template: compose/gitlab-main.yml

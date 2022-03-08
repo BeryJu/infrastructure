@@ -1,7 +1,0 @@
-- name: Restart node-exporter
-  systemd:
-    service: prometheus-node-exporter
-    state: restarted
-- name: apt-update
-  apt:
-    update_cache: yes

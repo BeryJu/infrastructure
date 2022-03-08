@@ -1,5 +1,0 @@
-- name: Set swapiness to 0
-  sysctl:
-    name: vm.swappiness
-    value: '0'
-    state: present

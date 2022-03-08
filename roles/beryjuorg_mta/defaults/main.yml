@@ -1,7 +1,0 @@
----
-mta_forward: email-smtp.eu-central-1.amazonaws.com:587
-mta_forward_auth: True
-mta_forward_auth_user: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/aws/ses/linux:username") }}'
-mta_forward_auth_pass: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/aws/ses/linux:password") }}'
-
-mta_alias_root: admin@beryju.org

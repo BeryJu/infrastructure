@@ -1,0 +1,6 @@
+
+classes:
+  - beryjuorg_common
+  - beryjuorg_monitoring
+
+beryjuorg_common::vault_addr: https://vault1.prod.beryju.org:8443

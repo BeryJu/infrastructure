@@ -1,5 +1,0 @@
-# Managed by Ansible
-#
-{% for export in nfs_exports %}
-{{ export.path }}   {{ export.client }}({{ export.opts|default('rw,async,no_subtree_check,no_root_squash') }})
-{% endfor %}

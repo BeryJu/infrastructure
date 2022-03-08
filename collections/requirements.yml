@@ -1,6 +1,0 @@
-collections:
-  - name: awx.awx
-  - name: community.docker
-  - name: community.general
-  - name: community.hashi_vault
-  - name: community.vmware

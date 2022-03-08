@@ -1,5 +1,0 @@
-- name: restart stack
-  docker_compose:
-    project_src: "{{ docker_compose_stacks_path }}/{{ stack.name }}"
-    remove_orphans: yes
-    restarted: yes
