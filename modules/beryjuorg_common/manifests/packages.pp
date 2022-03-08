@@ -8,7 +8,8 @@ class beryjuorg_common::packages {
     'htop',
     'sudo',
     'nmap',
-    'xkb-data' # For /usr/share/X11/xkb/symbols/us, to fix console-setup service
+    'xkb-data', # For /usr/share/X11/xkb/symbols/us, to fix console-setup service
+    'acl',
   ]
   $remove_packages = [
     'snapd',
