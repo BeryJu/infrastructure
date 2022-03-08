@@ -1,0 +1,15 @@
+- hosts: puppet1.prod.beryju.org
+  become: true
+  become_user: puppet
+  vars:
+    env_dir: /etc/puppetlabs/code/environments/production
+  tasks:
+    - name: update infra
+      git:
+        repo: "https://github.com/BeryJu/infrastructure.git"
+        dest: "{{ env_dir }}"
+        version: "master"
+    - name: install modules
+      command: r10k puppetfile install
+      args:
+        chdir: "{{ env_dir }}"
