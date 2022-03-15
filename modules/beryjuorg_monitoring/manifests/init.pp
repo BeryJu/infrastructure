@@ -3,7 +3,7 @@
 class beryjuorg_monitoring {
 
   $context = {
-    'password' => Deferred('vault_lookup::lookup', ['kv/data/services/prometheus/node_exporter', 'https://vault1.prod.beryju.org:8443']),
+    'password' => Deferred('vault_lookup::lookup', ['kv/data/services/prometheus/node_exporter', lookup('beryjuorg_common::vault_addr')]),
   }
 
   apt::ppa { 'ppa:prometheus-release-tracking/prometheus-exporters':

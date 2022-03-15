@@ -3,9 +3,18 @@ version: "3"
 services:
   puppetboard:
     restart: always
-    image: ghcr.io/voxpupuli/puppetboard
+    image: ghcr.io/voxpupuli/puppetboard:3.4.0rc4
     network_mode: host
     environment:
       PUPPETDB_HOST: localhost
       PUPPETDB_PORT: 8080
       PUPPETBOARD_HOST: <%= $facts[ipaddress] %>
+  vault-proxy:
+    image: tecnativa/tcp-proxy
+    ports:
+      - 9443:9443
+    environment:
+        LISTEN:
+            :9443
+        TALK:
+            vault1.prod.beryju.org:8443

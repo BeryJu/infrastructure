@@ -43,7 +43,7 @@ class beryjuorg_common::mta {
   }
 
   $relay_vars = {
-    'creds' => Deferred('vault_lookup::lookup', [lookup('beryjuorg_common::mta_forward_auth'), 'https://vault1.prod.beryju.org:8443']),
+    'creds' => Deferred('vault_lookup::lookup', [lookup('beryjuorg_common::mta_forward_auth'), lookup('beryjuorg_common::vault_addr')]),
     'forward' => lookup('beryjuorg_common::mta_forward'),
   }
 

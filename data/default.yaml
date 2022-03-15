@@ -3,4 +3,4 @@ classes:
   - beryjuorg_common
   - beryjuorg_monitoring
 
-beryjuorg_common::vault_addr: https://vault1.prod.beryju.org:8443
+beryjuorg_common::vault_addr: https://puppet.infra.beryju.org:9443
