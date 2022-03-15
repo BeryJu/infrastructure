@@ -117,6 +117,12 @@ RUN curl -L https://github.com/istio/istio/releases/download/1.13.1/istio-1.13.1
 	mv istio-1.13.1/bin/istioctl /usr/bin/istioctl && \
 	chmod +x /usr/bin/istioctl
 
+# puppet
+RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
+	dpkg -i puppet.deb && \
+	apt-get update && \
+	apt-get install --no-install-recommends -y puppet-agent r1-l
+
 # Starship
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
