@@ -3,27 +3,4 @@ classes:
   - beryjuorg_docker::compose
 beryjuorg_docker::stacks:
   - name: plex
-    template: |
-      version: '3.7'
-      services:
-        plex:
-          container_name: plex
-          image: plexinc/pms-docker:1.25.2.5319-c43dc0277
-          restart: unless-stopped
-          environment:
-            - TZ=Europe/Berlin
-          network_mode: host
-          volumes:
-            - /srv/plex:/config
-            - /plex-transcode:/transcode
-            - /media:/data
-        tautulli:
-          container_name: tautulli
-          image: tautulli/tautulli:v2.9.0-beta
-          restart: always
-          environment:
-            - TZ=Europe/Berlin
-          ports:
-            - 8181:8181
-          volumes:
-            - /srv/tautulli:/config
+    template: plex

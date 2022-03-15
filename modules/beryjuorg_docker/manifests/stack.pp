@@ -24,7 +24,7 @@ define beryjuorg_docker::stack (
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => Deferred('inline_epp', [$template, Hash($context)]),
+    content => Deferred('inline_epp', [file("beryjuorg_docker/${template}"), Hash($context)]),
   }
   ->docker_compose { $name:
     ensure        => present,

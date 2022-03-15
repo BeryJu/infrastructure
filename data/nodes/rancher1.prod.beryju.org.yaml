@@ -3,22 +3,4 @@ classes:
   - beryjuorg_docker::compose
 beryjuorg_docker::stacks:
   - name: rancher
-    template: |
-      version: '3.5'
-      services:
-        rancher:
-          image: rancher/rancher:v2.6.3
-          restart: always
-          container_name: rancher
-          command: --acme-domain rancher.beryju.org
-          privileged: true
-          healthcheck:
-            test: "curl -f -k https://localhost/ping"
-            interval: 3s
-            timeout: 10s
-            retries: 5
-          ports:
-            - "80:80"
-            - "443:443"
-          volumes:
-            - /srv/rancher:/var/lib/rancher
+    template: rancher

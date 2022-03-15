@@ -5,26 +5,4 @@ beryjuorg_docker::stacks:
   - name: unifi
     vault_vars:
       - services/unifi
-    template: |
-      version: "2"
-      services:
-        unifi-controller:
-          image: linuxserver/unifi-controller:7.0.23
-          container_name: unifi-controller
-          environment:
-            - PUID=1000
-            - PGID=1000
-            - MEM_LIMIT=1024M #optional
-          volumes:
-            - /srv/unifi:/config
-          network_mode: host
-          restart: unless-stopped
-        unifi-poller:
-          restart: always
-          image: golift/unifi-poller
-          ports:
-            - 9130:9130
-          environment:
-            UP_UNIFI_DEFAULT_USER: "<%= $services_unifi.unwrap[data][poller_username] %>"
-            UP_UNIFI_DEFAULT_PASS: "<%= $services_unifi.unwrap[data][poller_password] %>"
-            UP_UNIFI_DEFAULT_URL: https://unifi1.prod.beryju.org:8443
+    template: unifi

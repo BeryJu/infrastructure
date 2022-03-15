@@ -3,15 +3,4 @@ classes:
   - beryjuorg_docker::compose
 beryjuorg_docker::stacks:
   - name: puppetboard
-    template: |
-      version: "3"
-
-      services:
-        puppetboard:
-          restart: always
-          image: ghcr.io/voxpupuli/puppetboard
-          network_mode: host
-          environment:
-            PUPPETDB_HOST: localhost
-            PUPPETDB_PORT: 8080
-            PUPPETBOARD_HOST: <%= $facts[ipaddress] %>
+    template: puppet
