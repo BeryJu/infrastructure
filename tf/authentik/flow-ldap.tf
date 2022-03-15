@@ -19,7 +19,7 @@ resource "authentik_flow" "ldap-flow" {
   title       = "LDAP"
   slug        = "ldap-flow"
   designation = "authentication"
-  background = "/static/dist/assets/images/flow_background.jpg"
+  background  = "/static/dist/assets/images/flow_background.jpg"
 }
 
 resource "authentik_flow_stage_binding" "ldap-identification-binding" {
