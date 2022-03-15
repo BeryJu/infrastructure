@@ -16,12 +16,14 @@ resource "authentik_provider_proxy" "provider" {
   external_host      = var.external
   authorization_flow = data.authentik_flow.default-authorization-flow.id
   token_validity     = "days=30"
+  skip_path_regex    = var.skip_path_regex
 }
 
 resource "authentik_application" "app" {
   name              = var.name
   slug              = replace(lower(var.name), " ", "-")
   protocol_provider = authentik_provider_proxy.provider.id
+  meta_icon         = var.icon_url
 }
 
 resource "authentik_policy_binding" "app-access" {

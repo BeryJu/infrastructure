@@ -14,6 +14,16 @@ variable "external" {
   type = string
 }
 
+variable "icon_url" {
+  type    = string
+  default = null
+}
+
+variable "skip_path_regex" {
+  type    = string
+  default = null
+}
+
 variable "access_group" {
   type = list(string)
 }

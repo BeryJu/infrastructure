@@ -2,7 +2,7 @@ terraform {
   required_providers {
     authentik = {
       source  = "goauthentik/authentik"
-      version = "2022.3.1"
+      version = "2022.3.2"
     }
   }
 }
@@ -38,9 +38,9 @@ resource "authentik_outpost" "k8s-proxy" {
   protocol_providers = [
     63,
     59,
-    65,
+    module.authentik-app-alertmanager.provider_ia,
     67,
-    27,
+    module.authentik-app-home-assistant.provider_ia,
     module.authentik-app-puppetboard.provider_ia,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
