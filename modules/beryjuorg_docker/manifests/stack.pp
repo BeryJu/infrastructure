@@ -30,14 +30,10 @@ define beryjuorg_docker::stack (
     compose_files => ["/srv/stacks/${name}/docker-compose.yml"],
     notify        => Exec["${name}-update"],
   }
-  ->exec { "${name}-pull":
-    command => '/usr/local/bin/docker-compose pull',
-    cwd     => "/srv/stacks/${name}",
-  }
-
-  exec { "${name}-update":
+  ->exec { "${name}-update":
     command => '/usr/local/bin/docker-compose up -d',
     cwd     => "/srv/stacks/${name}",
+    refreshonly => true,
   }
 
 }
