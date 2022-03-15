@@ -14,3 +14,4 @@ beryjuorg_docker::stacks:
           environment:
             PUPPETDB_HOST: localhost
             PUPPETDB_PORT: 8080
+            PUPPETBOARD_HOST: <%= $facts[ipaddress] %>
