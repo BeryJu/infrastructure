@@ -36,12 +36,24 @@ resource "authentik_service_connection_kubernetes" "local" {
 resource "authentik_outpost" "k8s-proxy" {
   name = "k8s"
   protocol_providers = [
-    63,
-    59,
+    module.authentik-app-sabnzbd.provider_ia,
+    module.authentik-app-oxidized.provider_ia,
     module.authentik-app-alertmanager.provider_ia,
-    67,
+    module.authentik-app-code-server.provider_ia,
     module.authentik-app-home-assistant.provider_ia,
     module.authentik-app-puppetboard.provider_ia,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
+}
+
+data "authentik_property_mapping_saml" "defaults" {
+  managed_list = [
+    "goauthentik.io/providers/saml/upn",
+    "goauthentik.io/providers/saml/name",
+    "goauthentik.io/providers/saml/email",
+    "goauthentik.io/providers/saml/username",
+    "goauthentik.io/providers/saml/uid",
+    "goauthentik.io/providers/saml/groups",
+    "goauthentik.io/providers/saml/ms-windowsaccountname",
+  ]
 }

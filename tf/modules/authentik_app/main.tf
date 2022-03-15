@@ -11,7 +11,7 @@ data "authentik_flow" "default-authorization-flow" {
 }
 
 resource "authentik_provider_proxy" "provider" {
-  name               = var.name
+  name               = "tf-${lower(var.name)}"
   internal_host      = var.internal
   external_host      = var.external
   authorization_flow = data.authentik_flow.default-authorization-flow.id
