@@ -25,13 +25,14 @@ define beryjuorg_docker::stack (
     group   => 'root',
     mode    => '0644',
     content => Deferred('inline_epp', [file("beryjuorg_docker/${template}/docker-compose.yaml"), Hash($context)]),
+    notify  => Exec["${name}-update"],
   }
   ->docker_compose { $name:
     ensure        => present,
     compose_files => ["/srv/stacks/${name}/docker-compose.yml"],
     notify        => Exec["${name}-update"],
   }
-  ->exec { "${name}-update":
+  exec { "${name}-update":
     command => '/usr/local/bin/docker-compose up -d',
     cwd     => "/srv/stacks/${name}",
     refreshonly => true,

@@ -14,7 +14,7 @@ services:
     ports:
       - 9443:9443
     environment:
-        LISTEN:
-            :9443
-        TALK:
-            vault1.prod.beryju.org:9443
+      LISTEN: |
+        :9443
+      TALK: |
+        vault1.prod.beryju.org:9443
