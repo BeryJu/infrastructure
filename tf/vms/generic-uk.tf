@@ -4,7 +4,7 @@ module "dev" {
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
-    network       = data.vsphere_network.uk-vs-int-101-srv.id
+    network       = data.vsphere_network.uk-vs-int-999-testing.id
   }
 
   spec = {

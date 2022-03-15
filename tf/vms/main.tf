@@ -47,6 +47,11 @@ data "vsphere_network" "uk-vs-int-101-srv" {
   datacenter_id = data.vsphere_datacenter.uk-london.id
 }
 
+data "vsphere_network" "uk-vs-int-999-testing" {
+  name          = "vs-int-999-testing"
+  datacenter_id = data.vsphere_datacenter.uk-london.id
+}
+
 data "vsphere_network" "de-lan" {
   name          = "ds-defr-lan"
   datacenter_id = data.vsphere_datacenter.de-freiburg.id
