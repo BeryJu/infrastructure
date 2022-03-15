@@ -5,7 +5,8 @@ define beryjuorg_docker::stack (
   String $vault_mount = "kv",
 ) {
 
-  if vault_vars {
+  $context = {}
+  if $vault_vars {
     $context = $vault_vars.map |$vault_var| {
       [regsubst($vault_var, '/', '_', 'G'), Deferred('vault_lookup::lookup', ["${vault_mount}/data/${vault_var}", $vault_addr])]
     }
