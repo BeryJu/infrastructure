@@ -17,4 +17,4 @@ services:
         LISTEN:
             :9443
         TALK:
-            vault1.prod.beryju.org:8443
+            vault1.prod.beryju.org:9443
