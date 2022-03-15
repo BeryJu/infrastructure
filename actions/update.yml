@@ -1,12 +1,13 @@
 - hosts: all
   become: true
+  strategy: free
   tasks:
     - name: apt | update cache
       apt:
         update_cache: yes
     - name: apt | full-upgrade
       apt:
-        upgrade: safe
+        upgrade: full
       register: apt_res
       retries: 5
       until: apt_res is success
@@ -22,3 +23,7 @@
       register: result
       retries: 5
       until: result.rc == 0
+    - name: Remove prometheus cache
+      file:
+        path: /var/lib/prometheus/node-exporter/apt.prom
+        state: absent

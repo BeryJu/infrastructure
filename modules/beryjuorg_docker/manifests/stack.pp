@@ -1,12 +1,14 @@
 define beryjuorg_docker::stack (
   String $template,
-  Array[String] $vault_vars,
+  Optional[Array[String]] $vault_vars,
   String $vault_addr,
   String $vault_mount = "kv",
 ) {
 
-  $context = $vault_vars.map |$vault_var| {
-    [regsubst($vault_var, '/', '_', 'G'), Deferred('vault_lookup::lookup', ["${vault_mount}/data/${vault_var}", $vault_addr])]
+  if vault_vars {
+    $context = $vault_vars.map |$vault_var| {
+      [regsubst($vault_var, '/', '_', 'G'), Deferred('vault_lookup::lookup', ["${vault_mount}/data/${vault_var}", $vault_addr])]
+    }
   }
 
   file { "/srv/stacks/${name}":
