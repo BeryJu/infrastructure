@@ -121,7 +121,12 @@ RUN curl -L https://github.com/istio/istio/releases/download/1.13.1/istio-1.13.1
 RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
 	dpkg -i puppet.deb && \
 	apt-get update && \
-	apt-get install --no-install-recommends -y puppet-agent r1-l
+	apt-get install --no-install-recommends -y puppet-agent r10k
+
+# doctl
+RUN curl -sL https://github.com/digitalocean/doctl/releases/download/v1.71.0/doctl-1.71.0-linux-amd64.tar.gz | tar -xzv && \
+	chmod +x doctl && \
+	mv doctl /usr/bin/doctl
 
 # Starship
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
