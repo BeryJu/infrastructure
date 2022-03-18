@@ -52,7 +52,7 @@ module "mon" {
   spec = {
     cpu       = 3
     memory    = 32768
-    disk_size = 120
+    disk_size = 250
   }
 }
 
