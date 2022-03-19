@@ -3,7 +3,7 @@ node /puppet.*/ {
   class { 'puppetdb::master::config': }
 }
 node default {
-  if $::facts[os][family] != "windows" {
+  if $::facts[os][family] != 'windows' {
     lookup('classes', {merge => unique}).include
   }
 }

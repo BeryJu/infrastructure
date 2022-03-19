@@ -1,5 +1,5 @@
 ---
-name: Lint
+name: Lint (ansible)
 
 on:
   workflow_dispatch:

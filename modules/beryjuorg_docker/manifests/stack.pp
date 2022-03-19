@@ -1,8 +1,10 @@
+#
+#
 define beryjuorg_docker::stack (
   String $template,
   Optional[Array[String]] $vault_vars,
   String $vault_addr,
-  String $vault_mount = "kv",
+  String $vault_mount = 'kv',
 ) {
 
   if $vault_vars {
@@ -33,8 +35,8 @@ define beryjuorg_docker::stack (
     notify        => Exec["${name}-update"],
   }
   exec { "${name}-update":
-    command => '/usr/local/bin/docker-compose up -d',
-    cwd     => "/srv/stacks/${name}",
+    command     => '/usr/local/bin/docker-compose up -d',
+    cwd         => "/srv/stacks/${name}",
     refreshonly => true,
   }
 

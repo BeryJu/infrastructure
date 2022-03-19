@@ -1,0 +1,22 @@
+---
+name: Lint (puppet)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  puppet-lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: puppet-lint
+      uses: scottbrenner/puppet-lint-action@master
+      with:
+        args: ./
