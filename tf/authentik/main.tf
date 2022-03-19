@@ -42,6 +42,7 @@ resource "authentik_outpost" "k8s-proxy" {
     module.authentik-app-code-server.provider_ia,
     module.authentik-app-home-assistant.provider_ia,
     module.authentik-app-puppetboard.provider_ia,
+    module.authentik-app-stack-storm.provider_ia,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
 }
