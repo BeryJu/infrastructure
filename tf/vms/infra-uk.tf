@@ -5,6 +5,7 @@ module "rancher" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -26,6 +27,7 @@ module "gitlab" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -47,6 +49,7 @@ module "mon" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -63,6 +66,7 @@ module "netbox" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -79,6 +83,7 @@ module "puppet" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -100,6 +105,7 @@ module "vault" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {

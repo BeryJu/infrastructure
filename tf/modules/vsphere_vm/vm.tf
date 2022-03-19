@@ -1,3 +1,8 @@
+data "vsphere_virtual_machine" "template" {
+  name          = var.template
+  datacenter_id = var.vsphere.datacenter
+}
+
 resource "vsphere_virtual_machine" "vm" {
   name                 = var.name
   resource_pool_id     = var.vsphere.resource_pool
@@ -38,10 +43,15 @@ resource "vsphere_virtual_machine" "vm" {
     size  = var.spec.disk_size
   }
 
+  clone {
+    template_uuid = data.vsphere_virtual_machine.template.id
+  }
+
   lifecycle {
     ignore_changes = [
       folder,
       disk.0.thin_provisioned,
+      clone.0.template_uuid,
       resource_pool_id,
       pci_device_id,
       memory_reservation,

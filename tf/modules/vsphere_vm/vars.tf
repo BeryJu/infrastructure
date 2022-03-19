@@ -6,6 +6,11 @@ variable "name" {
   type = string
 }
 
+variable "template" {
+  type    = string
+  default = "ubuntu2004-beryjuorg-base"
+}
+
 variable "spec" {
   type = object({
     cpu       = number
@@ -22,5 +27,6 @@ variable "vsphere" {
     resource_pool = string
     datastore     = string
     network       = string
+    datacenter    = string
   })
 }

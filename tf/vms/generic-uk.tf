@@ -5,6 +5,7 @@ module "dev" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-999-testing.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -21,6 +22,7 @@ module "analytics" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -37,6 +39,7 @@ module "mc" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -58,6 +61,7 @@ module "ak-dev-dc" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -74,6 +78,7 @@ module "ak-dev-k3s" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {

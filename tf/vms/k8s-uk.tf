@@ -5,6 +5,7 @@ module "k8s-prd-c" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {
@@ -22,6 +23,7 @@ module "k8s-prd-w" {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
     network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
   }
 
   spec = {

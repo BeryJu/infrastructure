@@ -5,6 +5,7 @@ module "hass" {
     resource_pool = data.vsphere_resource_pool.de-general.id
     datastore     = data.vsphere_datastore_cluster.ssd-freiburg.id
     network       = data.vsphere_network.de-lan.id
+    datacenter    = data.vsphere_datacenter.de-freiburg.id
   }
 
   spec = {
@@ -21,6 +22,7 @@ module "plex" {
     resource_pool = data.vsphere_resource_pool.de-general.id
     datastore     = data.vsphere_datastore_cluster.ssd-freiburg.id
     network       = data.vsphere_network.de-lan.id
+    datacenter    = data.vsphere_datacenter.de-freiburg.id
   }
 
   spec = {
@@ -37,6 +39,7 @@ module "unifi" {
     resource_pool = data.vsphere_resource_pool.de-general.id
     datastore     = data.vsphere_datastore_cluster.ssd-freiburg.id
     network       = data.vsphere_network.de-lan.id
+    datacenter    = data.vsphere_datacenter.de-freiburg.id
   }
 
   spec = {
