@@ -51,3 +51,11 @@ resource "aws_route53_zone" "k8s-beryju-org" {
     vpc_id = data.aws_vpc.default.id
   }
 }
+
+resource "aws_route53_zone" "int-rev" {
+  name = "120.10.in-addr.arpa"
+
+  vpc {
+    vpc_id = data.aws_vpc.default.id
+  }
+}
