@@ -62,6 +62,8 @@ resource "vsphere_virtual_machine" "vm" {
       resource_pool_id,
       pci_device_id,
       memory_reservation,
+      # until https://github.com/hashicorp/terraform-provider-vsphere/pull/1603
+      extra_config,
     ]
   }
 }
