@@ -3,8 +3,10 @@
 class beryjuorg_common::users {
 
   user { 'jens':
-    ensure => 'present',
-    shell  => '/bin/bash',
+    ensure     => 'present',
+    shell      => '/bin/bash',
+    groups     => ['sudo'],
+    managehome => true,
   }
   ->ssh_authorized_key { 'jens@beryju.org old':
     ensure => present,
@@ -20,9 +22,10 @@ class beryjuorg_common::users {
   }
 
   user { 'ansible':
-    ensure => 'present',
-    shell  => '/bin/bash',
-    groups => ['sudo'],
+    ensure     => 'present',
+    shell      => '/bin/bash',
+    groups     => ['sudo'],
+    managehome => true,
   }
   ->ssh_authorized_key { 'ansible':
     ensure => present,

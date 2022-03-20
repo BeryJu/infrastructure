@@ -3,6 +3,12 @@ data "vsphere_virtual_machine" "template" {
   datacenter_id = var.vsphere.datacenter
 }
 
+locals {
+  fqdn_parts = split(".", var.name)
+  domain_parts = slice(local.fqdn_parts, 1, length(local.fqdn_parts))
+  domain = join(".", local.domain_parts)
+}
+
 resource "vsphere_virtual_machine" "vm" {
   name                 = var.name
   resource_pool_id     = var.vsphere.resource_pool
@@ -29,7 +35,8 @@ resource "vsphere_virtual_machine" "vm" {
 
   extra_config = {
     "guestinfo.userdata" = base64encode(templatefile("${path.module}/templates/user-data.yaml", {
-      hostname = var.name
+      hostname = var.name,
+      domain = local.domain,
     }))
     "guestinfo.userdata.encoding" = "base64"
     "guestinfo.metadata" = base64encode(templatefile("${path.module}/templates/meta-data.yaml", {

@@ -16,8 +16,7 @@ class beryjuorg_monitoring {
   ->service { 'prometheus-node-exporter':
     ensure => 'running'
   }
-
-  user { 'prometheus':
+  ->user { 'prometheus':
     ensure => 'present',
     groups => ['prometheus', 'ssl-cert']
   }
@@ -30,7 +29,7 @@ class beryjuorg_monitoring {
     content => Deferred('inline_epp', [file('beryjuorg_monitoring/web.config.yaml.epp'), $context]),
     notify  => Service['prometheus-node-exporter'],
   }
-  file { '/etc/default/prometheus-node-exporter':
+  ->file { '/etc/default/prometheus-node-exporter':
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
@@ -38,7 +37,7 @@ class beryjuorg_monitoring {
     content => template('beryjuorg_monitoring/default.erb'),
     notify  => Service['prometheus-node-exporter'],
   }
-  file { '/var/lib/prometheus/node-exporter/beryjuorg.prom':
+  ->file { '/var/lib/prometheus/node-exporter/beryjuorg.prom':
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',

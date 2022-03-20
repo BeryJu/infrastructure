@@ -3,3 +3,23 @@ apt:
   primary:
     - arches: [default]
       uri: "mirror://mirrors.ubuntu.com/mirrors.txt"
+users:
+  - name: jens
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, sudo
+    ssh_import_id:
+      - gh:BeryJu
+    shell: /bin/bash
+puppet:
+  install: true
+  install_type: "aio"
+  collection: "puppet7"
+  exec: true
+  conf:
+    agent:
+      server: "puppet.infra.beryju.org"
+
+manage_resolv_conf: true
+resolv_conf:
+  searchdomains:
+    - ${domain}

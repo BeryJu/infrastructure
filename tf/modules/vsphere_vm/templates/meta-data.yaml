@@ -1,4 +1,7 @@
 instance-id: ${hostname}
+hostname: ${hostname}
+prefer_fqdn_over_hostname: true
+fqdn: ${hostname}
 local-hostname: ${hostname}
 wait-on-network:
   ipv4: true

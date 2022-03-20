@@ -50,5 +50,7 @@ if [[ -e ${dbus_id} && ! -h ${dbus_id} ]]; then
     rm -f ${dbus_id}
 fi
 
+rm -f /etc/cloud/cloud.cfg.d/99-installer.cfg
+
 # Fix console-setup early
 ln -s /usr/share/X11/xkb/symbols/us /usr/share/X11/xkb/symbols/en
