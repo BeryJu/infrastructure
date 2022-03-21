@@ -15,7 +15,7 @@ jobs:
       with:
         fetch-depth: 1
     - name: Lint Ansible Playbooks
-      uses: ansible/ansible-lint-action@master
+      uses: ansible/ansible-lint-action@main
       with:
         targets: |
           site.yml
