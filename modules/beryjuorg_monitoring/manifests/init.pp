@@ -13,9 +13,6 @@ class beryjuorg_monitoring {
     ensure => '1.1.2+ds-2~202107081617~ubuntu20.04.1',
     notify => Service['prometheus-node-exporter'],
   }
-  ->service { 'prometheus-node-exporter':
-    ensure => 'running'
-  }
   ->user { 'prometheus':
     ensure => 'present',
     groups => ['prometheus', 'ssl-cert']
@@ -43,6 +40,10 @@ class beryjuorg_monitoring {
     group   => 'root',
     mode    => '0640',
     content => template('beryjuorg_monitoring/beryjuorg.prom.erb'),
+  }
+
+  service { 'prometheus-node-exporter':
+    ensure => 'running'
   }
 
 }
