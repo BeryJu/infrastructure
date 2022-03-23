@@ -37,6 +37,8 @@ resource "authentik_outpost" "k8s-proxy" {
   name = "k8s"
   protocol_providers = [
     module.authentik-app-sabnzbd.provider_ia,
+    module.authentik-app-radarr.provider_ia,
+    module.authentik-app-sonarr.provider_ia,
     module.authentik-app-oxidized.provider_ia,
     module.authentik-app-alertmanager.provider_ia,
     module.authentik-app-code-server.provider_ia,
