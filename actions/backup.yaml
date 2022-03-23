@@ -16,6 +16,24 @@
         dst: authentik
       - src: BeryJu/beryju.org
         dst: beryju.org
+      - src: BeryJu/hass-auth-header
+        dst: hass-auth-header
+      - src: BeryJu/kube-dhcp
+        dst: kube-dhcp
+      - src: BeryJu/hue-link
+        dst: hue-link
+      - src: BeryJu/imagik
+        dst: imagik
+      - src: BeryJu/oauth1-test-server
+        dst: oauth1-test-server
+      - src: BeryJu/oidc-test-client
+        dst: oidc-test-client
+      - src: BeryJu/saml-test-sp
+        dst: saml-test-sp
+      - src: BeryJu/acme-for-appliances
+        dst: acme-for-appliances
+      - src: BeryJu/hass-ticktick
+        dst: hass-ticktick
   tasks:
     - name: Dst | Ensure gitlab project exists
       community.general.gitlab_project:
