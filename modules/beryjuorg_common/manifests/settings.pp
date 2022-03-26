@@ -17,6 +17,14 @@ class beryjuorg_common::settings {
     notify => Service['console-setup']
   }
 
+  file { '/etc/profile.d/00-beryjuorg.sh':
+    ensure => present,
+    source => 'puppet:///modules/beryjuorg_common/aliases.sh',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644'.
+  }
+
   service { 'multipathd':
     ensure => 'stopped'
   }
