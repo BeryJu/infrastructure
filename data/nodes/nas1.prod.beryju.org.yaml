@@ -1,3 +1,6 @@
+classes:
+  - beryjuorg_docker
+  - beryjuorg_docker::compose
 nfs_exports:
   - path: /bigpool/media
     client: 10.120.20.0/24
