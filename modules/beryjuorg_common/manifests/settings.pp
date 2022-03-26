@@ -22,7 +22,7 @@ class beryjuorg_common::settings {
     source => 'puppet:///modules/beryjuorg_common/aliases.sh',
     owner  => 'root',
     group  => 'root',
-    mode   => '0644'.
+    mode   => '0644'
   }
 
   service { 'multipathd':
