@@ -46,6 +46,7 @@ var defaultConfig = {
     "kal@ukch.at": ["ukchat@kalinin.uk"],
     "geordiepingu@ukch.at": ["hello@ciaranowens.com"],
     "tigsmum@ukch.at": ["hello+tigsmum@behn.cc"],
+    "taco@ukch.at": ["tacoisagayqueen@gmail.com"],
     "@ukch.at": ["jens@beryju.org"],
     "@fixsuutarila.com": ["fix.suutarila@gmail.com"],
   }
