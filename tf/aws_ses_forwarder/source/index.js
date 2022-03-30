@@ -48,6 +48,7 @@ var defaultConfig = {
     "tigsmum@ukch.at": ["hello+tigsmum@behn.cc"],
     "taco@ukch.at": ["tacoisagayqueen@gmail.com"],
     "bonzi@ukch.at": ["me+ukchat@bonzi.sh"],
+    "issy@ukch.at": ["issy+ukchat@issy.dev"],
     "@ukch.at": ["jens@beryju.org"],
     "@fixsuutarila.com": ["fix.suutarila@gmail.com"],
   }
