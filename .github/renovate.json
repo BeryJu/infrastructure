@@ -1,5 +1,17 @@
 {
   "enabled": true,
   "docker-compose": {},
-  "dependencyDashboard": true
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "docker",
+        "github-releases"
+      ],
+      "versioning": "loose",
+      "matchPackageNames": [
+        "plexinc/pms-docker"
+      ]
+    }
+  ]
 }
