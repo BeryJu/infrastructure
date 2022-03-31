@@ -30,3 +30,14 @@ module "authentik-app-radarr" {
     data.authentik_group.acl_beryjuorg.id
   ]
 }
+
+module "authentik-app-tautulli" {
+  source = "../modules/authentik_app"
+
+  name     = "tautulli"
+  internal = "http://plex1.prod.beryju.org:8181"
+  external = "https://tautulli-dl-stack.infra.beryju.org"
+  access_group = [
+    data.authentik_group.acl_beryjuorg.id
+  ]
+}

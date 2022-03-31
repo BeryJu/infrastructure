@@ -36,15 +36,16 @@ resource "authentik_service_connection_kubernetes" "local" {
 resource "authentik_outpost" "k8s-proxy" {
   name = "k8s"
   protocol_providers = [
-    module.authentik-app-sabnzbd.provider_ia,
-    module.authentik-app-radarr.provider_ia,
-    module.authentik-app-sonarr.provider_ia,
-    module.authentik-app-oxidized.provider_ia,
-    module.authentik-app-alertmanager.provider_ia,
-    module.authentik-app-code-server.provider_ia,
-    module.authentik-app-home-assistant.provider_ia,
-    module.authentik-app-puppetboard.provider_ia,
-    module.authentik-app-stack-storm.provider_ia,
+    module.authentik-app-sabnzbd.provider_id,
+    module.authentik-app-radarr.provider_id,
+    module.authentik-app-sonarr.provider_id,
+    module.authentik-app-oxidized.provider_id,
+    module.authentik-app-alertmanager.provider_id,
+    module.authentik-app-code-server.provider_id,
+    module.authentik-app-home-assistant.provider_id,
+    module.authentik-app-puppetboard.provider_id,
+    module.authentik-app-stack-storm.provider_id,
+    module.authentik-app-tautulli.provider_id,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
 }
