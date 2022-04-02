@@ -3,8 +3,8 @@ name: Run ansible (update)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
+  schedule:
+    - cron: '0 1 * * *'
 
 jobs:
   ansible:
