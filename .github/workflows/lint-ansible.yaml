@@ -18,12 +18,9 @@ jobs:
       uses: ansible/ansible-lint-action@main
       with:
         targets: |
-          site.yml
-          actions/cleanup.yml
-          actions/update.yml
-          actions/sentry-cleanup.yml
-          provisioning/new-vm.yml
-          awx/site.yaml
-          vsphere/site.yaml
+          actions/cleanup.yaml
+          actions/update.yaml
+          actions/sentry-cleanup.yaml
+          provisioning/new-vm.yaml
         override-deps: |
           rich>=9.5.1,<11.0.0

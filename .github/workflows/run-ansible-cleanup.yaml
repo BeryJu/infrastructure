@@ -16,4 +16,4 @@ jobs:
     - name: Run playbook
       uses: ./.github/actions/run-ansible
       with:
-        playbook: actions/cleanup.yml
+        playbook: actions/cleanup.yaml

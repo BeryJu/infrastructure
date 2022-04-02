@@ -16,4 +16,4 @@ jobs:
     - name: Run playbook
       uses: ./.github/actions/run-ansible
       with:
-        playbook: actions/update.yml
+        playbook: actions/update.yaml

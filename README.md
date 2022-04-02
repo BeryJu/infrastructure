@@ -1,10 +1,11 @@
-# Ansible playbooks for my infrastructure
+# Ansible playbooks/Puppet stuff for my infrastructure
 
 See also https://github.com/BeryJu/k8s, repository for GitOps with flux.
 
 ## Requirements
 
 - Ansible latest
+- Puppet latest
 - HashiCorp Vault (for credentials)
 - VMware vSphere (for provisioning)
 
@@ -16,7 +17,7 @@ poetry install # (--dev if you want to lint)
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with hvac on macOS
 ```
 
-## Non-ansible files
+## Non-puppet files
 
 - `ee/`:
 
@@ -26,34 +27,24 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with 
 
     Contains a packer project used to create a custom base image with the VMware Cloud-init datasource.
 
+- `tf/`:
+
+    Terraform stuff
+
 - `workstation/`:
 
     Docker image that I use for day-to-day tasks, has all required utilities installed.
 
 ## Playbooks
 
-- `actions/cleanup.yml`:
+- `actions/cleanup.yaml`:
 
     Remove unused docker images (executed on a schedule by AWX)
 
-- `actions/sentry-cleanup.yml`:
+- `actions/sentry-cleanup.yaml`:
 
     Cleanup sentry data and vacuum the database (run once a day by AWX).
 
-- `actions/update.yml`:
+- `actions/update.yaml`:
 
     Update all systems
-
-- `awx/site.yml`:
-
-    Configure awx.beryju.org
-
-- `site.yml`:
-
-    Main playbook, install common packages, set settings and ssh keys.
-
-    Depending on the host, docker (and compose) are installed, and stacks are copied over.
-
-- `provisioning/new-vm.yml`:
-
-    Playbook to provision a new VM on vSphere using a cloud-init ubuntu or debian image.

@@ -19,12 +19,12 @@
 
   tasks:
     - name: Load profile
-      include_vars: "./profiles/profile-{{ bootstrap_profile }}.yml"
+      include_vars: "./profiles/profile-{{ bootstrap_profile }}.yaml"
 
     - name: Prepare meta-data and user-data
       set_fact:
-        meta_data: "{{ lookup('template', './templates/meta-data.j2.yml') | b64encode }}"
-        user_data: "{{ lookup('template', './templates/user-data.j2.yml') | b64encode }}"
+        meta_data: "{{ lookup('template', './templates/meta-data.j2.yaml') | b64encode }}"
+        user_data: "{{ lookup('template', './templates/user-data.j2.yaml') | b64encode }}"
 
     - name: Debug metadata
       debug:
@@ -106,7 +106,7 @@
 
   tasks:
     - name: Load profile
-      include_vars: "./profiles/profile-{{ bootstrap_profile }}.yml"
+      include_vars: "./profiles/profile-{{ bootstrap_profile }}.yaml"
 
     - name: Create user
       user:
