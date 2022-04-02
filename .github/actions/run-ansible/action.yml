@@ -36,4 +36,5 @@ runs:
         export ANSIBLE_HASHI_VAULT_CERT_AUTH_PUBLIC_KEY=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem
         poetry run ansible-playbook ${{ inputs.playbook }}
         ls
-    - uses: codecov/codecov-action@v2
+    - if: ${{ always() }}
+      uses: codecov/codecov-action@v2
