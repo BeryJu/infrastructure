@@ -36,7 +36,7 @@ runs:
       run: |
         export ANSIBLE_HASHI_VAULT_CERT_AUTH_PRIVATE_KEY=/etc/puppetlabs/puppet/ssl/private_keys/$(hostname -f).pem
         export ANSIBLE_HASHI_VAULT_CERT_AUTH_PUBLIC_KEY=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem
-        poetry run ansible-playbook ${{ inputs.playbook }}
+        poetry run ansible-playbook --diff -v ${{ inputs.playbook }}
     - if: ${{ always() }}
       uses: codecov/codecov-action@v2
       # with:
