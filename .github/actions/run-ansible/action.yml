@@ -40,4 +40,5 @@ runs:
     - if: ${{ always() }}
       uses: codecov/codecov-action@v2
       with:
-        directory: ./tests/
+        directory: tests
+        verbose: true
