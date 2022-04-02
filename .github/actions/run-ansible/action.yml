@@ -32,10 +32,11 @@ runs:
         ANSIBLE_CALLBACKS_ENABLED: junit
         ANSIBLE_HASHI_VAULT_AUTH_METHOD: cert
         ANSIBLE_HASHI_VAULT_CA_CERT: /etc/puppetlabs/puppet/ssl/certs/ca.pem
+        JUNIT_OUTPUT_DIR: ./junit
       run: |
         export ANSIBLE_HASHI_VAULT_CERT_AUTH_PRIVATE_KEY=/etc/puppetlabs/puppet/ssl/private_keys/$(hostname -f).pem
         export ANSIBLE_HASHI_VAULT_CERT_AUTH_PUBLIC_KEY=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem
         poetry run ansible-playbook ${{ inputs.playbook }}
-        ls
+        ls ./junit
     - if: ${{ always() }}
       uses: codecov/codecov-action@v2
