@@ -30,6 +30,7 @@ runs:
         ANSIBLE_REMOTE_USER: ansible
         ANSIBLE_HOST_KEY_CHECKING: "false"
         ANSIBLE_CALLBACKS_ENABLED: junit
+        ANSIBLE_HASHI_VAULT_ADDR: https://vault1.prod.beryju.org:9443
         ANSIBLE_HASHI_VAULT_AUTH_METHOD: cert
         ANSIBLE_HASHI_VAULT_CA_CERT: /etc/puppetlabs/puppet/ssl/certs/ca.pem
         JUNIT_OUTPUT_DIR: junit
