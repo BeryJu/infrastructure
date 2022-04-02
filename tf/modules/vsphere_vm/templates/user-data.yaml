@@ -16,10 +16,14 @@ puppet:
   collection: "puppet7"
   exec: true
   conf:
-    agent:
+    main:
       server: "puppet.infra.beryju.org"
+      certname: ${hostname}
 
 manage_resolv_conf: true
 resolv_conf:
   searchdomains:
     - ${domain}
+
+bootcmd:
+  - hostname ${hostname}

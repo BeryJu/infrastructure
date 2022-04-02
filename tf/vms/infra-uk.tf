@@ -114,3 +114,21 @@ module "vault" {
     disk_size = 8
   }
 }
+
+module "gh-runner" {
+  source   = "../modules/vsphere_vm"
+  name     = "gh-runner1.prod.beryju.org"
+  template = "ubuntu2004-cloudimg-base"
+  vsphere = {
+    resource_pool = data.vsphere_resource_pool.uk-heavy.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
+    network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
+  }
+
+  spec = {
+    cpu       = 2
+    memory    = 4096
+    disk_size = 25
+  }
+}

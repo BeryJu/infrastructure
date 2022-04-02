@@ -1,0 +1,43 @@
+name: 'Run ansible-playbook'
+description: 'Run an ansible playbook'
+inputs:
+  playbook:
+    description: 'The playbook'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+    - id: cache-poetry
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry/virtualenvs
+        key: ${{ runner.os }}-poetry-cache-v2-${{ hashFiles('**/poetry.lock') }}
+    - name: prepare
+      shell: bash
+      env:
+        INSTALL: ${{ steps.cache-poetry.outputs.cache-hit }}
+      run: |
+        python3 -m pip install -U wheel poetry
+        poetry env use python3.10
+        if [[ "$INSTALL" != "true" ]]; then
+            poetry install
+        fi
+        pip install junit_xml
+    - name: run job
+      shell: bash
+      env:
+        ANSIBLE_CALLBACKS_ENABLED: junit
+        ANSIBLE_HASHI_VAULT_AUTH_METHOD: cert
+        ANSIBLE_HASHI_VAULT_CA_CERT: /etc/puppetlabs/puppet/ssl/certs/ca.pem
+      run: |
+        export ANSIBLE_HASHI_VAULT_CERT_AUTH_PRIVATE_KEY=/etc/puppetlabs/puppet/ssl/private_keys/$(hostname -f).pem
+        export ANSIBLE_HASHI_VAULT_CERT_AUTH_PUBLIC_KEY=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem
+        poetry run ansible-playbook ${{ inputs.playbook }}
+        ls
