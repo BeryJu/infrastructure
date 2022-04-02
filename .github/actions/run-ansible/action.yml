@@ -27,6 +27,7 @@ runs:
     - name: run job
       shell: bash
       env:
+        ANSIBLE_REMOTE_USER: ansible
         ANSIBLE_HOST_KEY_CHECKING: "false"
         ANSIBLE_CALLBACKS_ENABLED: junit
         ANSIBLE_HASHI_VAULT_AUTH_METHOD: cert
