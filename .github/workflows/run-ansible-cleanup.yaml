@@ -1,0 +1,19 @@
+---
+name: Run ansible (cleanup)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *'
+
+jobs:
+  ansible:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - name: Run playbook
+      uses: ./.github/actions/run-ansible
+      with:
+        playbook: actions/cleanup.yml
