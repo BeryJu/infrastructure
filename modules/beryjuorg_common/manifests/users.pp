@@ -31,7 +31,7 @@ class beryjuorg_common::users {
     ensure => present,
     user   => 'ansible',
     type   => 'ssh-rsa',
-    key    => 'AAAAB3NzaC1yc2EAAAADAQABAAABgQC8qE50n9zhBb7Z6riPt59Hh8ZyTKfHmSOZ2mkLWO7XW4k41kUBNUb0rb8LHsJ9ZvLXziAuKBmemUX3SYnRINvK187zei0+fu753g5djs3uPka1NOKuRKHt0EJNo4GdZn/SLPktYI0LBhbVY0tDlkLHlTa57UCUr4eKao/0pzhSGGDqocsHkpAK8SWQsHZLQVJ8Kc+hsq+HGGiBGQcWSz7ZvwdCv0VZbeYyecSEtPdhwcyjw+Wgxod6LdwVU+EXJC9nrK1ak+TGD86/HHoEY+qQCRXrQpoemN4+Ina7OeH0Dts5aqszdVDDd1HXIC8OsENrgTVKsL+3liONRHnmMg8tOIaMyV53bQFddsap3V7v1FQIv6UKJo2ePETg0bStjsh5UcUHXqGK+FJvIV2VRKUzjIlLDibWliUvEDz3e50177dVwKYWU8luBtAm3c95RNYLbj63DWgHITbdx6Dx9pJfXiJAh3es1/0q87cRfnstTFvsjXz4Fg/jtKKJs1P2dx0=',
+    key    => 'AAAAB3NzaC1yc2EAAAADAQABAAABgQCZeHRpeWfU2fB0uW5FqcEClH8z4t6Z5RYkdguD9uV5evocicg38+c1RXd/H2ndjZN2XRJOXNvAacl7p52t8nXH3U6oaQaUwu6MKHvRO60PrsrZLQJnPCAReJdg1S7+50s3oA9kBRmNtfPagTbwGMm01+2fEf1gyiQ5ENAFPnpjnc9k2XAHinu6rdjL09/mzE3bvBGLos+kpeS9iRG9uAGJ2mtfH2qwHEFe0+QwrVF5bmBf5e/MQGyCB2uuXT0JJ0YK5+SEahudGw0Gq8H1jhgYMS+tgyMN2K5c60a0JhQkh6e2XKoc7BxUD5YU8uQePOzYyrRuEruxvqq2xgK9BykVxyDd6Nh8UB1LmxZ31L7+jeCrGP6ZF5Z/xos6/AFIuErrCG3PvCWeFUdLWcvHqaa+q+kFqXwT1aT6RDR3EdPmvhFp1lVrpv+DgeApa7bne9Wsgd+Q0iwJSMLTggrnofK4hwex/yCyoXIwYxm+Vy1r4OwIZabEZqLDiikrS2pTTzc=',
   }
 
   user { 'vagrant':
