@@ -13,6 +13,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 1
-    - uses: ./.github/actions/run-ansible
+    - name: Run playbook
+      uses: ./.github/actions/run-ansible
       with:
         playbook: actions/update.yml
