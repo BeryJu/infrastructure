@@ -10,6 +10,9 @@ jobs:
   terraform:
     name: "Terraform"
     runs-on: self-hosted
+    permissions:
+      contents: read
+      id-token: write
     env:
       VAULT_ADDR: https://vault1.prod.beryju.org:9443
       VAULT_CACERT: /etc/puppetlabs/puppet/ssl/certs/ca.pem
@@ -24,17 +27,17 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Get vault token
-        run: |
-          export VAULT_TOKEN=$(
-            sudo /usr/bin/vault login -method=cert \
-              -address=https://vault1.prod.beryju.org:9443 \
-              -ca-cert=/etc/puppetlabs/puppet/ssl/certs/ca.pem \
-              -client-key=/etc/puppetlabs/puppet/ssl/private_keys/$(hostname -f).pem \
-              -client-cert=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem \
-              -field=token
-          )
-          echo $VAULT_TOKEN > ~/.vault-token
+      - name: Import Secrets
+        uses: hashicorp/vault-action@v2.4.0
+        id: secrets
+        with:
+          exportEnv: true
+          url: https://vault.beryju.org
+          path: github-actions
+          method: jwt
+          role: github-terraform
+          secrets: |
+            kv/dockerhub username
 
       - name: Terraform Format
         id: fmt
