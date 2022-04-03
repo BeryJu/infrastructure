@@ -24,13 +24,13 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Get vault token
-        run:
+        run: |
           export VAULT_TOKEN=$(
-            sudo /usr/bin/vault login -method=cert
-              -address=https://vault1.prod.beryju.org:9443
-              -ca-cert=/etc/puppetlabs/puppet/ssl/certs/ca.pem
-              -client-key=/etc/puppetlabs/puppet/ssl/private_keys/$(hostname -f).pem
-              -client-cert=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem
+            sudo /usr/bin/vault login -method=cert \
+              -address=https://vault1.prod.beryju.org:9443 \
+              -ca-cert=/etc/puppetlabs/puppet/ssl/certs/ca.pem \
+              -client-key=/etc/puppetlabs/puppet/ssl/private_keys/$(hostname -f).pem \
+              -client-cert=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem \
               -field=token
           )
           echo $VAULT_TOKEN > ~/.vault-token
