@@ -20,7 +20,7 @@ module "github-vault-oidc" {
 
   oidc_bindings = [
     {
-      audience : "https://github.com/BeryJu/infrastructure",
+      audience : "https://github.com/BeryJu",
       vault_role_name : "github-terraform",
       bound_subject : "repo:BeryJu/infrastructure:ref:refs/heads/master",
       vault_policies : [
