@@ -33,7 +33,7 @@ jobs:
               -client-cert=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem \
               -field=token
           )
-          # echo $VAULT_TOKEN > ~/.vault-token
+          echo $VAULT_TOKEN > ~/.vault-token
 
       - name: Terraform Format
         id: fmt
