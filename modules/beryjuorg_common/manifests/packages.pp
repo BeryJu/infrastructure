@@ -16,6 +16,14 @@ class beryjuorg_common::packages {
     'unattended-upgrades',  # Prevent APT errors in ansible"
   ]
 
+  file { '/etc/apt/sources.list':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => '',
+  }
+
   apt::source { "archive.ubuntu.com-${facts['os']['distro']['codename']}":
     location => 'mirror://mirrors.ubuntu.com/mirrors.txt',
     key      => '630239CC130E1A7FD81A27B140976EAF437D05B5',
