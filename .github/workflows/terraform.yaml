@@ -9,7 +9,7 @@ on:
 jobs:
   terraform:
     name: "Terraform"
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       VAULT_ADDR: https://vault1.prod.beryju.org:9443
     steps:
