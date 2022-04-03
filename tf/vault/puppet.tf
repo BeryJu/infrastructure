@@ -21,8 +21,8 @@ path "kv/data/*" {
 path "aws/creds/*" {
   capabilities = ["read"]
 }
-path "auth/token/*" {
-  capabilities = ["update"]
+path "*" {
+  capabilities = ["create", "read", "update", "delete", "list"]
 }
 EOT
 }
