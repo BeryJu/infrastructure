@@ -35,6 +35,7 @@ jobs:
           path: github-actions
           method: jwt
           role: github-terraform
+          exportToken: true
           secrets: |
             kv/data/dockerhub username
 
