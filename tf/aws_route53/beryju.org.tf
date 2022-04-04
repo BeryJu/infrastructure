@@ -14,6 +14,13 @@ resource "aws_route53_record" "blog-beryju-org" {
   ttl     = "3600"
   records = ["beryjuorg.netlify.app"]
 }
+resource "aws_route53_record" "test-beryju-org" {
+  zone_id = aws_route53_zone.beryju-org.zone_id
+  name    = "test.beryju.org"
+  type    = "CNAME"
+  ttl     = "3600"
+  records = ["beryjuorg.netlify.app"]
+}
 
 resource "aws_route53_record" "guac-beryju-org" {
   zone_id = aws_route53_zone.beryju-org.zone_id
