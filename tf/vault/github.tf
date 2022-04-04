@@ -16,9 +16,9 @@ module "github-vault-oidc" {
     {
       audience : "https://github.com/BeryJu",
       vault_role_name : "github-terraform",
-      bound_subject : "repo:BeryJu/infrastructure:ref:refs/heads/master",
+      bound_subject : "repo:BeryJu/infrastructure*",
       vault_policies : [
-        vault_policy.github-terraform.name,
+        vault_policy.github-terraform.name
       ],
     },
   ]
