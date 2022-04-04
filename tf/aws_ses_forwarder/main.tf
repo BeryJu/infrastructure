@@ -1,8 +1,14 @@
+data "vault_aws_access_credentials" "creds" {
+  backend = "aws"
+  type    = "sts"
+  role    = "admin-tf"
+}
+
 provider "aws" {
   region     = "eu-west-1"
-  access_key = var.access_key
-  secret_key = var.secret_key
-  token      = var.token
+  access_key = data.vault_aws_access_credentials.creds.access_key
+  secret_key = data.vault_aws_access_credentials.creds.secret_key
+  token      = data.vault_aws_access_credentials.creds.security_token
 }
 
 data "archive_file" "lambda_zip" {

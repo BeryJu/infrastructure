@@ -25,6 +25,7 @@ provider "vault" {
 data "vault_aws_access_credentials" "creds" {
   backend = "aws"
   role    = "admin-tf"
+  type    = "sts"
 }
 
 provider "aws" {
@@ -44,10 +45,7 @@ module "aws" {
   source = "./aws/"
 }
 module "aws_ses_forwarder" {
-  source     = "./aws_ses_forwarder/"
-  access_key = data.vault_aws_access_credentials.creds.access_key
-  secret_key = data.vault_aws_access_credentials.creds.secret_key
-  token      = data.vault_aws_access_credentials.creds.security_token
+  source = "./aws_ses_forwarder/"
 }
 module "aws_route53" {
   source = "./aws_route53/"
