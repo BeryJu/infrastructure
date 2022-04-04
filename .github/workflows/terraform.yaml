@@ -13,7 +13,6 @@ jobs:
     permissions:
       contents: read
       id-token: write
-      issues: write
     env:
       VAULT_ADDR: https://vault.beryju.org
     steps:
@@ -63,7 +62,7 @@ jobs:
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
         with:
-          # github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_TOKEN }}
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
