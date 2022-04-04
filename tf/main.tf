@@ -31,6 +31,7 @@ provider "aws" {
   region     = "eu-central-1"
   access_key = data.vault_aws_access_credentials.creds.access_key
   secret_key = data.vault_aws_access_credentials.creds.secret_key
+  token      = data.vault_aws_access_credentials.creds.security_token
 }
 
 module "guacamole" {
@@ -46,6 +47,7 @@ module "aws_ses_forwarder" {
   source     = "./aws_ses_forwarder/"
   access_key = data.vault_aws_access_credentials.creds.access_key
   secret_key = data.vault_aws_access_credentials.creds.secret_key
+  token      = data.vault_aws_access_credentials.creds.security_token
 }
 module "aws_route53" {
   source = "./aws_route53/"
