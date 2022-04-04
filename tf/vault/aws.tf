@@ -21,3 +21,11 @@ resource "vault_aws_secret_backend_role" "role-admin" {
 
   policy_document = file("${path.module}/policies/admin.json")
 }
+
+resource "vault_aws_secret_backend_role" "role-admin-tf" {
+  backend         = "aws"
+  name            = "admin-tf"
+  credential_type = "federation_token"
+
+  policy_document = file("${path.module}/policies/admin.json")
+}

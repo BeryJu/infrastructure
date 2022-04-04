@@ -24,7 +24,7 @@ provider "vault" {
 
 data "vault_aws_access_credentials" "creds" {
   backend = "aws"
-  role    = "admin"
+  role    = "admin-tf"
 }
 
 provider "aws" {
