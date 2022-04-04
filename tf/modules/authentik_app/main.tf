@@ -24,6 +24,7 @@ resource "authentik_application" "app" {
   slug              = replace(lower(var.name), " ", "-")
   protocol_provider = authentik_provider_proxy.provider.id
   meta_icon         = var.icon_url
+  group             = var.group
 }
 
 resource "authentik_policy_binding" "app-access" {

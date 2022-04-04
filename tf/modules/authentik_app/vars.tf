@@ -6,6 +6,10 @@ variable "name" {
   type = string
 }
 
+variable "group" {
+  type = string
+}
+
 variable "internal" {
   type = string
 }

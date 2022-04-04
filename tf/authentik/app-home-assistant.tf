@@ -2,6 +2,7 @@ module "authentik-app-home-assistant" {
   source = "../modules/authentik_app"
 
   name     = "Home Assistant"
+  group    = "Personal"
   internal = "http://hass1.prod.beryju.org:8123"
   external = "https://hass-ext.beryju.org"
   access_group = [

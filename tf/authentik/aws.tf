@@ -49,6 +49,7 @@ resource "authentik_application" "aws" {
   meta_icon          = "https://public.s3.beryju.org/authentik-icons/aws.png"
   meta_publisher     = "Amazon Web Services, Inc."
   policy_engine_mode = "all"
+  group = "Cloud"
 }
 
 resource "authentik_policy_binding" "aws-access" {
