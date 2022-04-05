@@ -40,7 +40,7 @@ runs:
         poetry run ansible-playbook --diff -v ${{ inputs.playbook }}
         mv junit/* junit/coverage.xml
     - if: ${{ always() }}
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v3
       with:
         name: ${{ inputs.playbook }}
         file: junit/coverage.xml
