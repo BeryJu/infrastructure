@@ -38,7 +38,7 @@ class beryjuorg_monitoring {
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
-    mode    => '0640',
+    mode    => '0644',
     content => template('beryjuorg_monitoring/beryjuorg.prom.erb'),
   }
 
