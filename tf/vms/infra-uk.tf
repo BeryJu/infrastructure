@@ -89,7 +89,7 @@ module "puppet" {
   spec = {
     cpu       = 2
     memory    = 4096
-    disk_size = 10
+    disk_size = 25
     additional_network = [
       {
         network = data.vsphere_network.uk-vs-int-100-dmz.id
