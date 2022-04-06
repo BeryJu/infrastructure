@@ -13,8 +13,8 @@ RUN yes | unminimize && \
 	apt-get install -y --no-install-recommends \
 		# Base system utils
 		nano git openssh-client apt-transport-https curl bash \
-		gnupg sudo man-db bash-completion wget unzip less \
-		locales file pwgen htop jq ldap-utils software-properties-common make \
+		gnupg sudo man-db bash-completion wget unzip less locales \
+		build-essential file pwgen htop jq ldap-utils software-properties-common rsync \
 		# Fancy shell stuff
 		bat fzf \
 		# Network tools
