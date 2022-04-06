@@ -2,7 +2,7 @@ module "authentik-app-alertmanager" {
   source = "../modules/authentik_app"
 
   name     = "Alertmanager"
-  group    = "Infrastructure"
+  group    = "Monitoring"
   internal = "http://prom-kube-prometheus-stack-alertmanager.monitoring-system.svc.cluster.local:9093"
   external = "https://alertmanager.infra.beryju.org"
   access_group = [

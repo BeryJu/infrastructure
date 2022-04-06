@@ -22,7 +22,7 @@ resource "authentik_application" "sentry" {
   meta_launch_url    = "https://sentry.beryju.org"
   meta_publisher     = "Sentry"
   policy_engine_mode = "any"
-  group = "Infrastructure"
+  group              = "Infrastructure"
 }
 
 resource "authentik_policy_binding" "sentry" {

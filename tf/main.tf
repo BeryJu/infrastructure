@@ -26,6 +26,7 @@ data "vault_aws_access_credentials" "creds" {
   backend = "aws"
   role    = "admin-tf"
   type    = "sts"
+  ttl     = "60m"
 }
 
 provider "aws" {
@@ -58,6 +59,9 @@ module "grafana" {
 }
 module "vault" {
   source = "./vault/"
+}
+module "k8s" {
+  source = "./k8s/"
 }
 module "vms" {
   source = "./vms/"

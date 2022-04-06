@@ -1,0 +1,24 @@
+module "vault-beryjuorg-prd" {
+  source = "../modules/vault_k8s"
+  path   = "k8s-prd"
+  host   = "https://k8s-prd-c1.prod.beryju.org:6443"
+  ca     = <<-EOT
+    -----BEGIN CERTIFICATE-----
+    MIICwjCCAaqgAwIBAgIBADANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDEwdrdWJl
+    LWNhMB4XDTE5MDYwNDA5Mjc0OVoXDTI5MDYwMTA5Mjc0OVowEjEQMA4GA1UEAxMH
+    a3ViZS1jYTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKt6em5aRhXR
+    PQH7kh6RkDK7NSpls2oP7x5mZ3QjGQ/MaZ6/HFrrFQ6T0glnTi+9EiGrVzAFntWl
+    mHbUlJSjXlVB1TNH9xT44Es8OsCQvgVxU0DPtqej8ABqPIBaHVRA7jIAL3nM3dIL
+    o/JJpVLnzxkqX7BOXSG8n79POeTkEpXeCXASq+D20P3ZzGuy1aFEy1X5OVgJgiTv
+    rxAfbZRDTQGer84UDYUuWXRuoYCSSazkS8rziYhZTF4VkCBKjFzUMqkhhV6rvIs3
+    MVj155j6tXvhFbH8HSkUUXMj2VtMtIRFjdsu05wgShAExI7WKry0oYxxfUhvj2Jf
+    2ZYAeuqTlRMCAwEAAaMjMCEwDgYDVR0PAQH/BAQDAgKkMA8GA1UdEwEB/wQFMAMB
+    Af8wDQYJKoZIhvcNAQELBQADggEBAEeLe+YLdCbWj6UPAUuWIvtBvQ5eeQ+nsEkB
+    0OewOrnpT+5OOtb2rcYkh1ezh7DMLu592c5Kz6z4lwsc+qHhgCzg3HdnBQLj17vj
+    FI82TgdTsX5JSMxNzMpbbnZsY6bwuKiBX8NfJonI48C+/bYWYz1dwzXpMFxVqxRt
+    +XfDfKqMF5+69yu+MJ4rSF+GSjQRXHMsU/3YpYPEa/YKdT8o32ybdfrJA6Tv+cFb
+    9XdX1U5tQpomTlQzLpggS5ROlSKijsiJZ8bNzi/5mBKCizhevhdp3Bp5nQHMw6OJ
+    +cxgY6Z6LgKnmayKt9tm8TXHOyYqShzxLkfznBh6rsB9W1YQtcc=
+    -----END CERTIFICATE-----
+    EOT
+}
