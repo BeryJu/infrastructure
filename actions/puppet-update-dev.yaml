@@ -1,0 +1,16 @@
+- hosts: puppet1.prod.beryju.org
+  become: true
+  become_user: puppet
+  vars:
+    env_dir: /etc/puppetlabs/code/environments/development/
+  tasks:
+    - name: Synchronization of src on the control machine to dest on the remote hosts
+      ansible.posix.synchronize:
+        src: "{{ lookup('env', 'PWD') }}/"
+        dest: "{{ env_dir }}"
+        delete: yes
+        recursive: yes
+    - name: install modules
+      command: r10k puppetfile install
+      args:
+        chdir: "{{ env_dir }}"
