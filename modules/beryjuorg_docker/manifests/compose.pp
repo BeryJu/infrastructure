@@ -17,6 +17,9 @@ class beryjuorg_docker::compose {
       vault_vars => $project['vault_vars'],
       vault_addr => lookup('beryjuorg_common::vault_addr')
     }
+    beryjuorg_monitoring::metric { "docker-stack-${project['name']}":
+      content => "beryjuorg_machine_stack{name=\"${project['name']}\"} 1"
+    }
   }
 
 }
