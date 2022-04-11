@@ -19,12 +19,16 @@ class beryjuorg_docker {
   }
   ->sysctl { 'vm.swappiness': value => '0' }
 
-  $facts['docker']['network'].map |$name, $network| {
-    if $network["name"] != "" {
-      beryjuorg_monitoring::metric { "docker-network-${name}":
-        content => "beryjuorg_machine_docker_network{name=\"${name}\", driver=\"${network["Driver"]}\"} 1"
-      }
+  $metrics = $facts['docker']['network'].map |$name, $network| {
+    beryjuorg_monitoring::metric { "docker-network-${name}":
+        ensure  => absent,
     }
+    if $network["name"] != "" {
+      "beryjuorg_machine_docker_network{name=\"${name}\", driver=\"${network["Driver"]}\"} 1"
+    }
+  }
+  beryjuorg_monitoring::metric { "docker-networks":
+    content => $metrics,
   }
 
 }

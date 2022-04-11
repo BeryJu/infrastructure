@@ -18,8 +18,14 @@ class beryjuorg_docker::compose {
       vault_addr => lookup('beryjuorg_common::vault_addr')
     }
     beryjuorg_monitoring::metric { "docker-stack-${project['name']}":
-      content => "beryjuorg_machine_stack{name=\"${project['name']}\"} 1"
+      ensure  => absent,
     }
+  }
+  $metrics = $projects.map |$project| {
+    "beryjuorg_machine_stack{name=\"${project['name']}\"} 1"
+  }
+  beryjuorg_monitoring::metric { "docker-stacks":
+    content => $metrics,
   }
 
 }
