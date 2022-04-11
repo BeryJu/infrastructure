@@ -1,6 +1,7 @@
 - hosts: all
   become: true
   strategy: free
+  gather_facts: no
   tasks:
     - name: apt | update cache
       apt:
