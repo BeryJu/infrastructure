@@ -1,7 +1,7 @@
 node /puppet.*/ {
   class { 'puppetdb': }
   class { 'puppetdb::master::config':
-    puppetdb_server => $facts['ipaddress'],
+    listen_addresses => $facts['ipaddress'],
   }
   lookup('classes', {merge => unique}).include
 }
