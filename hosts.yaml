@@ -3,6 +3,7 @@ all:
     hass1.prod.beryju.org:
     puppet1.prod.beryju.org:
     gh-runner1.prod.beryju.org:
+    k8s-infra1.lab.beryju.org:
 
 storage:
   children:
