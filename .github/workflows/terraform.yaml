@@ -27,7 +27,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Import Secrets
-        uses: hashicorp/vault-action@v2.4.0
+        uses: hashicorp/vault-action@v2.4.1
         id: secrets
         with:
           exportEnv: true
