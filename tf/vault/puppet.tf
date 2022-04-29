@@ -21,5 +21,8 @@ path "kv/data/*" {
 path "aws/creds/*" {
   capabilities = ["read"]
 }
+path "sys/metrics" {
+  capabilities = ["read", "list"]
+}
 EOT
 }
