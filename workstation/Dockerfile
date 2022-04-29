@@ -1,15 +1,16 @@
 FROM ubuntu:22.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+
 # Install SSH Server
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends openssh-server && \
+RUN apt-get install -y --no-install-recommends openssh-server && \
 	ssh-keygen -A && \
 	mkdir -p /run/sshd
 
 # Install base packages
 RUN yes | unminimize && \
-	apt-get update && \
-	export DEBIAN_FRONTEND=noninteractive && \
 	apt-get install -y --no-install-recommends \
 		# Base system utils
 		nano git openssh-client apt-transport-https curl bash \
@@ -28,7 +29,6 @@ RUN yes | unminimize && \
 
 # Python
 RUN add-apt-repository ppa:deadsnakes/ppa -y && \
-	apt update && \
 	apt-get install -y --no-install-recommends \
 		python3.10-venv python3.9 python3-pip python3-venv python3-setuptools && \
 	pip3 install wheel && \
@@ -36,7 +36,6 @@ RUN add-apt-repository ppa:deadsnakes/ppa -y && \
 
 # Golang
 RUN add-apt-repository ppa:longsleep/golang-backports -y && \
-	apt update && \
 	apt install -y --no-install-recommends golang-go
 
 # Node
@@ -45,7 +44,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
 
 # Fish
 RUN apt-add-repository ppa:fish-shell/release-3 -y && \
-	apt-get update && \
 	apt-get install -y --no-install-recommends fish
 
 # chezmoi
