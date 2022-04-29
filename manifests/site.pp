@@ -6,7 +6,5 @@ node /puppet.*/ {
   lookup('classes', {merge => unique}).include
 }
 node default {
-  if $::facts[os][family] != 'windows' {
-    lookup('classes', {merge => unique}).include
-  }
+  lookup('classes', {merge => unique}).include
 }
