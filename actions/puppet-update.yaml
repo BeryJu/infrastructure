@@ -9,6 +9,7 @@
         repo: "https://github.com/BeryJu/infrastructure.git"
         dest: "{{ env_dir }}"
         version: "master"
+        force: yes
     - name: install modules
       command: r10k puppetfile install
       args:
