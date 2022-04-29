@@ -1,6 +1,8 @@
 classes:
   - beryjuorg_docker
   - beryjuorg_docker::compose
+  - beryjuorg_monitoring
+  - beryjuorg_monitoring::helper_vault
 beryjuorg_docker::stacks:
   - name: vault
     template: vault
