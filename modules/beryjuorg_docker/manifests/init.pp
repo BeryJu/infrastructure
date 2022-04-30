@@ -20,6 +20,7 @@ class beryjuorg_docker {
   ->sysctl { 'vm.swappiness': value => '0' }
 
   docker::run { 'cadvisor':
+    ensure => absent
     image            => 'gcr.io/cadvisor/cadvisor',
     ports            => ['127.0.0.1:9101:8080'],
     volumes          => [
