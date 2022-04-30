@@ -1,0 +1,3 @@
+classes:
+  - beryjuorg_docker
+  - beryjuorg_docker::compose
