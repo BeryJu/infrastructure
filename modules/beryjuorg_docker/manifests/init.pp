@@ -15,11 +15,9 @@ class beryjuorg_docker {
     registry_mirror  => [
       'https://proxy.registry.beryju.org'
     ],
-    extra_parameters => '--live-restore --metrics-addr localhost:9101'
+    extra_parameters => '--live-restore'
   }
   ->sysctl { 'vm.swappiness': value => '0' }
-
-  include beryjuorg_monitoring::helper_docker
 
   $metrics = $facts['docker']['network'].map |$name, $network| {
     beryjuorg_monitoring::metric { "docker-network-${name}":
