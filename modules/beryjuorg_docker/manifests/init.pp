@@ -21,7 +21,7 @@ class beryjuorg_docker {
 
   docker::run { 'cadvisor':
     image            => 'gcr.io/cadvisor/cadvisor',
-    ports            => ['127.0.0.1:8080:8080'],
+    ports            => ['127.0.0.1:9101:9101'],
     volumes          => [
       '/:/rootfs:ro',
       '/var/run:/var/run:ro',

@@ -7,4 +7,8 @@ class beryjuorg_monitoring::helper_cadvisor {
     minute  => '*',
   }
 
+  cron { 'docker_export':
+    state => absent
+  }
+
 }
