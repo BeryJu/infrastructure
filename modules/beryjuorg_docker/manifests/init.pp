@@ -15,13 +15,12 @@ class beryjuorg_docker {
     registry_mirror  => [
       'https://proxy.registry.beryju.org'
     ],
-    extra_parameters => '--live-restore --metrics-addr localhost:9101'
+    extra_parameters => '--live-restore'
   }
   ->sysctl { 'vm.swappiness': value => '0' }
 
   docker::run { 'cadvisor':
     image            => 'gcr.io/cadvisor/cadvisor',
-    detach           => true,
     ports            => ['127.0.0.1:8080:8080'],
     volumes          => [
       '/:/rootfs:ro',
