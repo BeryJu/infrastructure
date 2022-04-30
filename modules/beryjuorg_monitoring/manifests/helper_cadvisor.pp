@@ -8,7 +8,7 @@ class beryjuorg_monitoring::helper_cadvisor {
   }
 
   cron { 'docker_export':
-    state => absent
+    ensure => absent
   }
 
 }
