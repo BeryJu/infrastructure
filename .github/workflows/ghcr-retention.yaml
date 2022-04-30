@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: sondrelg/container-retention-policy@v1
         with:
-          image-names: workstation,awx-ee
+          image-names: workstation
           cut-off: One week ago UTC
           account-type: personal
           org-name: beryju

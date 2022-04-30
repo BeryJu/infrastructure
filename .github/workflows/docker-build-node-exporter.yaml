@@ -1,9 +1,9 @@
-name: docker-build-workstation
+name: docker-build-node-exporter
 
 on:
   push:
     branches: [ master ]
-    paths: [ images/workstation/** ]
+    paths: [ images/node-exporter/** ]
   schedule:
     - cron: '0 5 * * *'
   workflow_dispatch:
@@ -27,8 +27,8 @@ jobs:
     - name: Build and push Docker images
       uses: docker/build-push-action@v2.10.0
       with:
-        context: images/workstation/
+        context: images/node-exporter/
         tags: |
-          ghcr.io/beryju/workstation:latest,
-          ghcr.io/beryju/workstation:auto-${{ steps.time.outputs.time }}
+          ghcr.io/beryju/node-exporter:latest,
+          ghcr.io/beryju/node-exporter:auto-${{ steps.time.outputs.time }}
         push: ${{ github.ref == 'refs/heads/master' }}

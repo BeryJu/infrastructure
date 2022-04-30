@@ -19,10 +19,6 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with 
 
 ## Non-puppet files
 
-- `ee/`:
-
-    Contains a dockerfile for the custom **e**xecution **e**nvironment for AWX. Includes `hvac` package for HashiCorp Vault.
-
 - `packer/`:
 
     Contains a packer project used to create a custom base image with the VMware Cloud-init datasource.
@@ -31,7 +27,9 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with 
 
     Terraform stuff
 
-- `workstation/`:
+- `images/`:
+
+    Various docker images for things.
 
     Docker image that I use for day-to-day tasks, has all required utilities installed.
 
