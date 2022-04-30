@@ -3,6 +3,7 @@ resource "grafana_folder" "beryjuorg-k8s-preset" {
 }
 
 module "k8s-dashboards" {
-  source         = "github.com/BeryJu/kube-prom-stack-dashboards"
+  source         = "BeryJu/prom-stack-dashboards/kube"
+  version        = "1.0.0"
   grafana_folder = grafana_folder.beryjuorg-k8s-preset.id
 }
