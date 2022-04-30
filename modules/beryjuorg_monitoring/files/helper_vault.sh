@@ -8,5 +8,5 @@ token=$(docker exec vault_vault_1 vault login \
     -client-key=/etc/puppetlabs/puppet/ssl/private_keys/$hostname.pem \
     -token-only)
 
-curl -H "Authorization: Bearer $token" \
+curl -s -H "Authorization: Bearer $token" \
     "http://$hostname:8200/v1/sys/metrics?format=prometheus"
