@@ -1,7 +1,7 @@
 #!/bin/bash -xe
-source ./common.sh
+source $(dirname $BASH_SOURCE)/common.sh
 
-ssh puppet1.prod.beryju.org -- sudo /opt/puppetlabs/bin/puppetserver ca clean --certname scratch-vm.lab.beryju.org
+ssh puppet1.prod.beryju.org -- sudo /opt/puppetlabs/bin/puppetserver ca clean --certname scratch-vm.lab.beryju.org || true
 
 ssh_keys=$(doctl compute ssh-key list --format ID --no-header | xargs | sed -e 's/ /,/g')
 doctl compute droplet create $VM_NAME \
