@@ -6,12 +6,19 @@ services:
     image: itzg/minecraft-server:java17
     ports:
       - 25565:25565
+      - 127.0.0.1:25575:25575
     environment:
       EULA: "TRUE"
       INIT_MEMORY: 1G
       MAX_MEMORY: 7G
+      TYPE: CURSEFORGE
+      CF_SERVER_MOD: /modpacks/SIMPLE-SERVER-FILES-0.3.18.zip
+      ENFORCE_WHITELIST: "true"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "<%= $services_minecraft.unwrap[data][rcon] %>"
     volumes:
       - /srv/mc:/data
+      - /srv/mc-mods:/modpacks:ro
   mc_exporter:
     restart: always
     image: ghcr.io/dirien/minecraft-exporter:0.13.0-amd64
