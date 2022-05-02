@@ -14,6 +14,7 @@ services:
       TYPE: CURSEFORGE
       CF_SERVER_MOD: /modpacks/SIMPLE-SERVER-FILES-0.3.18.zip
       ENFORCE_WHITELIST: "true"
+      ENABLE_WHITELIST: "true"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "<%= $services_minecraft.unwrap[data][rcon] %>"
     volumes:

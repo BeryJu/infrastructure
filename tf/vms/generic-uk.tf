@@ -44,7 +44,7 @@ module "mc" {
 
   spec = {
     cpu       = 4
-    memory    = 8192
+    memory    = 16384
     disk_size = 15
     additional_network = [
       {
@@ -65,8 +65,8 @@ module "mc-peaceful" {
   }
 
   spec = {
-    cpu       = 4
-    memory    = 8192
+    cpu       = 2
+    memory    = 16384
     disk_size = 15
     additional_network = [
       {
