@@ -8,7 +8,7 @@ variable "name" {
 
 variable "template" {
   type    = string
-  default = "ubuntu2004-beryjuorg-base"
+  default = "ubuntu2004-cloudimg-base"
 }
 
 variable "spec" {

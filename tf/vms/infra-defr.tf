@@ -18,7 +18,6 @@ module "nas" {
 module "k8s-infra" {
   source   = "../modules/vsphere_vm"
   name     = "k8s-infra1.prod.beryju.org"
-  template = "ubuntu2004-cloudimg-base"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.de-general.id
     datastore     = data.vsphere_datastore_cluster.ssd-freiburg.id

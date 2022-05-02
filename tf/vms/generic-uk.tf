@@ -54,6 +54,28 @@ module "mc" {
   }
 }
 
+module "mc-peaceful" {
+  source   = "../modules/vsphere_vm"
+  name     = "mc2.prod.beryju.org"
+  vsphere = {
+    resource_pool = data.vsphere_resource_pool.uk-heavy.id
+    datastore     = data.vsphere_datastore_cluster.ssd-london.id
+    network       = data.vsphere_network.uk-vs-int-101-srv.id
+    datacenter    = data.vsphere_datacenter.uk-london.id
+  }
+
+  spec = {
+    cpu       = 4
+    memory    = 8192
+    disk_size = 15
+    additional_network = [
+      {
+        network = data.vsphere_network.uk-vs-int-100-dmz.id
+      }
+    ]
+  }
+}
+
 module "ak-dev-dc" {
   source = "../modules/vsphere_vm"
   name   = "ak-dev-dc1.lab.beryju.org"

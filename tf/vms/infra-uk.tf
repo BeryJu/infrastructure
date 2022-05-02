@@ -118,7 +118,6 @@ module "vault" {
 module "gh-runner" {
   source   = "../modules/vsphere_vm"
   name     = "gh-runner1.prod.beryju.org"
-  template = "ubuntu2004-cloudimg-base"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
