@@ -4,9 +4,9 @@ services:
     image: linuxserver/unifi-controller:7.1.61
     container_name: unifi-controller
     environment:
-      - PUID=1000
-      - PGID=1000
-      - MEM_LIMIT=1024M #optional
+      PUID: "1000"
+      PGID: "1000"
+      MEM_LIMIT: "1024M"
     volumes:
       - /srv/unifi:/config
     network_mode: host
@@ -15,7 +15,7 @@ services:
     restart: always
     image: golift/unifi-poller
     ports:
-      - 9130:9130
+      - 127.0.0.1:9130:9130
     environment:
       UP_UNIFI_DEFAULT_USER: "<%= $services_unifi.unwrap[data][poller_username] %>"
       UP_UNIFI_DEFAULT_PASS: "<%= $services_unifi.unwrap[data][poller_password] %>"
