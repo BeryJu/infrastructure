@@ -1,0 +1,8 @@
+classes:
+  - beryjuorg_docker
+  - beryjuorg_docker::compose
+beryjuorg_docker::stacks:
+  - name: minecraft
+    vault_vars:
+      - services/minecraft
+    template: minecraft_vanilla
