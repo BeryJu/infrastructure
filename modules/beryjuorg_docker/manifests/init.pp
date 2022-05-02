@@ -19,22 +19,6 @@ class beryjuorg_docker {
   }
   ->sysctl { 'vm.swappiness': value => '0' }
 
-  docker::run { 'cadvisor':
-    ensure => absent
-    image            => 'gcr.io/cadvisor/cadvisor',
-    ports            => ['127.0.0.1:9101:8080'],
-    volumes          => [
-      '/:/rootfs:ro',
-      '/var/run:/var/run:ro',
-      '/sys:/sys:ro',
-      '/var/lib/docker/:/var/lib/docker:ro',
-      '/dev/disk/:/dev/disk:ro',
-    ],
-    privileged       => true,
-    extra_parameters => [ '--restart=always', '--device=/dev/kmsg' ],
-  }
-  include beryjuorg_monitoring::helper_cadvisor
-
   $metrics = $facts['docker']['network'].map |$name, $network| {
     beryjuorg_monitoring::metric { "docker-network-${name}":
         ensure  => absent,
