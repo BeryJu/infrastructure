@@ -11,6 +11,8 @@ services:
       EULA: "TRUE"
       INIT_MEMORY: 1G
       MAX_MEMORY: 7G
+      DIFFICULTY: "peaceful"
+      MOTD: "yeet"
       ENFORCE_WHITELIST: "true"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "<%= $services_minecraft.unwrap[data][rcon] %>"
