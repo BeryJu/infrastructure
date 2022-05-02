@@ -21,7 +21,7 @@ services:
     restart: always
     image: ghcr.io/dirien/minecraft-exporter:0.13.0-amd64
     ports:
-      - 10.120.0.59:9150:9150
+      - <%= $facts[ipaddress] %>:9150:9150
     volumes:
       - /srv/mc:/data:ro
     command:
