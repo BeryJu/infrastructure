@@ -14,6 +14,7 @@ services:
       DIFFICULTY: "peaceful"
       MOTD: "yeet"
       ENFORCE_WHITELIST: "true"
+      ENABLE_WHITELIST: "true"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "<%= $services_minecraft.unwrap[data][rcon] %>"
     volumes:
