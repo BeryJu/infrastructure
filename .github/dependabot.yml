@@ -40,3 +40,11 @@ updates:
   open-pull-requests-limit: 10
   assignees:
   - BeryJu
+- package-ecosystem: docker
+  directory: "/images/puppet-agent"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  assignees:
+  - BeryJu
