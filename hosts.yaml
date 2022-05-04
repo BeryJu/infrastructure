@@ -1,24 +1,13 @@
 all:
   hosts:
-    hass1.prod.beryju.org:
-    puppet1.prod.beryju.org:
-    gh-runner1.prod.beryju.org:
-    k8s-infra1.lab.beryju.org:
-
-storage:
-  children:
-    nfs_server:
-      hosts:
-        nas1.prod.beryju.org:
-  hosts:
+    nas1.prod.beryju.org:
     backup-s3.prod.beryju.org:
-
-media:
-  hosts:
-    plex1.prod.beryju.org:
 
 docker:
   hosts:
+    hass1.prod.beryju.org:
+    puppet1.prod.beryju.org:
+    gh-runner1.prod.beryju.org:
     ak-dev-k3s1.lab.beryju.org:
     k8s-defr-c1.lab.beryju.org:
     k8s-defr-w3.lab.beryju.org:

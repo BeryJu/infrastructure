@@ -34,5 +34,5 @@ module "authentik-app-prom" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url = "https://images.s3.beryju.org/prometheus.svg"
+  icon_url = "https://images.s3.beryju.org/prometheus-icon-color.png"
 }
