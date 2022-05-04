@@ -6,4 +6,4 @@ ENTRYPOINT [ "/bin/sh" ]
 
 USER 106
 
-CMD [ "-c", "node_exporter --web.config=${CONFIG}" ]
+CMD [ "-c", "node_exporter --web.config=${CONFIG} --collector.textfile.directory /textfile" ]
