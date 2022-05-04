@@ -40,6 +40,7 @@ resource "authentik_outpost" "k8s-proxy" {
     module.authentik-app-radarr.provider_id,
     module.authentik-app-sonarr.provider_id,
     module.authentik-app-oxidized.provider_id,
+    module.authentik-app-unifi.provider_id,
     module.authentik-app-alertmanager.provider_id,
     module.authentik-app-code-server.provider_id,
     module.authentik-app-home-assistant.provider_id,

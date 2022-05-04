@@ -55,8 +55,8 @@ module "mc" {
 }
 
 module "mc-peaceful" {
-  source   = "../modules/vsphere_vm"
-  name     = "mc2.prod.beryju.org"
+  source = "../modules/vsphere_vm"
+  name   = "mc2.prod.beryju.org"
   vsphere = {
     resource_pool = data.vsphere_resource_pool.uk-heavy.id
     datastore     = data.vsphere_datastore_cluster.ssd-london.id
