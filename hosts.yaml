@@ -5,7 +5,6 @@ all:
 
 docker:
   hosts:
-    hass1.prod.beryju.org:
     puppet1.prod.beryju.org:
     gh-runner1.prod.beryju.org:
     ak-dev-k3s1.lab.beryju.org:
