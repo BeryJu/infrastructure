@@ -39,3 +39,8 @@ output "app_id" {
 output "provider_id" {
   value = authentik_provider_proxy.provider.id
 }
+
+variable "internal_host_ssl_validation" {
+  type    = bool
+  default = true
+}

@@ -11,12 +11,13 @@ data "authentik_flow" "default-authorization-flow" {
 }
 
 resource "authentik_provider_proxy" "provider" {
-  name               = "tf-${lower(var.name)}"
-  internal_host      = var.internal
-  external_host      = var.external
-  authorization_flow = data.authentik_flow.default-authorization-flow.id
-  token_validity     = "days=30"
-  skip_path_regex    = var.skip_path_regex
+  name                         = "tf-${lower(var.name)}"
+  internal_host                = var.internal
+  external_host                = var.external
+  authorization_flow           = data.authentik_flow.default-authorization-flow.id
+  token_validity               = "days=30"
+  skip_path_regex              = var.skip_path_regex
+  internal_host_ssl_validation = var.internal_host_ssl_validation
 }
 
 resource "authentik_application" "app" {

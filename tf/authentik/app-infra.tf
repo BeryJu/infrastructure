@@ -13,10 +13,11 @@ module "authentik-app-oxidized" {
 module "authentik-app-unifi" {
   source = "../modules/authentik_app"
 
-  name     = "UniFi"
-  group    = "Infrastructure"
-  internal = "https://unifi1.prod.beryju.org:8443"
-  external = "https://unifi.infra.beryju.org"
+  name                         = "UniFi"
+  group                        = "Infrastructure"
+  internal                     = "https://unifi1.prod.beryju.org:8443"
+  external                     = "https://unifi.infra.beryju.org"
+  internal_host_ssl_validation = false
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
