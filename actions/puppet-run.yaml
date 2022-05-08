@@ -4,4 +4,4 @@
   gather_facts: no
   tasks:
     - name: run
-      command: /opt/puppetlabs/puppet/bin/puppet agent -t
+      command: /opt/puppetlabs/puppet/bin/puppet agent -t -E development
