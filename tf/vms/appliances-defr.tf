@@ -9,3 +9,9 @@ module "napp-prd2" {
     }
   ]
 }
+
+module "hass" {
+  source  = "../modules/net_machine"
+  fqdn    = "hass1.prod.beryju.org"
+  address = "10.120.20.60"
+}
