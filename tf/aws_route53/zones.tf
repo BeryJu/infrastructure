@@ -44,8 +44,8 @@ resource "aws_route53_zone" "lab-beryju-org" {
   }
 }
 
-resource "aws_route53_zone" "k8s-beryju-org" {
-  name = "k8s.beryju.org"
+resource "aws_route53_zone" "net-beryju-org" {
+  name = "net.beryju.org"
 
   vpc {
     vpc_id = data.aws_vpc.default.id
