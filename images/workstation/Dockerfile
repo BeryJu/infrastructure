@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -137,6 +137,8 @@ RUN curl -s https://fluxcd.io/install.sh | sudo bash && \
 RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
 
 COPY ./sshd_config /etc/ssh/sshd_config
+
+COPY ./kubectl-merge.sh /usr/bin/kubectl-merge
 
 # User jens
 RUN useradd -m -s /bin/fish -G sudo jens && \
