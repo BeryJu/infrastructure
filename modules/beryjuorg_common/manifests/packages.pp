@@ -2,6 +2,12 @@
 #
 class beryjuorg_common::packages {
 
+  class { 'apt':
+    purge => {
+      'sources.list' => true,
+    }
+  }
+
   $packages = [
     'open-vm-tools',
     'vim',
@@ -14,6 +20,7 @@ class beryjuorg_common::packages {
   $remove_packages = [
     'snapd',
     'unattended-upgrades',  # Prevent APT errors in ansible"
+    'fwupd'
   ]
 
   apt::source { "archive.ubuntu.com-${facts['os']['distro']['codename']}":
@@ -47,7 +54,7 @@ class beryjuorg_common::packages {
     ensure => 'present'
   }
   package { $remove_packages:
-    ensure => 'absent'
+    ensure => 'purged'
   }
 
 }
