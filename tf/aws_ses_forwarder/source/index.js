@@ -1,6 +1,16 @@
 "use strict";
 
 var AWS = require('aws-sdk');
+const Sentry = require("@sentry/serverless");
+
+Sentry.AWSLambda.init({
+  dsn: "https://bd1dadc08bb445f3b9423cee8f5f7677@sentry.beryju.org/17",
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
 
 console.log("AWS Lambda SES Forwarder // @arithmetric // Version 5.0.0");
 
@@ -333,7 +343,7 @@ exports.sendMessage = function(data) {
  * @param {object} overrides - Overrides for the default data, including the
  * configuration, SES object, and S3 object.
  */
-exports.handler = function(event, context, callback, overrides) {
+exports.handler = Sentry.AWSLambda.wrapHandler(function(event, context, callback, overrides) {
   var steps = overrides && overrides.steps ? overrides.steps :
     [
       exports.parseEvent,
@@ -369,7 +379,10 @@ exports.handler = function(event, context, callback, overrides) {
       });
       return data.callback(new Error("Error: Step returned error."));
     });
-};
+}, {
+  captureAllSettledReasons: true,
+  ignoreSentryErrors: true,
+});
 
 Promise.series = function(promises, initValue) {
   return promises.reduce(function(chain, promise) {

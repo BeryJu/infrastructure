@@ -28,5 +28,5 @@ resource "aws_lambda_function" "email-forwader" {
   role             = "arn:aws:iam::471432361072:role/service-role/beryjuorg-ses-forward-role-vub5mi32"
   handler          = "index.handler"
   publish          = true
-  runtime          = "nodejs12.x"
+  runtime          = "nodejs14.x"
 }
