@@ -13,3 +13,7 @@ resource "aws_subnet" "main" {
     Name = "beryjuorg-default"
   }
 }
+
+module "route53" {
+  source = "./route53/"
+}

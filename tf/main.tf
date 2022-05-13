@@ -48,9 +48,6 @@ module "aws" {
 module "aws_ses_forwarder" {
   source = "./aws_ses_forwarder/"
 }
-module "aws_route53" {
-  source = "./aws_route53/"
-}
 module "rancher" {
   source = "./rancher/"
 }
