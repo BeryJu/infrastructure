@@ -2,7 +2,7 @@ resource "authentik_property_mapping_saml" "aws-role" {
   name       = "SAML AWS Role"
   saml_name  = "https://aws.amazon.com/SAML/Attributes/Role"
   expression = <<EOF
-return "arn:aws:iam::471432361072:role/saml_role,arn:aws:iam::471432361072:saml-provider/passbook-prod"
+return "${aws_iam_role.authentik.arn},${aws_iam_saml_provider.default.id}"
 EOF
 }
 
@@ -56,4 +56,39 @@ resource "authentik_policy_binding" "aws-access" {
   target = authentik_application.aws.uuid
   group  = data.authentik_group.acl_beryjuorg.id
   order  = 0
+}
+
+data "http" "saml-metadata" {
+  url = "https://id.beryju.org/api/v3/providers/saml/1/metadata/?download"
+}
+
+resource "aws_iam_saml_provider" "default" {
+  name                   = "authentik"
+  saml_metadata_document = data.http.saml-metadata.body
+}
+
+resource "aws_iam_role" "authentik" {
+  name = "authentik"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRoleWithSAML"
+        Condition = {
+          StringEquals = {
+            "SAML:aud" = "https://signin.aws.amazon.com/saml"
+          }
+        }
+        Effect = "Allow"
+        Principal = {
+          Federated = aws_iam_saml_provider.default.id
+        }
+      },
+    ]
+  })
+  managed_policy_arns = [
+    "arn:aws:iam::471432361072:policy/Billing",
+    "arn:aws:iam::aws:policy/AdministratorAccess"
+  ]
 }
