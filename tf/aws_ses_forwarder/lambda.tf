@@ -17,10 +17,6 @@ data "archive_file" "lambda_zip" {
   output_path = "${path.module}/lambda.zip"
 }
 
-resource "aws_s3_bucket" "bucket" {
-  bucket = "beryjuorg-ses-forward-prod"
-}
-
 resource "aws_lambda_function" "email-forwader" {
   filename         = "${path.module}/lambda.zip"
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
