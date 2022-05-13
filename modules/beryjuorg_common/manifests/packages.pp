@@ -2,12 +2,6 @@
 #
 class beryjuorg_common::packages {
 
-  class { 'apt':
-    purge => {
-      'sources.list' => true,
-    }
-  }
-
   $packages = [
     'open-vm-tools',
     'vim',
@@ -44,10 +38,10 @@ class beryjuorg_common::packages {
   }
 
   apt::source { "archive.ubuntu.com-${facts['os']['distro']['codename']}-backports":
-  location => 'mirror://mirrors.ubuntu.com/mirrors.txt',
-  key      => '630239CC130E1A7FD81A27B140976EAF437D05B5',
-  repos    => 'main universe multiverse restricted',
-  release  => "${facts['os']['distro']['codename']}-backports"
+    location => 'mirror://mirrors.ubuntu.com/mirrors.txt',
+    key      => '630239CC130E1A7FD81A27B140976EAF437D05B5',
+    repos    => 'main universe multiverse restricted',
+    release  => "${facts['os']['distro']['codename']}-backports"
   }
 
   package { $packages:
