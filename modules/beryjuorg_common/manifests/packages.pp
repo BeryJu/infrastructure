@@ -2,6 +2,8 @@
 #
 class beryjuorg_common::packages {
 
+  include apt
+
   $packages = [
     'open-vm-tools',
     'vim',
