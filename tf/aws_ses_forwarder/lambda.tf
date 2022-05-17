@@ -25,4 +25,7 @@ resource "aws_lambda_function" "email-forwader" {
   handler          = "index.handler"
   publish          = true
   runtime          = "nodejs14.x"
+  layers = [
+    "arn:aws:lambda:eu-west-1:943013980633:layer:SentryNodeServerlessSDK:65",
+  ]
 }
