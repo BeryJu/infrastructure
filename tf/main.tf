@@ -22,18 +22,14 @@ terraform {
 provider "vault" {
 }
 
-data "vault_aws_access_credentials" "creds" {
-  backend = "aws"
-  role    = "admin-tf"
-  type    = "sts"
-  ttl     = "60m"
+data "vault_generic_secret" "aws" {
+  path = "kv/aws/terraform"
 }
 
 provider "aws" {
   region     = "eu-central-1"
-  access_key = data.vault_aws_access_credentials.creds.access_key
-  secret_key = data.vault_aws_access_credentials.creds.secret_key
-  token      = data.vault_aws_access_credentials.creds.security_token
+  access_key = data.vault_generic_secret.aws.data["access_key"]
+  secret_key = data.vault_generic_secret.aws.data["secret_key"]
 }
 
 module "guacamole" {
