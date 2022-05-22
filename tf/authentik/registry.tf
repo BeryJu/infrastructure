@@ -14,6 +14,10 @@ resource "authentik_provider_oauth2" "registry" {
     data.authentik_certificate_key_pair.gitlab.id
   ]
   signing_key = data.authentik_certificate_key_pair.generated.id
+
+  lifecycle {
+    ignore_changes = [client_secret]
+  }
 }
 
 resource "authentik_application" "registry" {

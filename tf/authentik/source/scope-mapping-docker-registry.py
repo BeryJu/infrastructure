@@ -6,11 +6,13 @@ for scope in scopes:
     type, name, actions = scope.split(":")
     if not ak_is_group_member(user, name="_acl_ak_docker_push"):
         actions = "pull"
-    access.append({
-        "type": type,
-        "name": name,
-        "actions": actions.split(","),
-    })
+    access.append(
+        {
+            "type": type,
+            "name": name,
+            "actions": actions.split(","),
+        }
+    )
 return {
     "access": access,
 }
