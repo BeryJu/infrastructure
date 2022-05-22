@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   gitlab:
-    image: ghcr.io/beryju/gitlab-eee:14.9.3-ee.0
+    image: registry.beryju.org/gitlab-ee:15.0.0-ee.0
     restart: always
     hostname: 'code.beryju.org'
     environment:
