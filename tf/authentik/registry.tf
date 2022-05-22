@@ -25,22 +25,5 @@ resource "authentik_application" "registry" {
 resource "authentik_scope_mapping" "registry" {
   name       = "docker-registry"
   scope_name = "docker-registry"
-  expression = <<EOF
-scopes = request.http_request.POST.get("scope", "").split()
-access = []
-for scope in scopes:
-    if scope.count(":") < 2:
-        continue
-    type, name, actions = scope.split(":")
-    if not ak_is_group_member(user, name="_acl_ak_docker_push"):
-        actions = "pull"
-    access.append({
-        "type": type,
-        "name": name,
-        "actions": actions.split(","),
-    })
-return {
-    "access": access,
-}
-EOF
+  expression = file("${path.module}/source/scope-mapping-docker-registry.py")
 }

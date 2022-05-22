@@ -11,7 +11,8 @@ resource "authentik_stage_identification" "ldap-flow-identification" {
 }
 
 resource "authentik_stage_user_login" "ldap-flow-login" {
-  name = "ldap-flow-login"
+  name             = "ldap-flow-login"
+  session_duration = "days=14"
 }
 
 resource "authentik_flow" "ldap-flow" {

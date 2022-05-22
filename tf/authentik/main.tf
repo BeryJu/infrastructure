@@ -2,7 +2,7 @@ terraform {
   required_providers {
     authentik = {
       source  = "goauthentik/authentik"
-      version = "2022.5.1"
+      version = "2022.5.2"
     }
   }
 }
@@ -17,7 +17,7 @@ provider "authentik" {
 }
 
 data "authentik_group" "acl_beryjuorg" {
-  name = "_acl_pb_beryjuorg"
+  name = "acl_beryjuorg"
 }
 
 data "authentik_certificate_key_pair" "generated" {
