@@ -22,6 +22,8 @@ RUN yes | unminimize && \
 		nmap mtr-tiny host net-tools iputils-ping traceroute \
 		# Required for packer to create iso files
 		genisoimage && \
+		# Dev stuff
+		pkg-config libxmlsec1-dev && \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
 	echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 	echo "en_UK.UTF-8 UTF-8" >> /etc/locale.gen && \
@@ -30,7 +32,7 @@ RUN yes | unminimize && \
 # Python
 RUN add-apt-repository ppa:deadsnakes/ppa -y && \
 	apt-get install -y --no-install-recommends \
-		python3.10-venv python3.9 python3-pip python3-venv python3-setuptools && \
+		python3.10-venv python3.10-dev python3.9 python3-pip python3-venv python3-setuptools && \
 	pip3 install wheel && \
 	pip3 install poetry
 
