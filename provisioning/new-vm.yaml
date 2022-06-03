@@ -11,7 +11,7 @@
       password: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/vsphere/local/administrator:password") }}'
       esxi_hostname: "{{ bootstrap_host }}"
       datacenter: "{{ bootstrap_dc }}"
-      validate_certs: False
+      validate_certs: false
       name: "{{ bootstrap_name }}"
     # vm_config:
     #   nameserver: ""
@@ -66,7 +66,7 @@
         wait_for_ip_address: true
         <<: *vcenter
       register: result
-      ignore_errors: True
+      ignore_errors: true
       until: result.instance.hw_eth0.ipaddresses[0] is defined
       retries: 50
       delay: 10
@@ -81,7 +81,7 @@
         groups: created_vms
 
     - name: Wait until VM is up again
-      become: False
+      become: false
       delegate_to: localhost
       wait_for:
         port: 22
@@ -95,7 +95,7 @@
 - hosts: created_vms
   connection: paramiko
   user: vagrant
-  become: True
+  become: true
   gather_facts: true
 
   vars:
@@ -138,7 +138,7 @@
         upgrade: dist
         update_cache: true
       register: result
-      ignore_errors: True
+      ignore_errors: true
       retries: 20
       delay: 10
       until: result is success
