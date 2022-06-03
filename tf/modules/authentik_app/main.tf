@@ -12,8 +12,9 @@ data "authentik_flow" "default-authorization-flow" {
 
 resource "authentik_provider_proxy" "provider" {
   name                         = "tf-${lower(var.name)}"
-  internal_host                = var.internal
+  internal_host                = var.internal == "" ? null : var.internal
   external_host                = var.external
+  mode                         = var.internal == "" ? "forward_single" : "proxy"
   authorization_flow           = data.authentik_flow.default-authorization-flow.id
   token_validity               = "days=30"
   skip_path_regex              = var.skip_path_regex

@@ -33,15 +33,24 @@ resource "authentik_service_connection_kubernetes" "local" {
   local = true
 }
 
+resource "authentik_outpost" "embedded" {
+  name = "authentik Embedded Outpost"
+  protocol_providers = [
+    module.authentik-app-alertmanager.provider_id,
+  ]
+  service_connection = authentik_service_connection_kubernetes.local.id
+}
+
 resource "authentik_outpost" "k8s-proxy" {
   name = "k8s"
   protocol_providers = [
+    module.authentik-app-netbox.provider_id,
+    module.authentik-app-netapp-aiq.provider_id,
     module.authentik-app-sabnzbd.provider_id,
     module.authentik-app-radarr.provider_id,
     module.authentik-app-sonarr.provider_id,
     module.authentik-app-oxidized.provider_id,
     module.authentik-app-unifi.provider_id,
-    module.authentik-app-alertmanager.provider_id,
     module.authentik-app-code-server.provider_id,
     module.authentik-app-home-assistant.provider_id,
     module.authentik-app-puppetboard.provider_id,

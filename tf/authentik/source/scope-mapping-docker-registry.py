@@ -4,7 +4,7 @@ for scope in scopes:
     if scope.count(":") < 2:
         continue
     type, name, actions = scope.split(":")
-    if not ak_is_group_member(user, name="_acl_ak_docker_push"):
+    if not ak_is_group_member(user, name="acl_docker_push"):
         actions = "pull"
     access.append(
         {

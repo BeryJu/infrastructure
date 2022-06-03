@@ -1,7 +1,3 @@
-data "authentik_certificate_key_pair" "gitlab" {
-  name = "gitlab"
-}
-
 resource "authentik_provider_oauth2" "registry" {
   name               = "docker"
   authorization_flow = data.authentik_flow.default-authorization-flow.id
@@ -9,9 +5,6 @@ resource "authentik_provider_oauth2" "registry" {
   token_validity     = "minutes=10"
   property_mappings = [
     authentik_scope_mapping.registry.id,
-  ]
-  verification_keys = [
-    data.authentik_certificate_key_pair.gitlab.id
   ]
   signing_key = data.authentik_certificate_key_pair.generated.id
 

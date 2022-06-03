@@ -3,7 +3,7 @@ module "authentik-app-alertmanager" {
 
   name     = "Alertmanager"
   group    = "Monitoring"
-  internal = "http://prom-kube-prometheus-stack-alertmanager.monitoring-system.svc.cluster.local:9093"
+  internal = ""
   external = "https://alertmanager.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
@@ -16,7 +16,7 @@ module "authentik-app-thanos" {
 
   name     = "Thanos"
   group    = "Monitoring"
-  internal = "http://thanos-query-frontend.main-monitoring.svc.cluster.local:9090"
+  internal = "http://mimir.mimir.svc.cluster.local"
   external = "https://thanos.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
