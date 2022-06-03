@@ -3,7 +3,7 @@ module "authentik-app-oxidized" {
 
   name     = "oxidized"
   group    = "Infrastructure"
-  internal = "http://oxidized.oxidized.svc.cluster.local:8888"
+  internal = ""
   external = "https://oxidized.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id

@@ -16,7 +16,7 @@ module "authentik-app-thanos" {
 
   name     = "Thanos"
   group    = "Monitoring"
-  internal = "http://mimir.mimir.svc.cluster.local"
+  internal = ""
   external = "https://thanos.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
@@ -29,7 +29,7 @@ module "authentik-app-prom" {
 
   name     = "Prometheus"
   group    = "Monitoring"
-  internal = "http://beryjuorg-mon-prometheus.monitoring-system.svc.cluster.local:9090"
+  internal = ""
   external = "https://prometheus.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id

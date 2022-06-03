@@ -3,7 +3,7 @@ module "authentik-app-sabnzbd" {
 
   name     = "sabnzbd"
   group    = "Personal"
-  internal = "http://sabnzbd.dl-stack.svc.cluster.local:8080"
+  internal = ""
   external = "https://sabnzbd-dl-stack.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
@@ -15,7 +15,7 @@ module "authentik-app-sonarr" {
 
   name     = "sonarr"
   group    = "Personal"
-  internal = "http://sonarr.dl-stack.svc.cluster.local:8989"
+  internal = ""
   external = "https://sonarr-dl-stack.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
@@ -27,7 +27,7 @@ module "authentik-app-radarr" {
 
   name     = "radarr"
   group    = "Personal"
-  internal = "http://radarr.dl-stack.svc.cluster.local:7878"
+  internal = ""
   external = "https://radarr-dl-stack.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id

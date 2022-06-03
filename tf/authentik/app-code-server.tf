@@ -3,7 +3,7 @@ module "authentik-app-code-server" {
 
   name     = "Code Server"
   group    = "Infrastructure"
-  internal = "http://workstation-code.workstation:8000"
+  internal = ""
   external = "https://wks-code.infra.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
