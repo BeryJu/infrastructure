@@ -9,14 +9,14 @@
         repo: "https://github.com/BeryJu/infrastructure.git"
         dest: "{{ env_dir }}"
         version: "master"
-        force: yes
+        force: true
     - name: set permissions
       file:
         dest: "{{ env_dir }}"
         owner: puppet
         group: puppet
         mode: 0755
-        recurse: yes
+        recurse: true
     - name: install modules
       command: r10k puppetfile install
       args:

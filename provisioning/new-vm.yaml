@@ -1,6 +1,6 @@
 - hosts: 127.0.0.1
   connection: local
-  gather_facts: no
+  gather_facts: false
 
   collections:
     - community.vmware
@@ -49,11 +49,11 @@
           - key: guestinfo.metadata
             value: "{{ meta_data }}"
           - key: guestinfo.metadata.encoding
-            value:  base64
+            value: base64
           - key: guestinfo.userdata
             value: "{{ user_data }}"
           - key: guestinfo.userdata.encoding
-            value:  base64
+            value: base64
         <<: *vcenter
 
     - name: Power On VM
@@ -63,7 +63,7 @@
 
     - name: Wait until vCenter is responding IP Address
       vmware_guest:
-        wait_for_ip_address: yes
+        wait_for_ip_address: true
         <<: *vcenter
       register: result
       ignore_errors: True
@@ -96,7 +96,7 @@
   connection: paramiko
   user: vagrant
   become: True
-  gather_facts: yes
+  gather_facts: true
 
   vars:
     # default insecure ssh user, is deleted below
@@ -111,12 +111,12 @@
     - name: Create user
       user:
         name: "{{ bootstrap_vm_user|default('jens') }}"
-        createhome: yes
+        createhome: true
         groups: sudo,adm
-        append: yes
+        append: true
         shell: /bin/bash
         state: present
-        move_home: yes
+        move_home: true
 
     - name: Set authorized key taken from file
       authorized_key:
@@ -136,7 +136,7 @@
     - name: Performing Dist-Upgrade
       apt:
         upgrade: dist
-        update_cache: yes
+        update_cache: true
       register: result
       ignore_errors: True
       retries: 20
@@ -145,7 +145,7 @@
 
     - name: Performing Dist-Upgrade - Autoremove old Packages
       apt:
-        autoremove: yes
+        autoremove: true
 
     ### Network
     - name: Static network config

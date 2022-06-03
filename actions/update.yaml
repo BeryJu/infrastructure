@@ -1,11 +1,11 @@
 - hosts: all
   become: true
   strategy: free
-  gather_facts: no
+  gather_facts: false
   tasks:
     - name: apt | update cache
       apt:
-        update_cache: yes
+        update_cache: true
     - name: apt | full-upgrade
       apt:
         upgrade: full
@@ -14,7 +14,7 @@
       until: apt_res is success
     - name: apt | autoremove
       apt:
-        autoremove: yes
+        autoremove: true
       register: apt_res
       retries: 5
       until: apt_res is success

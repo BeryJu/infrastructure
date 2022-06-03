@@ -59,7 +59,7 @@
       ansible.builtin.git:
         repo: 'https://github.com/{{ item.src }}.git'
         dest: "{{ tmp_path }}/{{ item.dst }}"
-        force: yes
+        force: true
       loop: "{{ projects }}"
     - name: Src | full fetch
       command: git -C '{{ tmp_path }}/{{ item.dst }}' pull --all

@@ -8,15 +8,15 @@
       ansible.posix.synchronize:
         src: "{{ lookup('env', 'PWD') }}/"
         dest: "{{ env_dir }}"
-        delete: yes
-        recursive: yes
+        delete: true
+        recursive: true
     - name: set permissions
       file:
         dest: "{{ env_dir }}"
         owner: puppet
         group: puppet
         mode: 0775
-        recurse: yes
+        recurse: true
     - name: install modules
       command: r10k puppetfile install
       args:

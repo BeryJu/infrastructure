@@ -6,8 +6,8 @@
       command: docker image prune -a -f
     - name: Clean Docker images
       community.docker.docker_prune:
-        containers: no
-        builder_cache: yes
-        images: yes
+        containers: false
+        builder_cache: true
+        images: true
         images_filters:
           dangling: false

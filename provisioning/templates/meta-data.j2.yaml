@@ -12,5 +12,5 @@ addresses: ["{{ bootstrap_vm_ip }}"]
       nameservers:
         addresses: [{{ vm_config.nameserver }}]
       {%- else %}
-dhcp4: yes
+dhcp4: true
       {%- endif %}
