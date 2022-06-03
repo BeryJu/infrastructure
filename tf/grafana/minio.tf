@@ -3,7 +3,7 @@ resource "grafana_folder" "beryjuorg-minio" {
 }
 
 data "http" "minio-dashboard" {
-  url = "https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-overview.json"
+  url = "https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-dashboard.json"
 }
 
 resource "grafana_dashboard" "minio" {
