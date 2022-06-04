@@ -7,7 +7,10 @@ resource "authentik_provider_oauth2" "registry" {
     authentik_scope_mapping.registry.id,
   ]
   signing_key = data.authentik_certificate_key_pair.generated.id
-
+  jwks_sources = [
+    authentik_source_oauth.int-gitlab.uuid,
+    authentik_source_oauth.int-github.uuid,
+  ]
   lifecycle {
     ignore_changes = [client_secret]
   }
