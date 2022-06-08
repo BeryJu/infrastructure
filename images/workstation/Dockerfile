@@ -21,7 +21,7 @@ RUN yes | unminimize && \
 		# Network tools
 		nmap mtr-tiny host net-tools iputils-ping traceroute \
 		# Required for packer to create iso files
-		genisoimage && \
+		genisoimage \
 		# Dev stuff
 		pkg-config libxmlsec1-dev && \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
