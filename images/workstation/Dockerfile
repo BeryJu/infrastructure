@@ -93,6 +93,11 @@ RUN curl -L https://releases.rancher.com/cli2/v2.4.11/rancher-linux-amd64-v2.4.1
 	mv rancher /usr/bin/rancher && \
 	chmod +x /usr/bin/rancher
 
+# infrahq
+RUN echo 'deb [trusted=yes] https://apt.fury.io/infrahq/ /' | tee /etc/apt/sources.list.d/infrahq.list && \
+	apt-get update && \
+	apt-get install -y infra
+
 # terraform, vault and packer
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 	echo "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" > /etc/apt/sources.list.d/hashicorp.list && \
