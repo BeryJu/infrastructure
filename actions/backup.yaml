@@ -1,7 +1,7 @@
 - hosts: localhost
   vars:
     gitlab_connection: &gitlab_connection
-      api_url: https://code.beryju.org
+      api_url: "https://code.beryju.org"
       api_token: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/awx/git-backup:gitlab-token") }}'
     tmp_path: /tmp/backup
     backup_group: "backups"
