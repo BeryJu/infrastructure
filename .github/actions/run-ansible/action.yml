@@ -37,4 +37,4 @@ runs:
         export ANSIBLE_CALLBACK_PLUGINS=$(python3 -m ara.setup.callback_plugins)
         export ARA_API_CLIENT=http
         export ARA_API_SERVER="http://dev1.lab.beryju.org:4000"
-        poetry run ansible-playbook --diff -v ${{ inputs.playbook }}
+        poetry run ansible-playbook -v ${{ inputs.playbook }}

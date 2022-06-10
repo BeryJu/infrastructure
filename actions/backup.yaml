@@ -68,10 +68,7 @@
       command: git -C '{{ tmp_path }}/{{ item.dst }}' remote add backup '{{ gitlab_connection.api_url }}/{{ backup_group }}/{{ item.dst }}'
       loop: "{{ projects }}"
     - name: Dst | push
-      command: >
-        git -C '{{ tmp_path }}/{{ item.dst }}' push
-        --repo 'https://git:{{ gitlab_connection.api_token }}@code.beryju.org
-        /{{ backup_group }}/{{ item.dst }}' --force
+      command: git -C '{{ tmp_path }}/{{ item.dst }}' push --repo 'https://git:{{ gitlab_connection.api_token }}@code.beryju.org/{{ backup_group }}/{{ item.dst }}' --force  # noqa 204
       loop: "{{ projects }}"
     - name: Local | cleanup
       file:
