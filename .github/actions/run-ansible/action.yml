@@ -14,11 +14,8 @@ runs:
     - uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-        cache: "poetry"
     - name: prepare
       shell: bash
-      env:
-        INSTALL: ${{ steps.cache-poetry.outputs.cache-hit }}
       run: |
         python3 -m pip install -U wheel poetry
         poetry env use python3.10

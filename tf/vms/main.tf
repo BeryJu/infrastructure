@@ -32,6 +32,11 @@ data "vsphere_resource_pool" "uk-heavy" {
   datacenter_id = data.vsphere_datacenter.uk-london.id
 }
 
+data "vsphere_resource_pool" "uk-general" {
+  name          = "prod/Resources"
+  datacenter_id = data.vsphere_datacenter.uk-london.id
+}
+
 data "vsphere_resource_pool" "de-general" {
   name          = "prod/Resources"
   datacenter_id = data.vsphere_datacenter.de-freiburg.id
