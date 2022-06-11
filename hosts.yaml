@@ -19,6 +19,7 @@ docker:
     k8s-prd-w4.prod.beryju.org:
     # k8s-prd-w5.prod.beryju.org:
     mon1.prod.beryju.org:
+    splunk1.prod.beryju.org:
   children:
     compose:
       hosts:
