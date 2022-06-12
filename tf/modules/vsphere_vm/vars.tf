@@ -19,6 +19,9 @@ variable "spec" {
     additional_network = optional(list(object({
       network = string
     })))
+    additional_disks = optional(list(object({
+      size = number
+    })))
   })
 }
 

@@ -146,5 +146,10 @@ module "splunk" {
     cpu       = 2
     memory    = 4096
     disk_size = 20
+    additional_disks = [
+      {
+        size = 100
+      }
+    ]
   }
 }

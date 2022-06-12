@@ -50,6 +50,18 @@ resource "vsphere_virtual_machine" "vm" {
     size  = var.spec.disk_size
   }
 
+  dynamic "disk" {
+    for_each = var.spec.additional_disks != null ? var.spec.additional_disks : []
+    content {
+      label            = "extra-disk-${disk.key}"
+      size             = disk.value.size
+      eagerly_scrub    = false
+      thin_provisioned = true
+      keep_on_remove   = true
+      unit_number      = disk.key + 1
+    }
+  }
+
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
   }
