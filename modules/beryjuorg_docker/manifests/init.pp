@@ -10,8 +10,7 @@ class beryjuorg_docker {
     $log_driver = 'splunk'
     $log_opt    = [
       "splunk-token=${splunk_token.unwrap['data']['token']}",
-      'splunk-url=https://splunk1.prod.beryju.org:8088',
-      'splunk-insecureskipverify=true',
+      'splunk-url=https://splunk-collector.infra.beryju.org',
       'mode=non-blocking',
       'tag={{.ImageName}}/{{.Name}}',
     ]
