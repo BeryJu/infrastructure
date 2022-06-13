@@ -5,6 +5,7 @@ provider "registry.terraform.io/goauthentik/authentik" {
   version     = "2022.6.3"
   constraints = "2022.6.3"
   hashes = [
+    "h1:80cEztK28dRjQTfrLC1ay4K9Vb+bcWvDhBHY7tKN3Z4=",
     "h1:PndFgkdsaCWmwqmsluKfaC4HjsDiV4z0gFH+aWlzhuw=",
     "zh:07fc90b4919c3aa9fe1495bc22d55c7dc4e485b57281f32729112ed7b48249f8",
     "zh:1f61a9c1c984a77943fcb9fc130488420330e498cc18a54c983ae81c164dfa5f",
@@ -27,6 +28,7 @@ provider "registry.terraform.io/grafana/grafana" {
   version     = "1.24.0"
   constraints = "~> 1.13, 1.24.0"
   hashes = [
+    "h1:Axe8G/pFfxZUQmTCMjgxqGq877rWknEMp5cc+YGloXI=",
     "h1:z7vk3uyLSaLuua+O2gT5i9K0cqvfXAvhIJhmyGzPyKY=",
     "zh:0e52f051484d7c4e7dd457df54d89cf2fecacd6ac47080f579efa4349fb6112f",
     "zh:51fe94049d63376480ba8019c06cb74f431e12e1404ef3146fbe334f1ed19430",
@@ -99,6 +101,7 @@ provider "registry.terraform.io/hashicorp/http" {
   constraints = "~> 2.1, 2.2.0"
   hashes = [
     "h1:EiuCPEHueILwdgK4hnWuLyT/XdB5ZbEY8ALZdCJYcYM=",
+    "h1:syLdPUKrNIJ7mF7+ijSSUot8VIuFL/45kbN5UcHEIvU=",
     "zh:159add5739a597c08439318f67c440a90ce8444a009e7b8aabbcb9279da9191f",
     "zh:1e5fbe9a4b8d3d9f167effc03bd5324ad6ef721c23a174e98c7eb2e8b85e34e8",
     "zh:4b150790ac5948ceec4f97df4deaff835e4798049d858c20413cbdff6e610c4d",
@@ -168,6 +171,7 @@ provider "registry.terraform.io/rancher/rancher2" {
   version     = "1.24.0"
   constraints = "1.24.0"
   hashes = [
+    "h1:0YGvgpzfVYv/9fyHjzzsbKAMsGZyemcReT+Q+6jEjLc=",
     "h1:o/PR3abotMQek+SPSp7SnwB5/nSagEw7CorPgNU1n0k=",
     "zh:0278e7eca669b10082c7c0fd2037449e325d5f63db5881fd1a9b0c1cdf3be0bc",
     "zh:19ef195b8af98deb2789533b05edf3870d49cdf82d6e07d197e9579bd77a0ffd",

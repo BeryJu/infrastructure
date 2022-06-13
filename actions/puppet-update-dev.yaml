@@ -10,13 +10,6 @@
         dest: "{{ env_dir }}"
         delete: true
         recursive: true
-    - name: set permissions
-      file:
-        dest: "{{ env_dir }}"
-        owner: puppet
-        group: puppet
-        mode: 0775
-        recurse: true
     - name: install modules
       command: r10k puppetfile install
       args:

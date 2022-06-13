@@ -13,7 +13,7 @@ end
 
 Facter.add(:cloudinit_metadata) do
   setcode do
-    metadaat = Base64.decode64(`vmware-rpctool "info-get guestinfo.metadata"`)
-    YAML.load(metadaat)
+    metadata = Base64.decode64(`vmware-rpctool "info-get guestinfo.metadata"`)
+    YAML.load(metadata)
   end
 end
