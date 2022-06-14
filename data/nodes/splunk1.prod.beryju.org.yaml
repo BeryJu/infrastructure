@@ -6,3 +6,4 @@ beryjuorg_docker::stacks:
     vault_vars:
       - splunk/users/admin
     template: splunk
+beryjuorg_docker::splunk_logging: false
