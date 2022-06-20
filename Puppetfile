@@ -14,3 +14,4 @@ mod 'puppet-vault_lookup', :latest
 mod 'puppetlabs-docker', '4.1.2'
 mod 'thias-sysctl', '1.0.7'
 mod 'puppet-prometheus_reporter', '1.1.0'
+mod 'puppetlabs-splunk_hec', '1.3.0'
