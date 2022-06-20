@@ -16,11 +16,3 @@ jobs:
         fetch-depth: 1
     - name: Lint Ansible Playbooks
       uses: ansible/ansible-lint-action@main
-      with:
-        targets: |
-          actions/cleanup.yaml
-          actions/update.yaml
-          actions/sentry-cleanup.yaml
-          provisioning/new-vm.yaml
-        override-deps: |
-          rich>=9.5.1,<11.0.0
