@@ -1,6 +1,7 @@
 mod 'beryjuorg_common', :local => true
 mod 'beryjuorg_docker', :local => true
 mod 'beryjuorg_monitoring', :local => true
+mod 'beryjuorg_puppet', :local => true
 
 mod 'puppetlabs-puppetdb', '7.10.0'
 mod 'puppetlabs-inifile', '5.2.0'
