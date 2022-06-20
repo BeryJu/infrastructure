@@ -1,1 +1,2 @@
 beryjuorg_common::vault_addr: https://vault1.prod.beryju.org:9443
+beryjuorg_logging::splunk-collector: https://splunk-collector.infra.beryju.org/services/collector
