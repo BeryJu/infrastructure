@@ -143,6 +143,9 @@ RUN curl -s https://fluxcd.io/install.sh | sudo bash && \
 # code-server
 RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
 
+# kaniko
+COPY --from=gcr.io/kaniko-project/executor:v1.8.1 /kaniko/executor /usr/bin/kaniko
+
 COPY ./sshd_config /etc/ssh/sshd_config
 
 COPY ./kubectl-merge.sh /usr/bin/kubectl-merge
