@@ -107,10 +107,10 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 	setcap cap_ipc_lock= /usr/bin/vault
 
 # powershell
-#RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb > packages-microsoft-prod.deb && \
-#	dpkg -i packages-microsoft-prod.deb && \
-#	apt-get update && \
-#	apt-get install --no-install-recommends -y powershell
+RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb > packages-microsoft-prod.deb && \
+	dpkg -i packages-microsoft-prod.deb && \
+	apt-get update && \
+	apt-get install --no-install-recommends -y powershell
 
 # govc
 RUN curl -L https://github.com/vmware/govmomi/releases/latest/download/govc_Linux_x86_64.tar.gz | tar xvzf - && \
