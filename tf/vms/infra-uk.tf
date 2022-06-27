@@ -148,7 +148,7 @@ module "splunk" {
     disk_size = 20
     additional_disks = [
       {
-        size = 100
+        size = 250
       }
     ]
   }
