@@ -113,14 +113,10 @@ RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 	apt-get install --no-install-recommends -y powershell
 
 # govc
-RUN curl -L https://github.com/vmware/govmomi/releases/latest/download/govc_Linux_x86_64.tar.gz | tar xvzf - && \
-	mv govc /usr/bin/govc && \
-	chmod +x /usr/bin/govc
+COPY --from=vmware/govc:v0.27.5 /govc /usr/bin/govc
 
 # istioctl
-RUN curl -L https://github.com/istio/istio/releases/download/1.13.1/istio-1.13.1-linux-amd64.tar.gz | tar xvzf - && \
-	mv istio-1.13.1/bin/istioctl /usr/bin/istioctl && \
-	chmod +x /usr/bin/istioctl
+COPY --from=istio/istioctl:1.14.1 /usr/local/bin/istioctl /usr/bin/istioctl
 
 # puppet
 RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
@@ -137,8 +133,8 @@ RUN curl -sL https://github.com/digitalocean/doctl/releases/download/v1.71.0/doc
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
 # FluxCD
-RUN curl -s https://fluxcd.io/install.sh | sudo bash && \
-	flux completion fish > /etc/fish/completions/flux.fish
+COPY --from=fluxcd/flux-cli:v0.31.2 /usr/local/bin/flux /usr/bin/flux
+RUN flux completion fish > /etc/fish/completions/flux.fish
 
 # code-server
 RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
