@@ -9,11 +9,11 @@ networks:
 
 services:
   blocky:
-    image: spx01/blocky
+    image: ghcr.io/0xerr0r/blocky:v0.19
     container_name: blocky
     restart: unless-stopped
     networks:
-      adguard:
+      blocky:
         ipv4_address: 100.64.0.53
     ports:
       - "4000:4000/tcp"
