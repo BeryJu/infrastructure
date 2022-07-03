@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  adguard:
+    container_name: adguard
+    image: adguard/adguardhome:v0.107.7
+    volumes:
+      - /srv/adguard/work:/opt/adguardhome/work
+      - ./conf/:/opt/adguardhome/conf/
+    dns:
+      - 1.1.1.1
+    restart: unless-stopped
+  adguard_exporter:
+    image: ebrianne/adguard-exporter:latest
+    restart: always
+    ports:
+      - "9617:9617"
+    environment:
+      adguard_protocol: http
+      adguard_hostname: adguard
+      adguard_username: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/adguard:username') }}"
+      adguard_password: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/services/adguard:password') }}"
+      interval: 10s
+      log_limit: 10000
