@@ -1,7 +1,2 @@
 classes:
-  - beryjuorg_docker
-  - beryjuorg_docker::compose
   - beryjuorg_monitoring::helper_maas
-beryjuorg_docker::stacks:
-  - name: blocky
-    template: blocky
