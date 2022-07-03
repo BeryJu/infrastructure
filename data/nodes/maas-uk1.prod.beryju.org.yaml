@@ -3,5 +3,5 @@ classes:
   - beryjuorg_docker::compose
   - beryjuorg_monitoring::helper_maas
 beryjuorg_docker::stacks:
-  - name: adguard
-    template: adguard
+  - name: blocky
+    template: blocky
