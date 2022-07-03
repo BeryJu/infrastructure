@@ -6,9 +6,10 @@ variable "address" {
   type = string
 }
 
-# variable "mac" {
-#   type = optional(string)
-# }
+variable "from_vm" {
+  type = bool
+  default = false
+}
 
 variable "additional_hosts" {
   type = list(object({
