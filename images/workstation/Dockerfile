@@ -113,7 +113,7 @@ RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 	apt-get install --no-install-recommends -y powershell
 
 # govc
-COPY --from=vmware/govc:v0.28.0 /govc /usr/bin/govc
+COPY --from=vmware/govc:v0.29.0 /govc /usr/bin/govc
 
 # istioctl
 COPY --from=istio/istioctl:1.14.1 /usr/local/bin/istioctl /usr/bin/istioctl
