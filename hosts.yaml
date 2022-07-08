@@ -2,6 +2,8 @@ all:
   hosts:
     nas1.prod.beryju.org:
     backup-s3.prod.beryju.org:
+    maas-defr1.prod.beryju.org:
+    maas-uk1.prod.beryju.org:
 
 docker:
   hosts:
