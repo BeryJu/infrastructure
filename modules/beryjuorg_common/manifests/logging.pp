@@ -8,12 +8,12 @@ class beryjuorg_common::logging {
   }
 
   file { '/etc/rsyslog.d/10-splunk.conf':
-    ensure  => 'present',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
+    ensure => 'present',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
     source => 'puppet:///modules/beryjuorg_common/rsyslog/10-splunk.conf',
-    notify  => Service['rsyslog']
+    notify => Service['rsyslog'],
   }
 
 }

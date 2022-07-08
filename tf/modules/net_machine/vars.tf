@@ -7,7 +7,7 @@ variable "address" {
 }
 
 variable "from_vm" {
-  type = bool
+  type    = bool
   default = false
 }
 

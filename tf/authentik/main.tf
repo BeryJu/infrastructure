@@ -62,6 +62,7 @@ resource "authentik_outpost" "k8s-proxy" {
     module.authentik-app-netbox.provider_id,
     module.authentik-app-netapp-aiq.provider_id,
     module.authentik-app-unifi.provider_id,
+    module.authentik-app-maas.provider_id,
     module.authentik-app-home-assistant.provider_id,
     module.authentik-app-puppetboard.provider_id,
     module.authentik-app-tautulli.provider_id,

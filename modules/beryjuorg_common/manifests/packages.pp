@@ -12,6 +12,7 @@ class beryjuorg_common::packages {
     'nmap',
     'xkb-data', # For /usr/share/X11/xkb/symbols/us, to fix console-setup service
     'acl',
+    'apt-transport-https',
   ]
   $remove_packages = [
     'snapd',
