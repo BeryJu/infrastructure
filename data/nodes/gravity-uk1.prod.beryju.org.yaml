@@ -1,4 +1,3 @@
 classes:
   - beryjuorg_docker
   - beryjuorg_docker::compose
-beryjuorg_docker::splunk_logging: false
