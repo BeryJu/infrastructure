@@ -2,7 +2,7 @@ terraform {
   required_providers {
     guacamole = {
       source  = "techBeck03/guacamole"
-      version = "1.2.8"
+      version = "1.2.9"
     }
   }
 }
