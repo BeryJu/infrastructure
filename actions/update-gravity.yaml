@@ -1,0 +1,14 @@
+- hosts: gravity-uk1.prod.beryju.org:gravity-defr1.prod.beryju.org
+  become: true
+  gather_facts: false
+  tasks:
+    - name: pull latest
+      ansible.builtin.command: docker-compose pull -q
+      args:
+        chdir: /srv/stacks/gravity/
+    - name: update
+      ansible.builtin.command: docker-compose up -d
+      args:
+        chdir: /srv/stacks/gravity/
+    - name: cleanup
+      ansible.builtin.command: docker image prune -af
