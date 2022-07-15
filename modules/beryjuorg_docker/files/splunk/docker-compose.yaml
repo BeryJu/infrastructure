@@ -11,6 +11,7 @@ services:
     network_mode: host
     volumes:
       - splunk:/opt/splunk/var
+    restart: unless-stopped
 
 volumes:
   splunk:
