@@ -23,18 +23,6 @@ module "authentik-app-unifi" {
   ]
 }
 
-module "authentik-app-maas" {
-  source = "../modules/authentik_app"
-
-  name     = "MAAS"
-  group    = "Infrastructure"
-  internal = "http://maas-uk1.prod.beryju.org:5240"
-  external = "https://maas.infra.beryju.org"
-  access_group = [
-    data.authentik_group.acl_beryjuorg.id
-  ]
-}
-
 data "authentik_group" "acl_netbox" {
   name = "acl_netbox"
 }
