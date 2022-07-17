@@ -6,12 +6,6 @@ class beryjuorg_monitoring::helper_rke {
     hour    => '*',
     minute  => '*',
   }
-  cron { 'apiserver_export':
-    command => "bash -c \"curl -s --cacert /etc/kubernetes/ssl/kube-ca.pem --cert /etc/kubernetes/ssl/kube-apiserver.pem --key /etc/kubernetes/ssl/kube-apiserver-key.pem https://localhost:6443/metrics > /var/lib/prometheus/node-exporter/rke-apiserver.prom\"",
-    user    => 'root',
-    hour    => '*',
-    minute  => '*',
-  }
   cron { 'controller-manager_export':
     command => "bash -c \"curl -s --cacert /etc/kubernetes/ssl/kube-ca.pem --cert /etc/kubernetes/ssl/kube-controller-manager.pem --key /etc/kubernetes/ssl/kube-controller-manager-key.pem https://localhost:10257/metrics > /var/lib/prometheus/node-exporter/rke-controller-manager.prom\"",
     user    => 'root',
