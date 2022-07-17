@@ -29,8 +29,8 @@ docker:
         analytics1.prod.beryju.org:
         dev1.lab.beryju.org:
         gitlab1.prod.beryju.org:
-        mc1.prod.beryju.org:
-        mc2.prod.beryju.org:
+        #mc1.prod.beryju.org:
+        #mc2.prod.beryju.org:
         netbox1.prod.beryju.org:
         plex1.prod.beryju.org:
         rancher1.prod.beryju.org:
