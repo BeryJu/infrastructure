@@ -10,7 +10,7 @@ mod 'puppetlabs-postgresql', '7.5.0'
 mod 'puppetlabs-concat', '7.1.1'
 
 mod 'puppetlabs-stdlib', '8.1.0'
-mod 'puppetlabs-apt', '8.3.0'
+mod 'puppetlabs-apt', '8.4.1'
 mod 'puppet-vault_lookup',
 	:git => 'https://github.com/voxpupuli/puppet-vault_lookup.git'
 mod 'puppetlabs-docker', '4.1.2'
