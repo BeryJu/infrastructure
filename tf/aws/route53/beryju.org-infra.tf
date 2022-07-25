@@ -3,7 +3,7 @@ resource "aws_route53_record" "registry-beryju-org" {
   name    = "registry.beryju.org"
   type    = "A"
   alias {
-    name                   = "k8s-prd-istio._aliases.beryju.org."
+    name                   = "k8s-prd._aliases.beryju.org."
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
@@ -13,7 +13,7 @@ resource "aws_route53_record" "proxy-registry-beryju-org" {
   name    = "proxy.registry.beryju.org"
   type    = "A"
   alias {
-    name                   = "k8s-prd-istio._aliases.beryju.org"
+    name                   = "k8s-prd._aliases.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
@@ -47,6 +47,28 @@ resource "aws_route53_record" "infra-infrahq" {
   type    = "A"
   alias {
     name                   = "k8s-offsite._aliases.beryju.org"
+    zone_id                = aws_route53_zone.beryju-org.zone_id
+    evaluate_target_health = true
+  }
+}
+
+resource "aws_route53_record" "infra-s3" {
+  zone_id = aws_route53_zone.beryju-org.zone_id
+  name    = "s3.beryju.org"
+  type    = "A"
+  alias {
+    name                   = "k8s-prd._aliases.beryju.org"
+    zone_id                = aws_route53_zone.beryju-org.zone_id
+    evaluate_target_health = true
+  }
+}
+
+resource "aws_route53_record" "infra-s3-wildcard" {
+  zone_id = aws_route53_zone.beryju-org.zone_id
+  name    = "*.s3.beryju.org"
+  type    = "A"
+  alias {
+    name                   = "k8s-prd._aliases.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
