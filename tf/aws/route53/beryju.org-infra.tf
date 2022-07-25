@@ -52,6 +52,17 @@ resource "aws_route53_record" "infra-infrahq" {
   }
 }
 
+resource "aws_route53_record" "infra-grafana" {
+  zone_id = aws_route53_zone.beryju-org.zone_id
+  name    = "grafana.infra.beryju.org"
+  type    = "A"
+  alias {
+    name                   = "k8s-prd._aliases.beryju.org"
+    zone_id                = aws_route53_zone.beryju-org.zone_id
+    evaluate_target_health = true
+  }
+}
+
 resource "aws_route53_record" "infra-s3" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "s3.beryju.org"
