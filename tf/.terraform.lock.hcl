@@ -192,6 +192,7 @@ provider "registry.terraform.io/techbeck03/guacamole" {
   version     = "1.2.9"
   constraints = "1.2.9"
   hashes = [
+    "h1:YoBYpnb5eSBB4m14md9ua71vJz5IQQCVARSwTGuDt1o=",
     "h1:b3G4O1ko2/otkbS1wO37PLtF5ha4/+32TItLQ+nICWM=",
     "zh:06e687dd41f4e488c54f2bef410c3f279ad886295e87d48583dfeab99d5e0380",
     "zh:0f49f0e6e2c3a2e961f5c69947dd1c5b5252141069e906f39fe097e84d94bd81",
