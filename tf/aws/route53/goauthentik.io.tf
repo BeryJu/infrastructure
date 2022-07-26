@@ -33,5 +33,5 @@ resource "aws_route53_record" "goauthentik-my" {
   name    = "*.my.goauthentik.io"
   type    = "CNAME"
   ttl     = "300"
-  records = [aws_route53_record.k8s-istio.fqdn]
+  records = [aws_route53_record.k8s-prd.fqdn]
 }
