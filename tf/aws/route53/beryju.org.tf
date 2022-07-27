@@ -50,7 +50,7 @@ resource "aws_route53_record" "hass-ext" {
   name    = "hass-ext.beryju.org"
   type    = "A"
   alias {
-    name                   = "k8s-prd-istio._aliases.beryju.org"
+    name                   = "k8s-prd._aliases.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }

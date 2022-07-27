@@ -1,7 +1,7 @@
 module "net" {
-  source = "../net_machine"
+ source = "../net_machine"
 
-  fqdn    = var.name
-  address = vsphere_virtual_machine.vm.default_ip_address
-  from_vm = true
+ fqdn    = var.name
+ address = vsphere_virtual_machine.vm.default_ip_address
+ from_vm = true
 }

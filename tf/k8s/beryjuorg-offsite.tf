@@ -1,7 +1,7 @@
 module "vault-beryjuorg-offsite" {
   source = "../modules/vault_k8s"
   path   = "k8s-offsite"
-  host   = "https://backup-s3.prod.beryju.org:6443"
+  host   = "https://de-nu1.prod.beryju.org:6443"
   ca     = <<-EOT
     -----BEGIN CERTIFICATE-----
     MIIBdjCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
