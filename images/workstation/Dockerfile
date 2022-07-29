@@ -125,9 +125,7 @@ RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
 	apt-get install --no-install-recommends -y puppet-agent r10k
 
 # doctl
-RUN curl -sL https://github.com/digitalocean/doctl/releases/download/v1.71.0/doctl-1.71.0-linux-amd64.tar.gz | tar -xzv && \
-	chmod +x doctl && \
-	mv doctl /usr/bin/doctl
+COPY --from=digitalocean/doctl:1.78.0 /app/doctl /usr/bin/doctl
 
 # Starship
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
@@ -135,6 +133,10 @@ RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 # FluxCD
 COPY --from=fluxcd/flux-cli:v0.31.5 /usr/local/bin/flux /usr/bin/flux
 RUN flux completion fish > /etc/fish/completions/flux.fish
+
+# Hugo
+COPY --from=klakegg/hugo:0.101.0-ubuntu /bin/hugo /usr/bin/hugo
+RUN hugo completion fish > /etc/fish/completions/hugo.fish
 
 # code-server
 RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
