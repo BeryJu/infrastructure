@@ -20,6 +20,8 @@ runs:
         python3 -m pip install -U wheel poetry
         poetry env use python3.10
         poetry install
+        # Ensure jq is installed
+        sudo apt install -y jq
     - name: Get GitHub JWT
       id: jwt
       shell: bash

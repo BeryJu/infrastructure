@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: '0 */8 * * *'
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   ansible:
     runs-on: self-hosted

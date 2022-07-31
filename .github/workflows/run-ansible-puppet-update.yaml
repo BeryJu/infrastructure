@@ -6,6 +6,10 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   ansible:
     runs-on: self-hosted
