@@ -37,8 +37,9 @@ runs:
         ANSIBLE_HASHI_VAULT_AUTH_METHOD: jwt
         ANSIBLE_HASHI_VAULT_MOUNT_POINT: github-actions
         ANSIBLE_HASHI_VAULT_JWT: ${{ steps.jwt.outputs.token }}
+        ANSIBLE_HASHI_VAULT_ROLE_ID: github-terraform
+        ARA_API_CLIENT: http
+        ARA_API_SERVER: "http://dev1.lab.beryju.org:4000"
       run: |
         export ANSIBLE_CALLBACK_PLUGINS=$(poetry run python3 -m ara.setup.callback_plugins)
-        export ARA_API_CLIENT=http
-        export ARA_API_SERVER="http://dev1.lab.beryju.org:4000"
         poetry run ansible-playbook -v ${{ inputs.playbook }}
