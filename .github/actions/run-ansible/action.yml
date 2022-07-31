@@ -20,17 +20,22 @@ runs:
         python3 -m pip install -U wheel poetry
         poetry env use python3.10
         poetry install
+    - name: Get GitHub JWT
+      id: jwt
+      shell: bash
+      run: |
+        JWT=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r .value)
+        echo "::set-output name=token::${JWT}"
     - name: run job
       shell: bash
       env:
         ANSIBLE_REMOTE_USER: ansible
         ANSIBLE_HOST_KEY_CHECKING: "false"
-        ANSIBLE_HASHI_VAULT_ADDR: https://vault1.prod.beryju.org:9443
-        ANSIBLE_HASHI_VAULT_AUTH_METHOD: cert
-        ANSIBLE_HASHI_VAULT_CA_CERT: /etc/puppetlabs/puppet/ssl/certs/ca.pem
+        ANSIBLE_HASHI_VAULT_ADDR: https://vault.beryju.org
+        ANSIBLE_HASHI_VAULT_AUTH_METHOD: jwt
+        ANSIBLE_HASHI_VAULT_MOUNT_POINT: github-actions
+        ANSIBLE_HASHI_VAULT_JWT: ${{ steps.jwt.outputs.token }}
       run: |
-        export ANSIBLE_HASHI_VAULT_CERT_AUTH_PRIVATE_KEY=/etc/puppetlabs/puppet/ssl/private_keys/$(hostname -f).pem
-        export ANSIBLE_HASHI_VAULT_CERT_AUTH_PUBLIC_KEY=/etc/puppetlabs/puppet/ssl/certs/$(hostname -f).pem
         export ANSIBLE_CALLBACK_PLUGINS=$(poetry run python3 -m ara.setup.callback_plugins)
         export ARA_API_CLIENT=http
         export ARA_API_SERVER="http://dev1.lab.beryju.org:4000"
