@@ -25,7 +25,7 @@ jobs:
       id: time
       run: echo "::set-output name=time::$(date +'%s')"
     - name: Build and push Docker images
-      uses: docker/build-push-action@v3.1.0
+      uses: docker/build-push-action@v3.1.1
       with:
         context: images/frr-exporter/
         tags: |
