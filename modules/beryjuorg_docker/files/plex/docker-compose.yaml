@@ -2,7 +2,7 @@ version: '3.7'
 services:
   plex:
     container_name: plex
-    image: plexinc/pms-docker:1.28.0.5999-97678ded3
+    image: plexinc/pms-docker:1.28.1.6092-87136b92b
     restart: unless-stopped
     environment:
       - TZ=Europe/Berlin
