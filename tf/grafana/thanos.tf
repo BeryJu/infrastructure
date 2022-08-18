@@ -8,7 +8,7 @@ data "http" "thanos-dashboard" {
 
 resource "grafana_dashboard" "thanos" {
   folder      = grafana_folder.beryjuorg-thanos.id
-  config_json = replace(data.http.thanos-dashboard.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.thanos-dashboard.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "thanos-query" {
@@ -17,7 +17,7 @@ data "http" "thanos-query" {
 
 resource "grafana_dashboard" "thanos-query" {
   folder      = grafana_folder.beryjuorg-thanos.id
-  config_json = replace(data.http.thanos-query.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.thanos-query.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "thanos-query-frontend" {
@@ -26,7 +26,7 @@ data "http" "thanos-query-frontend" {
 
 resource "grafana_dashboard" "thanos-query-frontend" {
   folder      = grafana_folder.beryjuorg-thanos.id
-  config_json = replace(data.http.thanos-query-frontend.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.thanos-query-frontend.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "thanos-receive" {
@@ -35,7 +35,7 @@ data "http" "thanos-receive" {
 
 resource "grafana_dashboard" "thanos-receive" {
   folder      = grafana_folder.beryjuorg-thanos.id
-  config_json = replace(data.http.thanos-receive.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.thanos-receive.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "thanos-rule" {
@@ -44,5 +44,5 @@ data "http" "thanos-rule" {
 
 resource "grafana_dashboard" "thanos-rule" {
   folder      = grafana_folder.beryjuorg-thanos.id
-  config_json = replace(data.http.thanos-rule.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.thanos-rule.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }

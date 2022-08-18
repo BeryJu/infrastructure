@@ -8,7 +8,7 @@ data "http" "gitlab-gitaly" {
 
 resource "grafana_dashboard" "gitlab-gitaly" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-gitaly.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-gitaly.response_body, "GitLab Omnibus", "Prometheus")
 }
 
 data "http" "gitlab-nfs-mountstats" {
@@ -17,7 +17,7 @@ data "http" "gitlab-nfs-mountstats" {
 
 resource "grafana_dashboard" "gitlab-nfs-mountstats" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-nfs-mountstats.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-nfs-mountstats.response_body, "GitLab Omnibus", "Prometheus")
 }
 data "http" "gitlab-nginx" {
   url = "https://gitlab.com/gitlab-org/grafana-dashboards/-/raw/master/omnibus/nginx.json"
@@ -25,7 +25,7 @@ data "http" "gitlab-nginx" {
 
 resource "grafana_dashboard" "gitlab-nginx" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-nginx.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-nginx.response_body, "GitLab Omnibus", "Prometheus")
 }
 data "http" "gitlab-overview" {
   url = "https://gitlab.com/gitlab-org/grafana-dashboards/-/raw/master/omnibus/overview.json"
@@ -33,7 +33,7 @@ data "http" "gitlab-overview" {
 
 resource "grafana_dashboard" "gitlab-overview" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-overview.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-overview.response_body, "GitLab Omnibus", "Prometheus")
 }
 data "http" "gitlab-postgresql" {
   url = "https://gitlab.com/gitlab-org/grafana-dashboards/-/raw/master/omnibus/postgresql.json"
@@ -41,7 +41,7 @@ data "http" "gitlab-postgresql" {
 
 resource "grafana_dashboard" "gitlab-postgresql" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-postgresql.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-postgresql.response_body, "GitLab Omnibus", "Prometheus")
 }
 data "http" "gitlab-praefect" {
   url = "https://gitlab.com/gitlab-org/grafana-dashboards/-/raw/master/omnibus/praefect.json"
@@ -49,7 +49,7 @@ data "http" "gitlab-praefect" {
 
 resource "grafana_dashboard" "gitlab-praefect" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-praefect.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-praefect.response_body, "GitLab Omnibus", "Prometheus")
 }
 data "http" "gitlab-rails-app" {
   url = "https://gitlab.com/gitlab-org/grafana-dashboards/-/raw/master/omnibus/rails-app.json"
@@ -57,7 +57,7 @@ data "http" "gitlab-rails-app" {
 
 resource "grafana_dashboard" "gitlab-rails-app" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-rails-app.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-rails-app.response_body, "GitLab Omnibus", "Prometheus")
 }
 data "http" "gitlab-redis" {
   url = "https://gitlab.com/gitlab-org/grafana-dashboards/-/raw/master/omnibus/redis.json"
@@ -65,7 +65,7 @@ data "http" "gitlab-redis" {
 
 resource "grafana_dashboard" "gitlab-redis" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-redis.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-redis.response_body, "GitLab Omnibus", "Prometheus")
 }
 data "http" "gitlab-registry" {
   url = "https://gitlab.com/gitlab-org/grafana-dashboards/-/raw/master/omnibus/registry.json"
@@ -73,7 +73,7 @@ data "http" "gitlab-registry" {
 
 resource "grafana_dashboard" "gitlab-registry" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-registry.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-registry.response_body, "GitLab Omnibus", "Prometheus")
 }
 data "http" "gitlab-service_platform_metrics" {
   url = "https://gitlab.com/gitlab-org/grafana-dashboards/-/raw/master/omnibus/service_platform_metrics.json"
@@ -81,5 +81,5 @@ data "http" "gitlab-service_platform_metrics" {
 
 resource "grafana_dashboard" "gitlab-service_platform_metrics" {
   folder      = grafana_folder.beryjuorg-gitlab.id
-  config_json = replace(data.http.gitlab-service_platform_metrics.body, "GitLab Omnibus", "Prometheus")
+  config_json = replace(data.http.gitlab-service_platform_metrics.response_body, "GitLab Omnibus", "Prometheus")
 }

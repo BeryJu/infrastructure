@@ -8,5 +8,5 @@ data "http" "postgres-dashboard" {
 
 resource "grafana_dashboard" "postgres" {
   folder      = grafana_folder.beryjuorg-postgres.id
-  config_json = replace(data.http.postgres-dashboard.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.postgres-dashboard.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }

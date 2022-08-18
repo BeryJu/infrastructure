@@ -8,7 +8,7 @@ data "http" "istio-extension-dashboard" {
 
 resource "grafana_dashboard" "istio-extension-dashboard" {
   folder      = grafana_folder.beryjuorg-istio.id
-  config_json = data.http.istio-extension-dashboard.body
+  config_json = data.http.istio-extension-dashboard.response_body
 }
 
 data "http" "istio-mesh-dashboard" {
@@ -17,7 +17,7 @@ data "http" "istio-mesh-dashboard" {
 
 resource "grafana_dashboard" "istio-mesh-dashboard" {
   folder      = grafana_folder.beryjuorg-istio.id
-  config_json = data.http.istio-mesh-dashboard.body
+  config_json = data.http.istio-mesh-dashboard.response_body
 }
 
 data "http" "istio-performance-dashboard" {
@@ -26,7 +26,7 @@ data "http" "istio-performance-dashboard" {
 
 resource "grafana_dashboard" "istio-performance-dashboard" {
   folder      = grafana_folder.beryjuorg-istio.id
-  config_json = data.http.istio-performance-dashboard.body
+  config_json = data.http.istio-performance-dashboard.response_body
 }
 
 data "http" "istio-service-dashboard" {
@@ -35,7 +35,7 @@ data "http" "istio-service-dashboard" {
 
 resource "grafana_dashboard" "istio-service-dashboard" {
   folder      = grafana_folder.beryjuorg-istio.id
-  config_json = data.http.istio-service-dashboard.body
+  config_json = data.http.istio-service-dashboard.response_body
 }
 
 data "http" "istio-workload-dashboard" {
@@ -44,7 +44,7 @@ data "http" "istio-workload-dashboard" {
 
 resource "grafana_dashboard" "istio-workload-dashboard" {
   folder      = grafana_folder.beryjuorg-istio.id
-  config_json = data.http.istio-workload-dashboard.body
+  config_json = data.http.istio-workload-dashboard.response_body
 }
 
 data "http" "pilot-dashboard" {
@@ -53,5 +53,5 @@ data "http" "pilot-dashboard" {
 
 resource "grafana_dashboard" "pilot-dashboard" {
   folder      = grafana_folder.beryjuorg-istio.id
-  config_json = data.http.pilot-dashboard.body
+  config_json = data.http.pilot-dashboard.response_body
 }

@@ -8,7 +8,7 @@ data "http" "k8s-flux-cluster-dashboard" {
 
 resource "grafana_dashboard" "k8s-flux-cluster" {
   folder      = grafana_folder.beryjuorg-k8s-flux.id
-  config_json = data.http.k8s-flux-cluster-dashboard.body
+  config_json = data.http.k8s-flux-cluster-dashboard.response_body
 }
 
 data "http" "k8s-flux-control-plane-dashboard" {
@@ -17,5 +17,5 @@ data "http" "k8s-flux-control-plane-dashboard" {
 
 resource "grafana_dashboard" "k8s-flux-control-plane" {
   folder      = grafana_folder.beryjuorg-k8s-flux.id
-  config_json = data.http.k8s-flux-control-plane-dashboard.body
+  config_json = data.http.k8s-flux-control-plane-dashboard.response_body
 }

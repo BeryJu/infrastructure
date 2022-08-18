@@ -8,5 +8,5 @@ data "http" "minio-dashboard" {
 
 resource "grafana_dashboard" "minio" {
   folder      = grafana_folder.beryjuorg-minio.id
-  config_json = replace(data.http.minio-dashboard.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.minio-dashboard.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }

@@ -8,7 +8,7 @@ data "http" "netapp-harvest_dashboard_aggregate" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_aggregate" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_aggregate.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_aggregate.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_cluster" {
@@ -17,7 +17,7 @@ data "http" "netapp-harvest_dashboard_cluster" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_cluster" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_cluster.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_cluster.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_disk" {
@@ -26,7 +26,7 @@ data "http" "netapp-harvest_dashboard_disk" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_disk" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_disk.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_disk.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_lun" {
@@ -35,7 +35,7 @@ data "http" "netapp-harvest_dashboard_lun" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_lun" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_lun.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_lun.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_metadata" {
@@ -44,7 +44,7 @@ data "http" "netapp-harvest_dashboard_metadata" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_metadata" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_metadata.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_metadata.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_network_detail" {
@@ -53,7 +53,7 @@ data "http" "netapp-harvest_dashboard_network_detail" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_network_detail" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_network_detail.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_network_detail.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_node_details" {
@@ -62,7 +62,7 @@ data "http" "netapp-harvest_dashboard_node_details" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_node_details" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_node_details.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_node_details.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_shelf" {
@@ -71,7 +71,7 @@ data "http" "netapp-harvest_dashboard_shelf" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_shelf" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_shelf.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_shelf.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_snapmirror" {
@@ -80,7 +80,7 @@ data "http" "netapp-harvest_dashboard_snapmirror" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_snapmirror" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_snapmirror.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_snapmirror.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_svm_details" {
@@ -89,7 +89,7 @@ data "http" "netapp-harvest_dashboard_svm_details" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_svm_details" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_svm_details.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_svm_details.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "netapp-harvest_dashboard_volume_details" {
@@ -98,5 +98,5 @@ data "http" "netapp-harvest_dashboard_volume_details" {
 
 resource "grafana_dashboard" "netapp-harvest_dashboard_volume_details" {
   folder      = grafana_folder.beryjuorg-netapp.id
-  config_json = replace(data.http.netapp-harvest_dashboard_volume_details.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.netapp-harvest_dashboard_volume_details.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }

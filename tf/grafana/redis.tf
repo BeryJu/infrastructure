@@ -8,5 +8,5 @@ data "http" "redis-dashboard" {
 
 resource "grafana_dashboard" "redis" {
   folder      = grafana_folder.beryjuorg-redis.id
-  config_json = replace(data.http.redis-dashboard.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.redis-dashboard.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }

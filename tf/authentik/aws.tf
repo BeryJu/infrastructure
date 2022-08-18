@@ -64,7 +64,7 @@ data "http" "saml-metadata" {
 
 resource "aws_iam_saml_provider" "default" {
   name                   = "authentik"
-  saml_metadata_document = data.http.saml-metadata.body
+  saml_metadata_document = data.http.saml-metadata.response_body
 }
 
 resource "aws_iam_role" "authentik" {

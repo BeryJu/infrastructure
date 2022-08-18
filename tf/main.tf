@@ -59,3 +59,6 @@ module "k8s" {
 module "vms" {
   source = "./vms/"
 }
+module "oci" {
+  source = "./oci/"
+}

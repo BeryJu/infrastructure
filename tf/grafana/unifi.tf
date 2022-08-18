@@ -8,7 +8,7 @@ data "http" "unifi-client-insight" {
 
 resource "grafana_dashboard" "unifi-client-insight" {
   folder      = grafana_folder.beryjuorg-unifi.id
-  config_json = replace(data.http.unifi-client-insight.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.unifi-client-insight.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "unifi-uap-insight" {
@@ -17,5 +17,5 @@ data "http" "unifi-uap-insight" {
 
 resource "grafana_dashboard" "unifi-uap-insight" {
   folder      = grafana_folder.beryjuorg-unifi.id
-  config_json = replace(data.http.unifi-uap-insight.body, "$${DS_PROMETHEUS}", "Prometheus")
+  config_json = replace(data.http.unifi-uap-insight.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
