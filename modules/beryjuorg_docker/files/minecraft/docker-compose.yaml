@@ -22,7 +22,7 @@ services:
       - /srv/mc-mods:/modpacks:ro
   mc_exporter:
     restart: always
-    image: ghcr.io/dirien/minecraft-exporter:0.16.0-amd64
+    image: ghcr.io/dirien/minecraft-exporter:0.16.1-amd64
     ports:
       - 127.0.0.1:9150:9150
     volumes:
