@@ -1,4 +1,4 @@
-FROM tynany/frr_exporter:v1.1.0
+FROM tynany/frr_exporter:v1.1.2
 
 ENV CONFIG=config/node-exporter.yaml
 
