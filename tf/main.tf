@@ -10,7 +10,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.27.0"
+      version = "4.28.0"
     }
     vault = {
       source  = "hashicorp/vault"
