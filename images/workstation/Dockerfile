@@ -116,7 +116,7 @@ RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 COPY --from=vmware/govc:v0.29.0 /govc /usr/bin/govc
 
 # istioctl
-COPY --from=istio/istioctl:1.14.3 /usr/local/bin/istioctl /usr/bin/istioctl
+COPY --from=istio/istioctl:1.15.0 /usr/local/bin/istioctl /usr/bin/istioctl
 
 # puppet
 RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
