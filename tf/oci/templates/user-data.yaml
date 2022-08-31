@@ -1,0 +1,18 @@
+#cloud-config
+users:
+  - name: jens
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, sudo
+    ssh_import_id:
+      - gh:BeryJu
+    shell: /bin/bash
+puppet:
+  install: true
+  install_type: "aio"
+  collection: "puppet7"
+  # Default install script breaks on ubuntu 22.04
+  aio_install_url: https://gist.githubusercontent.com/BeryJu/481bdb9bf963b729ce2084e8977c4307/raw/5280f596e2d0ad5f824b019250777bc71423dcb6/install.sh
+  exec: true
+  conf:
+    main:
+      server: "puppet.infra.beryju.org"
