@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   splunk:
-    image: splunk/splunk:9.0.0
+    image: splunk/splunk:9.0.1
     container_name: splunk
     hostname: splunk
     environment:
