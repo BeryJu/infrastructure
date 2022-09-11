@@ -3,7 +3,7 @@ version: "3"
 services:
   puppetboard:
     restart: always
-    image: ghcr.io/voxpupuli/puppetboard:4.0.3
+    image: ghcr.io/voxpupuli/puppetboard:4.0.5
     network_mode: host
     environment:
       PUPPETDB_HOST: <%= $facts[ipaddress] %>
