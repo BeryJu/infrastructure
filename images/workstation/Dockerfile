@@ -145,7 +145,7 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
 COPY --from=gcr.io/kaniko-project/executor:v1.9.0 /kaniko/executor /usr/bin/kaniko
 
 # etcdctl
-COPY --from=quay.io/coreos/etcd:v3.5.4 /usr/local/bin/etcdctl /usr/bin/etcdctl
+COPY --from=quay.io/coreos/etcd:v3.5.5 /usr/local/bin/etcdctl /usr/bin/etcdctl
 
 COPY ./sshd_config /etc/ssh/sshd_config
 
