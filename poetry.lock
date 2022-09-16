@@ -292,18 +292,15 @@ testing = ["covdefaults (>=2.2)", "coverage (>=6.4.2)", "pytest (>=7.1.2)", "pyt
 
 [[package]]
 name = "hvac"
-version = "0.11.2"
+version = "1.0.0"
 description = "HashiCorp Vault API client"
 category = "main"
 optional = false
-python-versions = ">=2.7"
+python-versions = ">=3.6.2,<4.0.0"
 
 [package.dependencies]
-requests = ">=2.21.0"
-six = ">=1.5.0"
-
-[package.extras]
-parser = ["pyhcl (>=0.3.10)"]
+pyhcl = ">=0.4.4,<0.5.0"
+requests = "2.27.1"
 
 [[package]]
 name = "idna"
@@ -466,6 +463,14 @@ description = "Pygments is a syntax highlighting package written in Python."
 category = "dev"
 optional = false
 python-versions = ">=3.5"
+
+[[package]]
+name = "pyhcl"
+version = "0.4.4"
+description = "HCL configuration parser for python"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "pyparsing"
@@ -746,7 +751,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "519201772f31b7c02c41f93be30e2e3f8ea26fa077898ba3c4a79fca1b94614d"
+content-hash = "e0f3581f73d429f5930c29bcae4b8c65e7cf82ff9584826697483f1343580916"
 
 [metadata.files]
 ansible = [
@@ -931,8 +936,8 @@ filelock = [
     {file = "filelock-3.8.0.tar.gz", hash = "sha256:55447caa666f2198c5b6b13a26d2084d26fa5b115c00d065664b2124680c4edc"},
 ]
 hvac = [
-    {file = "hvac-0.11.2-py2.py3-none-any.whl", hash = "sha256:3e8a34804b1e20954a2b4991cc13ed9c09b32e50dadd9d3438224481150f6568"},
-    {file = "hvac-0.11.2.tar.gz", hash = "sha256:f905c59d32d88d3f67571fe5a8a78de4659e04798ad809de439f667247d13626"},
+    {file = "hvac-1.0.0-py3-none-any.whl", hash = "sha256:2decbaf9355493e661338a825ebe8be6e19f93a8ccfcc5f86a10adfad4bfead6"},
+    {file = "hvac-1.0.0.tar.gz", hash = "sha256:bd85bd0091aa4a438245ecc7f1f29270ceb642fcfaca968fda388bfedc876f61"},
 ]
 idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
@@ -1060,6 +1065,9 @@ pycparser = [
 pygments = [
     {file = "Pygments-2.11.2-py3-none-any.whl", hash = "sha256:44238f1b60a76d78fc8ca0528ee429702aae011c265fe6a8dd8b63049ae41c65"},
     {file = "Pygments-2.11.2.tar.gz", hash = "sha256:4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"},
+]
+pyhcl = [
+    {file = "pyhcl-0.4.4.tar.gz", hash = "sha256:2d9b9dcdf1023d812bfed561ba72c99104c5b3f52e558d595130a44ce081b003"},
 ]
 pyparsing = [
     {file = "pyparsing-3.0.6-py3-none-any.whl", hash = "sha256:04ff808a5b90911829c55c4e26f75fa5ca8a2f5f36aa3a51f68e27033341d3e4"},
