@@ -7,7 +7,7 @@ license = "GPL"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-hvac = "^0.11.2"
+hvac = "^1.0.0"
 ansible = "^6.4.0"
 python-gitlab = "^3.9.0"
 python-dateutil = "^2.8.2"
