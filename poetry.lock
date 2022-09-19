@@ -292,7 +292,7 @@ testing = ["covdefaults (>=2.2)", "coverage (>=6.4.2)", "pytest (>=7.1.2)", "pyt
 
 [[package]]
 name = "hvac"
-version = "1.0.0"
+version = "1.0.2"
 description = "HashiCorp Vault API client"
 category = "main"
 optional = false
@@ -300,7 +300,7 @@ python-versions = ">=3.6.2,<4.0.0"
 
 [package.dependencies]
 pyhcl = ">=0.4.4,<0.5.0"
-requests = "2.27.1"
+requests = ">=2.27.1,<3.0.0"
 
 [[package]]
 name = "idna"
@@ -751,7 +751,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "e0f3581f73d429f5930c29bcae4b8c65e7cf82ff9584826697483f1343580916"
+content-hash = "a42538732a73c60b4fdeb8e4b2404fcdf687ee2741abc3da80270253a14a1362"
 
 [metadata.files]
 ansible = [
@@ -936,8 +936,8 @@ filelock = [
     {file = "filelock-3.8.0.tar.gz", hash = "sha256:55447caa666f2198c5b6b13a26d2084d26fa5b115c00d065664b2124680c4edc"},
 ]
 hvac = [
-    {file = "hvac-1.0.0-py3-none-any.whl", hash = "sha256:2decbaf9355493e661338a825ebe8be6e19f93a8ccfcc5f86a10adfad4bfead6"},
-    {file = "hvac-1.0.0.tar.gz", hash = "sha256:bd85bd0091aa4a438245ecc7f1f29270ceb642fcfaca968fda388bfedc876f61"},
+    {file = "hvac-1.0.2-py3-none-any.whl", hash = "sha256:e8256343de2576b18bc8d49f09a04c728f2a8f3a866825bb413aa4f9ebab1fea"},
+    {file = "hvac-1.0.2.tar.gz", hash = "sha256:e4028c5c0ecc7b7fcf6a54d290f99240e5abcdb9ffe442d1c14f061310d4c61c"},
 ]
 idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
