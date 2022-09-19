@@ -43,7 +43,7 @@ resolvelib = ">=0.5.3,<0.9.0"
 
 [[package]]
 name = "ansible-lint"
-version = "6.5.2"
+version = "6.6.0"
 description = "Checks playbooks for practices and behavior that could potentially be improved"
 category = "dev"
 optional = false
@@ -64,7 +64,7 @@ wcmatch = ">=7.0"
 yamllint = ">=1.25.0"
 
 [package.extras]
-docs = ["myst-parser (>=0.16.1)", "pipdeptree (>=2.2.1)", "sphinx (>=4.4.0)", "sphinx-ansible-theme (>=0.9.1)", "sphinx-rtd-theme (>=0.5.2,<1.0.0)", "sphinxcontrib-apidoc (>=0.3.0)", "sphinxcontrib-programoutput2 (>=2.0a1)", "yamllint (>=1.26.3)"]
+docs = ["myst-parser (>=0.16.1)", "pipdeptree (>=2.2.1)", "sphinx (>=4.4.0)", "sphinx-ansible-theme (>=0.9.1)", "sphinx-rtd-theme (>=1.0.0,<2.0.0)", "sphinxcontrib-apidoc (>=0.3.0)", "sphinxcontrib-programoutput2 (>=2.0a1)", "yamllint (>=1.26.3)"]
 test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "flake8", "flake8-future-annotations", "flaky (>=3.7.0)", "mypy", "psutil", "pylint", "pytest (>=6.0.1)", "pytest-plus (>=0.2)", "pytest-xdist (>=2.1.0)"]
 
 [[package]]
@@ -767,8 +767,8 @@ ansible-core = [
     {file = "ansible_core-2.13.4-py3-none-any.whl", hash = "sha256:d83947d23441df6f96ea934032a948a060bf6db4852d28ed5f9c7b92b39165b7"},
 ]
 ansible-lint = [
-    {file = "ansible-lint-6.5.2.tar.gz", hash = "sha256:f4432c74c0f28b2870a188b4999592f6338042f30d0c6f4ee11b32440ca9ffe4"},
-    {file = "ansible_lint-6.5.2-py3-none-any.whl", hash = "sha256:ac8241d3ce1b161f0e052b44f0d226fbda7d8f318d4f24269de7f2b87e32ff6f"},
+    {file = "ansible-lint-6.6.0.tar.gz", hash = "sha256:eb467d725d0839693ef5fe11abe18085f472c2da4837a8e2df724e04ede96af6"},
+    {file = "ansible_lint-6.6.0-py3-none-any.whl", hash = "sha256:56bf7974594e34b9327211d2febe623978850a1fab4330da94e2964ab52cfe42"},
 ]
 ara = [
     {file = "ara-1.5.8-py2.py3-none-any.whl", hash = "sha256:814f7450bde7df4c468d7a540073f66e49daaf67d56d9f6bb8261989f61ebf36"},
