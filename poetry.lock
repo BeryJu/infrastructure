@@ -43,7 +43,7 @@ resolvelib = ">=0.5.3,<0.9.0"
 
 [[package]]
 name = "ansible-lint"
-version = "6.6.0"
+version = "6.6.1"
 description = "Checks playbooks for practices and behavior that could potentially be improved"
 category = "dev"
 optional = false
@@ -767,8 +767,8 @@ ansible-core = [
     {file = "ansible_core-2.13.4-py3-none-any.whl", hash = "sha256:d83947d23441df6f96ea934032a948a060bf6db4852d28ed5f9c7b92b39165b7"},
 ]
 ansible-lint = [
-    {file = "ansible-lint-6.6.0.tar.gz", hash = "sha256:eb467d725d0839693ef5fe11abe18085f472c2da4837a8e2df724e04ede96af6"},
-    {file = "ansible_lint-6.6.0-py3-none-any.whl", hash = "sha256:56bf7974594e34b9327211d2febe623978850a1fab4330da94e2964ab52cfe42"},
+    {file = "ansible-lint-6.6.1.tar.gz", hash = "sha256:b5b3eae0271fbb5799dd5f8a111aa69ccd97ff2cc45253bd4101bf31b8f6beb7"},
+    {file = "ansible_lint-6.6.1-py3-none-any.whl", hash = "sha256:c3828a8370133b944bd0f943154f5069529c104c565d7b92c400149e3f699efc"},
 ]
 ara = [
     {file = "ara-1.5.8-py2.py3-none-any.whl", hash = "sha256:814f7450bde7df4c468d7a540073f66e49daaf67d56d9f6bb8261989f61ebf36"},
