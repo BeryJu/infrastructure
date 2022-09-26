@@ -1,4 +1,4 @@
-FROM quay.io/prometheus/node-exporter:v1.3.1
+FROM quay.io/prometheus/node-exporter:v1.4.0
 
 ENV CONFIG=config/node-exporter.yaml
 
