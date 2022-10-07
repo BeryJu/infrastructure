@@ -3,8 +3,8 @@ name: Run ansible (puppet-update)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
 
 permissions:
   contents: read
