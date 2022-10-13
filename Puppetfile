@@ -9,7 +9,7 @@ mod 'puppetlabs-firewall', '3.6.0'
 mod 'puppetlabs-postgresql', '8.2.1'
 mod 'puppetlabs-concat', '7.3.0'
 
-mod 'puppetlabs-stdlib', '8.4.0'
+mod 'puppetlabs-stdlib', '8.5.0'
 mod 'puppetlabs-apt', '9.0.0'
 mod 'puppet-vault_lookup',
 	:git => 'https://github.com/voxpupuli/puppet-vault_lookup.git'
