@@ -44,9 +44,6 @@ module "aws" {
 module "aws_ses_forwarder" {
   source = "./aws_ses_forwarder/"
 }
-module "rancher" {
-  source = "./rancher/"
-}
 module "grafana" {
   source = "./grafana/"
 }
@@ -55,9 +52,6 @@ module "vault" {
 }
 module "k8s" {
   source = "./k8s/"
-}
-module "vms" {
-  source = "./vms/"
 }
 module "oci" {
   source = "./oci/"
