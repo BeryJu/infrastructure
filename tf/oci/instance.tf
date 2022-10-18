@@ -7,8 +7,8 @@ resource "oci_core_instance_configuration" "default-instance-config" {
       shape          = "VM.Standard.A1.Flex"
       compartment_id = local.compartment_id
       shape_config {
-        ocpus         = 1
-        memory_in_gbs = 6
+        ocpus         = 2
+        memory_in_gbs = 12
       }
       source_details {
         source_type = "image"
@@ -36,5 +36,5 @@ resource "oci_core_instance_pool" "default-aarch-pool" {
     availability_domain = "XOIo:EU-FRANKFURT-1-AD-1"
     primary_subnet_id   = oci_core_subnet.homelab.id
   }
-  size = 4
+  size = 2
 }
