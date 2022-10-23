@@ -31,6 +31,6 @@ module "vault-infra" {
 resource "symbiosis_node_pool" "infra-default" {
   cluster   = symbiosis_cluster.infra.name
   name      = "default"
-  node_type = "general-1"
+  node_type = "general-2"
   quantity  = 2
 }
