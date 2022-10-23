@@ -23,5 +23,5 @@ module "vault-infra" {
   source = "../modules/vault_k8s"
   path   = "k8s-${symbiosis_cluster.infra.name}"
   host   = "https://${symbiosis_cluster.infra.endpoint}"
-  ca     = symbiosis_cluster.example.ca_certificate
+  ca     = symbiosis_cluster.infra.ca_certificate
 }
