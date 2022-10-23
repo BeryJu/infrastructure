@@ -7,6 +7,7 @@ resource "vault_kubernetes_auth_backend_config" "config" {
   backend                = vault_auth_backend.kubernetes.path
   kubernetes_host        = var.host
   kubernetes_ca_cert     = var.ca
+  token_reviewer_jwt     = var.jwt
   disable_iss_validation = "true"
 }
 

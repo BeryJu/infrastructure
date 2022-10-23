@@ -27,11 +27,11 @@ locals {
 }
 
 resource "aws_route53_record" "goauthentik-version-branch" {
-  zone_id = aws_route53_zone.goauthentik-io.zone_id
-  name    = "${each.key}.goauthentik.io"
-  type    = "CNAME"
-  ttl     = "300"
-  records = ["authentik.netlify.app."]
+  zone_id  = aws_route53_zone.goauthentik-io.zone_id
+  name     = "${each.key}.goauthentik.io"
+  type     = "CNAME"
+  ttl      = "300"
+  records  = ["authentik.netlify.app."]
   for_each = toset(local.versions)
 }
 

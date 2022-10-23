@@ -1,11 +1,11 @@
 terraform {
   required_providers {
     symbiosis = {
-      source = "symbiosis-cloud/symbiosis"
+      source  = "symbiosis-cloud/symbiosis"
       version = "0.5.0"
     }
     flux = {
-      source = "fluxcd/flux"
+      source  = "fluxcd/flux"
       version = "0.19.0"
     }
   }
