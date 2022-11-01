@@ -1,7 +1,7 @@
 version: "2"
 services:
   unifi-controller:
-    image: linuxserver/unifi-controller:7.2.94
+    image: linuxserver/unifi-controller:7.2.95
     container_name: unifi-controller
     environment:
       PUID: "1000"
