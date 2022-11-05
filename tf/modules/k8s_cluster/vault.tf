@@ -5,6 +5,12 @@ resource "kubernetes_namespace" "vault-secrets-operator" {
   depends_on = [
     symbiosis_cluster.cluster,
   ]
+  lifecycle {
+    ignore_changes = [
+      metadata.0.labels,
+      metadata.0.annotations,
+    ]
+  }
 }
 
 resource "kubernetes_service_account" "vault-secrets-operator" {
@@ -15,6 +21,12 @@ resource "kubernetes_service_account" "vault-secrets-operator" {
   depends_on = [
     symbiosis_cluster.cluster,
   ]
+  lifecycle {
+    ignore_changes = [
+      metadata.0.labels,
+      metadata.0.annotations,
+    ]
+  }
 }
 
 resource "kubernetes_secret" "vault-secrets-operator" {
@@ -29,6 +41,12 @@ resource "kubernetes_secret" "vault-secrets-operator" {
   depends_on = [
     symbiosis_cluster.cluster,
   ]
+  lifecycle {
+    ignore_changes = [
+      metadata.0.labels,
+      metadata.0.annotations,
+    ]
+  }
 }
 
 module "vault" {

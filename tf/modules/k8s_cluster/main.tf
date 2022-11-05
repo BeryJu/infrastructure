@@ -3,6 +3,9 @@ terraform {
     symbiosis = {
       source  = "symbiosis-cloud/symbiosis"
     }
+    authentik = {
+      source  = "goauthentik/authentik"
+    }
   }
 }
 
@@ -16,4 +19,8 @@ provider "kubernetes" {
 resource "symbiosis_cluster" "cluster" {
   name   = var.name
   region = "germany-1"
+}
+
+resource "symbiosis_cluster_service_account" "terraform" {
+  cluster_name = symbiosis_cluster.cluster.name
 }

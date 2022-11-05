@@ -16,6 +16,10 @@ terraform {
       source  = "hashicorp/vault"
       version = "3.10.0"
     }
+    authentik = {
+      source  = "goauthentik/authentik"
+      version = "2022.10.0"
+    }
   }
 }
 
@@ -30,6 +34,15 @@ provider "aws" {
   region     = "eu-central-1"
   access_key = data.vault_generic_secret.aws.data["access_key"]
   secret_key = data.vault_generic_secret.aws.data["secret_key"]
+}
+
+data "vault_generic_secret" "authentik_auth" {
+  path = "kv/services/authentik-prod"
+}
+
+provider "authentik" {
+  url   = "https://id.beryju.org"
+  token = data.vault_generic_secret.authentik_auth.data["terraform_token"]
 }
 
 module "guacamole" {
