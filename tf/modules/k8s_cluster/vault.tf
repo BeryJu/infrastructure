@@ -25,6 +25,7 @@ resource "kubernetes_secret" "vault-secrets-operator" {
       "kubernetes.io/service-account.name" = kubernetes_service_account.vault-secrets-operator.metadata.0.name
     }
   }
+  type = "kubernetes.io/service-account-token"
   depends_on = [
     symbiosis_cluster.cluster,
   ]
