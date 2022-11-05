@@ -23,7 +23,7 @@ resource "authentik_source_oauth" "k8s" {
   access_token_url  = "http://foo"
   authorization_url = "http://foo"
   profile_url       = "http://foo"
-  oidc_jwks         = jsonencode(data.http.jwks.response_body)
+  oidc_jwks         = data.http.jwks.response_body
 
   user_path_template = "goauthentik.io/sources/k8s"
 }
