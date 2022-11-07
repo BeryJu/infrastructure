@@ -12,10 +12,3 @@ resource "aws_route53_record" "k8s-prd" {
   ttl     = "300"
   records = [local.pub_k8s_prd]
 }
-resource "aws_route53_record" "k8s-offsite" {
-  zone_id = aws_route53_zone.beryju-org.zone_id
-  name    = "k8s-offsite._aliases.beryju.org"
-  type    = "A"
-  ttl     = "300"
-  records = [local.pub_k8s_offsite]
-}
