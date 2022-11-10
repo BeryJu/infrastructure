@@ -49,8 +49,9 @@ RUN apt-add-repository ppa:fish-shell/release-3 -y && \
 	apt-get install -y --no-install-recommends fish
 
 # chezmoi
-RUN curl -L https://github.com/twpayne/chezmoi/releases/download/v2.8.0/chezmoi_2.8.0_linux_amd64.deb > chezmoi.deb && \
-	dpkg -i chezmoi.deb
+RUN curl -L https://github.com/twpayne/chezmoi/releases/download/v2.27.0/chezmoi_2.27.0_linux_amd64.deb > chezmoi.deb && \
+	dpkg -i chezmoi.deb && \
+	rm -f chezmoi.deb
 
 # Korb
 RUN curl -L https://github.com/BeryJu/korb/releases/latest/download/korb_linux_amd64 > korb && \
@@ -110,7 +111,8 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb > packages-microsoft-prod.deb && \
 	dpkg -i packages-microsoft-prod.deb && \
 	apt-get update && \
-	apt-get install --no-install-recommends -y powershell
+	apt-get install --no-install-recommends -y powershell && \
+	rm -f packages-microsoft-prod.deb
 
 # govc
 COPY --from=vmware/govc:v0.29.0 /govc /usr/bin/govc
@@ -122,7 +124,8 @@ COPY --from=istio/istioctl:1.15.3 /usr/local/bin/istioctl /usr/bin/istioctl
 RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
 	dpkg -i puppet.deb && \
 	apt-get update && \
-	apt-get install --no-install-recommends -y puppet-agent r10k
+	apt-get install --no-install-recommends -y puppet-agent r10k && \
+	rm -f puppet.deb
 
 # doctl
 COPY --from=digitalocean/doctl:1.85.0 /app/doctl /usr/bin/doctl
