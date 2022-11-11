@@ -1,10 +1,10 @@
 terraform {
   required_providers {
     symbiosis = {
-      source  = "symbiosis-cloud/symbiosis"
+      source = "symbiosis-cloud/symbiosis"
     }
     authentik = {
-      source  = "goauthentik/authentik"
+      source = "goauthentik/authentik"
     }
   }
 }

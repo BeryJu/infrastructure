@@ -4,7 +4,7 @@ resource "aws_route53_record" "host-de-nu1" {
   type    = "A"
   ttl     = "3600"
   records = [
-    local.pub_k8s_offsite,
+    "202.61.244.145",
   ]
 }
 
@@ -14,6 +14,6 @@ resource "aws_route53_record" "host-fi-hel1" {
   type    = "A"
   ttl     = "3600"
   records = [
-    local.pub_k8s_prd,
+    "65.21.142.146",
   ]
 }
