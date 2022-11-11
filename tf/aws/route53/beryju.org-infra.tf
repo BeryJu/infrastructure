@@ -24,7 +24,7 @@ resource "aws_route53_record" "id-beryju-org" {
   name    = "id.beryju.org"
   type    = "A"
   alias {
-    name                   = "k8s-prd._aliases.beryju.org."
+    name                   = "\\052.beryjuio-infra.k8s.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
