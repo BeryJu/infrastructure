@@ -5,7 +5,10 @@ services:
     image: plexinc/pms-docker:1.29.2.6364-6d72b0cf6
     restart: unless-stopped
     environment:
-      - TZ=Europe/Berlin
+      TZ: Europe/Berlin
+      PLEX_UID: 1024
+      PLEX_GID: 100
+      CHANGE_CONFIG_DIR_OWNERSHIP: "true"
     network_mode: host
     volumes:
       - /srv/plex:/config
@@ -16,7 +19,7 @@ services:
     image: tautulli/tautulli:v2.9.0-beta
     restart: always
     environment:
-      - TZ=Europe/Berlin
+      TZ: Europe/Berlin
     ports:
       - 8181:8181
     volumes:
