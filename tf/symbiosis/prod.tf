@@ -6,19 +6,14 @@ module "k8s-prod" {
 
 resource "symbiosis_node_pool" "prod-default" {
   cluster   = "beryjuio-prod"
-  name      = "default"
+  name      = "tf-general-2"
   node_type = "general-2"
   quantity  = 2
 }
 
 resource "symbiosis_node_pool" "prod-general-3-autoscale" {
   cluster   = "beryjuio-prod"
-  name      = "tf-general-3-autoscale"
+  name      = "tf-general-3"
   node_type = "general-3"
   quantity  = 3
-  autoscaling {
-    enabled  = true
-    min_size = 2
-    max_size = 3
-  }
 }
