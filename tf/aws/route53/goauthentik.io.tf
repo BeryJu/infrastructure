@@ -23,6 +23,7 @@ locals {
     "version-2022-8",
     "version-2022-9",
     "version-2022-10",
+    "version-2022-11",
   ]
 }
 
