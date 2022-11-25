@@ -13,7 +13,7 @@ mod 'puppetlabs-stdlib', '8.5.0'
 mod 'puppetlabs-apt', '9.0.0'
 mod 'puppet-vault_lookup',
 	:git => 'https://github.com/voxpupuli/puppet-vault_lookup.git'
-mod 'puppetlabs-docker', '6.0.0'
+mod 'puppetlabs-docker', '6.0.1'
 mod 'thias-sysctl', '1.0.7'
 mod 'puppet-prometheus_reporter', '1.1.0'
 mod 'puppetlabs-splunk_hec', '1.3.0'
