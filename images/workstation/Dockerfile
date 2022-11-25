@@ -138,7 +138,7 @@ COPY --from=fluxcd/flux-cli:v0.37.0 /usr/local/bin/flux /usr/bin/flux
 RUN flux completion fish > /etc/fish/completions/flux.fish
 
 # Hugo
-COPY --from=klakegg/hugo:0.106.0-ext-ubuntu /usr/lib/hugo/hugo /usr/bin/hugo
+COPY --from=klakegg/hugo:0.107.0-ext-ubuntu /usr/lib/hugo/hugo /usr/bin/hugo
 RUN hugo completion fish > /etc/fish/completions/hugo.fish
 
 # code-server
