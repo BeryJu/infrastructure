@@ -1,6 +1,6 @@
-resource "oci_core_instance" "k3s" {
-  display_name         = "oci-k3s"
-  availability_domain  = "XOIo:EU-FRANKFURT-1-AD-1"
+resource "oci_core_instance" "kube" {
+  display_name         = "oci-kube-1"
+  availability_domain  = "XOIo:EU-FRANKFURT-1-AD-2"
   compartment_id       = local.compartment_id
   shape                = "VM.Standard.A1.Flex"
   state                = "RUNNING"
@@ -14,7 +14,7 @@ resource "oci_core_instance" "k3s" {
   source_details {
     source_type             = "image"
     source_id               = data.oci_core_images.ubuntu-aarch.images[0].id
-    boot_volume_size_in_gbs = 50 # Minimum
+    boot_volume_size_in_gbs = 100
   }
 
   availability_config {
@@ -31,4 +31,17 @@ resource "oci_core_instance" "k3s" {
     ssh_authorized_keys = data.http.ssh-authorized-keys.response_body
     user_data           = base64encode(templatefile("${path.module}/templates/user-data.yaml", {}))
   }
+}
+
+data "aws_route53_zone" "beryju-org" {
+  name = "beryju.org"
+}
+
+resource "aws_route53_record" "kube-api-record" {
+  zone_id = data.aws_route53_zone.beryju-org.zone_id
+  name    = "kube-api.beryjuio-oci.k8s.beryju.org"
+  type    = "A"
+  records = [
+    oci_core_instance.kube.public_ip,
+  ]
 }

@@ -47,6 +47,13 @@ resource "oci_core_security_list" "orc_sl" {
   }
   ingress_security_rules {
     description = ""
+    protocol    = "all"
+    source      = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    stateless   = true
+  }
+  ingress_security_rules {
+    description = ""
     protocol    = 1
     source      = "0.0.0.0/0"
     source_type = "CIDR_BLOCK"
