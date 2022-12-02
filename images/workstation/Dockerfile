@@ -94,6 +94,12 @@ RUN curl -L https://releases.rancher.com/cli2/v2.4.11/rancher-linux-amd64-v2.4.1
 	mv rancher /usr/bin/rancher && \
 	chmod +x /usr/bin/rancher
 
+# aws CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+	unzip awscliv2.zip && \
+	sudo ./aws/install && \
+	rm awscliv2.zip
+
 # infrahq
 RUN echo 'deb [trusted=yes] https://apt.fury.io/infrahq/ /' | tee /etc/apt/sources.list.d/infrahq.list && \
 	apt-get update && \
