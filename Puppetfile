@@ -5,7 +5,7 @@ mod 'beryjuorg_puppet', :local => true
 
 mod 'puppetlabs-puppetdb', '7.10.0'
 mod 'puppetlabs-inifile', '5.4.0'
-mod 'puppetlabs-firewall', '4.0.0'
+mod 'puppetlabs-firewall', '4.0.1'
 mod 'puppetlabs-postgresql', '8.2.1'
 mod 'puppetlabs-concat', '7.3.0'
 
