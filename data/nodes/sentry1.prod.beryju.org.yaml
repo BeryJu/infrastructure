@@ -1,6 +1,0 @@
-classes:
-  - beryjuorg_docker
-  - beryjuorg_docker::compose
-  - beryjuorg_monitoring
-  - beryjuorg_monitoring::helper_local_prom
-beryjuorg_docker::splunk_logging: false

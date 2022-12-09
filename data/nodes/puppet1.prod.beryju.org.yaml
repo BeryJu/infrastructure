@@ -1,7 +1,0 @@
-classes:
-  - beryjuorg_docker
-  - beryjuorg_docker::compose
-  - beryjuorg_puppet::master
-beryjuorg_docker::stacks:
-  - name: puppetboard
-    template: puppet

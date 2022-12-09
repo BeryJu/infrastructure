@@ -29,6 +29,5 @@ jobs:
       with:
         context: images/node-exporter/
         tags: |
-          ghcr.io/beryju/node-exporter:latest,
-          ghcr.io/beryju/node-exporter:auto-${{ steps.time.outputs.time }}
+          ghcr.io/beryju/node-exporter:latest
         push: ${{ github.ref == 'refs/heads/master' }}

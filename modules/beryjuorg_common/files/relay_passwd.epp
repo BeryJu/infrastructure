@@ -1,1 +1,0 @@
-<%= $forward %> <%= $creds.unwrap[data][username] %>:<%= $creds.unwrap[data][password] %>

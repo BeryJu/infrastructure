@@ -1,5 +1,0 @@
----
-beryjuorg_common::mta_forward: email-smtp.eu-central-1.amazonaws.com:587
-beryjuorg_common::mta_forward_auth: kv/data/aws/ses/linux
-
-beryjuorg_common::mta_alias_root: admin@beryju.org
