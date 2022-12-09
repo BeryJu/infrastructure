@@ -1,6 +1,6 @@
 resource "oci_core_instance" "kube" {
   display_name         = "oci-kube-1"
-  availability_domain  = "XOIo:EU-FRANKFURT-1-AD-2"
+  availability_domain  = "XOIo:EU-FRANKFURT-1-AD-1"
   compartment_id       = local.compartment_id
   shape                = "VM.Standard.A1.Flex"
   state                = "RUNNING"
@@ -41,6 +41,7 @@ resource "aws_route53_record" "kube-api-record" {
   zone_id = data.aws_route53_zone.beryju-org.zone_id
   name    = "kube-api.beryjuio-oci.k8s.beryju.org"
   type    = "A"
+  ttl     = "3600"
   records = [
     oci_core_instance.kube.public_ip,
   ]

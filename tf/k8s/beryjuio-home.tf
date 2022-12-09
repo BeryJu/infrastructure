@@ -2,7 +2,7 @@ module "vault-beryjuio-home" {
   source  = "../modules/vault_k8s_jwt"
   path    = "k8s-beryjuio-home"
   iss     = "https://kubernetes.default.svc.cluster.local"
-  aud = "https://kubernetes.default.svc.cluster.local"
+  aud     = "https://kubernetes.default.svc.cluster.local"
   jwt_pub = <<-EOT
 -----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0x1KfLCN8AZnV+VmRpM+
