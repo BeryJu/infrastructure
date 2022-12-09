@@ -1,16 +1,16 @@
-resource "vault_auth_backend" "kubernetes" {
-  type = "jwt"
-  path = var.path
-}
+# resource "vault_auth_backend" "kubernetes" {
+#   type = "jwt"
+#   path = var.path
+# }
 
 resource "vault_jwt_auth_backend" "config" {
-  path                   = vault_auth_backend.kubernetes.path
+  path                   = var.path
   jwt_validation_pubkeys = [var.jwt_pub]
   bound_issuer           = var.iss
 }
 
 resource "vault_jwt_auth_backend_role" "vault-secrets-operator" {
-  backend         = vault_auth_backend.kubernetes.path
+  backend         = vault_jwt_auth_backend.config.path
   user_claim      = "sub"
   role_name       = "vault-secrets-operator"
   bound_audiences = [var.aud]
@@ -21,7 +21,7 @@ resource "vault_jwt_auth_backend_role" "vault-secrets-operator" {
 }
 
 resource "vault_jwt_auth_backend_role" "workstation" {
-  backend         = vault_auth_backend.kubernetes.path
+  backend         = vault_jwt_auth_backend.config.path
   user_claim      = "sub"
   role_name       = "workstation"
   bound_audiences = [var.aud]

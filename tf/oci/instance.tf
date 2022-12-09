@@ -25,6 +25,9 @@ resource "oci_core_instance" "kube" {
     subnet_id                 = oci_core_subnet.homelab.id
     assign_public_ip          = true
     assign_private_dns_record = true
+    nsg_ids = [
+      "ocid1.networksecuritygroup.oc1.eu-frankfurt-1.aaaaaaaatpz4gc4ialfoin7qjxe5ywgzstx3vfoclweqn6cq5lnporh5epna",
+    ]
   }
 
   metadata = {
@@ -40,6 +43,16 @@ data "aws_route53_zone" "beryju-org" {
 resource "aws_route53_record" "kube-api-record" {
   zone_id = data.aws_route53_zone.beryju-org.zone_id
   name    = "kube-api.beryjuio-oci.k8s.beryju.org"
+  type    = "A"
+  ttl     = "3600"
+  records = [
+    oci_core_instance.kube.public_ip,
+  ]
+}
+
+resource "aws_route53_record" "kube-lb" {
+  zone_id = data.aws_route53_zone.beryju-org.zone_id
+  name    = "*.beryjuio-oci.k8s.beryju.org"
   type    = "A"
   ttl     = "3600"
   records = [
