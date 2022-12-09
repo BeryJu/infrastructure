@@ -1,9 +1,0 @@
-classes:
-  - beryjuorg_docker
-  - beryjuorg_docker::compose
-  - beryjuorg_monitoring::helper_unifi
-beryjuorg_docker::stacks:
-  - name: unifi
-    vault_vars:
-      - services/unifi
-    template: unifi

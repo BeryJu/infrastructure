@@ -1,0 +1,8 @@
+- name: restart console-setup
+  service:
+    name: console-setup
+    state: restarted
+- name: restart systemd-journald
+  service:
+    name: systemd-journald
+    state: restarted

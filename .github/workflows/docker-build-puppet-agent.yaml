@@ -29,6 +29,5 @@ jobs:
       with:
         context: images/puppet-agent/
         tags: |
-          ghcr.io/beryju/puppet-agent:latest,
-          ghcr.io/beryju/puppet-agent:auto-${{ steps.time.outputs.time }}
+          ghcr.io/beryju/puppet-agent:latest
         push: ${{ github.ref == 'refs/heads/master' }}

@@ -1,9 +1,0 @@
-classes:
-  - beryjuorg_docker
-  - beryjuorg_docker::compose
-beryjuorg_docker::stacks:
-  - name: splunk
-    vault_vars:
-      - splunk/users/admin
-    template: splunk
-beryjuorg_docker::splunk_logging: false

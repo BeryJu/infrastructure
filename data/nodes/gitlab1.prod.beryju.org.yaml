@@ -1,8 +1,0 @@
-classes:
-  - beryjuorg_docker
-  - beryjuorg_docker::compose
-beryjuorg_docker::stacks:
-  - name: gitlab
-    vault_vars:
-      - aws/ses/gitlab
-    template: gitlab

@@ -1,0 +1,43 @@
+- name: docker | install pre-dependencies
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+  register: apt_res
+  retries: 5
+  until: apt_res is success
+- name: docker | apt key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+- name: docker | apt repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/debian buster stable"
+    state: present
+- name: docker | package
+  apt:
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - "containerd.io"
+      - python3-docker
+  register: apt_res
+  retries: 5
+  until: apt_res is success
+- name: allow user to use docker
+  user:
+    name: "{{ item }}"
+    group: docker
+  loop: "{{ docker_allowed_users }}"
+- name: enable docker live restore
+  copy:
+    src: files/docker.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload docker

@@ -29,6 +29,5 @@ jobs:
       with:
         context: images/frr-exporter/
         tags: |
-          ghcr.io/beryju/frr-exporter:latest,
-          ghcr.io/beryju/frr-exporter:auto-${{ steps.time.outputs.time }}
+          ghcr.io/beryju/frr-exporter:latest
         push: ${{ github.ref == 'refs/heads/master' }}
