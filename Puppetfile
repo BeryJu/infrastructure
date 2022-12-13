@@ -3,7 +3,7 @@ mod 'beryjuorg_docker', :local => true
 mod 'beryjuorg_monitoring', :local => true
 mod 'beryjuorg_puppet', :local => true
 
-mod 'puppetlabs-puppetdb', '7.10.0'
+mod 'puppetlabs-puppetdb', '7.12.0'
 mod 'puppetlabs-inifile', '5.4.0'
 mod 'puppetlabs-firewall', '4.0.1'
 mod 'puppetlabs-postgresql', '8.2.1'
