@@ -69,7 +69,7 @@ test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "flak
 
 [[package]]
 name = "ara"
-version = "1.6.0"
+version = "1.6.1"
 description = "ARA Records Ansible"
 category = "main"
 optional = false
@@ -81,6 +81,7 @@ pbr = ">=2.0.0,<2.1.0 || >2.1.0"
 requests = ">=2.14.2"
 
 [package.extras]
+mysql = ["mysqlclient"]
 postgresql = ["psycopg2"]
 server = ["Django (>=3.2,<3.3)", "django-cors-headers", "django-filter", "django-health-check", "djangorestframework (>=3.9.1)", "dynaconf[yaml] (>=3.0.0,!=3.1.3,<4.0.0)", "pygments", "tzlocal (>=4.0)", "whitenoise", "whitenoise (<6.0.0)"]
 test = ["bandit (>=1.1.0)", "black", "coverage", "factory-boy", "flake8", "isort"]
@@ -670,7 +671,7 @@ setuptools = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "1171a7c256de55f4a6bde0d19b40c5e86156f9fb27ebd084404ad10631514184"
+content-hash = "2e80338623b21ad779cd9a767ca3536f7679c549fe6788363e80b4a56460bfae"
 
 [metadata.files]
 ansible = [
@@ -690,8 +691,8 @@ ansible-lint = [
     {file = "ansible_lint-6.8.7-py3-none-any.whl", hash = "sha256:1824afce2a5619b47c19f6377a0d85b4f39e80b1fc1857191d6a908d68396bf9"},
 ]
 ara = [
-    {file = "ara-1.6.0-py2.py3-none-any.whl", hash = "sha256:b25ccb33cd84171386e6412cb62e06044985173727cf785aaea6f78bcd0b09ed"},
-    {file = "ara-1.6.0.tar.gz", hash = "sha256:83acd5c4312a4f35ca6979238d1fe1e105999035f4466be06dadd33466d5ccc6"},
+    {file = "ara-1.6.1-py2.py3-none-any.whl", hash = "sha256:17cbc3dc5e8a05145a13000b1baac553f31738ff9616d5372a8c8dae0c680aa2"},
+    {file = "ara-1.6.1.tar.gz", hash = "sha256:90812ee38308b87db357d34f9fd9dd422c87edb3cdc0248a83f65b1bf0691b6d"},
 ]
 attrs = [
     {file = "attrs-21.4.0-py2.py3-none-any.whl", hash = "sha256:2d27e3784d7a565d36ab851fe94887c5eccd6a463168875832a1be79c82828b4"},
