@@ -10,10 +10,6 @@ resource "aws_route53_zone" "jela-io" {
   name = "jela.io"
 }
 
-resource "aws_route53_zone" "goauthentik-io" {
-  name = "goauthentik.io"
-}
-
 resource "aws_route53_zone" "ukch-at" {
   name = "ukch.at"
 }
