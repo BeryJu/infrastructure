@@ -93,6 +93,7 @@ X11Forwarding yes
 PrintMotd no
 #PrintLastLog yes
 #TCPKeepAlive yes
+ServerAliveInterval 15
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
