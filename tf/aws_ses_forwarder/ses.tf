@@ -3,11 +3,6 @@ module "ses-beryju-org" {
   domain = "beryju.org"
 }
 
-module "ses-goauthentik-io" {
-  source = "../modules/aws_ses_domain"
-  domain = "goauthentik.io"
-}
-
 module "ses-beryju-io" {
   source = "../modules/aws_ses_domain"
   domain = "beryju.io"
@@ -24,7 +19,6 @@ resource "aws_ses_receipt_rule" "store" {
     "ukch.at",
     ".ukch.at",
     "fixsuutarila.com",
-    "goauthentik.io",
     "beryju.io",
   ]
   enabled      = true

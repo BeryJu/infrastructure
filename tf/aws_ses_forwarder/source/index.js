@@ -60,7 +60,6 @@ var defaultConfig = {
     "bonzi@ukch.at": ["me+ukchat@bonzi.sh"],
     "issy@ukch.at": ["issy+ukchat@issy.dev"],
     "@ukch.at": ["jens@beryju.org"],
-    "@goauthentik.io": ["jens@beryju.org"],
     "@fixsuutarila.com": ["fix.suutarila@gmail.com"],
   }
 };
