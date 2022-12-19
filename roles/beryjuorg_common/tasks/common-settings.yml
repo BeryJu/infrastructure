@@ -1,26 +1,28 @@
-- name: enable password-less sudo
-  copy:
+- name: Enable password-less sudo
+  ansible.builtin.copy:
     dest: /etc/sudoers.d/beryjuorg-passwordless
-    state: present
+    owner: root
+    group: root
+    mode: 0644
     content: |
       %sudo ALL=(ALL) NOPASSWD: ALL
     validate: 'visudo -cf %s'
-- name: fix console-setup service on ubuntu 20.04
-  file:
+- name: Fix console-setup service on ubuntu 20.04
+  ansible.builtin.file:
     state: link
     src: /usr/share/X11/xkb/symbols/us
     dest: /usr/share/X11/xkb/symbols/en
   notify: restart console-setup
 - name: Populate service facts
-  service_facts:
+  ansible.builtin.service_facts:
 - name: Ensure multipathd doesnt run
-  service:
+  ansible.builtin.service:
     name: multipathd
     state: stopped
     enabled: no
   when: "'multipathd.service' in ansible_facts.services"
-- name: configure systemd-journald max usage
-  copy:
+- name: Configure systemd-journald max usage
+  ansible.builtin.copy:
     src: ./files/journald.conf
     dest: /etc/systemd/journald.conf
     owner: root

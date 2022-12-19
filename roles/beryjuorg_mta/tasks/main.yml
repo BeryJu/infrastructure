@@ -43,7 +43,7 @@
   lineinfile:
     state: present
     dest: /etc/postfix/relay_passwd
-    regexp: '^{{ mta_forward|regex_escape() }}'
+    regexp: '^{{ mta_forward | regex_escape() }}'
     create: yes
     mode: 0640
     group: root

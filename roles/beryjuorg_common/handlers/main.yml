@@ -1,8 +1,8 @@
-- name: restart console-setup
-  service:
+- name: Restart console-setup
+  ansible.builtin.service:
     name: console-setup
     state: restarted
-- name: restart systemd-journald
-  service:
+- name: Restart systemd-journald
+  ansible.builtin.service:
     name: systemd-journald
     state: restarted
