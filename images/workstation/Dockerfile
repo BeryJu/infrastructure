@@ -140,7 +140,7 @@ COPY --from=digitalocean/doctl:1.91.0 /app/doctl /usr/bin/doctl
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
 # FluxCD
-COPY --from=fluxcd/flux-cli:v0.37.0 /usr/local/bin/flux /usr/bin/flux
+COPY --from=fluxcd/flux-cli:v0.38.0 /usr/local/bin/flux /usr/bin/flux
 RUN flux completion fish > /etc/fish/completions/flux.fish
 
 # Hugo
