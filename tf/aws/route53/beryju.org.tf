@@ -7,12 +7,21 @@ resource "aws_route53_record" "beryju-org" {
     local.pub_netlify_ip,
   ]
 }
+
 resource "aws_route53_record" "blog-beryju-org" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "blog.beryju.org"
   type    = "CNAME"
   ttl     = "3600"
-  records = ["beryjuorg.netlify.app"]
+  records = ["beryjuio.netlify.app"]
+}
+
+resource "aws_route53_record" "charts-beryju-org" {
+  zone_id = aws_route53_zone.beryju-org.zone_id
+  name    = "charts.beryju.org"
+  type    = "CNAME"
+  ttl     = "3600"
+  records = ["chartsberyjuio.netlify.app"]
 }
 
 resource "aws_route53_record" "guac-beryju-org" {
