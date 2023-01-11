@@ -1,7 +1,0 @@
-- hosts: all
-  become: true
-  strategy: free
-  gather_facts: false
-  tasks:
-    - name: run
-      command: /opt/puppetlabs/puppet/bin/puppet agent -t
