@@ -34,6 +34,10 @@ resource "oci_core_instance" "kube" {
     ssh_authorized_keys = data.http.ssh-authorized-keys.response_body
     user_data           = base64encode(templatefile("${path.module}/templates/user-data.yaml", {}))
   }
+
+  lifecycle {
+    ignore_changes = [metadata]
+  }
 }
 
 data "aws_route53_zone" "beryju-org" {

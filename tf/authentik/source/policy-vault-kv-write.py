@@ -5,7 +5,7 @@ model_actions = [
 model_app = "authentik_core"
 model_name = "token"
 vault_host = "https://vault.beryju.org"
-vault_auth_path = "auth/k8s-prd"
+vault_auth_path = "auth/k8s-beryjuio-prod"
 vault_kv_store = "kv"
 vault_kv_prefix = "authentik"
 

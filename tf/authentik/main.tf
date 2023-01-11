@@ -49,11 +49,8 @@ resource "authentik_outpost" "embedded" {
 resource "authentik_outpost" "k8s-proxy" {
   name = "k8s"
   protocol_providers = [
-    module.authentik-app-netbox.provider_id,
-    module.authentik-app-netapp-aiq.provider_id,
     module.authentik-app-unifi.provider_id,
     module.authentik-app-home-assistant.provider_id,
-    module.authentik-app-puppetboard.provider_id,
     module.authentik-app-tautulli.provider_id,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
