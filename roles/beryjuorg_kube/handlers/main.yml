@@ -1,4 +1,4 @@
-- name: reload docker
-  service:
+- name: Reload docker
+  ansible.builtin.service:
     name: docker
     state: reloaded

@@ -1,5 +1,5 @@
 - name: MTA | /etc/mailname -> Host FQDN
-  lineinfile:
+  ansible.builtin.lineinfile:
     state: present
     dest: /etc/mailname
     regexp: ".*"
@@ -10,14 +10,14 @@
     mode: 0644
 
 - name: MTA-Postfix | Packages
-  apt:
+  ansible.builtin.apt:
     pkg:
       - postfix
       - mailutils
     state: present
 
 - name: MTA-Postfix | main.cf Template
-  template:
+  ansible.builtin.template:
     src: ubuntu-postfix-main.cf.j2
     dest: /etc/postfix/main.cf
     owner: root
@@ -27,7 +27,7 @@
     - restart postfix
 
 - name: MTA | Aliases
-  lineinfile:
+  ansible.builtin.lineinfile:
     state: present
     dest: /etc/aliases
     regexp: '^root'
@@ -40,7 +40,7 @@
     - generate newaliases
 
 - name: MTA-Postfix | Create relay_passwd File when smarthost auth is enabled
-  lineinfile:
+  ansible.builtin.lineinfile:
     state: present
     dest: /etc/postfix/relay_passwd
     regexp: '^{{ mta_forward | regex_escape() }}'
@@ -54,8 +54,8 @@
     - generate relay_passwd
     - restart postfix
 
-- name: check if relay_passwd.db file exists
-  stat:
+- name: Check if relay_passwd.db file exists
+  ansible.builtin.stat:
     path: /etc/postfix/relay_passwd.db
   register: relay_passwd_db
   changed_when: "not relay_passwd_db.stat.exists"
