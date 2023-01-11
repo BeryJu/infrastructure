@@ -2,7 +2,7 @@ name: docker-build-frr-exporter
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths: [ images/frr-exporter/** ]
   schedule:
     - cron: '0 5 * * *'
@@ -30,4 +30,4 @@ jobs:
         context: images/frr-exporter/
         tags: |
           ghcr.io/beryju/frr-exporter:latest
-        push: ${{ github.ref == 'refs/heads/master' }}
+        push: ${{ github.ref == 'refs/heads/main' }}

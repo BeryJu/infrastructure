@@ -2,7 +2,7 @@ name: docker-build-workstation
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths: [ images/workstation/** ]
   schedule:
     - cron: '0 5 * * *'
@@ -31,4 +31,4 @@ jobs:
         tags: |
           ghcr.io/beryju/workstation:latest,
           ghcr.io/beryju/workstation:auto-${{ steps.time.outputs.time }}
-        push: ${{ github.ref == 'refs/heads/master' }}
+        push: ${{ github.ref == 'refs/heads/main' }}

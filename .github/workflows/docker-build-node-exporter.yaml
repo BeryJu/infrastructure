@@ -2,7 +2,7 @@ name: docker-build-node-exporter
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths: [ images/node-exporter/** ]
   schedule:
     - cron: '0 5 * * *'
@@ -30,4 +30,4 @@ jobs:
         context: images/node-exporter/
         tags: |
           ghcr.io/beryju/node-exporter:latest
-        push: ${{ github.ref == 'refs/heads/master' }}
+        push: ${{ github.ref == 'refs/heads/main' }}
