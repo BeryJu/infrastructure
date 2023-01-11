@@ -27,7 +27,7 @@ runs:
       shell: bash
       run: |
         JWT=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r .value)
-        echo "::set-output name=token::${JWT}"
+        echo "token=${JWT}" >> $GITHUB_OUTPUT
     - name: run job
       shell: bash
       env:
@@ -38,8 +38,5 @@ runs:
         ANSIBLE_HASHI_VAULT_MOUNT_POINT: github-actions
         ANSIBLE_HASHI_VAULT_JWT: ${{ steps.jwt.outputs.token }}
         ANSIBLE_HASHI_VAULT_ROLE_ID: github-terraform
-        ARA_API_CLIENT: http
-        ARA_API_SERVER: "http://dev1.lab.beryju.org:4000"
       run: |
-        export ANSIBLE_CALLBACK_PLUGINS=$(poetry run python3 -m ara.setup.callback_plugins)
         poetry run ansible-playbook -v ${{ inputs.playbook }}

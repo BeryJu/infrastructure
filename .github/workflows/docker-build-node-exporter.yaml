@@ -23,7 +23,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Get current timestamp
       id: time
-      run: echo "::set-output name=time::$(date +'%s')"
+      run: echo "time=$(date +'%s')" >> $GITHUB_OUTPUT
     - name: Build and push Docker images
       uses: docker/build-push-action@v3.2.0
       with:

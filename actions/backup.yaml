@@ -18,8 +18,8 @@
         dst: beryju.org
       - src: BeryJu/hass-auth-header
         dst: hass-auth-header
-      - src: BeryJu/kube-dhcp
-        dst: kube-dhcp
+      - src: BeryJu/gravity
+        dst: gravity
       - src: BeryJu/hue-link
         dst: hue-link
       - src: BeryJu/imagik
