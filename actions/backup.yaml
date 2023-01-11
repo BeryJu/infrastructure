@@ -14,8 +14,8 @@
         dst: infrastructure
       - src: goauthentik/authentik
         dst: authentik
-      - src: BeryJu/beryju.org
-        dst: beryju.org
+      - src: BeryJu/beryju.io
+        dst: beryju.io
       - src: BeryJu/hass-auth-header
         dst: hass-auth-header
       - src: BeryJu/gravity
