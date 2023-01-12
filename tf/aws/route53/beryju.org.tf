@@ -47,7 +47,7 @@ resource "aws_route53_record" "sentry" {
   name    = "sentry.beryju.org"
   type    = "A"
   alias {
-    name                   = "fi-hel1.prod.beryju.org"
+    name                   = "\\052.beryjuio-prod.k8s.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
@@ -57,7 +57,7 @@ resource "aws_route53_record" "analytics" {
   name    = "analytics.beryju.org"
   type    = "A"
   alias {
-    name                   = "fi-hel1.prod.beryju.org"
+    name                   = "\\052.beryjuio-prod.k8s.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
