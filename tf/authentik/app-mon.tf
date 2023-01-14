@@ -10,29 +10,3 @@ module "authentik-app-alertmanager" {
   ]
   icon_url = "https://public.s3.beryju.org/authentik-icons/alertmanager.png"
 }
-
-module "authentik-app-thanos" {
-  source = "../modules/authentik_app"
-
-  name     = "Thanos"
-  group    = "Monitoring"
-  internal = ""
-  external = "https://thanos.infra.beryju.org"
-  access_group = [
-    data.authentik_group.acl_beryjuorg.id
-  ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/thanos-icon-color.png"
-}
-
-module "authentik-app-prom" {
-  source = "../modules/authentik_app"
-
-  name     = "Prometheus"
-  group    = "Monitoring"
-  internal = ""
-  external = "https://prometheus.infra.beryju.org"
-  access_group = [
-    data.authentik_group.acl_beryjuorg.id
-  ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/prometheus-icon-color.png"
-}

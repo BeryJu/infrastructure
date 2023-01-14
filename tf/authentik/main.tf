@@ -40,8 +40,7 @@ resource "authentik_outpost" "embedded" {
     module.authentik-app-sonarr.provider_id,
     module.authentik-app-oxidized.provider_id,
     module.authentik-app-code-server.provider_id,
-    module.authentik-app-thanos.provider_id,
-    module.authentik-app-prom.provider_id,
+    module.authentik-app-mimir.provider_id,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
 }

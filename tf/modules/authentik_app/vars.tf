@@ -40,3 +40,8 @@ variable "internal_host_ssl_validation" {
   type    = bool
   default = true
 }
+
+variable "jwks_sources" {
+  type    = list(string)
+  default = []
+}
