@@ -72,6 +72,9 @@ module "oci" {
 module "symbiosis" {
   source = "./symbiosis/"
 }
+module "linode" {
+  source = "./linode/"
+}
 module "minio-prod" {
   source = "./minio/prod/"
 }
