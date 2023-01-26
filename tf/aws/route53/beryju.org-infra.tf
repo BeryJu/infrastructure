@@ -35,7 +35,7 @@ resource "aws_route53_record" "vault" {
   name    = "vault.beryju.org"
   type    = "A"
   alias {
-    name                   = "\\052.beryjuio-infra.k8s.beryju.org"
+    name                   = "\\052.beryjuio-prod.k8s.beryju.org"
     zone_id                = aws_route53_zone.beryju-org.zone_id
     evaluate_target_health = true
   }
