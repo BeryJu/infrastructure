@@ -13,3 +13,7 @@ variable "aud" {
 variable "jwt_pub" {
   type = string
 }
+
+variable "jwks" {
+  type = string
+}

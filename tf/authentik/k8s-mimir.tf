@@ -3,7 +3,7 @@ module "authentik-app-mimir" {
 
   name     = "Mimir"
   group    = "Monitoring"
-  internal = "http://mimir.mimir:9000"
+  internal = "http://mimir.mimir"
   external = "https://mimir.beryjuorg-prd.k8s.beryju.org"
   access_group = [
     data.authentik_group.acl_beryjuorg.id

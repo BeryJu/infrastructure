@@ -69,9 +69,6 @@ module "k8s" {
 module "oci" {
   source = "./oci/"
 }
-module "symbiosis" {
-  source = "./symbiosis/"
-}
 module "linode" {
   source = "./linode/"
 }

@@ -1,3 +1,10 @@
+terraform {
+  required_providers {
+    authentik = {
+      source = "goauthentik/authentik"
+    }
+  }
+}
 # resource "vault_auth_backend" "kubernetes" {
 #   type = "jwt"
 #   path = var.path
