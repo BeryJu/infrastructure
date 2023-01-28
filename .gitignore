@@ -134,3 +134,4 @@ dmypy.json
 
 modules/**
 !modules/beryjuorg**
+*.key

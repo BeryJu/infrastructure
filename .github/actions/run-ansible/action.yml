@@ -32,6 +32,7 @@ runs:
       shell: bash
       env:
         ANSIBLE_REMOTE_USER: ansible
+        ANSIBLE_PRIVATE_KEY_FILE: ./ansible.key
         ANSIBLE_HOST_KEY_CHECKING: "false"
         ANSIBLE_HASHI_VAULT_ADDR: https://vault.beryju.org
         ANSIBLE_HASHI_VAULT_AUTH_METHOD: jwt

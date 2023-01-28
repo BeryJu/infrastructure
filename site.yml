@@ -1,3 +1,17 @@
+- hosts: localhost
+  name: Bootstrap SSH key
+  tasks:
+    - name: test
+      ansible.builtin.copy:
+        dest: ./ansible.key
+        content: '{{ item.data.data.private_key }}'
+        mode: 0600
+      no_log: True
+      vars:
+        ansible_hashi_vault_engine_mount_point: kv
+      with_community.hashi_vault.vault_kv2_get:
+        - services/ansible
+
 - hosts: all
   become: true
   roles:
