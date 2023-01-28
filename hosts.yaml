@@ -3,3 +3,4 @@ all:
     optiplex-3090-bq1plp3.lab.beryju.org:
     sentry1.prod.beryju.org:
     gravity-defr1.prod.beryju.org:
+    kube-api.beryjuio-oci.k8s.beryju.org:

@@ -1,0 +1,23 @@
+---
+name: Run ansible (general)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  ansible:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - name: Run playbook
+      uses: ./.github/actions/run-ansible
+      with:
+        playbook: site.yml
