@@ -12,7 +12,7 @@
     state: link
     src: /usr/share/X11/xkb/symbols/us
     dest: /usr/share/X11/xkb/symbols/en
-  notify: restart console-setup
+  notify: Restart console-setup
 - name: Populate service facts
   ansible.builtin.service_facts:
 - name: Ensure multipathd doesnt run
@@ -28,4 +28,4 @@
     owner: root
     group: root
     mode: 0644
-  notify: restart systemd-journald
+  notify: Restart systemd-journald
