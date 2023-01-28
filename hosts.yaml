@@ -2,3 +2,4 @@ all:
   hosts:
     optiplex-3090-bq1plp3.lab.beryju.org:
     sentry1.prod.beryju.org:
+    gravity-defr1.prod.eryju.org:
