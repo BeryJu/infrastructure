@@ -1,6 +1,4 @@
-- hosts: localhost
-  roles:
-    - beryjuorg_bootstrap
+- import_playbook: ../bootstrap.yaml
 - hosts: all
   become: true
   strategy: free
