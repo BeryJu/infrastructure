@@ -1,5 +1,5 @@
 - import_playbook: ../bootstrap.yaml
-- hosts: docker:compose
+- hosts: docker
   become: true
   tasks:
     - name: Clean Docker Images (all)
@@ -12,3 +12,9 @@
         images: true
         images_filters:
           dangling: false
+- hosts: kubeadm
+  become: true
+  tasks:
+    - name: Clean Containerd Images (all)
+      # noqa 301
+      command: crictl rmi --prune
