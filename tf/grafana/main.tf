@@ -19,3 +19,7 @@ provider "grafana" {
   url  = "https://grafana.infra.beryju.org/"
   auth = data.vault_generic_secret.grafana_auth.data["terraform_token"]
 }
+
+resource "grafana_dashboard" "home" {
+  config_json = file("${path.module}/custom/home.json")
+}

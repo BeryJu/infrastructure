@@ -14,6 +14,11 @@ resource "vault_jwt_auth_backend" "config" {
   path                   = var.path
   jwt_validation_pubkeys = [var.jwt_pub]
   bound_issuer           = var.iss
+
+  # https://github.com/hashicorp/terraform-provider-vault/issues/1055
+  lifecycle {
+    ignore_changes = [jwt_validation_pubkeys]
+  }
 }
 
 resource "vault_jwt_auth_backend_role" "vault-secrets-operator" {
