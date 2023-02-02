@@ -20,6 +20,10 @@ resource "authentik_provider_proxy" "provider" {
   skip_path_regex              = var.skip_path_regex
   internal_host_ssl_validation = var.internal_host_ssl_validation
   jwks_sources                 = var.jwks_sources
+
+  lifecycle {
+    ignore_changes = [jwks_sources]
+  }
 }
 
 resource "authentik_application" "app" {
