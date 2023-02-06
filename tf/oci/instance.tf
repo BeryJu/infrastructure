@@ -13,7 +13,7 @@ resource "oci_core_instance" "kube" {
 
   source_details {
     source_type             = "image"
-    source_id               = data.oci_core_images.ubuntu-aarch.images[0].id
+    source_id               = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaapb65ywn23pl6t6dzc2bk56k4azbvnmsndcr6bfmn5eoei5toc53a"
     boot_volume_size_in_gbs = 100
   }
 

@@ -40,7 +40,6 @@ resource "authentik_outpost" "embedded" {
     module.authentik-app-sonarr.provider_id,
     module.authentik-app-oxidized.provider_id,
     module.authentik-app-code-server.provider_id,
-    module.authentik-app-mimir.provider_id,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
 }
@@ -51,6 +50,8 @@ resource "authentik_outpost" "k8s-proxy" {
     module.authentik-app-unifi.provider_id,
     module.authentik-app-home-assistant.provider_id,
     module.authentik-app-tautulli.provider_id,
+    module.authentik-app-mimir.provider_id,
+    module.authentik-app-loki.provider_id,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
 }

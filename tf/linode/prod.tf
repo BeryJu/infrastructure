@@ -13,6 +13,11 @@ resource "linode_lke_cluster" "prod" {
       min = 3
     }
   }
+  lifecycle {
+    ignore_changes = [
+      pool[0].count
+    ]
+  }
 }
 
 module "vault-beryjuio-prod" {
