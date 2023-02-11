@@ -4,7 +4,7 @@
   tasks:
     - name: Clean Docker Images (all)
       # noqa 301
-      command: docker image prune -a -f
+      ansible.builtin.command: docker image prune -a -f
     - name: Clean Docker images
       community.docker.docker_prune:
         containers: false
@@ -17,4 +17,4 @@
   tasks:
     - name: Clean Containerd Images (all)
       # noqa 301
-      command: crictl rmi --prune
+      ansible.builtin.command: crictl rmi --prune
