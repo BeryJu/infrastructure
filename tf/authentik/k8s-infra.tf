@@ -8,7 +8,7 @@ module "authentik-app-mimir" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/prometheus-icon-color.png"
+  icon_url = "https://public.s3.beryju.org/authentik-icons/grafana-mimir.png"
 }
 
 module "authentik-app-loki" {
@@ -21,5 +21,5 @@ module "authentik-app-loki" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/prometheus-icon-color.png"
+  icon_url = "https://public.s3.beryju.org/authentik-icons/grafana-loki.png"
 }
