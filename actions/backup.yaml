@@ -14,12 +14,16 @@
         dst: infrastructure
       - src: goauthentik/authentik
         dst: authentik
+      - src: goauthentik/terraform-provider-authentik
+        dst: terraform-provider-authentik
       - src: BeryJu/beryju.io
         dst: beryju.io
       - src: BeryJu/hass-auth-header
         dst: hass-auth-header
       - src: BeryJu/gravity
         dst: gravity
+      - src: BeryJu/terraform-provider-gravity
+        dst: terraform-provider-gravity
       - src: BeryJu/hue-link
         dst: hue-link
       - src: BeryJu/imagik
