@@ -32,7 +32,7 @@ RUN yes | unminimize && \
 # Python
 RUN add-apt-repository ppa:deadsnakes/ppa -y && \
 	apt-get install -y --no-install-recommends \
-		python3.10-venv python3.10-dev python3.9 python3-pip python3-venv python3-setuptools && \
+		python3.11-venv python3.11-dev python3-pip python3-venv python3-setuptools && \
 	pip3 install wheel && \
 	pip3 install poetry
 
