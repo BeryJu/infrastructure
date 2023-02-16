@@ -58,13 +58,13 @@ resource "authentik_policy_binding" "aws-access" {
   order  = 0
 }
 
-data "http" "saml-metadata" {
-  url = "https://id.beryju.org/api/v3/providers/saml/1/metadata/?download"
+data "authentik_provider_saml_metadata" "aws-metadata" {
+  provider_id = authentik_provider_saml.aws.id
 }
 
 resource "aws_iam_saml_provider" "default" {
   name                   = "authentik"
-  saml_metadata_document = data.http.saml-metadata.response_body
+  saml_metadata_document = data.authentik_provider_saml_metadata.aws-metadata.metadata
 }
 
 resource "aws_iam_role" "authentik" {
