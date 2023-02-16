@@ -6,7 +6,7 @@ resource "linode_lke_cluster" "prod" {
     high_availability = false
   }
   pool {
-    type = "g6-standard-4"
+    type  = "g6-standard-4"
     count = 4
     autoscaler {
       max = 5
@@ -21,10 +21,10 @@ resource "linode_lke_cluster" "prod" {
 }
 
 module "vault-beryjuio-prod" {
-  source  = "../modules/vault_k8s_jwt"
-  path    = "k8s-beryjuio-prod"
-  iss     = "https://kubernetes.default.svc.cluster.local"
-  aud     = "kubernetes.default.svc"
+  source = "../modules/vault_k8s_jwt"
+  path   = "k8s-beryjuio-prod"
+  iss    = "https://kubernetes.default.svc.cluster.local"
+  aud    = "kubernetes.default.svc"
   jwks = jsonencode({
     "keys" : [
       {

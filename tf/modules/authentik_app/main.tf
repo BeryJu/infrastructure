@@ -16,7 +16,6 @@ resource "authentik_provider_proxy" "provider" {
   external_host                = var.external
   mode                         = var.internal == "" ? "forward_single" : "proxy"
   authorization_flow           = data.authentik_flow.default-authorization-flow.id
-  token_validity               = "days=30"
   skip_path_regex              = var.skip_path_regex
   internal_host_ssl_validation = var.internal_host_ssl_validation
   jwks_sources                 = var.jwks_sources
