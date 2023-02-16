@@ -10,7 +10,7 @@ jobs:
     name: Delete old unused container images
     runs-on: ubuntu-latest
     steps:
-      - uses: sondrelg/container-retention-policy@v1
+      - uses: sondrelg/container-retention-policy@v2
         with:
           image-names: workstation
           cut-off: One week ago UTC
