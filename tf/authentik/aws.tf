@@ -2,7 +2,7 @@ resource "authentik_property_mapping_saml" "aws-role" {
   name       = "SAML AWS Role"
   saml_name  = "https://aws.amazon.com/SAML/Attributes/Role"
   expression = <<EOF
-return "${aws_iam_role.authentik.arn},${aws_iam_saml_provider.default.id}"
+return "arn:aws:iam::471432361072:role/authentik,arn:aws:iam::471432361072:saml-provider/authentik"
 EOF
 }
 
