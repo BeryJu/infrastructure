@@ -1190,8 +1190,9 @@
             "type": "prometheus",
             "uid": "F7UOe0CGz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "avg by (view) (rate(django_http_requests_latency_seconds_by_view_method_sum{view!=\"metrics\", method=\"POST\"}[$__rate_interval]))",
+          "expr": "avg by (view) (rate(django_http_requests_latency_seconds_by_view_method_sum{view!=\"metrics\"}[$__rate_interval]))",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1683,6 +1684,6 @@
   "timezone": "",
   "title": "BeryJu.io",
   "uid": "IB8j5hVnz",
-  "version": 149,
+  "version": 150,
   "weekStart": "monday"
 }
