@@ -20,4 +20,4 @@ jobs:
     - name: Run playbook
       uses: ./.github/actions/run-ansible
       with:
-        playbook: actions/sentry-backup
+        playbook: actions/sentry-backup.yaml
