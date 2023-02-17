@@ -1,3 +1,4 @@
+- import_playbook: ../bootstrap.yaml
 - hosts: sentry1.prod.beryju.org
   become: true
   vars:
