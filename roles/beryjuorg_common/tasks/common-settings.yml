@@ -29,3 +29,16 @@
     group: root
     mode: 0644
   notify: Restart systemd-journald
+- name: SSH CA Trusted keys
+  ansible.builtin.get_url:
+    url: https://vault.beryju.org/v1/ssh-client-signer/public_key
+    dest: /etc/ssh/trusted-user-ca-keys.pem
+- name: Configure SSHD
+  ansible.builtin.copy:
+    dest: /etc/ssh/sshd_config.d/beryjuio-vault-ssh-ca.conf
+    owner: root
+    group: root
+    mode: 0644
+    content: |
+      TrustedUserCAKeys /etc/ssh/trusted-user-ca-keys.pem
+  notify: Restart sshd
