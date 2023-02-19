@@ -30,6 +30,7 @@ resource "authentik_application" "app" {
   slug              = replace(lower(var.name), " ", "-")
   protocol_provider = authentik_provider_proxy.provider.id
   meta_icon         = var.icon_url
+  meta_publisher    = var.meta_publisher
   group             = var.group
 }
 

@@ -21,4 +21,5 @@ module "authentik-app-unifi" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
+  icon_url = "https://public.s3.beryju.org/authentik-icons/unifi.png"
 }

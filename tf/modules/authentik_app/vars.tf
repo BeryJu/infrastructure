@@ -19,6 +19,11 @@ variable "icon_url" {
   default = null
 }
 
+variable "meta_publisher" {
+  type    = string
+  default = null
+}
+
 variable "skip_path_regex" {
   type    = string
   default = null
