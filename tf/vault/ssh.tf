@@ -10,7 +10,7 @@ resource "vault_ssh_secret_backend_role" "jens" {
   algorithm_signer        = "rsa-sha2-256"
   allow_user_certificates = true
   allowed_users           = "*"
-  allowed_extensions      = "permit-pty,permit-port-forwarding"
+  allowed_extensions      = "permit-pty,permit-user-rc,permit-X11-forwarding,permit-agent-forwarding,permit-port-forwarding"
   default_extensions = {
     "permit-pty" : ""
   }
