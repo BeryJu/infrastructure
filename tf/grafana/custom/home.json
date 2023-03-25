@@ -128,8 +128,8 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
+          "displayMode": "table",
+          "placement": "right",
           "showLegend": false
         },
         "tooltip": {
@@ -144,10 +144,12 @@
             "type": "prometheus",
             "uid": "F7UOe0CGz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (cluster) (last_over_time(up[1m]))",
+          "expr": "sum by (cluster) (last_over_time(up{cluster=~\"$cluster\"}[1m]))",
           "interval": "",
-          "legendFormat": "{{ cluster }}",
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -207,17 +209,19 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "F7UOe0CGz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum  (last_over_time(up{cluster!=\"\"}[1m]))",
+          "expr": "sum  (last_over_time(up{cluster!=\"\", cluster=~\"$cluster\"}[1m]))",
           "interval": "",
           "legendFormat": "{{ cluster }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -270,13 +274,19 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "F7UOe0CGz"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(count(gotk_reconcile_condition{type=\"Ready\",status=\"True\",kind=~\"Kustomization|HelmRelease\"})\n-\nsum(gotk_reconcile_condition{type=\"Ready\",status=\"Deleted\",kind=~\"Kustomization|HelmRelease\"}))+ (count(gotk_reconcile_condition{type=\"Ready\",status=\"True\",kind=~\"GitRepository|HelmRepository|Bucket\"})\n-\nsum(gotk_reconcile_condition{type=\"Ready\",status=\"Deleted\",kind=~\"GitRepository|HelmRepository|Bucket\"}))",
+          "expr": "(count(gotk_reconcile_condition{type=\"Ready\",status=\"True\",kind=~\"Kustomization|HelmRelease\", cluster=~\"$cluster\"})\n-\nsum(gotk_reconcile_condition{type=\"Ready\",status=\"Deleted\",kind=~\"Kustomization|HelmRelease\", cluster=~\"$cluster\"}))+ (count(gotk_reconcile_condition{type=\"Ready\",status=\"True\",kind=~\"GitRepository|HelmRepository|Bucket\", cluster=~\"$cluster\"})\n-\nsum(gotk_reconcile_condition{type=\"Ready\",status=\"Deleted\",kind=~\"GitRepository|HelmRepository|Bucket\", cluster=~\"$cluster\"}))",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -340,13 +350,19 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "F7UOe0CGz"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(gotk_reconcile_condition{type=\"Ready\",status=\"False\",kind=~\"Kustomization|HelmRelease\"}) + sum(gotk_reconcile_condition{type=\"Ready\",status=\"False\",kind=~\"GitRepository|HelmRepository|Bucket\"})",
+          "expr": "sum(gotk_reconcile_condition{type=\"Ready\",status=\"False\",kind=~\"Kustomization|HelmRelease\", cluster=~\"$cluster\"}) + sum(gotk_reconcile_condition{type=\"Ready\",status=\"False\",kind=~\"GitRepository|HelmRepository|Bucket\", cluster=~\"$cluster\"})",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -399,17 +415,19 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "F7UOe0CGz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (cluster) (metallb_bgp_session_up)",
+          "expr": "sum by (cluster) (metallb_bgp_session_up{cluster=~\"$cluster\"})",
           "interval": "",
           "legendFormat": "{{ cluster }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -465,7 +483,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": {
@@ -555,7 +573,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -568,10 +586,12 @@
             "type": "prometheus",
             "uid": "F7UOe0CGz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (instance) (\n  (1 - sum without (mode) (rate(node_cpu_seconds_total{mode=~\"idle|iowait|steal\", instance!=\"sentry1.prod.beryju.org:9100\"}[5m])))\n/ ignoring(cpu) group_left\n  count without (cpu, mode) (node_cpu_seconds_total{mode=\"idle\", instance!=\"sentry1.prod.beryju.org:9100\"})\n) ",
+          "expr": "sum by (instance) (\n  (1 - sum without (mode) (rate(node_cpu_seconds_total{mode=~\"idle|iowait|steal\", cluster=~\"$cluster\"}[5m])))\n/ ignoring(cpu) group_left\n  count without (cpu, mode) (node_cpu_seconds_total{mode=\"idle\", cluster=~\"$cluster\"})\n) ",
           "interval": "",
           "legendFormat": "Load avg {{ instance }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -665,7 +685,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(100 -\n(\n  (node_memory_MemAvailable_bytes{instance!=\"sentry1.prod.beryju.org:9100\"})\n/\n  (node_memory_MemTotal_bytes{instance!=\"sentry1.prod.beryju.org:9100\"})\n* 100\n))",
+          "expr": "(100 -\n(\n  (node_memory_MemAvailable_bytes{cluster=~\"$cluster\"})\n/\n  (node_memory_MemTotal_bytes{cluster=~\"$cluster\"})\n* 100\n))",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "range": true,
@@ -764,7 +784,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "rate(node_network_receive_bytes_total{device=~\"eth.*|enp.*\"}[$__rate_interval]) > 0",
+          "expr": "rate(node_network_receive_bytes_total{device=~\"eth.*|enp.*\", cluster=~\"$cluster\"}[$__rate_interval]) > 0",
           "interval": "",
           "legendFormat": "{{ instance }} IN",
           "range": true,
@@ -777,7 +797,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "rate(node_network_transmit_bytes_total{device=~\"eth.*|enp.*\"}[$__rate_interval]) * -1 < 0",
+          "expr": "rate(node_network_transmit_bytes_total{device=~\"eth.*|enp.*\", cluster=~\"$cluster\"}[$__rate_interval]) * -1 < 0",
           "hide": false,
           "interval": "",
           "legendFormat": "{{ instance }} OUT",
@@ -791,7 +811,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "irate(ifHCInOctets{}[$__rate_interval]) > 0",
+          "expr": "irate(ifHCInOctets{cluster=~\"$cluster\"}[$__rate_interval]) > 0",
           "hide": false,
           "interval": "",
           "legendFormat": "In - {{ifName}}",
@@ -805,7 +825,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "-irate(ifHCOutOctets{}[$__rate_interval]) < 0",
+          "expr": "-irate(ifHCOutOctets{cluster=~\"$cluster\"}[$__rate_interval]) < 0",
           "hide": false,
           "interval": "",
           "legendFormat": "Out - {{ifName}}",
@@ -883,7 +903,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": {
@@ -892,7 +912,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(istio_requests_total{reporter=\"source\", response_code!~\"5.*\"}[1m])) / sum(rate(istio_requests_total{reporter=\"source\"}[1m]))",
+          "expr": "sum(rate(istio_requests_total{reporter=\"source\", response_code!~\"5.*\", cluster=~\"$cluster\"}[1m])) / sum(rate(istio_requests_total{reporter=\"source\",cluster=~\"$cluster\"}[1m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -988,10 +1008,12 @@
             "type": "prometheus",
             "uid": "F7UOe0CGz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "round(\n    sort_desc(\n        sum by (\n            destination_service_name\n        ) (\n            irate(\n                istio_requests_total{reporter=\"source\"}[$__rate_interval]\n            )\n        )\n    )> 0 , 0.001\n)",
+          "expr": "round(\n    sort_desc(\n        sum by (\n            destination_service_name\n        ) (\n            irate(\n                istio_requests_total{reporter=\"source\", cluster=~\"$cluster\"}[$__rate_interval]\n            )\n        )\n    )> 0 , 0.001\n)",
           "interval": "",
           "legendFormat": "{{ destination_service_name }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1087,8 +1109,9 @@
             "type": "prometheus",
             "uid": "F7UOe0CGz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(histogram_quantile(0.99, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\"}[1m])) by (le)) / 1000) or histogram_quantile(0.99, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\"}[1m])) by (le))",
+          "expr": "(histogram_quantile(0.99, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\", cluster=~\"$cluster\"}[1m])) by (le)) / 1000) or histogram_quantile(0.99, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\", cluster=~\"$cluster\"}[1m])) by (le))",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1361,7 +1384,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": {
@@ -1431,7 +1454,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "exemplar": true,
@@ -1650,7 +1673,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.3",
       "targets": [
         {
           "datasource": {
@@ -1672,20 +1695,54 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 37,
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "F7UOe0CGz"
+        },
+        "definition": "label_values(up, cluster)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Cluster",
+        "multi": true,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "label_values(up, cluster)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "BeryJu.io",
   "uid": "IB8j5hVnz",
-  "version": 151,
+  "version": 167,
   "weekStart": "monday"
 }
