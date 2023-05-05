@@ -15,4 +15,4 @@ jobs:
       with:
         fetch-depth: 1
     - name: Lint Ansible Playbooks
-      uses: ansible/ansible-lint-action@main
+      uses: ansible/ansible-lint-action@v6
