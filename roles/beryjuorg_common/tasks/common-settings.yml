@@ -19,7 +19,7 @@
   ansible.builtin.service:
     name: multipathd
     state: stopped
-    enabled: no
+    enabled: false
   when: "'multipathd.service' in ansible_facts.services"
 - name: Configure systemd-journald max usage
   ansible.builtin.copy:
@@ -33,6 +33,9 @@
   ansible.builtin.get_url:
     url: https://vault.beryju.org/v1/ssh-client-signer/public_key
     dest: /etc/ssh/trusted-user-ca-keys.pem
+    owner: root
+    group: root
+    mode: 0644
 - name: Configure SSHD
   ansible.builtin.copy:
     dest: /etc/ssh/sshd_config.d/beryjuio-vault-ssh-ca.conf

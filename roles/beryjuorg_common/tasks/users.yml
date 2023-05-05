@@ -19,7 +19,7 @@
 - name: User ansible | authorized_key
   ansible.posix.authorized_key:
     user: ansible
-    exclusive: True
+    exclusive: true
     key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDV41SzWt2fDMVYy+WboUetvCEDyQVcEQGyMTIIUenB+Va/xEGrT+ncCS+abnE6vh65no2sipWk6jEQTodiizmYshbWaVTXJrGrWrGAWyKMmpG13otgarleNw/iUYxjRx9cZ75an07KyV2oT2EWiegs53NYJoAa5X1/M56rBg5IEDmqvrr78BhVD13S4RIEZG8su8xdZGe/dv736FVcET1JisJR9AQEzkITrEwxKHh0eWdtG0brdkH6JsGSGSdSj7oBBuOgfFo/wCiKEAzIuUNdITgcOFXh8zQYEZmNo1+Z2W3/ENHyEjK3cPBJlMf3n7qeVs4SWG/qBRBn1rsZuTETKVJ2bQ3RE/GkKoyIXjc5ft3x8dJg4FG/mYO71GsLuc+jJF2jp0q1WeNZfZXJBRiarskazIcVRox+Cv9tc+IpzeEUTo63t8QI+4yfiR7pLp0nr4SWhOVHiUuDp8BJ0G9MI3O//I6B6i8mVt7fxtYXt0VJficpMAl6KwbdoARR9zU= ansible" # noqa 204
 - name: Delete vagrant
   ansible.builtin.user:

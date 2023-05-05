@@ -1,6 +1,6 @@
 skip_list:
-  - yaml
-warn_list:
   - name[missing]
   - name[play]
   - name[casing]
+  - run_once[play]
+  - yaml[line-length]
