@@ -31,7 +31,7 @@
         msg: "{{ meta_data }}"
 
     - name: Clone VM from Template
-      vmware_guest:
+      community.vmware.vmware_guest:
         template: "/{{ bootstrap_dc }}/{{ bootstrap_template }}"
         folder: /
         state: poweredoff
@@ -39,7 +39,7 @@
         <<: *vcenter
 
     - name: Reconfigure VM | vCPU and Memory
-      vmware_guest:
+      community.vmware.vmware_guest:
         hardware:
           memory_mb: "{{ bootstrap_memory }}"
           num_cpus: "{{ bootstrap_cpu }}"
@@ -57,12 +57,12 @@
         <<: *vcenter
 
     - name: Power On VM
-      vmware_guest:
+      community.vmware.vmware_guest:
         state: poweredon
         <<: *vcenter
 
     - name: Wait until vCenter is responding IP Address
-      vmware_guest:
+      community.vmware.vmware_guest:
         wait_for_ip_address: true
         <<: *vcenter
       register: result

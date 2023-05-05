@@ -1,3 +1,5 @@
 collections:
   - name: community.general
   - name: community.hashi_vault
+  - name: community.vmware
+  - name: community.docker
