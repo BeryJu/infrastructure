@@ -32,6 +32,17 @@ resource "vault_jwt_auth_backend_role" "vault-secrets-operator" {
   role_type       = "jwt"
 }
 
+resource "vault_jwt_auth_backend_role" "external-secrets" {
+  backend         = vault_jwt_auth_backend.config.path
+  user_claim      = "sub"
+  role_name       = "external-secrets"
+  bound_audiences = [var.aud]
+  bound_subject   = "system:serviceaccount:kube-system:external-secrets"
+  token_ttl       = 3600
+  token_policies  = ["vault-secrets-operator"]
+  role_type       = "jwt"
+}
+
 resource "vault_jwt_auth_backend_role" "workstation" {
   backend         = vault_jwt_auth_backend.config.path
   user_claim      = "sub"
