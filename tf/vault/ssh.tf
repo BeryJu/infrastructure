@@ -15,5 +15,5 @@ resource "vault_ssh_secret_backend_role" "jens" {
     "permit-pty" : ""
   }
   default_user = "jens"
-  ttl          = "30m0s"
+  ttl          = "1800"
 }
