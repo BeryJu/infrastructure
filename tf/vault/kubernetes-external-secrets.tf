@@ -12,7 +12,7 @@ resource "vault_policy" "cert-manager" {
   name = "cert-manager"
 
   policy = <<EOT
-path "aws/creds/*" {
+path "aws/creds/route53" {
   capabilities = ["read"]
 }
 EOT
