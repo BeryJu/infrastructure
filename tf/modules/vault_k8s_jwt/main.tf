@@ -5,6 +5,7 @@ terraform {
     }
   }
 }
+
 # resource "vault_auth_backend" "kubernetes" {
 #   type = "jwt"
 #   path = var.path
@@ -21,17 +22,6 @@ resource "vault_jwt_auth_backend" "config" {
   }
 }
 
-resource "vault_jwt_auth_backend_role" "vault-secrets-operator" {
-  backend         = vault_jwt_auth_backend.config.path
-  user_claim      = "sub"
-  role_name       = "vault-secrets-operator"
-  bound_audiences = [var.aud]
-  bound_subject   = "system:serviceaccount:vault-secrets-operator:vault-secrets-operator"
-  token_ttl       = 3600
-  token_policies  = ["vault-secrets-operator"]
-  role_type       = "jwt"
-}
-
 resource "vault_jwt_auth_backend_role" "external-secrets" {
   backend         = vault_jwt_auth_backend.config.path
   user_claim      = "sub"
@@ -39,7 +29,18 @@ resource "vault_jwt_auth_backend_role" "external-secrets" {
   bound_audiences = [var.aud]
   bound_subject   = "system:serviceaccount:kube-system:external-secrets"
   token_ttl       = 3600
-  token_policies  = ["vault-secrets-operator"]
+  token_policies  = ["external-secrets"]
+  role_type       = "jwt"
+}
+
+resource "vault_jwt_auth_backend_role" "cert-manager" {
+  backend         = vault_jwt_auth_backend.config.path
+  user_claim      = "sub"
+  role_name       = "cert-manager"
+  bound_audiences = [var.aud]
+  bound_subject   = "system:serviceaccount:cert-manager:cert-manager"
+  token_ttl       = 3600
+  token_policies  = ["cert-manager"]
   role_type       = "jwt"
 }
 

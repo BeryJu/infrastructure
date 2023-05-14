@@ -24,7 +24,7 @@ module "vault-beryjuio-prod" {
   source = "../modules/vault_k8s_jwt"
   path   = "k8s-beryjuio-prod"
   iss    = "https://kubernetes.default.svc.cluster.local"
-  aud    = "kubernetes.default.svc"
+  aud    = "https://kubernetes.default.svc.cluster.local"
   jwks = jsonencode({
     "keys" : [
       {
