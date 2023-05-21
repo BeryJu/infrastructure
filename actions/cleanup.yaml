@@ -1,4 +1,4 @@
-- import_playbook: ../bootstrap.yaml
+- import_playbook: ../pre_run.yaml
 - hosts: docker
   become: true
   tasks:
@@ -18,3 +18,4 @@
     - name: Clean Containerd Images (all)
       # noqa 301
       ansible.builtin.command: crictl rmi --prune
+- import_playbook: ../post_run.yaml

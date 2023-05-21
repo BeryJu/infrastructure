@@ -1,4 +1,4 @@
-- import_playbook: ../bootstrap.yaml
+- import_playbook: ../pre_run.yaml
 - hosts: sentry1.prod.beryju.org
   become: true
   vars:
@@ -34,3 +34,4 @@
         bucket: "{{ bucket_name }}"
         file_root: "{{ sentry_dir }}/sentry/backups"
         <<: *s3_connection
+- import_playbook: ../post_run.yaml

@@ -1,4 +1,4 @@
-- import_playbook: ../bootstrap.yaml
+- import_playbook: ../pre_run.yaml
 - hosts: sentry1.prod.beryju.org
   become: true
   tasks:
@@ -19,3 +19,4 @@
       community.docker.docker_container_exec:
         container: sentry_onpremise_postgres_1
         command: psql -U sentry -c "vacuum full public.nodestore_node;"
+- import_playbook: ../post_run.yaml

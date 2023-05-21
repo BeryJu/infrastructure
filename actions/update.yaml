@@ -1,4 +1,4 @@
-- import_playbook: ../bootstrap.yaml
+- import_playbook: ../pre_run.yaml
 - hosts: all
   become: true
   strategy: free
@@ -29,3 +29,4 @@
       ansible.builtin.file:
         path: /var/lib/prometheus/node-exporter/apt.prom
         state: absent
+- import_playbook: ../post_run.yaml
