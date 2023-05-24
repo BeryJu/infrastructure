@@ -20,11 +20,11 @@ resource "authentik_source_oauth" "int-gitlab" {
 
   consumer_key        = "foo"
   consumer_secret     = "bar"
-  access_token_url    = "https://code.beryju.org/oauth/token"
-  authorization_url   = "https://code.beryju.org/oauth/authorize"
-  oidc_jwks_url       = "https://code.beryju.org/oauth/discovery/keys"
-  oidc_well_known_url = "https://code.beryju.org/.well-known/openid-configuration"
-  profile_url         = "https://code.beryju.org/oauth/userinfo"
+  access_token_url    = "https://gitlab.beryjuio-home.k8s.beryju.org/oauth/token"
+  authorization_url   = "https://gitlab.beryjuio-home.k8s.beryju.org/oauth/authorize"
+  oidc_jwks_url       = "https://gitlab.beryjuio-home.k8s.beryju.org/oauth/discovery/keys"
+  oidc_well_known_url = "https://gitlab.beryjuio-home.k8s.beryju.org/.well-known/openid-configuration"
+  profile_url         = "https://gitlab.beryjuio-home.k8s.beryju.org/oauth/userinfo"
   provider_type       = "openidconnect"
   lifecycle {
     ignore_changes = [consumer_key, consumer_secret]
