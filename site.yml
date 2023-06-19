@@ -1,7 +1,6 @@
-- import_playbook: ./pre_run.yaml
+- import_playbook: ./bootstrap.yaml
 - hosts: all
   become: true
   roles:
     - beryjuorg_common
     # - beryjuorg_mta
-- import_playbook: ./post_run.yaml
