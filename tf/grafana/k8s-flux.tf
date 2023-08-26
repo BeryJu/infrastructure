@@ -8,7 +8,7 @@ data "http" "k8s-flux-cluster-dashboard" {
 
 resource "grafana_dashboard" "k8s-flux-cluster" {
   folder      = grafana_folder.beryjuorg-k8s-flux.id
-  config_json = data.http.k8s-flux-cluster-dashboard.response_body
+  config_json = replace(data.http.k8s-flux-cluster-dashboard.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "k8s-flux-control-plane-dashboard" {
@@ -17,7 +17,7 @@ data "http" "k8s-flux-control-plane-dashboard" {
 
 resource "grafana_dashboard" "k8s-flux-control-plane" {
   folder      = grafana_folder.beryjuorg-k8s-flux.id
-  config_json = data.http.k8s-flux-control-plane-dashboard.response_body
+  config_json = replace(data.http.k8s-flux-control-plane-dashboard.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
 
 data "http" "k8s-flux-logs-dashboard" {
@@ -26,5 +26,5 @@ data "http" "k8s-flux-logs-dashboard" {
 
 resource "grafana_dashboard" "k8s-flux-logs" {
   folder      = grafana_folder.beryjuorg-k8s-flux.id
-  config_json = data.http.k8s-flux-logs-dashboard.response_body
+  config_json = replace(data.http.k8s-flux-logs-dashboard.response_body, "$${DS_PROMETHEUS}", "Prometheus")
 }
