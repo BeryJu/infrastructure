@@ -23,6 +23,7 @@ resource "authentik_application" "sentry" {
   meta_publisher     = "Sentry"
   policy_engine_mode = "any"
   group              = "Infrastructure"
+  backchannel_providers = [104]
 }
 
 resource "authentik_policy_binding" "sentry" {

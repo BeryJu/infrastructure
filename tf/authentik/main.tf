@@ -47,7 +47,6 @@ resource "authentik_outpost" "embedded" {
 resource "authentik_outpost" "k8s-proxy" {
   name = "k8s"
   protocol_providers = [
-    module.authentik-app-unifi.provider_id,
     module.authentik-app-home-assistant.provider_id,
     module.authentik-app-tautulli.provider_id,
     module.authentik-app-mimir.provider_id,
