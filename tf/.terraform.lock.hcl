@@ -42,23 +42,23 @@ provider "registry.terraform.io/goauthentik/authentik" {
 }
 
 provider "registry.terraform.io/grafana/grafana" {
-  version     = "1.13.0"
-  constraints = "1.13.0, ~> 1.13"
+  version     = "2.2.0"
+  constraints = "2.2"
   hashes = [
-    "h1:zUXBMEinm1Enluoelv4YTdHO06eTZsX+urj4M/sBdB8=",
-    "zh:05c4eb35a6cd220f08814476ef083ef604630b8aa30ca04ecb070cb6da4bfcc7",
-    "zh:0a6e4f34a3a63e024190e01a8a0b9c98fca8989ee3e745b5c6bc7643efde0dcc",
-    "zh:1bafdfcf21bb8f1694f9f40a5c1152978e47acfb42926b67c275bccde524e2dd",
-    "zh:219d063805928370953610fe98a2caf27114ff65864429ad5d05f1a4576eae46",
-    "zh:29e76a046258af43c5c7e18dad5806483f5115c7341dc42522bfda40b55ab15b",
-    "zh:2f62bc37993155fcb84251f4c23b9ab8b7cbe7d790652c3f328205ac577564fe",
-    "zh:3327cfe7f7fd3c3178c989dceedd02ff1f6d10159c78cf96da47540316ea0c73",
-    "zh:39588f75d5d401dc2cbc678b12c2445ad5c7cc8307db3d5c4329fa8babf8113e",
-    "zh:53cbaa0cb3ac0e321440a00f54ed2376ef195c3e8b36f8e806f04d5031e8dbb4",
-    "zh:66f2b484c8d2b5c31c0b83e530ecbc7235f46bbb06fa4122a2e0e132858b77bf",
-    "zh:73d2db8a777acaf04354f6f999dd34a65c834a92124d9a0b77a013735a0ae910",
-    "zh:868f37bba40635a7b031887c0e1c4f4c89bd7b8ec01eafb7d1be249487159e97",
-    "zh:e7a2eef88e48915d747acdb8eb000f71f6b50bfe2f069966647cb233f674b9c6",
+    "h1:2PDrqLIgEh6IhSZGc2Zgm3ptbV2B2W8cIAUASMNWBuU=",
+    "h1:34Xh7MAzgohetCXVahs2wbTDxcZpWAkR+TYJ29emdpk=",
+    "h1:AuNm2rKXoD3bbPp5k7rE89lZ/ivln8jlhqRvnOHkVP8=",
+    "h1:CdvOcwiXMpf+mbKtWt1ZaQI8YA7EiLk5CVMIc0ugBvs=",
+    "h1:FrjNBOAvBzzgItIzXviewfGF/7JFEY3+NpBu27oTf8U=",
+    "h1:HeQJLHc9V/m7eMDSwLoSTD7rAHMaRAKqtxsbf2Y2qYk=",
+    "h1:K9DDtBHLum2q9FIRoP7hCuMSFj+twOYRfq9Qaizu6iU=",
+    "h1:KogNZPy9XcJkFe4JQVsKY8B826cBAdxzYeTh3BntqFA=",
+    "h1:RFn+1u/dNeciPw9hEU/sJrbcLK3n9OJSpfAIVrMhMdY=",
+    "h1:W3Qo+OqaMo8Hz/MRB1HM0/5ce2y6zpO+hX0JrqSP9mE=",
+    "h1:WAMns71mfWHQsOCVn9zXRu6HsyICuC/PwjsNBtXYMUs=",
+    "h1:fPiZh1vjUbxkoWcEMzjdOqc/4a0MGXZ/guxhKB21HC0=",
+    "h1:hn9BhWoVzX8LrMTmcKfUhA2HgSaPe/DAfWz9ebesSaA=",
+    "h1:puRukx/aNqrRCna35b/pVWmQAqeDCxAMuRhNnY6wVTA=",
   ]
 }
 
