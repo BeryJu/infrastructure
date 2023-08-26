@@ -7,13 +7,6 @@ resource "aws_route53_record" "jela-main" {
     local.pub_netlify_ip,
   ]
 }
-resource "aws_route53_record" "jela-requests" {
-  zone_id = aws_route53_zone.jela-io.zone_id
-  name    = "requests.jela.io"
-  type    = "A"
-  ttl     = "300"
-  records = ["148.251.17.254"]
-}
 resource "aws_route53_record" "jela-wks" {
   zone_id = aws_route53_zone.jela-io.zone_id
   name    = "wks.jela.io"
