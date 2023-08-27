@@ -24,8 +24,8 @@ resource "aws_lambda_function" "email-forwader" {
   role             = "arn:aws:iam::471432361072:role/service-role/beryjuorg-ses-forward-role-vub5mi32"
   handler          = "index.handler"
   publish          = true
-  runtime          = "nodejs14.x"
+  runtime          = "nodejs16.x"
   layers = [
-    "arn:aws:lambda:eu-west-1:943013980633:layer:SentryNodeServerlessSDK:65",
+    "arn:aws:lambda:eu-west-1:943013980633:layer:SentryNodeServerlessSDK:159",
   ]
 }
