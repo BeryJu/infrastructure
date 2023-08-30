@@ -151,7 +151,7 @@ RUN hugo completion fish > /etc/fish/completions/hugo.fish
 RUN curl -fsSL https://code-server.dev/install.sh | sh -s --
 
 # kaniko
-COPY --from=gcr.io/kaniko-project/executor:v1.14.0 /kaniko/executor /usr/bin/kaniko
+COPY --from=gcr.io/kaniko-project/executor:v1.15.0 /kaniko/executor /usr/bin/kaniko
 
 # etcdctl
 COPY --from=quay.io/coreos/etcd:v3.5.9 /usr/local/bin/etcdctl /usr/bin/etcdctl
