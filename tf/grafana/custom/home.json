@@ -284,7 +284,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(count(gotk_reconcile_condition{type=\"Ready\",status=\"True\",kind=~\"Kustomization|HelmRelease\", cluster=~\"$cluster\"})\n-\nsum(gotk_reconcile_condition{type=\"Ready\",status=\"Deleted\",kind=~\"Kustomization|HelmRelease\", cluster=~\"$cluster\"}))+ (count(gotk_reconcile_condition{type=\"Ready\",status=\"True\",kind=~\"GitRepository|HelmRepository|Bucket\", cluster=~\"$cluster\"})\n-\nsum(gotk_reconcile_condition{type=\"Ready\",status=\"Deleted\",kind=~\"GitRepository|HelmRepository|Bucket\", cluster=~\"$cluster\"}))",
+          "expr": "(count(gotk_reconcile_condition{type=\"Ready\",status=\"True\",kind=~\"Kustomization|HelmRelease\", cluster=~\"$cluster\"})\n-\nsum(gotk_reconcile_condition{type=\"Ready\",status=\"Unknown\",kind=~\"Kustomization|HelmRelease\", cluster=~\"$cluster\"}))+ (count(gotk_reconcile_condition{type=\"Ready\",status=\"True\",kind=~\"GitRepository|HelmRepository|Bucket\", cluster=~\"$cluster\"})\n-\nsum(gotk_reconcile_condition{type=\"Ready\",status=\"Unknown\",kind=~\"GitRepository|HelmRepository|Bucket\", cluster=~\"$cluster\"}))",
           "interval": "",
           "legendFormat": "",
           "range": true,
@@ -1753,6 +1753,6 @@
   "timezone": "",
   "title": "BeryJu.io",
   "uid": "IB8j5hVnz",
-  "version": 173,
+  "version": 174,
   "weekStart": "monday"
 }
