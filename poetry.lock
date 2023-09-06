@@ -452,13 +452,13 @@ testing = ["covdefaults (>=2.2.2)", "coverage (>=6.5)", "pytest (>=7.2)", "pytes
 
 [[package]]
 name = "hvac"
-version = "1.1.1"
+version = "1.2.0"
 description = "HashiCorp Vault API client"
 optional = false
 python-versions = ">=3.6.2,<4.0.0"
 files = [
-    {file = "hvac-1.1.1-py3-none-any.whl", hash = "sha256:466e883665b4082933106b292649f9fba3bc0709a1ec1729e9e35b29477164b3"},
-    {file = "hvac-1.1.1.tar.gz", hash = "sha256:f9dbcc46b98b250c785eb1050aa11ee34a0c8b6616b75218cf1346a9817992f9"},
+    {file = "hvac-1.2.0-py3-none-any.whl", hash = "sha256:95716e0a6c081214d5f6dc74548d6e388aca895cd7be152cfaf177f7520b3d6e"},
+    {file = "hvac-1.2.0.tar.gz", hash = "sha256:6f5aa0d6b8138b585d4656d1fe01b5d87616310c80484b909cc84c2cb8f064fd"},
 ]
 
 [package.dependencies]
