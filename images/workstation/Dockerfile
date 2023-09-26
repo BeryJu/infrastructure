@@ -121,7 +121,7 @@ RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 	rm -f packages-microsoft-prod.deb
 
 # govc
-COPY --from=vmware/govc:v0.30.7 /govc /usr/bin/govc
+COPY --from=vmware/govc:v0.31.0 /govc /usr/bin/govc
 
 # istioctl
 COPY --from=istio/istioctl:1.18.2 /usr/local/bin/istioctl /usr/bin/istioctl
