@@ -14,7 +14,7 @@ terraform {
     }
     vault = {
       source  = "hashicorp/vault"
-      version = "3.20.1"
+      version = "3.21.0"
     }
     authentik = {
       source  = "goauthentik/authentik"
