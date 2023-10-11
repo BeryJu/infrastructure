@@ -1,4 +1,4 @@
-FROM ubuntu:23.10
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -32,17 +32,19 @@ RUN yes | unminimize && \
 # Python
 RUN add-apt-repository ppa:deadsnakes/ppa -y && \
 	apt-get install -y --no-install-recommends \
-		python3.11-venv python3.11-dev python3-pip python3-venv python3-setuptools && \
-	pip3 install wheel && \
-	pip3 install poetry
+		python3.11-venv python3.11-dev python3-pip python3-venv python3-setuptools python3-poetry
 
 # Golang
 # RUN add-apt-repository ppa:longsleep/golang-backports -y && \
 RUN	apt install -y --no-install-recommends golang-go
 
 # Node
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
-	apt-get install -y --no-install-recommends nodejs
+RUN apt-get install -y ca-certificates curl gnupg && \
+	mkdir -p /etc/apt/keyrings && \
+	curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+	echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list && \
+	apt-get update && \
+	apt-get install nodejs -y
 
 # Fish
 RUN apt-add-repository ppa:fish-shell/release-3 -y && \
@@ -59,8 +61,7 @@ RUN curl -L https://github.com/BeryJu/korb/releases/latest/download/korb_linux_a
 	chmod +x /usr/bin/korb
 
 # minio mc
-RUN curl -L https://dl.min.io/client/mc/release/linux-amd64/mc > /usr/bin/mc && \
-	chmod +x /usr/bin/mc
+COPY --from=docker.io/minio/mc:RELEASE.2023-10-04T06-52-56Z /bin/mc /usr/bin/mc
 
 # kubectl
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
