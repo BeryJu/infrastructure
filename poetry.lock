@@ -768,13 +768,13 @@ six = ">=1.5"
 
 [[package]]
 name = "python-gitlab"
-version = "4.1.1"
+version = "4.1.0"
 description = "A python wrapper for the GitLab API"
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "python-gitlab-4.1.1.tar.gz", hash = "sha256:e4912083d5d40a79b57875a033083e2c860e34bcc4644ef64ca377a755c5b0c9"},
-    {file = "python_gitlab-4.1.1-py3-none-any.whl", hash = "sha256:9da309ce97d5de56947bd8ad09e321ab7de21bb360796c6c0e083397d1ff3399"},
+    {file = "python-gitlab-4.1.0.tar.gz", hash = "sha256:807fc5193b44f270733c4ce010c1f98a8ed0d02fa59d7482852188ba7921e24d"},
+    {file = "python_gitlab-4.1.0-py3-none-any.whl", hash = "sha256:3e611b90308a5eef44a85876e390b481efb7847cc62824e0ff5fdab111c255ec"},
 ]
 
 [package.dependencies]
