@@ -768,13 +768,13 @@ six = ">=1.5"
 
 [[package]]
 name = "python-gitlab"
-version = "3.15.0"
-description = "Interact with GitLab API"
+version = "4.1.1"
+description = "A python wrapper for the GitLab API"
 optional = false
-python-versions = ">=3.7.0"
+python-versions = ">=3.8.0"
 files = [
-    {file = "python-gitlab-3.15.0.tar.gz", hash = "sha256:c9e65eb7612a9fbb8abf0339972eca7fd7a73d4da66c9b446ffe528930aff534"},
-    {file = "python_gitlab-3.15.0-py3-none-any.whl", hash = "sha256:8f8d1c0d387f642eb1ac7bf5e8e0cd8b3dd49c6f34170cee3c7deb7d384611f3"},
+    {file = "python-gitlab-4.1.1.tar.gz", hash = "sha256:e4912083d5d40a79b57875a033083e2c860e34bcc4644ef64ca377a755c5b0c9"},
+    {file = "python_gitlab-4.1.1-py3-none-any.whl", hash = "sha256:9da309ce97d5de56947bd8ad09e321ab7de21bb360796c6c0e083397d1ff3399"},
 ]
 
 [package.dependencies]
@@ -783,7 +783,7 @@ requests-toolbelt = ">=0.10.1"
 
 [package.extras]
 autocompletion = ["argcomplete (>=1.10.0,<3)"]
-yaml = ["PyYaml (>=5.2)"]
+yaml = ["PyYaml (>=6.0.1)"]
 
 [[package]]
 name = "pytz"
