@@ -45,8 +45,8 @@ provider "authentik" {
   token = data.vault_generic_secret.authentik_auth.data["terraform_token"]
 }
 
-module "guacamole" {
-  source = "./guacamole/"
+module "gravity" {
+  source = "./gravity/"
 }
 module "authentik" {
   source = "./authentik/"
