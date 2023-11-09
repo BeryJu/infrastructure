@@ -221,25 +221,3 @@ provider "registry.terraform.io/oracle/oci" {
     "zh:fc26f82eb289f1476a7486130e2c7e22416c40f77218a7b63c80d59a7ce0de3a",
   ]
 }
-
-provider "registry.terraform.io/techbeck03/guacamole" {
-  version     = "1.4.1"
-  constraints = "1.4.1"
-  hashes = [
-    "h1:5CxpkZD+6qMZtLwl50FEheXq0KZiiTEm6zi+oPICkmo=",
-    "zh:066eb7f32a035b6d6353eb91ac9206df4ab011b58d9cc66cf721a2d35ecc213d",
-    "zh:12aa1171715e1c9d49e34116cf6fb8e5b3d325202e7e28baf93e39b6ccc5d614",
-    "zh:1397f2067ba9b165afb4aa12f6e2c16918dcfc35e83556e094ca7a490171b1ff",
-    "zh:155546bb42d535c2c13b943f7b4b6ac8d1ee196fc75124ccee56b9de0fb7e2fe",
-    "zh:42333a10e78a9dc1e4ae56449cfc002e0a7606b81c33ddbe279002f92a3dd67e",
-    "zh:587e1aeacf0a5041c210f8fd2328bb3a357ed552cd64876e012f9382deca471e",
-    "zh:97f2aef2a2fe67c1f84e541db6bf61485f6d689526ef7b6636e73d2592519d64",
-    "zh:a51c896de84ea5a5fdae054517448360a23c22537d03e2fd399b2e49cefb377f",
-    "zh:a7783ff13ae5d312ac506b0ea2beee06d492f9ff89fca298fabf02961799da1f",
-    "zh:b7cefbe167b15b1c930fb465d34a471f75549af6a3739325d2f1595a8ee558f2",
-    "zh:d465effe35d1c854aa93672f5ad08594d7fed4e4ed4dd964f2369c477d54c1b7",
-    "zh:d7f06e6f5f986ca8002d773c707398b289d97d696656f6a9404079e6f5e107ce",
-    "zh:e2037c7ce018d241e88fa798d4e8844b0ad925d8ade0eefa4362129c875ada30",
-    "zh:fe9261a8760fd55f9b55494ed2902d95dce212310d2bf2e75e3b375a81aba69c",
-  ]
-}
