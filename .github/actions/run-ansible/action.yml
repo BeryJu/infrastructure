@@ -11,7 +11,7 @@ runs:
     - name: Install poetry
       shell: bash
       run: pipx install poetry || true
-    - uses: actions/setup-python@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
     - name: prepare
