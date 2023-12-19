@@ -9,7 +9,7 @@ EOT
 }
 
 module "github-vault-oidc" {
-  source  = "digitalocean/github-oidc/vault"
+  source  = "digitalocean-labs/github-oidc/vault"
   version = "~> 2.1.0"
 
   oidc_bindings = [
