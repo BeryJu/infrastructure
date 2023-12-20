@@ -3,7 +3,7 @@ resource "authentik_provider_oauth2" "registry" {
   authorization_flow    = data.authentik_flow.default-authorization-flow.id
   client_id             = "693e60deada0b71e8ecb3d078e4ebaaf08624e55"
   access_token_validity = "minutes=10"
-  sub_mode              = "username"
+  sub_mode              = "user_username"
   property_mappings = [
     authentik_scope_mapping.registry.id,
   ]
