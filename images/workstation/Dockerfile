@@ -135,7 +135,7 @@ RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
 	rm -f puppet.deb
 
 # doctl
-COPY --from=digitalocean/doctl:1.101.0 /app/doctl /usr/bin/doctl
+COPY --from=digitalocean/doctl:1.102.0 /app/doctl /usr/bin/doctl
 
 # Starship
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
