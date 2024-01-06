@@ -27,7 +27,7 @@
         path: "{{ sentry_dir }}/sentry/backups"
     - name: Run export
       community.docker.docker_container_exec:
-        container: sentry-self-hosted_web_1
+        container: sentry-self-hosted-web-1
         command: "sentry export /etc/sentry/backups/{{ filename }}"
     - name: Sync sentry backups dir
       community.aws.s3_sync:
