@@ -15,14 +15,14 @@ resource "authentik_provider_saml" "sentry" {
 }
 
 resource "authentik_application" "sentry" {
-  name               = "Sentry"
-  slug               = "sentry"
-  protocol_provider  = authentik_provider_saml.sentry.id
-  meta_icon          = "https://public.s3.beryju.org/authentik-icons/sentry.png"
-  meta_launch_url    = "https://sentry.beryju.org"
-  meta_publisher     = "Sentry"
-  policy_engine_mode = "any"
-  group              = "Infrastructure"
+  name                  = "Sentry"
+  slug                  = "sentry"
+  protocol_provider     = authentik_provider_saml.sentry.id
+  meta_icon             = "https://public.s3.beryju.org/authentik-icons/sentry.png"
+  meta_launch_url       = "https://sentry.beryju.org"
+  meta_publisher        = "Sentry"
+  policy_engine_mode    = "any"
+  group                 = "Infrastructure"
   backchannel_providers = [104]
 }
 

@@ -18,8 +18,8 @@ resource "authentik_source_oauth" "int-gitlab" {
   authentication_flow = data.authentik_flow.default-source-authentication.id
   enrollment_flow     = data.authentik_flow.default-source-enrollment.id
 
-  consumer_key        = "foo"
-  consumer_secret     = "bar"
+  consumer_key    = "foo"
+  consumer_secret = "bar"
   // TODO: This needs to be changed to use in-cluster URLs
   access_token_url    = "https://code.beryju.org/oauth/token"
   authorization_url   = "https://code.beryju.org/oauth/authorize"
