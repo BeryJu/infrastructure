@@ -39,6 +39,6 @@ data "http" "mimir-dashboard" {
 
 resource "grafana_dashboard" "mimir" {
   folder      = grafana_folder.beryjuio-mimir.id
-  config_json = replace(each.value.response_body, "$$datasource", "Prometheus")
+  config_json = replace(replace(each.value.response_body, "$$datasource", "Prometheus"), "($namespace)/", "")
   for_each    = data.http.mimir-dashboard
 }
