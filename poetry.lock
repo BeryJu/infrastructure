@@ -83,13 +83,13 @@ test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "flak
 
 [[package]]
 name = "ara"
-version = "1.7.0"
+version = "1.7.1"
 description = "ARA Records Ansible"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "ara-1.7.0-py2.py3-none-any.whl", hash = "sha256:487331f98ae43a83dfe8198fd22f5d1980ef607581838882178bd808700bdd92"},
-    {file = "ara-1.7.0.tar.gz", hash = "sha256:f2623f34e8fd542ee70f82d02cc36907e11b2d306e7b548106a33157171af58c"},
+    {file = "ara-1.7.1-py2.py3-none-any.whl", hash = "sha256:576e49041fa35a417ecaac9ce3c21887c75b8282525ad63a00f11a31ef409907"},
+    {file = "ara-1.7.1.tar.gz", hash = "sha256:2a6b0b5b42ec9fb93586768845061a70cc4fbd3d413bcd2e57f0596cc50ded62"},
 ]
 
 [package.dependencies]
