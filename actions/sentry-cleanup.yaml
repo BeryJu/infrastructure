@@ -4,18 +4,18 @@
   tasks:
     - name: Run sentry inbuilt cleanup
       community.docker.docker_container_exec:
-        container: sentry-self-hosted_worker_1
+        container: sentry-self-hosted-worker-1
         command: sentry cleanup --days 60
       failed_when: false
     # - name: Vacuum database (complete, first pass)
     #   community.docker.docker_container_exec:
-    #     container: sentry-self-hosted_postgres_1
+    #     container: sentry-self-hosted-postgres-1
     #     command: vacuumdb -U sentry -d sentry -v -f --analyze
     - name: Vacuum nodestore_node (first pass)
       community.docker.docker_container_exec:
-        container: sentry-self-hosted_postgres_1
+        container: sentry-self-hosted-postgres-1
         command: psql -U sentry -c "vacuum public.nodestore_node;"
     - name: Vacuum nodestore_node (second pass)
       community.docker.docker_container_exec:
-        container: sentry-self-hosted_postgres_1
+        container: sentry-self-hosted-postgres-1
         command: psql -U sentry -c "vacuum full public.nodestore_node;"
