@@ -14,7 +14,7 @@ RUN yes | unminimize && \
 	apt-get install -y --no-install-recommends \
 		# Base system utils
 		nano git openssh-client apt-transport-https curl bash \
-		gnupg sudo man-db bash-completion wget unzip less locales \
+		gnupg sudo man-db bash-completion wget unzip less locales screen \
 		build-essential file pwgen htop jq ldap-utils software-properties-common rsync \
 		# Fancy shell stuff
 		bat fzf \
@@ -101,11 +101,6 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 	sudo ./aws/install && \
 	rm awscliv2.zip
 
-# infrahq
-RUN echo 'deb [trusted=yes] https://apt.fury.io/infrahq/ /' | tee /etc/apt/sources.list.d/infrahq.list && \
-	apt-get update && \
-	apt-get install -y infra
-
 # terraform, vault and packer
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 	echo "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" > /etc/apt/sources.list.d/hashicorp.list && \
@@ -121,9 +116,6 @@ RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 	apt-get install --no-install-recommends -y powershell && \
 	rm -f packages-microsoft-prod.deb
 
-# govc
-COPY --from=vmware/govc:v0.37.0 /govc /usr/bin/govc
-
 # istioctl
 COPY --from=istio/istioctl:1.21.1 /usr/local/bin/istioctl /usr/bin/istioctl
 
@@ -134,11 +126,9 @@ RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
 	apt-get install --no-install-recommends -y puppet-agent r10k && \
 	rm -f puppet.deb
 
-# doctl
-COPY --from=digitalocean/doctl:1.105.0 /app/doctl /usr/bin/doctl
-
 # Starship
 RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
+RUN starship init fish --print-full-init > /etc/fish/conf.d/starship.fish
 
 # FluxCD
 COPY --from=fluxcd/flux-cli:v2.2.3 /usr/local/bin/flux /usr/bin/flux
