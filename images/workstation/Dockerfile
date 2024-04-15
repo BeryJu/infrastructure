@@ -61,7 +61,7 @@ RUN curl -L https://github.com/BeryJu/korb/releases/latest/download/korb_linux_a
 	chmod +x /usr/bin/korb
 
 # minio mc
-COPY --from=docker.io/minio/mc:RELEASE.2023-10-04T06-52-56Z /bin/mc /usr/bin/mc
+COPY --from=quay.io/minio/minio:RELEASE.2024-04-06T05-26-02Z /bin/mc /usr/bin/mc
 
 # kubectl
 RUN curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg && \
