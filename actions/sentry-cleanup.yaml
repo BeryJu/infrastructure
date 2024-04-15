@@ -14,8 +14,8 @@
     - name: Vacuum nodestore_node (first pass)
       community.docker.docker_container_exec:
         container: sentry-self-hosted-postgres-1
-        command: psql -U sentry -c "vacuum public.nodestore_node;"
+        command: psql -U postgres -c "vacuum public.nodestore_node;"
     - name: Vacuum nodestore_node (second pass)
       community.docker.docker_container_exec:
         container: sentry-self-hosted-postgres-1
-        command: psql -U sentry -c "vacuum full public.nodestore_node;"
+        command: psql -U postgres -c "vacuum full public.nodestore_node;"
