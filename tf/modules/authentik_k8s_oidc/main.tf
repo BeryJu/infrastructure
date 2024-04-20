@@ -14,6 +14,7 @@ data "authentik_scope_mapping" "scopes" {
   managed_list = [
     "goauthentik.io/providers/oauth2/scope-email",
     "goauthentik.io/providers/oauth2/scope-openid",
+    "goauthentik.io/providers/oauth2/scope-profile",
     "goauthentik.io/providers/oauth2/scope-offline_access",
   ]
 }
@@ -28,6 +29,7 @@ resource "authentik_provider_oauth2" "cluster" {
   client_id          = "k8s-cluster-${var.name}"
   signing_key        = data.authentik_certificate_key_pair.generated.id
   client_type        = "public"
+  property_mappings  = authentik_scope_mapping.scopes.ids
   lifecycle {
     ignore_changes = [client_secret]
   }
