@@ -37,3 +37,10 @@ resource "authentik_application" "cluster" {
   slug              = "k8s-${var.name}"
   protocol_provider = authentik_provider_oauth2.cluster.id
 }
+
+resource "authentik_policy_binding" "cluster-access" {
+  for_each = toset(var.access_group)
+  target   = authentik_application.cluster.uuid
+  group    = each.key
+  order    = index(var.access_group, each.key) + 100
+}
