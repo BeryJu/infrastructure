@@ -27,6 +27,7 @@ resource "authentik_provider_oauth2" "cluster" {
   authorization_flow = data.authentik_flow.default-authorization-flow.id
   client_id          = "k8s-cluster-${var.name}"
   signing_key        = data.authentik_certificate_key_pair.generated.id
+  client_type        = "public"
   lifecycle {
     ignore_changes = [client_secret]
   }
