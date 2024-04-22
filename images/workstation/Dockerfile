@@ -117,7 +117,7 @@ RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsof
 	rm -f packages-microsoft-prod.deb
 
 # istioctl
-COPY --from=istio/istioctl:1.21.1 /usr/local/bin/istioctl /usr/bin/istioctl
+COPY --from=istio/istioctl:1.21.2 /usr/local/bin/istioctl /usr/bin/istioctl
 
 # puppet
 RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
