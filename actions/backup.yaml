@@ -2,7 +2,7 @@
   vars:
     gitlab_connection: &gitlab_connection
       api_url: "https://gitlab.beryjuio-home.k8s.beryju.org"
-      api_token: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/awx/git-backup:gitlab-token") }}'
+      api_token: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/gitlab/backup:token") }}'
     tmp_path: /tmp/backup
     backup_group: "backups"
     projects:
