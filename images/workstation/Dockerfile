@@ -109,13 +109,6 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 	# Allow running of vault without root
 	setcap cap_ipc_lock= /usr/bin/vault
 
-# powershell
-RUN curl -L https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb > packages-microsoft-prod.deb && \
-	dpkg -i packages-microsoft-prod.deb && \
-	apt-get update && \
-	apt-get install --no-install-recommends -y powershell && \
-	rm -f packages-microsoft-prod.deb
-
 # istioctl
 COPY --from=istio/istioctl:1.22.2 /usr/local/bin/istioctl /usr/bin/istioctl
 
