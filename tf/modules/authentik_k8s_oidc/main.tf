@@ -30,6 +30,10 @@ resource "authentik_provider_oauth2" "cluster" {
   signing_key        = data.authentik_certificate_key_pair.generated.id
   client_type        = "public"
   property_mappings  = data.authentik_scope_mapping.scopes.ids
+  redirect_uris = [
+    "http://localhost:8000",
+    "http://localhost:18000",
+  ]
   lifecycle {
     ignore_changes = [client_secret]
   }
