@@ -12,7 +12,7 @@ resource "grafana_dashboard" "istio-extension-dashboard" {
 }
 
 data "http" "istio-mesh-dashboard" {
-  url = "https://raw.githubusercontent.com/istio/istio/master/manifests/addons/dashboards/istio-mesh-dashboard.json"
+  url = "https://raw.githubusercontent.com/istio/istio/master/manifests/addons/dashboards/istio-mesh-dashboard.gen.json"
 }
 
 resource "grafana_dashboard" "istio-mesh-dashboard" {
@@ -48,10 +48,19 @@ resource "grafana_dashboard" "istio-workload-dashboard" {
 }
 
 data "http" "pilot-dashboard" {
-  url = "https://raw.githubusercontent.com/istio/istio/master/manifests/addons/dashboards/pilot-dashboard.json"
+  url = "https://raw.githubusercontent.com/istio/istio/master/manifests/addons/dashboards/pilot-dashboard.gen.json"
 }
 
 resource "grafana_dashboard" "pilot-dashboard" {
   folder      = grafana_folder.beryjuorg-istio.id
   config_json = data.http.pilot-dashboard.response_body
+}
+
+data "http" "ztunnel-dashboard" {
+  url = "https://raw.githubusercontent.com/istio/istio/master/manifests/addons/dashboards/ztunnel-dashboard.gen.json"
+}
+
+resource "grafana_dashboard" "ztunnel-dashboard" {
+  folder      = grafana_folder.beryjuorg-istio.id
+  config_json = data.http.ztunnel-dashboard.response_body
 }
