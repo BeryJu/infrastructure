@@ -5,11 +5,11 @@ resource "authentik_provider_saml" "sentry" {
   audience                        = "https://sentry.beryju.org/saml/metadata/beryjuio/"
   assertion_valid_not_before      = "minutes=-5"
   assertion_valid_not_on_or_after = "minutes=5"
-  digest_algorithm                = "http://www.w3.org/2000/09/xmldsig#sha1"
+  digest_algorithm                = "http://www.w3.org/2001/04/xmlenc#sha256"
+  signature_algorithm             = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
   issuer                          = "authentik"
   property_mappings               = data.authentik_property_mapping_saml.defaults.ids
   session_valid_not_on_or_after   = "minutes=86400"
-  signature_algorithm             = "http://www.w3.org/2000/09/xmldsig#rsa-sha1"
   signing_kp                      = data.authentik_certificate_key_pair.generated.id
   sp_binding                      = "post"
 }
