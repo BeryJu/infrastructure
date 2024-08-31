@@ -44,6 +44,28 @@ resource "vault_jwt_auth_backend_role" "cert-manager" {
   role_type       = "jwt"
 }
 
+resource "vault_jwt_auth_backend_role" "flux-notification-controller" {
+  backend         = vault_jwt_auth_backend.config.path
+  user_claim      = "sub"
+  role_name       = "flux-notification-controller"
+  bound_audiences = [var.aud]
+  bound_subject   = "system:serviceaccount:flux-system:notification-controller"
+  token_ttl       = 3600
+  token_policies  = ["github-flux-commit-status"]
+  role_type       = "jwt"
+}
+
+resource "vault_jwt_auth_backend_role" "github-actions-controller" {
+  backend         = vault_jwt_auth_backend.config.path
+  user_claim      = "sub"
+  role_name       = "github-actions-controller"
+  bound_audiences = [var.aud]
+  bound_subject   = "system:serviceaccount:actions-controller:actions-runner-controller"
+  token_ttl       = 3600
+  token_policies  = ["github-actions-controller"]
+  role_type       = "jwt"
+}
+
 resource "vault_jwt_auth_backend_role" "workstation" {
   backend         = vault_jwt_auth_backend.config.path
   user_claim      = "sub"

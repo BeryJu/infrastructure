@@ -7,15 +7,15 @@ license = "GPL"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-hvac = "*"
 ansible = "*"
-python-gitlab = "*"
-python-dateutil = "*"
-pytz = "*"
-passlib = "*"
-bcrypt = "*"
-ara = "*"
 ansible-lint = "*"
+ara = "*"
+bcrypt = "*"
+hvac = "*"
+passlib = "*"
+python-dateutil = "*"
+python-gitlab = "*"
+pytz = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
