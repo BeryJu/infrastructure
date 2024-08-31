@@ -3,3 +3,5 @@ collections:
   - name: community.hashi_vault
   - name: community.vmware
   - name: community.docker
+  - name: amazon.aws
+  - name: community.aws

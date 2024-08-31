@@ -6,13 +6,14 @@ authors = ["Jens Langhammer <jens.langhammer@beryju.org>"]
 license = "GPL"
 
 [tool.poetry.dependencies]
-python = "^3.11"
 ansible = "*"
 ansible-lint = "*"
 ara = "*"
 bcrypt = "*"
+boto3 = "*"
 hvac = "*"
 passlib = "*"
+python = "^3.11"
 python-dateutil = "*"
 python-gitlab = "*"
 pytz = "*"

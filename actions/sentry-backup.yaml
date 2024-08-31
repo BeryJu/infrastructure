@@ -10,13 +10,9 @@
       access_key: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/minio/main:username") }}'
       secret_key: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/minio/main:password") }}'
   tasks:
-    - name: Ensure boto is installed
-      pip:
-        name:
-        - boto3
-        - botocore
-        executable: pip3
     - name: Ensure S3 bucket exists
+      delegate_to: localhost
+      become: false
       amazon.aws.s3_bucket:
         name: "{{ bucket_name }}"
         state: present
