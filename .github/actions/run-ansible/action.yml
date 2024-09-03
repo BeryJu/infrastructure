@@ -35,13 +35,13 @@ runs:
         ANSIBLE_REMOTE_USER: ansible
         ANSIBLE_PRIVATE_KEY_FILE: ./ansible.key
         ANSIBLE_HOST_KEY_CHECKING: "false"
-        ANSIBLE_HASHI_VAULT_ADDR: https://vault.beryju.org
+        ANSIBLE_HASHI_VAULT_ADDR: https://vault.beryju.io
         ANSIBLE_HASHI_VAULT_AUTH_METHOD: jwt
         ANSIBLE_HASHI_VAULT_MOUNT_POINT: github-actions
         ANSIBLE_HASHI_VAULT_JWT: ${{ steps.jwt.outputs.token }}
         ANSIBLE_HASHI_VAULT_ROLE_ID: github-terraform
         ARA_API_CLIENT: http
-        ARA_API_SERVER: "https://ara.beryjuio-home.k8s.beryju.org"
+        ARA_API_SERVER: "https://ara.beryjuio-home.k8s.beryju.io"
       run: |
         export ANSIBLE_CALLBACK_PLUGINS=$(poetry run python3 -m ara.setup.callback_plugins)
         poetry run ansible-playbook -v ${{ inputs.playbook }}

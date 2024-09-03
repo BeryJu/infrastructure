@@ -32,16 +32,6 @@ resource "aws_route53_record" "charts-beryju-org" {
   records = ["chartsberyjuio.netlify.app"]
 }
 
-resource "aws_route53_record" "guac-beryju-org" {
-  zone_id = aws_route53_zone.beryju-org.zone_id
-  name    = "guac.beryju.org"
-  type    = "A"
-  alias {
-    name                   = "\\052.beryjuio-prod.k8s.beryju.org"
-    zone_id                = aws_route53_zone.beryju-org.zone_id
-    evaluate_target_health = true
-  }
-}
 resource "aws_route53_record" "sentry" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "sentry.beryju.org"
@@ -52,6 +42,7 @@ resource "aws_route53_record" "sentry" {
     evaluate_target_health = true
   }
 }
+
 resource "aws_route53_record" "analytics" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "analytics.beryju.org"
@@ -62,6 +53,7 @@ resource "aws_route53_record" "analytics" {
     evaluate_target_health = true
   }
 }
+
 resource "aws_route53_record" "hass-ext" {
   zone_id = aws_route53_zone.beryju-org.zone_id
   name    = "hass-ext.beryju.org"
