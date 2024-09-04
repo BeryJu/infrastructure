@@ -10,7 +10,7 @@ data "authentik_flow" "default-authorization-flow" {
   slug = "default-provider-authorization-implicit-consent"
 }
 
-data "authentik_scope_mapping" "scopes" {
+data "authentik_property_mapping_provider_scope" "scopes" {
   managed_list = [
     "goauthentik.io/providers/oauth2/scope-email",
     "goauthentik.io/providers/oauth2/scope-openid",
@@ -29,7 +29,7 @@ resource "authentik_provider_oauth2" "cluster" {
   client_id          = "k8s-cluster-${var.name}"
   signing_key        = data.authentik_certificate_key_pair.generated.id
   client_type        = "public"
-  property_mappings  = data.authentik_scope_mapping.scopes.ids
+  property_mappings  = data.authentik_property_mapping_provider_scope.scopes.ids
   redirect_uris = [
     "http://localhost:8000",
     "http://localhost:18000",

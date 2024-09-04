@@ -5,7 +5,7 @@ resource "authentik_provider_oauth2" "registry" {
   access_token_validity = "minutes=10"
   sub_mode              = "user_username"
   property_mappings = [
-    authentik_scope_mapping.registry.id,
+    authentik_property_mapping_provider_scope.registry.id,
   ]
   signing_key = data.authentik_certificate_key_pair.generated.id
   jwks_sources = [
@@ -23,7 +23,7 @@ resource "authentik_application" "registry" {
   protocol_provider = authentik_provider_oauth2.registry.id
 }
 
-resource "authentik_scope_mapping" "registry" {
+resource "authentik_property_mapping_provider_scope" "registry" {
   name       = "docker-registry"
   scope_name = "docker-registry"
   expression = file("${path.module}/source/scope-mapping-docker-registry.py")

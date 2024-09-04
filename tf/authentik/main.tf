@@ -54,7 +54,7 @@ resource "authentik_outpost" "k8s-proxy" {
   service_connection = authentik_service_connection_kubernetes.local.id
 }
 
-data "authentik_property_mapping_saml" "defaults" {
+data "authentik_property_mapping_provider_saml" "defaults" {
   managed_list = [
     "goauthentik.io/providers/saml/upn",
     "goauthentik.io/providers/saml/name",

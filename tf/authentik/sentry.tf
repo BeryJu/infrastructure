@@ -8,7 +8,7 @@ resource "authentik_provider_saml" "sentry" {
   digest_algorithm                = "http://www.w3.org/2001/04/xmlenc#sha256"
   signature_algorithm             = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
   issuer                          = "authentik"
-  property_mappings               = data.authentik_property_mapping_saml.defaults.ids
+  property_mappings               = data.authentik_property_mapping_provider_saml.defaults.ids
   session_valid_not_on_or_after   = "minutes=86400"
   signing_kp                      = data.authentik_certificate_key_pair.generated.id
   sp_binding                      = "post"
