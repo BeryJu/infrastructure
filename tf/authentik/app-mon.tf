@@ -4,9 +4,9 @@ module "authentik-app-alertmanager" {
   name     = "Alertmanager"
   group    = "Monitoring"
   internal = ""
-  external = "https://alertmanager.infra.beryju.org"
+  external = "https://alertmanager.lab.beryju.io"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/alertmanager.png"
+  icon_url = "https://public.s3.beryju.io/authentik-icons/alertmanager.png"
 }

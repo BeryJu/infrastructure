@@ -21,7 +21,7 @@ module "authentik-app-mimir" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url        = "https://public.s3.beryju.org/authentik-icons/grafana-mimir.png"
+  icon_url        = "https://public.s3.beryju.io/authentik-icons/grafana-mimir.png"
   meta_publisher  = "Grafana Labs"
   skip_path_regex = "/ready"
 }
@@ -36,6 +36,6 @@ module "authentik-app-loki" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url       = "https://public.s3.beryju.org/authentik-icons/grafana-loki.png"
+  icon_url       = "https://public.s3.beryju.io/authentik-icons/grafana-loki.png"
   meta_publisher = "Grafana Labs"
 }

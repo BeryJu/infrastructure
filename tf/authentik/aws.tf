@@ -46,7 +46,7 @@ resource "authentik_application" "aws" {
   name               = "Amazon Web Services"
   slug               = "amazon-web-services"
   protocol_provider  = authentik_provider_saml.aws.id
-  meta_icon          = "https://public.s3.beryju.org/authentik-icons/aws.png"
+  meta_icon          = "https://public.s3.beryju.io/authentik-icons/aws.png"
   meta_publisher     = "Amazon Web Services, Inc."
   policy_engine_mode = "all"
   group              = "Cloud"

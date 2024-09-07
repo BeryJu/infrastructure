@@ -8,6 +8,6 @@ module "authentik-app-home-assistant" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url        = "https://public.s3.beryju.org/authentik-icons/home-assistant.svg"
+  icon_url        = "https://public.s3.beryju.io/authentik-icons/home-assistant.svg"
   skip_path_regex = "/api*"
 }

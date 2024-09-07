@@ -8,7 +8,7 @@ module "authentik-app-sabnzbd" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/sabnzbd.svg"
+  icon_url = "https://public.s3.beryju.io/authentik-icons/sabnzbd.svg"
 }
 
 module "authentik-app-sonarr" {
@@ -21,7 +21,7 @@ module "authentik-app-sonarr" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/sonarr.svg"
+  icon_url = "https://public.s3.beryju.io/authentik-icons/sonarr.svg"
 }
 
 module "authentik-app-radarr" {
@@ -34,7 +34,7 @@ module "authentik-app-radarr" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/radarr.svg"
+  icon_url = "https://public.s3.beryju.io/authentik-icons/radarr.svg"
 }
 
 module "authentik-app-tautulli" {
@@ -47,5 +47,5 @@ module "authentik-app-tautulli" {
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
-  icon_url = "https://public.s3.beryju.org/authentik-icons/tautulli.svg"
+  icon_url = "https://public.s3.beryju.io/authentik-icons/tautulli.svg"
 }
