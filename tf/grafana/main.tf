@@ -16,7 +16,7 @@ data "vault_generic_secret" "grafana_auth" {
 }
 
 provider "grafana" {
-  url  = "https://grafana.infra.beryju.org/"
+  url  = "https://grafana.lab.beryju.io"
   auth = data.vault_generic_secret.grafana_auth.data["terraform_token"]
 }
 

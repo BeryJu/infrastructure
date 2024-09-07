@@ -172,7 +172,7 @@
             {
               "targetBlank": true,
               "title": "Flux dashboard",
-              "url": "https://grafana.infra.beryju.org/d/flux-cluster/flux-cluster-stats?orgId=1&refresh=10s"
+              "url": "https://grafana.lab.beryju.io/d/flux-cluster/flux-cluster-stats?orgId=1&refresh=10s"
             }
           ],
           "mappings": [],
@@ -313,7 +313,7 @@
             {
               "targetBlank": true,
               "title": "Flux dashboard",
-              "url": "https://grafana.infra.beryju.org/d/flux-cluster/flux-cluster-stats?orgId=1&refresh=10s"
+              "url": "https://grafana.lab.beryju.io/d/flux-cluster/flux-cluster-stats?orgId=1&refresh=10s"
             }
           ],
           "mappings": [],

@@ -8,6 +8,7 @@ resource "aws_route53_record" "registry-beryju-io" {
     evaluate_target_health = true
   }
 }
+
 resource "aws_route53_record" "proxy-registry-beryju-io" {
   zone_id = aws_route53_zone.beryju-io.zone_id
   name    = "proxy.registry.beryju.io"

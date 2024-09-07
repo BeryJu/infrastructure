@@ -41,7 +41,7 @@ data "vault_generic_secret" "authentik_auth" {
 }
 
 provider "authentik" {
-  url   = "https://id.beryju.org"
+  url   = "https://id.beryju.io"
   token = data.vault_generic_secret.authentik_auth.data["terraform_token"]
 }
 

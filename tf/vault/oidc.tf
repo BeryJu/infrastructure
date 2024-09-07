@@ -6,10 +6,10 @@ resource "vault_jwt_auth_backend" "authentik-oidc" {
   path               = "authentik"
   default_role       = "default_role"
   type               = "oidc"
-  oidc_discovery_url = "https://id.beryju.org/application/o/hashicorp-vault/"
+  oidc_discovery_url = "https://id.beryju.io/application/o/hashicorp-vault/"
   oidc_client_id     = "413c74e97eb0002cb1ecb2056ce5844af7c1b63d"
   oidc_client_secret = data.vault_generic_secret.vault_oidc.data["oauth_secret"]
-  bound_issuer       = "https://id.beryju.org/application/o/hashicorp-vault/"
+  bound_issuer       = "https://id.beryju.io/application/o/hashicorp-vault/"
   tune {
     default_lease_ttl  = "24h"
     listing_visibility = "unauth"
@@ -24,7 +24,7 @@ resource "vault_jwt_auth_backend_role" "default_role" {
   role_type = "oidc"
   allowed_redirect_uris = [
     "http://localhost:8250/oidc/callback",
-    "https://vault.beryju.org/ui/vault/auth/authentik/oidc/callback"
+    "https://vault.beryju.io/ui/vault/auth/authentik/oidc/callback"
   ]
   bound_claims_type    = "string"
   groups_claim         = "groups"

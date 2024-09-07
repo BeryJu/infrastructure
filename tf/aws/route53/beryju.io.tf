@@ -56,3 +56,14 @@ resource "aws_route53_record" "hass-ext-beryju-io" {
     evaluate_target_health = true
   }
 }
+
+resource "aws_route53_record" "lab-beryju-io" {
+  zone_id = aws_route53_zone.beryju-io.zone_id
+  name    = "*.lab.beryju.io"
+  type    = "A"
+  alias {
+    name                   = "\\052.beryjuio-prod.k8s.beryju.io"
+    zone_id                = aws_route53_zone.beryju-io.zone_id
+    evaluate_target_health = true
+  }
+}
