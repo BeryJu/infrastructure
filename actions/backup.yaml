@@ -1,7 +1,7 @@
 - hosts: localhost
   vars:
     gitlab_connection: &gitlab_connection
-      api_url: "https://gitlab.beryjuio-home.k8s.beryju.org"
+      api_url: "https://gitlab.beryjuio-home.k8s.beryju.io"
       api_token: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/gitlab/backup:token") }}'
     tmp_path: /tmp/backup
     backup_group: "backups"
@@ -72,7 +72,7 @@
       ansible.builtin.command: git -C '{{ tmp_path }}/{{ item.dst }}' remote add backup '{{ gitlab_connection.api_url }}/{{ backup_group }}/{{ item.dst }}'
       loop: "{{ projects }}"
     - name: Dst | push
-      ansible.builtin.command: git -C '{{ tmp_path }}/{{ item.dst }}' push --repo 'https://git:{{ gitlab_connection.api_token }}@gitlab.beryjuio-home.k8s.beryju.org/{{ backup_group }}/{{ item.dst }}' --force  # noqa 204
+      ansible.builtin.command: git -C '{{ tmp_path }}/{{ item.dst }}' push --repo 'https://git:{{ gitlab_connection.api_token }}@gitlab.beryjuio-home.k8s.beryju.io/{{ backup_group }}/{{ item.dst }}' --force  # noqa 204
       loop: "{{ projects }}"
     - name: Local | cleanup
       ansible.builtin.file:

@@ -12,7 +12,7 @@ data "vault_generic_secret" "minio" {
 }
 
 provider "minio" {
-  minio_server   = "s3.beryju.org"
+  minio_server   = "s3.beryju.io"
   minio_user     = data.vault_generic_secret.minio.data["username"]
   minio_password = data.vault_generic_secret.minio.data["password"]
   minio_ssl      = true
