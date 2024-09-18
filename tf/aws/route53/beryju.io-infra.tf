@@ -63,3 +63,25 @@ resource "aws_route53_record" "infra-s3-wildcard-beryju-io" {
     evaluate_target_health = true
   }
 }
+
+resource "aws_route53_record" "infra-s3-backup-beryju-io" {
+  zone_id = aws_route53_zone.beryju-io.zone_id
+  name    = "backup-s3.beryju.io"
+  type    = "A"
+  alias {
+    name                   = "\\052.beryjuio-prod.k8s.beryju.io"
+    zone_id                = aws_route53_zone.beryju-io.zone_id
+    evaluate_target_health = true
+  }
+}
+
+resource "aws_route53_record" "infra-s3-backup-wildcard-beryju-io" {
+  zone_id = aws_route53_zone.beryju-io.zone_id
+  name    = "*.backup-s3.beryju.io"
+  type    = "A"
+  alias {
+    name                   = "\\052.beryjuio-prod.k8s.beryju.io"
+    zone_id                = aws_route53_zone.beryju-io.zone_id
+    evaluate_target_health = true
+  }
+}
