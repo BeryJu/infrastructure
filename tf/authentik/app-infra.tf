@@ -17,7 +17,7 @@ module "authentik-app-mimir" {
   name     = "Mimir"
   group    = "Monitoring"
   internal = "http://mimir.mimir"
-  external = "https://mimir.infra.beryju.org"
+  external = "https://mimir.lab.beryju.io"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
@@ -32,7 +32,7 @@ module "authentik-app-loki" {
   name     = "Loki"
   group    = "Monitoring"
   internal = "http://loki.loki"
-  external = "https://loki.infra.beryju.org"
+  external = "https://loki.lab.beryju.io"
   access_group = [
     data.authentik_group.acl_beryjuorg.id
   ]
