@@ -1,10 +1,10 @@
 all:
   hosts:
-    optiplex-3090-bq1plp3.lab.beryju.org:
-    sentry1.prod.beryju.org:
-    kube-api.beryjuio-oci.k8s.beryju.org:
+    optiplex-3090-bq1plp3.lab.beryju.io:
+    sentry1.prod.beryju.io:
+    kube-api.beryjuio-oci.k8s.beryju.io:
 
 kubeadm:
   hosts:
-    optiplex-3090-bq1plp3.lab.beryju.org:
-    kube-api.beryjuio-oci.k8s.beryju.org:
+    optiplex-3090-bq1plp3.lab.beryju.io:
+    kube-api.beryjuio-oci.k8s.beryju.io:
