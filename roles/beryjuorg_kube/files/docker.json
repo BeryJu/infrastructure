@@ -6,6 +6,6 @@
         "max-file": "3"
     },
     "registry-mirrors": [
-        "https://proxy.registry.beryju.org"
+        "https://proxy.registry.beryju.io"
     ]
 }

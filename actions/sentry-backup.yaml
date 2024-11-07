@@ -1,5 +1,5 @@
 - import_playbook: ../bootstrap.yaml
-- hosts: sentry1.prod.beryju.org
+- hosts: sentry1.prod.beryju.io
   become: true
   vars:
     bucket_name: sentry-backups

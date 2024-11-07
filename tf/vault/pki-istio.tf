@@ -9,8 +9,8 @@ resource "vault_mount" "pki-istio" {
 
 resource "vault_pki_secret_backend_config_urls" "pki-istio-urls" {
   backend                 = vault_mount.pki-istio.path
-  issuing_certificates    = ["https://vault.beryju.org/v1/pki-istio/ca"]
-  crl_distribution_points = ["https://vault.beryju.org/v1/pki-istio/crl"]
+  issuing_certificates    = ["https://vault.beryju.io/v1/pki-istio/ca"]
+  crl_distribution_points = ["https://vault.beryju.io/v1/pki-istio/crl"]
 }
 
 resource "vault_pki_secret_backend_role" "pki-istio-role" {
