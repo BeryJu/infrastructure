@@ -2,7 +2,7 @@ resource "gravity_dns_zone" "root" {
   name          = "."
   authoritative = false
   default_ttl   = 86400
-  handlers = [
+  handlers = jsonencode([
     {
       "type" = "memory",
     },
@@ -10,13 +10,13 @@ resource "gravity_dns_zone" "root" {
       "type" = "etcd",
     },
     {
-      "cache_ttl" = "3600"
-      "to"        = "8.8.8.8:53"
+      "cache_ttl" = 3600
+      "to"        = ["8.8.8.8:53"]
       "type"      = "forward_blocky"
     },
     {
-      "to"   = "8.8.8.8:53"
+      "to"   = ["8.8.8.8:53"]
       "type" = "forward_ip"
     },
-  ]
+  ])
 }

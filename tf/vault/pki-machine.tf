@@ -9,8 +9,8 @@ resource "vault_mount" "pki-machine" {
 
 resource "vault_pki_secret_backend_config_urls" "pki-machine-urls" {
   backend                 = vault_mount.pki-machine.path
-  issuing_certificates    = ["https://vault.beryju.org/v1/pki-machine/ca"]
-  crl_distribution_points = ["https://vault.beryju.org/v1/pki-machine/crl"]
+  issuing_certificates    = ["https://vault.beryju.io/v1/pki-machine/ca"]
+  crl_distribution_points = ["https://vault.beryju.io/v1/pki-machine/crl"]
 }
 
 resource "vault_pki_secret_backend_role" "pki-machine-role" {
