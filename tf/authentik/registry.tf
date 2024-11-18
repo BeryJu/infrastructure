@@ -1,6 +1,7 @@
 resource "authentik_provider_oauth2" "registry" {
   name                  = "docker"
   authorization_flow    = data.authentik_flow.default-authorization-flow.id
+  invalidation_flow     = data.authentik_flow.default-provider-invalidation-flow
   client_id             = "693e60deada0b71e8ecb3d078e4ebaaf08624e55"
   access_token_validity = "minutes=10"
   sub_mode              = "user_username"
