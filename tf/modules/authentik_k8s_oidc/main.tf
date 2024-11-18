@@ -30,7 +30,7 @@ data "authentik_certificate_key_pair" "generated" {
 resource "authentik_provider_oauth2" "cluster" {
   name               = "k8s-cluster-${var.name}"
   authorization_flow = data.authentik_flow.default-authorization-flow.id
-  invalidation_flow  = data.authentik_flow.default-provider-invalidation-flow
+  invalidation_flow  = data.authentik_flow.default-provider-invalidation-flow.id
   client_id          = "k8s-cluster-${var.name}"
   signing_key        = data.authentik_certificate_key_pair.generated.id
   client_type        = "public"

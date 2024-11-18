@@ -26,7 +26,7 @@ data "authentik_property_mapping_provider_saml" "aws" {
 resource "authentik_provider_saml" "aws" {
   name                            = "aws"
   authorization_flow              = data.authentik_flow.default-authorization-flow.id
-  invalidation_flow               = data.authentik_flow.default-provider-invalidation-flow
+  invalidation_flow               = data.authentik_flow.default-provider-invalidation-flow.id
   acs_url                         = "https://signin.aws.amazon.com/saml"
   assertion_valid_not_before      = "minutes=-5"
   assertion_valid_not_on_or_after = "minutes=5"

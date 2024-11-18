@@ -1,7 +1,7 @@
 resource "authentik_provider_saml" "sentry" {
   name                            = "sentry"
   authorization_flow              = data.authentik_flow.default-authorization-flow.id
-  invalidation_flow               = data.authentik_flow.default-provider-invalidation-flow
+  invalidation_flow               = data.authentik_flow.default-provider-invalidation-flow.id
   acs_url                         = "https://sentry.beryju.org/saml/acs/beryjuio/"
   audience                        = "https://sentry.beryju.org/saml/metadata/beryjuio/"
   assertion_valid_not_before      = "minutes=-5"
