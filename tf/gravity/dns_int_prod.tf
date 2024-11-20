@@ -2,7 +2,7 @@ resource "gravity_dns_zone" "prod-io" {
   name          = "prod.beryju.io."
   default_ttl   = 3600
   authoritative = true
-  handlers = jsonencode([
+  handler_configs = jsonencode([
     {
       type = "memory",
     },
