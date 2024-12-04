@@ -2,7 +2,7 @@ terraform {
   required_providers {
     grafana = {
       source  = "grafana/grafana"
-      version = "3.13.2"
+      version = "3.14.0"
     }
     http = {
       source  = "hashicorp/http"
