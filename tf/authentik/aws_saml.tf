@@ -86,6 +86,18 @@ resource "aws_iam_role" "authentik" {
           Federated = aws_iam_saml_provider.default.id
         }
       },
+      {
+        Effect = "Allow",
+        Principal = {
+          Federated = aws_iam_openid_connect_provider.aws-oidc.arn
+        },
+        Action = "sts:AssumeRoleWithWebIdentity",
+        Condition = {
+          StringEquals = {
+            "${data.authentik_provider_oauth2_config.aws-oidc-metadata.issuer_url}:aud": authentik_provider_oauth2.aws-oidc.client_id,
+          }
+        }
+      }
     ]
   })
   managed_policy_arns = [
