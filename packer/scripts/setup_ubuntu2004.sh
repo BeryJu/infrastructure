@@ -13,16 +13,6 @@ sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 
 apt-get install -y python3-pip nfs-common
 
-# Install puppet
-cd /tmp
-wget https://apt.puppet.com/puppet7-release-focal.deb
-dpkg -i puppet7-release-focal.deb
-rm puppet7-release-focal.deb
-apt-get update
-apt-get install -y puppet-agent
-/opt/puppetlabs/puppet/bin/puppet config set server puppet.infra.beryju.org --section main
-rm -rf /etc/puppetlabs/puppet/ssl/
-
 # Reset Cloud-init state (https://stackoverflow.com/questions/57564641/openstack-packer-cloud-init)
 systemctl stop cloud-init
 rm -rf /var/lib/cloud/

@@ -4,7 +4,7 @@ module "authentik-app-oxidized" {
   name     = "oxidized"
   group    = "Infrastructure"
   internal = ""
-  external = "https://oxidized.infra.beryju.org"
+  external = "https://oxidized.lab.beryju.io"
   icon_url = "fa://fa-check-circle"
   access_group = [
     data.authentik_group.acl_beryjuorg.id

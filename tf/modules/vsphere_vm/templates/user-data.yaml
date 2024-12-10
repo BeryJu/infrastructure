@@ -17,7 +17,7 @@ puppet:
   exec: true
   conf:
     main:
-      server: "puppet.infra.beryju.org"
+      server: "puppet.lab.beryju.io"
       certname: ${hostname}
 
 manage_resolv_conf: true
