@@ -40,6 +40,6 @@ resource "aws_iam_openid_connect_provider" "aws-oidc" {
   ]
 
   thumbprint_list = [
-    data.authentik_certificate_key_pair.generated.fingerprint1
+    replace(data.authentik_certificate_key_pair.generated.fingerprint1, ":", "")
   ]
 }
