@@ -28,14 +28,17 @@ data "authentik_certificate_key_pair" "generated" {
 }
 
 resource "authentik_provider_oauth2" "cluster" {
-  name               = "k8s-cluster-${var.name}"
-  authorization_flow = data.authentik_flow.default-authorization-flow.id
-  invalidation_flow  = data.authentik_flow.default-provider-invalidation-flow.id
-  client_id          = "k8s-cluster-${var.name}"
-  signing_key        = data.authentik_certificate_key_pair.generated.id
-  client_type        = "public"
-  property_mappings  = data.authentik_property_mapping_provider_scope.scopes.ids
+  name                  = "k8s-cluster-${var.name}"
+  authorization_flow    = data.authentik_flow.default-authorization-flow.id
+  invalidation_flow     = data.authentik_flow.default-provider-invalidation-flow.id
+  client_id             = "k8s-cluster-${var.name}"
+  signing_key           = data.authentik_certificate_key_pair.generated.id
+  client_type           = "public"
+  property_mappings     = data.authentik_property_mapping_provider_scope.scopes.ids
   allowed_redirect_uris = []
+  jwt_federation_providers = [
+    122
+  ]
   lifecycle {
     ignore_changes = [client_secret]
   }

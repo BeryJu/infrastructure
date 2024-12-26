@@ -46,7 +46,7 @@ variable "internal_host_ssl_validation" {
   default = true
 }
 
-variable "jwks_sources" {
+variable "jwt_federation_sources" {
   type    = list(string)
   default = []
 }

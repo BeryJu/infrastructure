@@ -94,7 +94,7 @@ resource "aws_iam_role" "authentik" {
         Action = "sts:AssumeRoleWithWebIdentity",
         Condition = {
           StringEquals = {
-            "${replace(data.authentik_provider_oauth2_config.aws-oidc-metadata.issuer_url, "https://", "")}:aud": authentik_provider_oauth2.aws-oidc.client_id,
+            "${replace(data.authentik_provider_oauth2_config.aws-oidc-metadata.issuer_url, "https://", "")}:aud" : authentik_provider_oauth2.aws-oidc.client_id,
           }
         }
       }

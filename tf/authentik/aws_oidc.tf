@@ -7,12 +7,13 @@ data "authentik_property_mapping_provider_scope" "aws_oidc" {
 }
 
 resource "authentik_provider_oauth2" "aws-oidc" {
-  name               = "aws-oidc"
-  client_id          = "aws-oidc"
-  authorization_flow = data.authentik_flow.default-authorization-flow.id
-  invalidation_flow  = data.authentik_flow.default-provider-invalidation-flow.id
-  property_mappings  = data.authentik_property_mapping_provider_scope.aws_oidc.ids
-  signing_key        = data.authentik_certificate_key_pair.generated.id
+  name                     = "aws-oidc"
+  client_id                = "aws-oidc"
+  authorization_flow       = data.authentik_flow.default-authorization-flow.id
+  invalidation_flow        = data.authentik_flow.default-provider-invalidation-flow.id
+  property_mappings        = data.authentik_property_mapping_provider_scope.aws_oidc.ids
+  signing_key              = data.authentik_certificate_key_pair.generated.id
+  jwt_federation_providers = [122]
 }
 
 resource "authentik_application" "aws-oidc" {

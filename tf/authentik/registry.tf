@@ -9,7 +9,7 @@ resource "authentik_provider_oauth2" "registry" {
     authentik_property_mapping_provider_scope.registry.id,
   ]
   signing_key = data.authentik_certificate_key_pair.generated.id
-  jwks_sources = [
+  jwt_federation_sources = [
     authentik_source_oauth.int-gitlab.uuid,
     authentik_source_oauth.int-github.uuid,
   ]
@@ -21,6 +21,7 @@ resource "authentik_provider_oauth2" "registry" {
 resource "authentik_application" "registry" {
   name              = "Docker Registry"
   slug              = "docker-registry"
+  group             = "Infrastructure"
   protocol_provider = authentik_provider_oauth2.registry.id
 }
 
