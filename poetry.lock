@@ -935,13 +935,13 @@ six = ">=1.5"
 
 [[package]]
 name = "python-gitlab"
-version = "5.2.0"
+version = "5.3.0"
 description = "The python wrapper for the GitLab REST and GraphQL APIs."
 optional = false
 python-versions = ">=3.9.0"
 files = [
-    {file = "python_gitlab-5.2.0-py3-none-any.whl", hash = "sha256:aa0136f3377210682970688789c1b510f948b68c4c14d1b873b590335501bd04"},
-    {file = "python_gitlab-5.2.0.tar.gz", hash = "sha256:1fb99d9de78aa93fdc97a106db44f0870cba225ea2064426302db02d14027967"},
+    {file = "python_gitlab-5.3.0-py3-none-any.whl", hash = "sha256:1c5653ef5fb25d5f0fe6122b2132238d34dd47d1d92bbde5cf5d0b9a8ab778bb"},
+    {file = "python_gitlab-5.3.0.tar.gz", hash = "sha256:18f10764b6ac14ad0cb5252ed66025bdfe628ce747b1abbbcfe76a822ac6bae7"},
 ]
 
 [package.dependencies]
