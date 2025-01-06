@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Jens Langhammer <jens.langhammer@beryju.org>"]
 license = "GPL"
+package-mode = false
 
 [tool.poetry.dependencies]
 ansible = "*"
