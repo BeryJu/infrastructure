@@ -43,6 +43,7 @@ resource "authentik_outpost" "embedded" {
     module.authentik-app-radarr.provider_id,
     module.authentik-app-sonarr.provider_id,
     module.authentik-app-oxidized.provider_id,
+    module.authentik-app-taskin.provider_id,
   ]
   service_connection = authentik_service_connection_kubernetes.local.id
 }

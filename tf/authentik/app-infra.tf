@@ -24,6 +24,13 @@ module "authentik-app-mimir" {
   icon_url        = "https://public.s3.beryju.io/authentik-icons/grafana-mimir.png"
   meta_publisher  = "Grafana Labs"
   skip_path_regex = "/ready"
+  # TODO
+  jwt_federation_sources = [
+    "165de436-29ea-45bf-bf67-cfd45a4dff74",
+    "c490fcc3-a0ac-487d-a375-7c1d8d9b6469",
+    "2188315f-103c-402e-b94e-035c60bdf884",
+    "18d93ee0-e65e-4bbc-bddd-11971f1a1cce",
+  ]
 }
 
 module "authentik-app-loki" {
@@ -38,4 +45,27 @@ module "authentik-app-loki" {
   ]
   icon_url       = "https://public.s3.beryju.io/authentik-icons/grafana-loki.png"
   meta_publisher = "Grafana Labs"
+  jwt_federation_sources = [
+    "165de436-29ea-45bf-bf67-cfd45a4dff74",
+    "c490fcc3-a0ac-487d-a375-7c1d8d9b6469",
+    "2188315f-103c-402e-b94e-035c60bdf884",
+    "18d93ee0-e65e-4bbc-bddd-11971f1a1cce",
+  ]
+}
+
+resource "authentik_group" "taskin" {
+  name = "_acl_taskin"
+}
+
+module "authentik-app-taskin" {
+  source = "../modules/authentik_app"
+
+  name     = "Taskin"
+  group    = ""
+  internal = ""
+  external = "https://taskin.lab.beryju.io"
+  access_group = [
+    authentik_group.taskin.id,
+  ]
+  icon_url = "https://public.s3.beryju.io/authentik-icons/grafana-mimir.png"
 }

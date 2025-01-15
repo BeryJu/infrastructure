@@ -2,8 +2,8 @@ resource "authentik_provider_saml" "sentry" {
   name                            = "sentry"
   authorization_flow              = data.authentik_flow.default-authorization-flow.id
   invalidation_flow               = data.authentik_flow.default-provider-invalidation-flow.id
-  acs_url                         = "https://sentry.beryju.org/saml/acs/beryjuio/"
-  audience                        = "https://sentry.beryju.org/saml/metadata/beryjuio/"
+  acs_url                         = "https://sentry.beryju.io/saml/acs/beryjuio/"
+  audience                        = "https://sentry.beryju.io/saml/metadata/beryjuio/"
   assertion_valid_not_before      = "minutes=-5"
   assertion_valid_not_on_or_after = "minutes=5"
   digest_algorithm                = "http://www.w3.org/2001/04/xmlenc#sha256"
@@ -20,7 +20,7 @@ resource "authentik_application" "sentry" {
   slug                  = "sentry"
   protocol_provider     = authentik_provider_saml.sentry.id
   meta_icon             = "https://public.s3.beryju.io/authentik-icons/sentry.png"
-  meta_launch_url       = "https://sentry.beryju.org"
+  meta_launch_url       = "https://sentry.beryju.io"
   meta_publisher        = "Sentry"
   policy_engine_mode    = "any"
   group                 = "Infrastructure"

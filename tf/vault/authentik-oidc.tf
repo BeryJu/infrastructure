@@ -33,14 +33,3 @@ resource "vault_jwt_auth_backend_role" "default_role" {
   user_claim           = "email"
   verbose_oidc_logging = true
 }
-
-resource "vault_jwt_auth_backend_role" "jwt_role" {
-  backend              = vault_jwt_auth_backend.authentik-oidc.path
-  role_name            = "jwt_role"
-  role_type            = "jwt"
-  bound_claims_type    = "string"
-  groups_claim         = "groups"
-  token_policies       = ["admin"]
-  user_claim           = "email"
-  verbose_oidc_logging = true
-}
