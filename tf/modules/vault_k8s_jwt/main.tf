@@ -44,6 +44,17 @@ resource "vault_jwt_auth_backend_role" "cert-manager" {
   role_type       = "jwt"
 }
 
+resource "vault_jwt_auth_backend_role" "ddns" {
+  backend         = vault_jwt_auth_backend.config.path
+  user_claim      = "sub"
+  role_name       = "ddns"
+  bound_audiences = [var.aud]
+  bound_subject   = "system:serviceaccount:istio-system:beryju-io-ddns"
+  token_ttl       = 3600
+  token_policies  = ["cert-manager"]
+  role_type       = "jwt"
+}
+
 resource "vault_jwt_auth_backend_role" "flux-notification-controller" {
   backend         = vault_jwt_auth_backend.config.path
   user_claim      = "sub"
