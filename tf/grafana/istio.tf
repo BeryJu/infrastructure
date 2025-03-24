@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-istio" {
-  title = "BeryJu.org Istio"
+  title = "BeryJu.io Istio"
 }
 
 data "http" "istio-extension-dashboard" {

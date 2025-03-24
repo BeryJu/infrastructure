@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-minio" {
-  title = "BeryJu.org Minio"
+  title = "BeryJu.io Minio"
 }
 
 data "http" "minio-dashboard" {

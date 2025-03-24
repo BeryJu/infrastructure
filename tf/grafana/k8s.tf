@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-k8s-preset" {
-  title = "BeryJu.org Kube-prom-stack"
+  title = "BeryJu.io Kube-prom-stack"
 }
 
 module "k8s-dashboards" {

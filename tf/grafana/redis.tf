@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-redis" {
-  title = "BeryJu.org Redis"
+  title = "BeryJu.io Redis"
 }
 
 data "http" "redis-dashboard" {

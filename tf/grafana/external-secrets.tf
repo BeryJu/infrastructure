@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-external-secrets" {
-  title = "BeryJu.org external-secrets"
+  title = "BeryJu.io external-secrets"
 }
 
 data "http" "external-secrets-dashboard" {

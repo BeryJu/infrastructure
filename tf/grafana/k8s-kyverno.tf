@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-k8s-kyverno" {
-  title = "BeryJu.org Kyverno"
+  title = "BeryJu.io Kyverno"
 }
 
 data "http" "k8s-kyverno-dashboard" {

@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-postgres" {
-  title = "BeryJu.org PostgreSQL"
+  title = "BeryJu.io PostgreSQL"
 }
 
 data "http" "postgres-dashboard" {

@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-unifi" {
-  title = "BeryJu.org Unifi"
+  title = "BeryJu.io Unifi"
 }
 
 data "http" "unifi-client-insight" {

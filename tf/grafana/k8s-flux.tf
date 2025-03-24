@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-k8s-flux" {
-  title = "BeryJu.org Flux"
+  title = "BeryJu.io Flux"
 }
 
 data "http" "k8s-flux-cluster-dashboard" {

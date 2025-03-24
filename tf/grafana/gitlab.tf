@@ -1,5 +1,5 @@
 resource "grafana_folder" "beryjuorg-gitlab" {
-  title = "BeryJu.org GitLab"
+  title = "BeryJu.io GitLab"
 }
 
 data "http" "gitlab-gitaly" {
