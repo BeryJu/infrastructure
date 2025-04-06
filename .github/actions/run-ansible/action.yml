@@ -18,7 +18,7 @@ runs:
       shell: bash
       run: |
         python3 -m pip install -U wheel poetry
-        poetry env use python3.11
+        poetry env use python3.13
         poetry install
         # Ensure jq is installed
         sudo apt update
