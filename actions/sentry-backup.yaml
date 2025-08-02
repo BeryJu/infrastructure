@@ -24,7 +24,7 @@
     - name: Run export
       community.docker.docker_container_exec:
         container: sentry-self-hosted-web-1
-        command: "sentry export /etc/sentry/backups/{{ filename }}"
+        command: "sentry export global /etc/sentry/backups/{{ filename }}"
     - name: Sync sentry backups dir
       community.aws.s3_sync:
         bucket: "{{ bucket_name }}"
