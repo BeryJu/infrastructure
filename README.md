@@ -19,10 +19,6 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Seems to workaround a bug with 
 
 ## Non-puppet files
 
-- `packer/`:
-
-    Contains a packer project used to create a custom base image with the VMware Cloud-init datasource.
-
 - `tf/`:
 
     Terraform stuff
