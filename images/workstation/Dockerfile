@@ -20,8 +20,6 @@ RUN yes | unminimize && \
 		bat fzf \
 		# Network tools
 		nmap mtr-tiny host net-tools iputils-ping traceroute dnsutils \
-		# Required for packer to create iso files
-		genisoimage \
 		# Dev stuff
 		pkg-config libxmlsec1-dev && \
 	echo "%sudo ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers && \
@@ -101,11 +99,11 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 	sudo ./aws/install && \
 	rm awscliv2.zip
 
-# terraform, vault and packer
+# terraform and vault
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 	echo "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" > /etc/apt/sources.list.d/hashicorp.list && \
 	apt-get update && \
-	apt-get install -y terraform vault packer && \
+	apt-get install -y terraform vault && \
 	# Allow running of vault without root
 	setcap cap_ipc_lock= /usr/bin/vault
 

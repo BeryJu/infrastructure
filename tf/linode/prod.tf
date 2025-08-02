@@ -1,6 +1,6 @@
 resource "linode_lke_cluster" "prod" {
   label       = "beryjuio-prod"
-  k8s_version = "1.31"
+  k8s_version = "1.33"
   region      = "eu-central"
   control_plane {
     high_availability = false
@@ -8,6 +8,9 @@ resource "linode_lke_cluster" "prod" {
   pool {
     type  = "g6-standard-4"
     count = 4
+    tags = [
+      "kubernetes",
+    ]
     autoscaler {
       max = 5
       min = 3
