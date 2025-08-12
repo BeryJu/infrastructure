@@ -2,18 +2,18 @@
 
 [[package]]
 name = "ansible"
-version = "11.8.0"
+version = "11.9.0"
 description = "Radically simple IT automation"
 optional = false
 python-versions = ">=3.11"
 groups = ["main"]
 files = [
-    {file = "ansible-11.8.0-py3-none-any.whl", hash = "sha256:a2cd44c0d2c03972f5d676d1b024d09dd3d3edbd418fb0426f4dd356fca9e5b1"},
-    {file = "ansible-11.8.0.tar.gz", hash = "sha256:28ea032c77f344bb8ea4d7d39f9a5d4e935e6c8b60836c8c8a28b9cf6c9adb1a"},
+    {file = "ansible-11.9.0-py3-none-any.whl", hash = "sha256:79b087ef38105b93e0e092e7013a0f840e154a6a8ce9b5fddd1b47593adc542a"},
+    {file = "ansible-11.9.0.tar.gz", hash = "sha256:528ca5a408f11cf1fea00daea7570e68d40e167be38b90c119a7cb45729e4921"},
 ]
 
 [package.dependencies]
-ansible-core = ">=2.18.7,<2.19.0"
+ansible-core = ">=2.18.8,<2.19.0"
 
 [[package]]
 name = "ansible-compat"
@@ -40,14 +40,14 @@ test = ["coverage", "pip", "pytest (>=7.2.0)", "pytest-instafail", "pytest-mock"
 
 [[package]]
 name = "ansible-core"
-version = "2.18.7"
+version = "2.18.8"
 description = "Radically simple IT automation"
 optional = false
 python-versions = ">=3.11"
 groups = ["main"]
 files = [
-    {file = "ansible_core-2.18.7-py3-none-any.whl", hash = "sha256:ac42ecb480fb98890d338072f7298cd462fb2117da6700d989c7ae688962ba69"},
-    {file = "ansible_core-2.18.7.tar.gz", hash = "sha256:1a129bf9fcd5dca2b17e83ce77147ee2fbc3c51a4958970152897cc5b6d0aae7"},
+    {file = "ansible_core-2.18.8-py3-none-any.whl", hash = "sha256:b60bc23b2f11fd0559a79d10ac152b52f58a18ca1b7be0a620dfe87f34ced689"},
+    {file = "ansible_core-2.18.8.tar.gz", hash = "sha256:b0766215a96a47ce39933d27e1e996ca2beb54cf1b3907c742d35c913b1f78cd"},
 ]
 
 [package.dependencies]
