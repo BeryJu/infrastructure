@@ -95,14 +95,14 @@ test = ["ansible-creator (>=24.6.0)", "black", "coverage-enable-subprocess", "co
 
 [[package]]
 name = "ara"
-version = "1.7.2"
+version = "1.7.3"
 description = "ARA Records Ansible"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "ara-1.7.2-py2.py3-none-any.whl", hash = "sha256:18f0e98c2d8d0913e5a3df6cd166b7c0a856611ce675ec494bfbb957f78f264f"},
-    {file = "ara-1.7.2.tar.gz", hash = "sha256:16d4f5cee550c23efda83d3e1fa9b48a67af3db37741c14a9e99dc4c2cefc7c8"},
+    {file = "ara-1.7.3-py2.py3-none-any.whl", hash = "sha256:f09b08d1f86fb4f622663551463289994a08f08a6aa2b5ca6e6486fbdf0f7041"},
+    {file = "ara-1.7.3.tar.gz", hash = "sha256:9147813977ea96b6625d0beafb84e5203b8481061f117e5a89bd8246286e18f4"},
 ]
 
 [package.dependencies]
@@ -113,7 +113,7 @@ requests = ">=2.14.2"
 [package.extras]
 mysql = ["mysqlclient"]
 postgresql = ["psycopg2"]
-server = ["Django (>=3.2,<4.3)", "django-cors-headers", "django-filter", "django-health-check", "djangorestframework (>=3.9.1)", "dynaconf[yaml] (>=3.0.0,!=3.1.3,<4.0.0)", "pygments", "ruamel.yaml", "tzlocal (>=4.0)", "whitenoise"]
+server = ["Django (>=4.2,<5.3)", "backports.zoneinfo[tzdata] ; python_version < \"3.9\"", "django-cors-headers", "django-filter", "django-health-check", "djangorestframework (>=3.9.1)", "dynaconf[yaml] (>=3.0.0,!=3.1.3,<4.0.0)", "pygments", "ruamel.yaml", "tzdata ; python_version >= \"3.9\"", "tzlocal (>=4.0)", "whitenoise"]
 test = ["bandit (>=1.1.0)", "black", "coverage", "factory-boy", "flake8", "isort"]
 
 [[package]]
