@@ -1,4 +1,3 @@
-- ansible.builtin.import_tasks: temp.yml
 - ansible.builtin.import_tasks: containerd.yml
 - ansible.builtin.import_tasks: system.yml
 - ansible.builtin.import_tasks: package.yml

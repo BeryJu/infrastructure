@@ -1,5 +1,0 @@
-#cloud-config
-apt:
-  primary:
-    - arches: [default]
-      uri: "{{ vm_config.mirror }}"

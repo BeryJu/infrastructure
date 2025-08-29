@@ -1,9 +1,0 @@
-network:
-  version: 2
-  ethernets:
-    {{ ansible_default_ipv4.interface }}:
-      addresses:
-        - "{{ ansible_default_ipv4.address }}/24"
-      gateway4: "{{ ansible_default_ipv4.gateway }}"
-      nameservers:
-        addresses: ["{{ vm_config.nameserver }}"]
