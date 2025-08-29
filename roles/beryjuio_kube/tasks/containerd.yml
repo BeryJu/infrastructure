@@ -20,7 +20,7 @@
     enabled: true
   notify:
     - Apt update
-- meta: flush_handlers
+- ansible.builtin.meta: flush_handlers
 - name: docker | containerd package
   ansible.builtin.apt:
     pkg:
@@ -34,6 +34,6 @@
     dest: /etc/containerd/config.toml
     owner: root
     group: root
-    mode: 0644
+    mode: "644"
   notify:
     - Restart containerd

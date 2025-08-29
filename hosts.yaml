@@ -7,10 +7,10 @@ all:
 kube:
   hosts:
     optiplex-3090-bq1plp3.prod.beryju.io:
-      k8s_cluster_name: beryjuio-home
-      k8s_version: v1.34
-      arch: linux/amd64
+      beryjuio_kube_cluster_name: beryjuio-home
+      beryjuio_kube_version: v1.34
+      beryjuio_kube_arch: linux/amd64
     kube-api.beryjuio-oci.k8s.beryju.io:
-      k8s_cluster_name: beryjuio-oci
-      k8s_version: v1.34
-      arch: linux/arm64/v8
+      beryjuio_kube_cluster_name: beryjuio-oci
+      beryjuio_kube_version: v1.34
+      beryjuio_kube_arch: linux/arm64/v8

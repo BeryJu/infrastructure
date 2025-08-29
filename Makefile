@@ -5,4 +5,4 @@ lint:
 			actions/cleanup.yaml \
 			actions/update.yaml \
 			actions/sentry-cleanup.yaml \
-			provisioning/new-vm.yaml
+			site.yml

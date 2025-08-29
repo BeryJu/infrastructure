@@ -11,23 +11,24 @@
 - name: k8s | apt repo
   ansible.builtin.deb822_repository:
     name: kubernetes
-    uris: "https://pkgs.k8s.io/core:/stable:/{{ k8s_version }}/deb/"
+    uris: "https://pkgs.k8s.io/core:/stable:/{{ beryjuio_kube_version }}/deb/"
     types: [deb]
     suites: ["/"]
-    signed_by: https://pkgs.k8s.io/core:/stable:/{{ k8s_version }}/deb/Release.key
+    signed_by: https://pkgs.k8s.io/core:/stable:/{{ beryjuio_kube_version }}/deb/Release.key
     state: present
     enabled: true
   register: apt_repo
   notify:
     - Apt update
-- meta: flush_handlers
+- ansible.builtin.meta: flush_handlers
 - name: kubernetes | packages
   ansible.builtin.apt:
     pkg:
       - kubelet
       - kubeadm
       - kubectl
-    state: latest
+    # We control the major version via variable, we always want the latest patch
+    state: latest # noqa: package-latest
   register: apt_res
   retries: 5
   until: apt_res is success
@@ -35,13 +36,14 @@
   ansible.builtin.template:
     src: "templates/kubeadm_config.yml"
     dest: /etc/kubernetes/kubeadmin-config.yml
-    mode: 0600
+    mode: "600"
     owner: root
     group: root
   register: kubeadm_config
   notify:
     - Update kubeadm config
-- meta: flush_handlers
+- ansible.builtin.meta: flush_handlers
 - name: kubernetes | upgrade
   ansible.builtin.command: kubeadm upgrade apply latest --config /etc/kubernetes/kubeadmin-config.yml -y
   when: "apt_repo.changed or kubeadm_config.changed"
+  changed_when: true

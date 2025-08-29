@@ -4,7 +4,7 @@
       ansible.builtin.copy:
         dest: ./ansible.key
         content: "{{ item.data.data.private_key }}"
-        mode: 0600
+        mode: "600"
       no_log: true
       vars:
         ansible_hashi_vault_engine_mount_point: kv

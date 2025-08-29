@@ -1,7 +1,8 @@
 - import_playbook: ../bootstrap.yaml
 - hosts: all
   become: true
-  strategy: free
+
+  strategy: free # noqa: run-once[play]
   gather_facts: false
   tasks:
     - name: Apt | update cache

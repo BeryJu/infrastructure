@@ -180,7 +180,7 @@ version = 2
     shim_debug = false
 
   [plugins."io.containerd.runtime.v2.task"]
-    platforms = ["{{ arch }}"]
+    platforms = ["{{ beryjuio_kube_arch }}"]
     sched_core = false
 
   [plugins."io.containerd.service.v1.diff-service"]

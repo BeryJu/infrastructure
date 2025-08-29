@@ -3,7 +3,7 @@
     dest: /etc/sudoers.d/beryjuorg-passwordless
     owner: root
     group: root
-    mode: 0644
+    mode: "644"
     content: |
       %sudo ALL=(ALL) NOPASSWD: ALL
     validate: 'visudo -cf %s'
@@ -27,7 +27,7 @@
     dest: /etc/systemd/journald.conf
     owner: root
     group: root
-    mode: 0644
+    mode: "644"
   notify: Restart systemd-journald
 - name: SSH CA Trusted keys
   ansible.builtin.get_url:
@@ -35,13 +35,13 @@
     dest: /etc/ssh/trusted-user-ca-keys.pem
     owner: root
     group: root
-    mode: 0644
+    mode: "644"
 - name: Configure SSHD
   ansible.builtin.copy:
     dest: /etc/ssh/sshd_config.d/beryjuio-vault-ssh-ca.conf
     owner: root
     group: root
-    mode: 0644
+    mode: "644"
     content: |
       TrustedUserCAKeys /etc/ssh/trusted-user-ca-keys.pem
   notify: Restart sshd

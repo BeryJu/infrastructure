@@ -3,11 +3,11 @@
     state: present
     dest: /etc/mailname
     regexp: ".*"
-    create: yes
+    create: true
     line: "{{ ansible_fqdn }}"
     owner: root
     group: root
-    mode: 0644
+    mode: "644"
 
 - name: MTA-Postfix | Packages
   ansible.builtin.apt:
@@ -22,7 +22,7 @@
     dest: /etc/postfix/main.cf
     owner: root
     group: root
-    mode: 0644
+    mode: "644"
   notify:
     - restart postfix
 
@@ -31,11 +31,11 @@
     state: present
     dest: /etc/aliases
     regexp: '^root'
-    create: yes
-    line: 'root: {{ mta_alias_root }}'
+    create: true
+    line: 'root: {{ beryjuio_mta_alias_root }}'
     owner: root
     group: root
-    mode: 0644
+    mode: "644"
   notify:
     - generate newaliases
 
@@ -43,13 +43,13 @@
   ansible.builtin.lineinfile:
     state: present
     dest: /etc/postfix/relay_passwd
-    regexp: '^{{ mta_forward | regex_escape() }}'
-    create: yes
-    mode: 0640
+    regexp: '^{{ beryjuio_mta_forward | regex_escape() }}'
+    create: true
+    mode: "640"
     group: root
     owner: root
-    line: '{{ mta_forward }} {{ mta_forward_auth_user }}:{{ mta_forward_auth_pass }}'
-  when: "mta_forward_auth"
+    line: '{{ beryjuio_mta_forward }} {{ beryjuio_mta_forward_auth_user }}:{{ beryjuio_mta_forward_auth_pass }}'
+  when: "beryjuio_mta_forward_auth"
   notify:
     - generate relay_passwd
     - restart postfix

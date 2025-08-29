@@ -2,27 +2,27 @@ apiVersion: kubeadm.k8s.io/v1beta4
 kind: ClusterConfiguration
 apiServer:
   certSANs:
-    - kube-api.{{ k8s_cluster_name }}.k8s.beryju.io
+    - kube-api.{{ beryjuio_kube_cluster_name }}.k8s.beryju.io
   extraArgs:
     - name: authorization-mode
       value: Node,RBAC
     - name: logging-format
       value: json
     - name: oidc-client-id
-      value: k8s-cluster-{{ k8s_cluster_name }}
+      value: k8s-cluster-{{ beryjuio_kube_cluster_name }}
     - name: oidc-groups-claim
       value: groups
     - name: oidc-groups-prefix
       value: "oidc:"
     - name: oidc-issuer-url
-      value: https://id.beryju.io/application/o/k8s-{{ k8s_cluster_name }}/
+      value: https://id.beryju.io/application/o/k8s-{{ beryjuio_kube_cluster_name }}/
     - name: oidc-username-claim
       value: email
 caCertificateValidityPeriod: 87600h0m0s
 certificateValidityPeriod: 8760h0m0s
 certificatesDir: /etc/kubernetes/pki
 clusterName: kubernetes
-controlPlaneEndpoint: kube-api.{{ k8s_cluster_name }}.k8s.beryju.io:6443
+controlPlaneEndpoint: kube-api.{{ beryjuio_kube_cluster_name }}.k8s.beryju.io:6443
 controllerManager:
   extraArgs:
     - name: bind-address

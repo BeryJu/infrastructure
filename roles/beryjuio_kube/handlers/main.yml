@@ -4,6 +4,7 @@
     state: restarted
 - name: Apt update
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
 - name: Update kubeadm config
   ansible.builtin.command: kubeadm init phase upload-config kubeadm --config /etc/kubernetes/kubeadmin-config.yml
+  changed_when: true

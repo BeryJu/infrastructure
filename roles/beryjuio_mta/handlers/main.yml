@@ -1,5 +1,6 @@
 - name: Generate newaliases
   ansible.builtin.command: newaliases
+  changed_when: true
 
 - name: Restart postfix
   ansible.builtin.service:
@@ -8,3 +9,4 @@
 
 - name: Generate relay_passwd
   ansible.builtin.command: postmap hash:/etc/postfix/relay_passwd
+  changed_when: true
