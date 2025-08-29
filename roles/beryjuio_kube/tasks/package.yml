@@ -17,6 +17,7 @@
     signed_by: https://pkgs.k8s.io/core:/stable:/{{ k8s_version }}/deb/Release.key
     state: present
     enabled: true
+  register: apt_repo
   notify:
     - Apt update
 - meta: flush_handlers
@@ -41,10 +42,6 @@
   notify:
     - Update kubeadm config
 - meta: flush_handlers
-- name: kubernetes | check if setup
-  ansible.builtin.stat:
-    path: /etc/kubernetes/pki/ca.crt
-  register: kube_ca
-  changed_when: "kube_ca.stat.exists or kubeadm_config.changed"
-  notify:
-    - kubeadm upgrade
+- name: kubernetes | upgrade
+  ansible.builtin.command: kubeadm upgrade apply latest --config /etc/kubernetes/kubeadmin-config.yml -y
+  when: "apt_repo.changed or kubeadm_config.changed"

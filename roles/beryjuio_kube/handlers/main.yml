@@ -7,5 +7,3 @@
     update_cache: yes
 - name: Update kubeadm config
   ansible.builtin.command: kubeadm init phase upload-config kubeadm --config /etc/kubernetes/kubeadmin-config.yml
-- name: kubeadm upgrade
-  ansible.builtin.command: kubeadm upgrade apply latest --config /etc/kubernetes/kubeadmin-config.yml -y
