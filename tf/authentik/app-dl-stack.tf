@@ -36,16 +36,3 @@ module "authentik-app-radarr" {
   ]
   icon_url = "https://public.s3.beryju.io/authentik-icons/radarr.svg"
 }
-
-module "authentik-app-tautulli" {
-  source = "../modules/authentik_app"
-
-  name     = "Tautulli"
-  group    = "Personal"
-  internal = "http://plex1.prod.beryju.org:8181"
-  external = "https://tautulli-dl-stack.lab.beryju.io"
-  access_group = [
-    data.authentik_group.acl_beryjuorg.id
-  ]
-  icon_url = "https://public.s3.beryju.io/authentik-icons/tautulli.svg"
-}

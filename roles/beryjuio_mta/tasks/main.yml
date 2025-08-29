@@ -24,7 +24,7 @@
     group: root
     mode: "644"
   notify:
-    - restart postfix
+    - Restart postfix
 
 - name: MTA | Aliases
   ansible.builtin.lineinfile:
@@ -37,7 +37,7 @@
     group: root
     mode: "644"
   notify:
-    - generate newaliases
+    - Generate newaliases
 
 - name: MTA-Postfix | Create relay_passwd File when smarthost auth is enabled
   ansible.builtin.lineinfile:
@@ -51,8 +51,8 @@
     line: '{{ beryjuio_mta_forward }} {{ beryjuio_mta_forward_auth_user }}:{{ beryjuio_mta_forward_auth_pass }}'
   when: "beryjuio_mta_forward_auth"
   notify:
-    - generate relay_passwd
-    - restart postfix
+    - Generate relay_passwd
+    - Restart postfix
 
 - name: Check if relay_passwd.db file exists
   ansible.builtin.stat:
@@ -60,5 +60,5 @@
   register: relay_passwd_db
   changed_when: "not relay_passwd_db.stat.exists"
   notify:
-    - generate relay_passwd
-    - restart postfix
+    - Generate relay_passwd
+    - Restart postfix
