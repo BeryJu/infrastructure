@@ -3,7 +3,7 @@
   become: true
   roles:
     - beryjuio_common
-    # - beryjuio_mta
+    - beryjuio_mta
 - hosts: kube
   become: true
   tags:
