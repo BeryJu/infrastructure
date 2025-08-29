@@ -40,6 +40,7 @@
   register: kubeadm_config
   notify:
     - Update kubeadm config
+- meta: flush_handlers
 - name: kubernetes | check if setup
   ansible.builtin.stat:
     path: /etc/kubernetes/pki/ca.crt
