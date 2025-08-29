@@ -1,0 +1,47 @@
+- name: k8s | install pre-dependencies
+  ansible.builtin.apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gpg
+  register: apt_res
+  retries: 5
+  until: apt_res is success
+- name: k8s | apt repo
+  ansible.builtin.deb822_repository:
+    name: kubernetes
+    uris: "https://pkgs.k8s.io/core:/stable:/{{ k8s_version }}/deb/"
+    types: [deb]
+    suites: ["/"]
+    signed_by: https://pkgs.k8s.io/core:/stable:/{{ k8s_version }}/deb/Release.key
+    state: present
+    enabled: true
+  notify:
+    - Apt update
+- meta: flush_handlers
+- name: kubernetes | packages
+  ansible.builtin.apt:
+    pkg:
+      - kubelet
+      - kubeadm
+      - kubectl
+  register: apt_res
+  retries: 5
+  until: apt_res is success
+- name: kubernetes | kubeadm config
+  ansible.builtin.template:
+    src: "templates/kubeadm_config.yml"
+    dest: /etc/kubernetes/kubeadmin-config.yml
+    mode: 0600
+    owner: root
+    group: root
+  notify:
+    - Update kubeadm config
+- name: kubernetes | upgrade if setup
+  ansible.builtin.stat:
+    path: /etc/kubernetes/pki/ca.crt
+  register: kube_ca
+  changed_when: "kube_ca.stat.exists"
+  notify:
+    - kubeadm upgrade

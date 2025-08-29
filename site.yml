@@ -4,3 +4,9 @@
   roles:
     - beryjuorg_common
     # - beryjuorg_mta
+- hosts: kube
+  become: true
+  tags:
+    - kube
+  roles:
+    - beryjuorg_kube

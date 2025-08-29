@@ -1,6 +1,0 @@
-- name: Login to docker repository
-  community.docker.docker_login:
-    registry_url: "{{ item.registry }}"
-    username: "{{ item.username }}"
-    password: "{{ item.password }}"
-  loop: "{{ docker_registries }}"

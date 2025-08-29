@@ -1,3 +1,4 @@
 docker_allowed_users: []
-docker_compose_version: '1.29.1'
-docker_registries: []
+k8s_cluster_name: ""
+k8s_version: "v1.32"
+arch: linux/amd64

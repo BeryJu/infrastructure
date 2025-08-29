@@ -1,4 +1,11 @@
-- name: Reload docker
+- name: Restart containerd
   ansible.builtin.service:
-    name: docker
-    state: reloaded
+    name: containerd
+    state: restarted
+- name: Apt update
+  ansible.builtin.apt:
+    update_cache: yes
+- name: Update kubeadm config
+  ansible.builtin.command: kubeadm init phase upload-config kubeadm --config /etc/kubernetes/kubeadmin-config.yml
+- name: kubeadm upgrade
+  ansible.builtin.command: kubeadm upgrade apply latest --config /etc/kubernetes/kubeadmin-config.yml -y

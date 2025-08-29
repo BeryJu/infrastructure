@@ -12,7 +12,7 @@
         images: true
         images_filters:
           dangling: false
-- hosts: kubeadm
+- hosts: kube
   become: true
   tasks:
     - name: Clean Containerd Images (all)

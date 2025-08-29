@@ -1,10 +1,16 @@
 all:
   hosts:
-    optiplex-3090-bq1plp3.lab.beryju.org:
+    optiplex-3090-bq1plp3.prod.beryju.io:
     sentry1.prod.beryju.io:
     kube-api.beryjuio-oci.k8s.beryju.io:
 
-kubeadm:
+kube:
   hosts:
-    optiplex-3090-bq1plp3.lab.beryju.org:
+    optiplex-3090-bq1plp3.prod.beryju.io:
+      k8s_cluster_name: beryjuio-home
+      k8s_version: v1.33
+      arch: linux/amd64
     kube-api.beryjuio-oci.k8s.beryju.io:
+      k8s_cluster_name: beryjuio-oci
+      k8s_version: v1.32
+      arch: linux/arm64/v8

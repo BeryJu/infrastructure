@@ -1,4 +1,4 @@
-- ansible.builtin.import_tasks: docker.yml
-- ansible.builtin.import_tasks: compose.yml
+- ansible.builtin.import_tasks: temp.yml
+- ansible.builtin.import_tasks: containerd.yml
 - ansible.builtin.import_tasks: system.yml
-- ansible.builtin.import_tasks: auth.yml
+- ansible.builtin.import_tasks: package.yml

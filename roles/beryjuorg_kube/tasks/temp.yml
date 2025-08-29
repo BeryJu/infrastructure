@@ -1,0 +1,8 @@
+- name: temp | remove old files
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /etc/apt/sources.list.d/docker.list
+    - /etc/sysctl.d/kubernetes.conf
+    - /etc/apt/sources.list.d/kubernetes.list
