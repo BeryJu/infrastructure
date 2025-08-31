@@ -61,9 +61,9 @@ module "authentik-app-taskin" {
   source = "../modules/authentik_app"
 
   name     = "Taskin"
-  group    = ""
   internal = ""
   external = "https://taskin.lab.beryju.io"
+  group    = "Ripple"
   access_group = [
     authentik_group.taskin.id,
   ]

@@ -51,7 +51,6 @@ resource "authentik_outpost" "embedded" {
 resource "authentik_outpost" "k8s-proxy" {
   name = "k8s"
   protocol_providers = [
-    module.authentik-app-home-assistant.provider_id,
     module.authentik-app-mimir.provider_id,
     module.authentik-app-loki.provider_id,
   ]
@@ -67,5 +66,13 @@ data "authentik_property_mapping_provider_saml" "defaults" {
     "goauthentik.io/providers/saml/uid",
     "goauthentik.io/providers/saml/groups",
     "goauthentik.io/providers/saml/ms-windowsaccountname",
+  ]
+}
+
+data "authentik_property_mapping_provider_scope" "defaults" {
+  managed_list = [
+    "goauthentik.io/providers/oauth2/scope-email",
+    "goauthentik.io/providers/oauth2/scope-openid",
+    "goauthentik.io/providers/oauth2/scope-profile",
   ]
 }

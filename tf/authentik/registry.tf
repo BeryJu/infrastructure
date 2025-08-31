@@ -1,11 +1,3 @@
-data "authentik_property_mapping_provider_scope" "scopes" {
-  managed_list = [
-    "goauthentik.io/providers/oauth2/scope-email",
-    "goauthentik.io/providers/oauth2/scope-openid",
-    "goauthentik.io/providers/oauth2/scope-profile",
-  ]
-}
-
 resource "authentik_provider_oauth2" "registry" {
   name                  = "docker"
   authorization_flow    = data.authentik_flow.default-authorization-flow.id
@@ -15,7 +7,7 @@ resource "authentik_provider_oauth2" "registry" {
   sub_mode              = "user_username"
   property_mappings = concat([
     authentik_property_mapping_provider_scope.registry.id,
-  ], data.authentik_property_mapping_provider_scope.scopes.ids)
+  ], data.authentik_property_mapping_provider_scope.defaults.ids)
   signing_key = data.authentik_certificate_key_pair.generated.id
   jwt_federation_sources = [
     authentik_source_oauth.int-gitlab.uuid,
