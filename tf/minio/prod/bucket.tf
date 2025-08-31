@@ -79,26 +79,6 @@ resource "minio_s3_bucket_policy" "images" {
   })
 }
 
-resource "minio_s3_bucket" "mimir" {
-  bucket = "mimir"
-  acl    = "private"
-}
-
-resource "minio_s3_bucket" "mimir-ruler" {
-  bucket = "mimir-ruler"
-  acl    = "private"
-}
-
-resource "minio_s3_bucket" "loki" {
-  bucket = "loki"
-  acl    = "private"
-}
-
-resource "minio_s3_bucket" "loki-ruler" {
-  bucket = "loki-ruler"
-  acl    = "private"
-}
-
 resource "minio_s3_bucket" "public" {
   bucket = "public"
 }

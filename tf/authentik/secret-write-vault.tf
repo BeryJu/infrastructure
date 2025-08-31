@@ -3,14 +3,10 @@ resource "authentik_policy_expression" "vault-write" {
   expression = file("${path.module}/source/policy-vault-kv-write.py")
 }
 
-resource "authentik_group" "vault-write-group" {
-  name = "vault-write-group"
-}
-
 resource "authentik_event_rule" "vault" {
-  name       = "vault-write-transport"
-  group      = authentik_group.vault-write-group.id
-  transports = []
+  name                   = "vault-write-transport"
+  destination_event_user = true
+  transports             = []
 }
 
 resource "authentik_policy_binding" "vault-write" {

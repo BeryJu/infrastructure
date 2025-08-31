@@ -20,7 +20,7 @@ resource "authentik_application" "sentry" {
   slug                  = "sentry"
   protocol_provider     = authentik_provider_saml.sentry.id
   meta_icon             = "https://public.s3.beryju.io/authentik-icons/sentry.png"
-  meta_launch_url       = "https://sentry.beryju.io"
+  meta_launch_url       = "https://sentry.beryju.io/auth/login/beryjuio/"
   meta_publisher        = "Sentry"
   policy_engine_mode    = "any"
   group                 = "Infrastructure"

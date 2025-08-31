@@ -5,5 +5,9 @@ resource "vault_policy" "monitoring" {
 path "sys/metrics" {
   capabilities = ["read"]
 }
+
+path "auth/token/create" {
+  capabilities = ["update"]
+}
 EOT
 }

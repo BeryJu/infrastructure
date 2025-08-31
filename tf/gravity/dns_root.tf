@@ -4,9 +4,6 @@ resource "gravity_dns_zone" "root" {
   default_ttl   = 86400
   handler_configs = jsonencode([
     {
-      type = "memory",
-    },
-    {
       type = "etcd",
     },
     {

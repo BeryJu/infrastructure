@@ -55,11 +55,12 @@
           "firing": true,
           "noData": false,
           "normal": false,
-          "pending": false
+          "pending": false,
+          "recovering": true
         },
         "viewMode": "list"
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "title": "Alerts",
       "transparent": true,
       "type": "alertlist"
@@ -115,7 +116,7 @@
             "steps": [
               {
                 "color": "blue",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -143,7 +144,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -185,7 +186,7 @@
             "steps": [
               {
                 "color": "blue",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -218,7 +219,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -253,7 +254,7 @@
             "steps": [
               {
                 "color": "blue",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -286,7 +287,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -328,7 +329,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -365,7 +366,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -401,7 +402,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -433,7 +434,7 @@
         "textMode": "value_and_name",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -471,7 +472,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -504,7 +505,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -575,7 +576,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -606,7 +607,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -678,7 +679,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -709,7 +710,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -779,7 +780,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -811,7 +812,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -900,7 +901,7 @@
             "steps": [
               {
                 "color": "rgba(245, 54, 54, 0.9)",
-                "value": null
+                "value": 0
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -941,7 +942,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -1013,7 +1014,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1044,7 +1045,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -1113,7 +1114,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1147,7 +1148,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -1221,7 +1222,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1255,7 +1256,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -1332,7 +1333,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "blue",
@@ -1350,7 +1351,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 8,
+        "w": 9,
         "x": 0,
         "y": 20
       },
@@ -1368,18 +1369,33 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "F7UOe0CGz"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "hass_sensor_power_w",
           "interval": "",
           "legendFormat": "{{ friendly_name }}",
+          "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "F7UOe0CGz"
+          },
+          "editorMode": "code",
+          "expr": "jetkvm_dc_power_watts",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{ instance }}",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "Power usage",
@@ -1402,7 +1418,83 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
+              },
+              {
+                "color": "blue",
+                "value": 100
+              },
+              {
+                "color": "red",
+                "value": 500
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 9,
+        "y": 20
+      },
+      "id": 59,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "F7UOe0CGz"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(hass_sensor_power_w)",
+          "interval": "",
+          "legendFormat": "{{ friendly_name }}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Power usage",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "F7UOe0CGz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -1416,8 +1508,8 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 12,
-        "x": 8,
+        "w": 7,
+        "x": 13,
         "y": 20
       },
       "id": 35,
@@ -1438,7 +1530,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -1447,11 +1539,25 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "hass_sensor_temperature_celsius{entity!~\".*nas.*\"}",
+          "expr": "avg(hass_sensor_temperature_celsius{entity!~\".*nas.*\", entity!~\".*server.*\"})",
           "interval": "",
           "legendFormat": "{{ friendly_name }}",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "F7UOe0CGz"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "hass_sensor_temperature_celsius{entity=\"sensor.server_temperature_temperature\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ friendly_name }}",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "Temperature",
@@ -1474,7 +1580,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1511,13 +1617,15 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "hass_sensor_humidity_percent",
+          "expr": "avg(hass_sensor_humidity_percent)",
           "interval": "",
           "legendFormat": "{{ friendly_name }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1544,7 +1652,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "#EAB839",
@@ -1599,7 +1707,7 @@
                   "steps": [
                     {
                       "color": "rgb(74, 163, 52)",
-                      "value": null
+                      "value": 0
                     },
                     {
                       "color": "rgb(199, 48, 66)",
@@ -1687,7 +1795,7 @@
                   "steps": [
                     {
                       "color": "rgb(52, 173, 37)",
-                      "value": null
+                      "value": 0
                     },
                     {
                       "color": "light-orange",
@@ -1733,7 +1841,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "11.5.2",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -1755,7 +1863,7 @@
   ],
   "preload": false,
   "refresh": "30s",
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": [
@@ -1795,6 +1903,6 @@
   "timezone": "",
   "title": "BeryJu.io",
   "uid": "IB8j5hVnz",
-  "version": 190,
+  "version": 194,
   "weekStart": "monday"
 }
