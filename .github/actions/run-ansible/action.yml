@@ -8,18 +8,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install poetry
-      shell: bash
-      run: pipx install poetry || true
+    - uses: astral-sh/setup-uv@v6
     - uses: actions/setup-python@v6
       with:
-        python-version: '3.13'
+        python-version-file: 'pyproject.toml'
     - name: prepare
       shell: bash
       run: |
-        python3 -m pip install -U wheel poetry
-        poetry env use python3.13
-        poetry install
+        uv sync
         # Ensure jq is installed
         sudo apt update
         sudo apt install -y jq openssh-client
@@ -43,5 +39,5 @@ runs:
         ARA_API_CLIENT: http
         ARA_API_SERVER: "https://ara.beryjuio-home.k8s.beryju.io"
       run: |
-        export ANSIBLE_CALLBACK_PLUGINS=$(poetry run python3 -m ara.setup.callback_plugins)
-        poetry run ansible-playbook -v ${{ inputs.playbook }}
+        export ANSIBLE_CALLBACK_PLUGINS=$(uv run python3 -m ara.setup.callback_plugins)
+        uv run ansible-playbook -v ${{ inputs.playbook }}

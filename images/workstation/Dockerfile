@@ -30,7 +30,7 @@ RUN yes | unminimize && \
 # Python
 RUN add-apt-repository ppa:deadsnakes/ppa -y && \
 	apt-get install -y --no-install-recommends \
-		python3.11-venv python3.11-dev python3-pip python3-venv python3-setuptools python3-poetry
+		python3.11-venv python3.11-dev python3-pip python3-venv python3-setuptools
 
 # Golang
 # RUN add-apt-repository ppa:longsleep/golang-backports -y && \

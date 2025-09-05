@@ -1,24 +1,19 @@
-[tool.poetry]
+[project]
 name = "infrastructure"
 version = "0.1.0"
-description = ""
-authors = ["Jens Langhammer <jens.langhammer@beryju.org>"]
-license = "GPL"
-package-mode = false
-
-[tool.poetry.dependencies]
-ansible = "*"
-ansible-lint = "*"
-ara = "*"
-bcrypt = "*"
-boto3 = "*"
-hvac = "*"
-passlib = "*"
-python = "^3.11"
-python-dateutil = "*"
-python-gitlab = "*"
-pytz = "*"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [{ name = "Jens Langhammer", email ="jens.langhammer@beryju.org" }]
+dependencies = [
+    "ansible==11.9.0",
+    "ansible-lint==25.8.2",
+    "ara==1.7.3",
+    "bcrypt==4.3.0",
+    "boto3==1.40.25",
+    "hvac==2.3.0",
+    "passlib==1.7.4",
+    "python-dateutil==2.9.0.post0",
+    "python-gitlab==6.3.0",
+    "pytz==2025.2",
+]
