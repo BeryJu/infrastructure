@@ -87,14 +87,3 @@ resource "vault_jwt_auth_backend_role" "workstation" {
   token_policies  = ["admin"]
   role_type       = "jwt"
 }
-
-resource "vault_jwt_auth_backend_role" "prometheus-monitoring" {
-  backend         = vault_jwt_auth_backend.config.path
-  user_claim      = "sub"
-  role_name       = "prometheus-monitoring"
-  bound_audiences = [var.aud]
-  bound_subject   = "system:serviceaccount:vault:vault"
-  token_ttl       = 86400
-  token_policies  = ["monitoring"]
-  role_type       = "jwt"
-}

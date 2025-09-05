@@ -16,7 +16,6 @@ data "authentik_flow" "default-provider-invalidation-flow" {
 
 data "authentik_property_mapping_provider_scope" "scopes" {
   managed_list = [
-    "goauthentik.io/providers/oauth2/scope-email",
     "goauthentik.io/providers/oauth2/scope-openid",
     "goauthentik.io/providers/oauth2/scope-profile",
     "goauthentik.io/providers/oauth2/scope-offline_access",
@@ -34,7 +33,7 @@ resource "authentik_provider_oauth2" "cluster" {
   client_id             = "k8s-cluster-${var.name}"
   signing_key           = data.authentik_certificate_key_pair.generated.id
   client_type           = "public"
-  property_mappings     = data.authentik_property_mapping_provider_scope.scopes.ids
+  property_mappings     = concat(var.property_mappings, data.authentik_property_mapping_provider_scope.scopes.ids)
   allowed_redirect_uris = []
   jwt_federation_providers = [
     122
