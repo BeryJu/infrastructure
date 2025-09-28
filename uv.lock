@@ -468,7 +468,7 @@ requires-dist = [
     { name = "hvac", specifier = "==2.3.0" },
     { name = "passlib", specifier = "==1.7.4" },
     { name = "python-dateutil", specifier = "==2.9.0.post0" },
-    { name = "python-gitlab", specifier = "==6.3.0" },
+    { name = "python-gitlab", specifier = "==6.4.0" },
     { name = "pytz", specifier = "==2025.2" },
 ]
 
@@ -685,15 +685,15 @@ wheels = [
 
 [[package]]
 name = "python-gitlab"
-version = "6.3.0"
+version = "6.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "requests" },
     { name = "requests-toolbelt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5d/f7/90bfe7c54f296f708de4bd26e829bbbbd1425ef3a5a75c5faeaffaf93e14/python_gitlab-6.3.0.tar.gz", hash = "sha256:3d7764956948949a2a3aff2078e6e93a5efea2db0a29566b5e142091bcc075aa", size = 397683, upload-time = "2025-08-28T01:10:07.278Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/46/5c/0075364e3d7e64171dafc62fc09a940c136f82e4407d1625eae8c8bddf8f/python_gitlab-6.4.0.tar.gz", hash = "sha256:55ed94fb47932124b7f9df8e72b29352d3d0ee01ecf44f081dd070f4bad8700d", size = 397816, upload-time = "2025-09-28T01:15:45.394Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8c/0e/0458d354870f7b1ad809ea40f9d1fda20450225db0f234f6dc09b9945fed/python_gitlab-6.3.0-py3-none-any.whl", hash = "sha256:c4570b94f48fd2a612b08e453d2d7859b1a805b7068f680f6f6ce45dc9d38f94", size = 144326, upload-time = "2025-08-28T01:10:05.409Z" },
+    { url = "https://files.pythonhosted.org/packages/b8/e8/2b93f465d4056464f8f5aae5e1dc583636f49eb31921655913afcd9eb80b/python_gitlab-6.4.0-py3-none-any.whl", hash = "sha256:2f264162b552463885871295ec4754441c4aa936746f333faa362de422aad4c8", size = 144394, upload-time = "2025-09-28T01:15:43.503Z" },
 ]
 
 [[package]]
