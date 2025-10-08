@@ -4,6 +4,7 @@
   roles:
     - beryjuio_common
     - beryjuio_mta
+    - beryjuio_ak
 - hosts: kube
   become: true
   tags:

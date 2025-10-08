@@ -1,0 +1,22 @@
+- name: authentik | install pre-dependencies
+  ansible.builtin.apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+  register: apt_res
+  retries: 5
+  until: apt_res is success
+- name: authentik | apt repo
+  ansible.builtin.deb822_repository:
+    name: docker
+    uris: "https://authentik-pkg.netlify.app"
+    types: [deb]
+    suites: [main]
+    components: [stable]
+    signed_by: https://authentik-pkg.netlify.app/keys/gpg-key.asc
+    state: present
+    enabled: true
+  notify:
+    - Apt update
