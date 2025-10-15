@@ -10,7 +10,7 @@
   until: apt_res is success
 - name: authentik | apt repo
   ansible.builtin.deb822_repository:
-    name: docker
+    name: authentik
     uris: "https://authentik-pkg.netlify.app"
     types: [deb]
     suites: [main]
