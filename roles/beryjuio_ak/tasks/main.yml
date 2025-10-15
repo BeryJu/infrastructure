@@ -13,8 +13,8 @@
     name: authentik
     uris: "https://authentik-pkg.netlify.app"
     types: [deb]
-    suites: [main]
-    components: [stable]
+    suites: [stable]
+    components: [main]
     signed_by: https://authentik-pkg.netlify.app/keys/gpg-key.asc
     state: present
     enabled: true
