@@ -75,16 +75,16 @@ wheels = [
 
 [[package]]
 name = "ara"
-version = "1.7.3"
+version = "1.7.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cliff" },
     { name = "pbr" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f5/e5/a11eb1a75f8f411b2b8d41d47c8133a00e51dd3b66c99cf4668d33e5a07a/ara-1.7.3.tar.gz", hash = "sha256:9147813977ea96b6625d0beafb84e5203b8481061f117e5a89bd8246286e18f4", size = 12931509, upload-time = "2025-08-25T22:08:16.826Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/78/6b/2933c43cdf47750f8a421510c49630f48f053e6a927edecef5db0fea4dca/ara-1.7.4.tar.gz", hash = "sha256:a58b2104760a55ebd7a7832e3a67c8c310e926b2d2cea26be3b9a2a38be11d8b", size = 13093058, upload-time = "2025-12-03T01:37:07.166Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b2/ec/842b13b891e970a406e38186c28aaf9f169907b5e46f326f213739f8f1be/ara-1.7.3-py2.py3-none-any.whl", hash = "sha256:f09b08d1f86fb4f622663551463289994a08f08a6aa2b5ca6e6486fbdf0f7041", size = 237866, upload-time = "2025-08-25T22:08:13.184Z" },
+    { url = "https://files.pythonhosted.org/packages/8a/ed/f96ca8cd98e17ad1015678e93509813620dfcc5e83c1fa555bb257239b19/ara-1.7.4-py2.py3-none-any.whl", hash = "sha256:67ae620e48e81c1276f7315d2ecd98b971446c80ae5c3a54c713de90412d18e9", size = 396254, upload-time = "2025-12-03T01:37:03.497Z" },
 ]
 
 [[package]]
@@ -447,7 +447,7 @@ dependencies = [
 requires-dist = [
     { name = "ansible", specifier = "==13.0.0" },
     { name = "ansible-lint", specifier = "==25.12.0" },
-    { name = "ara", specifier = "==1.7.3" },
+    { name = "ara", specifier = "==1.7.4" },
     { name = "bcrypt", specifier = "==5.0.0" },
     { name = "boto3", specifier = "==1.42.1" },
     { name = "hvac", specifier = "==2.4.0" },
