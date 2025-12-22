@@ -108,7 +108,7 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
 	setcap cap_ipc_lock= /usr/bin/vault
 
 # istioctl
-COPY --from=istio/istioctl:1.28.1 /usr/local/bin/istioctl /usr/bin/istioctl
+COPY --from=istio/istioctl:1.28.2 /usr/local/bin/istioctl /usr/bin/istioctl
 
 # puppet
 RUN curl -L https://apt.puppet.com/puppet7-release-focal.deb > puppet.deb && \
