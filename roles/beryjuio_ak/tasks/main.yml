@@ -20,3 +20,15 @@
     enabled: true
   notify:
     - Apt update
+- name: authentik | system agent
+  ansible.builtin.apt:
+    pkg:
+      - authentik-sysd
+      - libnss-authentik
+      - libpam-authentik
+    state: present
+- name: authentik | join domain
+  ansible.builtin.command:
+    cmd: ak-sysd domains join ak --authentik-url https://id.beryju.io
+    stdin: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/authentik/endpoint-server-prod:key") }}'
+    creates: /etc/authentik/domains/ak.json
