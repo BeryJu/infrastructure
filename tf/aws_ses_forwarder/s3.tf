@@ -14,8 +14,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "expire" {
     }
 
     expiration {
-      days                         = 30
-      expired_object_delete_marker = false
+      days = 30
     }
 
     noncurrent_version_expiration {
