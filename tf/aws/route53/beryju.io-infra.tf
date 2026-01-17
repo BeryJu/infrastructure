@@ -1,4 +1,4 @@
-resource "aws_route53_record" "registry-beryju-io" {
+resource "aws_route53_record" "registry-beryju-io-prod" {
   zone_id = aws_route53_zone.beryju-io.zone_id
   name    = "registry.beryju.io"
   type    = "A"
@@ -7,9 +7,28 @@ resource "aws_route53_record" "registry-beryju-io" {
     zone_id                = aws_route53_zone.beryju-io.zone_id
     evaluate_target_health = true
   }
+  weighted_routing_policy {
+    weight = 50
+  }
+  set_identifier = "beryjuio-prod"
 }
 
-resource "aws_route53_record" "proxy-registry-beryju-io" {
+resource "aws_route53_record" "registry-beryju-io-oci" {
+  zone_id = aws_route53_zone.beryju-io.zone_id
+  name    = "registry.beryju.io"
+  type    = "A"
+  alias {
+    name                   = "\\052.beryjuio-oci.k8s.beryju.io"
+    zone_id                = aws_route53_zone.beryju-io.zone_id
+    evaluate_target_health = true
+  }
+  weighted_routing_policy {
+    weight = 50
+  }
+  set_identifier = "beryjuio-oci"
+}
+
+resource "aws_route53_record" "proxy-registry-beryju-io-prod" {
   zone_id = aws_route53_zone.beryju-io.zone_id
   name    = "proxy.registry.beryju.io"
   type    = "A"
@@ -18,6 +37,25 @@ resource "aws_route53_record" "proxy-registry-beryju-io" {
     zone_id                = aws_route53_zone.beryju-io.zone_id
     evaluate_target_health = true
   }
+  weighted_routing_policy {
+    weight = 50
+  }
+  set_identifier = "beryjuio-prod"
+}
+
+resource "aws_route53_record" "proxy-registry-beryju-io-oci" {
+  zone_id = aws_route53_zone.beryju-io.zone_id
+  name    = "proxy.registry.beryju.io"
+  type    = "A"
+  alias {
+    name                   = "\\052.beryjuio-oci.k8s.beryju.io"
+    zone_id                = aws_route53_zone.beryju-io.zone_id
+    evaluate_target_health = true
+  }
+  weighted_routing_policy {
+    weight = 50
+  }
+  set_identifier = "beryjuio-oci"
 }
 
 resource "aws_route53_record" "id-beryju-io" {

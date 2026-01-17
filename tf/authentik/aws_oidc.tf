@@ -5,7 +5,7 @@ resource "authentik_provider_oauth2" "aws-oidc" {
   invalidation_flow        = data.authentik_flow.default-provider-invalidation-flow.id
   property_mappings        = data.authentik_property_mapping_provider_scope.defaults.ids
   signing_key              = data.authentik_certificate_key_pair.generated.id
-  jwt_federation_providers = [122]
+  jwt_federation_providers = [132]
 }
 
 resource "authentik_application" "aws-oidc" {

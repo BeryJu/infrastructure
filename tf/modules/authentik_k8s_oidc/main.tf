@@ -36,7 +36,7 @@ resource "authentik_provider_oauth2" "cluster" {
   property_mappings     = concat(var.property_mappings, data.authentik_property_mapping_provider_scope.scopes.ids)
   allowed_redirect_uris = []
   jwt_federation_providers = [
-    122
+    132
   ]
   lifecycle {
     ignore_changes = [client_secret]

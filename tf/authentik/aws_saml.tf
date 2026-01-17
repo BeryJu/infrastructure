@@ -68,40 +68,53 @@ resource "aws_iam_saml_provider" "default" {
   saml_metadata_document = data.authentik_provider_saml_metadata.aws-metadata.metadata
 }
 
+resource "aws_iam_role_policy_attachment" "ak-billing" {
+  role       = aws_iam_role.authentik.name
+  policy_arn = "arn:aws:iam::471432361072:policy/Billing"
+}
+
+resource "aws_iam_role_policy_attachment" "ak-admin" {
+  role       = aws_iam_role.authentik.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
+data "aws_iam_policy_document" "ak-policy-doc" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Federated"
+      identifiers = [aws_iam_saml_provider.default.id]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "SAML:aud"
+      values   = ["https://signin.aws.amazon.com/saml"]
+    }
+
+    actions = ["sts:AssumeRoleWithSAML"]
+  }
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Federated"
+      identifiers = [aws_iam_openid_connect_provider.aws-oidc.arn]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${replace(data.authentik_provider_oauth2_config.aws-oidc-metadata.issuer_url, "https://", "")}:aud"
+      values   = [authentik_provider_oauth2.aws-oidc.client_id]
+    }
+
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+  }
+}
+
 resource "aws_iam_role" "authentik" {
   name = "authentik"
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRoleWithSAML"
-        Condition = {
-          StringEquals = {
-            "SAML:aud" = "https://signin.aws.amazon.com/saml"
-          }
-        }
-        Effect = "Allow"
-        Principal = {
-          Federated = aws_iam_saml_provider.default.id
-        }
-      },
-      {
-        Effect = "Allow",
-        Principal = {
-          Federated = aws_iam_openid_connect_provider.aws-oidc.arn
-        },
-        Action = "sts:AssumeRoleWithWebIdentity",
-        Condition = {
-          StringEquals = {
-            "${replace(data.authentik_provider_oauth2_config.aws-oidc-metadata.issuer_url, "https://", "")}:aud" : authentik_provider_oauth2.aws-oidc.client_id,
-          }
-        }
-      }
-    ]
-  })
-  managed_policy_arns = [
-    "arn:aws:iam::471432361072:policy/Billing",
-    "arn:aws:iam::aws:policy/AdministratorAccess"
-  ]
+  assume_role_policy = data.aws_iam_policy_document.ak-policy-doc.json
 }

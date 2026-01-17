@@ -1,6 +1,6 @@
 resource "linode_lke_cluster" "prod" {
   label       = "beryjuio-prod"
-  k8s_version = "1.33"
+  k8s_version = "1.34"
   region      = "eu-central"
   control_plane {
     high_availability = false

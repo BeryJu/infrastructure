@@ -12,6 +12,10 @@ resource "authentik_provider_oauth2" "home-assistant" {
     },
     {
       "matching_mode" = "strict"
+      "url"           = "https://hass.beryjuio-prod.k8s.beryju.io/auth/openid/callback"
+    },
+    {
+      "matching_mode" = "strict"
       "url"           = "https://hass-ext.beryju.io/auth/openid/callback"
     },
   ]
