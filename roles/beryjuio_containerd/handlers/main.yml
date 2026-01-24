@@ -1,0 +1,7 @@
+- name: Restart containerd
+  ansible.builtin.service:
+    name: containerd
+    state: restarted
+- name: Apt update
+  ansible.builtin.apt:
+    update_cache: true

@@ -20,6 +20,7 @@
     enabled: true
   notify:
     - Apt update
+- ansible.builtin.meta: flush_handlers
 - name: authentik | system agent
   ansible.builtin.apt:
     pkg:

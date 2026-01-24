@@ -5,6 +5,7 @@
     - beryjuio_common
     - beryjuio_mta
     - beryjuio_ak
+    - beryjuio_containerd
 - hosts: kube
   become: true
   tags:

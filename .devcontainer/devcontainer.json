@@ -1,0 +1,29 @@
+{
+	"name": "Python 3",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers-extra/features/terraform-asdf:2": {},
+		"ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {}
+	},
+	"postCreateCommand": "uv sync",
+	"mounts": [
+		{
+			"type": "bind",
+			"source": "${localEnv:HOME}/.vault-token",
+			"target": "/home/vscode/.vault-token"
+		}
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"redhat.ansible",
+				"charliermarsh.ruff",
+				"ms-python.python"
+			],
+			"settings": {
+			}
+		}
+	}
+}

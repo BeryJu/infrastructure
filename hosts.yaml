@@ -1,8 +1,11 @@
 all:
   hosts:
     optiplex-3090-bq1plp3.prod.beryju.io:
-    sentry1.prod.beryju.io:
     kube-api.beryjuio-oci.k8s.beryju.io:
+    optiplex-3090-g3h24n3.prod.beryju.io:
+      beryjuio_containerd_profile: docker
+    sentry1.prod.beryju.io:
+      beryjuio_containerd_profile: docker
 
 kube:
   hosts:

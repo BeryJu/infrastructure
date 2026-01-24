@@ -28,7 +28,17 @@
   register: apt_res
   retries: 5
   until: apt_res is success
+- name: containerd | docker package
+  ansible.builtin.apt:
+    pkg:
+      - "docker-ce"
+      - "docker-compose-plugin"
+  when: "beryjuio_containerd_profile == 'docker'"
+  register: apt_res
+  retries: 5
+  until: apt_res is success
 - name: docker | containerd config
+  when: "beryjuio_containerd_profile == 'kubernetes'"
   ansible.builtin.template:
     src: "templates/containerd.toml"
     dest: /etc/containerd/config.toml
