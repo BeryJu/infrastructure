@@ -2,6 +2,5 @@
     name: beryjuio_containerd
   vars:
     beryjuio_containerd_profile: kubernetes
-- ansible.builtin.import_tasks: containerd.yml
 - ansible.builtin.import_tasks: system.yml
 - ansible.builtin.import_tasks: package.yml

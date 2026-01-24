@@ -15,6 +15,9 @@
 			"target": "/home/vscode/.vault-token"
 		}
 	],
+	"containerEnv": {
+		"VAULT_ADDR": "${localEnv:VAULT_ADDR}"
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
