@@ -4,6 +4,7 @@ all:
     kube-api.beryjuio-oci.k8s.beryju.io:
     optiplex-3090-g3h24n3.prod.beryju.io:
       beryjuio_containerd_profile: docker
+      beryjuio_monitoring_secure: false
     sentry1.prod.beryju.io:
       beryjuio_containerd_profile: docker
 
@@ -17,3 +18,8 @@ kube:
       beryjuio_kube_cluster_name: beryjuio-oci
       beryjuio_kube_version: v1.34
       beryjuio_kube_arch: linux/arm64/v8
+
+standalone:
+  hosts:
+    optiplex-3090-g3h24n3.prod.beryju.io:
+    sentry1.prod.beryju.io:

@@ -12,3 +12,9 @@
     - kube
   roles:
     - beryjuio_kube
+- hosts: standalone
+  become: true
+  tags:
+    - standalone
+  roles:
+    - beryjuio_monitoring

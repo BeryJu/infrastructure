@@ -15,8 +15,7 @@ resource "gravity_dns_zone" "prod-io" {
 locals {
   prod_devices = {
     "nas1" : "10.120.20.30",
-    "esxi1" : "10.120.20.32",
-    "vcsa1" : "10.120.20.33",
+    "optiplex-3090-g3h24n3" : "10.120.20.32",
     "optiplex-3090-bq1plp3" : "10.120.20.40",
     "hass1" : "10.120.20.60"
     "gravity-defr1" : "10.120.20.250",
