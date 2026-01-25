@@ -1,0 +1,23 @@
+- name: prometheus-node-exporter | package
+  ansible.builtin.apt:
+    pkg:
+      - "prometheus-node-exporter"
+    state: latest
+- name: prometheus-node-exporter | defaults
+  ansible.builtin.template:
+    src: "templates/default"
+    dest: /etc/default/prometheus-node-exporter
+    mode: "640"
+    owner: root
+    group: root
+  notify:
+    - Restart prometheus-node-exporter
+- name: prometheus-node-exporter | web config
+  ansible.builtin.template:
+    src: "templates/web-config.yml"
+    dest: /etc/prometheus-node-exporter.yaml
+    mode: "600"
+    owner: prometheus
+    group: prometheus
+  notify:
+    - Restart prometheus-node-exporter
