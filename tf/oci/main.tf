@@ -2,7 +2,7 @@ terraform {
   required_providers {
     oci = {
       source  = "oracle/oci"
-      version = "7.31.0"
+      version = "7.32.0"
     }
   }
 }
