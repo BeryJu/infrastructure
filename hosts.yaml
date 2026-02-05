@@ -23,3 +23,7 @@ standalone:
   hosts:
     optiplex-3090-g3h24n3.prod.beryju.io:
     sentry1.prod.beryju.io:
+
+incus:
+  hosts:
+    optiplex-3090-g3h24n3.prod.beryju.io:

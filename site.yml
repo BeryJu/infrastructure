@@ -18,3 +18,9 @@
     - standalone
   roles:
     - beryjuio_monitoring
+- hosts: incus
+  become: true
+  tags:
+    - incus
+  roles:
+    - beryjuio_incus

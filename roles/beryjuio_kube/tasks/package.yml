@@ -1,14 +1,14 @@
-- name: k8s | install pre-dependencies
+- name: kubernetes | install pre-dependencies
   ansible.builtin.apt:
     pkg:
       - apt-transport-https
       - ca-certificates
       - curl
       - gpg
-  register: apt_res
+  register: beryjuio_kube_apt_res
   retries: 5
-  until: apt_res is success
-- name: k8s | apt repo
+  until: beryjuio_kube_apt_res is success
+- name: kubernetes | apt repo
   ansible.builtin.deb822_repository:
     name: kubernetes
     uris: "https://pkgs.k8s.io/core:/stable:/{{ beryjuio_kube_version }}/deb/"
@@ -17,7 +17,6 @@
     signed_by: https://pkgs.k8s.io/core:/stable:/{{ beryjuio_kube_version }}/deb/Release.key
     state: present
     enabled: true
-  register: apt_repo
   notify:
     - Apt update
 - ansible.builtin.meta: flush_handlers
@@ -29,9 +28,9 @@
       - kubectl
     # We control the major version via variable, we always want the latest patch
     state: latest # noqa: package-latest
-  register: apt_res
+  register: beryjuio_kube_apt_res
   retries: 5
-  until: apt_res is success
+  until: beryjuio_kube_apt_res is success
 - name: kubernetes | kubeadm config
   ansible.builtin.template:
     src: "templates/kubeadm_config.yml"

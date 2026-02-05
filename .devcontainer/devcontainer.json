@@ -22,10 +22,16 @@
 		"vscode": {
 			"extensions": [
 				"redhat.ansible",
+				"redhat.vscode-yaml",
 				"charliermarsh.ruff",
 				"ms-python.python"
 			],
 			"settings": {
+				"[yaml]": {
+					"editor.tabSize": 2,
+					"editor.defaultFormatter": "redhat.vscode-yaml"
+				},
+				"ansible.python.interpreterPath": "/workspaces/infrastructure/.venv/bin/python"
 			}
 		}
 	}
