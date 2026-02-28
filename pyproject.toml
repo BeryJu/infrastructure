@@ -15,6 +15,6 @@ dependencies = [
     "hvac==2.4.0",
     "passlib==1.7.4",
     "python-dateutil==2.9.0.post0",
-    "python-gitlab==8.0.0",
+    "python-gitlab==8.1.0",
     "pytz==2025.2",
 ]
