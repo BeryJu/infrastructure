@@ -1,0 +1,8 @@
+- import_playbook: ../bootstrap.yaml
+- hosts: incus
+  become: true
+  tasks:
+    - ansible.builtin.include_role:
+        name: incus-windows
+      vars:
+        incus_windows_target: 11e

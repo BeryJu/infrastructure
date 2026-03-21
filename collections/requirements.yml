@@ -4,3 +4,7 @@ collections:
   - name: community.docker
   - name: amazon.aws
   - name: community.aws
+roles:
+  - name: incus-windows
+    src: https://github.com/BeryJu/incus-windows
+    version: 24309ae5ad3bd8ca0e978a9a60eb1742fa43d253
