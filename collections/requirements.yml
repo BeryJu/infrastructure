@@ -6,5 +6,5 @@ collections:
   - name: community.aws
 roles:
   - name: incus-windows
-    src: https://github.com/BeryJu/incus-windows
-    version: 24309ae5ad3bd8ca0e978a9a60eb1742fa43d253
+    src: https://github.com/BeryJu/ansible-role-incus-windows
+    version: 3cd7e13bd31185a4b3a4c63a39af7ba05150f251
