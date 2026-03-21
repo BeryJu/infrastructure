@@ -14,7 +14,7 @@ runs:
         python-version-file: 'pyproject.toml'
     - uses: actions/cache@v5
       with:
-        path: ~/.ansible
+        path: /home/runner/.ansible
         key: ${{ runner.os }}-ansible-${{ hashFiles('collections/requirements.yml') }}
     - name: prepare
       shell: bash
@@ -23,6 +23,9 @@ runs:
         # Ensure jq is installed
         sudo apt update
         sudo apt install -y jq openssh-client
+        # Install collections/roles
+        uv run ansible-galaxy collection install -r collections/requirements.yml --force
+        uv run ansible-galaxy role install -r collections/requirements.yml --force
     - name: Get GitHub JWT
       id: jwt
       shell: bash
@@ -44,6 +47,4 @@ runs:
         ARA_API_SERVER: "https://ara.beryjuio-home.k8s.beryju.io"
       run: |
         export ANSIBLE_CALLBACK_PLUGINS=$(uv run python3 -m ara.setup.callback_plugins)
-        uv run ansible-galaxy collection install -r collections/requirements.yml --force
-        uv run ansible-galaxy role install -r collections/requirements.yml --force
         uv run ansible-playbook -v ${{ inputs.playbook }}
