@@ -12,6 +12,10 @@ runs:
     - uses: actions/setup-python@v6
       with:
         python-version-file: 'pyproject.toml'
+    - uses: actions/cache@v5
+      with:
+        path: ~/.ansible
+        key: ${{ runner.os }}-ansible-${{ hashFiles('collections/requirements.yml') }}
     - name: prepare
       shell: bash
       run: |
@@ -40,4 +44,6 @@ runs:
         ARA_API_SERVER: "https://ara.beryjuio-home.k8s.beryju.io"
       run: |
         export ANSIBLE_CALLBACK_PLUGINS=$(uv run python3 -m ara.setup.callback_plugins)
+        uv run ansible-galaxy collection install -r collections/requirements.yml --force
+        uv run ansible-galaxy role install -r collections/requirements.yml --force
         uv run ansible-playbook -v ${{ inputs.playbook }}
