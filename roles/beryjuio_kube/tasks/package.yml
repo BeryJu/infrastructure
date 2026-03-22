@@ -17,6 +17,7 @@
     signed_by: https://pkgs.k8s.io/core:/stable:/{{ beryjuio_kube_version }}/deb/Release.key
     state: present
     enabled: true
+  register: apt_repo
   notify:
     - Apt update
 - ansible.builtin.meta: flush_handlers

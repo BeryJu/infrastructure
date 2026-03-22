@@ -16,7 +16,7 @@ kube:
       beryjuio_kube_arch: linux/amd64
     kube-api.beryjuio-oci.k8s.beryju.io:
       beryjuio_kube_cluster_name: beryjuio-oci
-      beryjuio_kube_version: v1.34
+      beryjuio_kube_version: v1.35
       beryjuio_kube_arch: linux/arm64/v8
 
 standalone:
