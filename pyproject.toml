@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 authors = [{ name = "Jens Langhammer", email ="jens.langhammer@beryju.org" }]
 dependencies = [
-    "ansible==13.4.0",
+    "ansible==13.5.0",
     "ansible-dev-tools>=26.1.0",
     "ansible-lint==26.3.0",
     "ara==1.7.5",
