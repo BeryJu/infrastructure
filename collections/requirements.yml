@@ -7,4 +7,4 @@ collections:
 roles:
   - name: incus-windows
     src: https://github.com/BeryJu/ansible-role-incus-windows
-    version: 3cd7e13bd31185a4b3a4c63a39af7ba05150f251
+    version: 9bd8723b0813a3fd70c1cbfb5961d3350089808e
