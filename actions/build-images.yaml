@@ -5,8 +5,8 @@
     - ansible.builtin.include_role:
         name: incus-windows
       vars:
-        incus_windows_target: 11e
+        incus_windows_target: "11e"
     - ansible.builtin.include_role:
         name: incus-windows
       vars:
-        incus_windows_target: 2025
+        incus_windows_target: "2025"
