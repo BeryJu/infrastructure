@@ -91,7 +91,7 @@ wheels = [
 
 [[package]]
 name = "ansible-dev-tools"
-version = "26.4.1"
+version = "26.4.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ansible-builder" },
@@ -106,9 +106,9 @@ dependencies = [
     { name = "setuptools" },
     { name = "tox-ansible" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ec/e3/498f046961e9f40714c1333f6943c13512e5ee4d6ac6288639767369e857/ansible_dev_tools-26.4.1.tar.gz", hash = "sha256:b9b2968a11a45bc354b56f35e0a9ddbc5d338540dab14dd8cb85a3edc453a8ff", size = 1053809, upload-time = "2026-04-08T12:02:26.266Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/5f/08/96ad983cf1f27447ef18452175d12ea9a7801f5c16a10aaceeb63897fa06/ansible_dev_tools-26.4.4.tar.gz", hash = "sha256:2ae7a081b8fcda8eb9fdb8f642c3f16e615053a23b073445cbf2fa7cfb8c1d62", size = 1054183, upload-time = "2026-04-16T23:39:34.925Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/af/c0/bec21aa17529acc7e62eeafb6b43276b29b2ebe29391b148f7762ea58cfa/ansible_dev_tools-26.4.1-py3-none-any.whl", hash = "sha256:710917da9fb5e36b0c5c967d03cecaf1409309811189a663fe6b0b812995b16b", size = 50106, upload-time = "2026-04-08T12:02:24.653Z" },
+    { url = "https://files.pythonhosted.org/packages/9b/60/5085da1033afd5ffe044f54d63fe48198a5a1c4cb6c91d34c431af9f20d6/ansible_dev_tools-26.4.4-py3-none-any.whl", hash = "sha256:b7e7e3d87ed261fdf75e7fc3a39d496a344255d54b99153768fcd48bdc726d13", size = 50107, upload-time = "2026-04-16T23:39:32.888Z" },
 ]
 
 [[package]]
@@ -615,7 +615,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "ansible", specifier = "==13.5.0" },
-    { name = "ansible-dev-tools", specifier = ">=26.1.0" },
+    { name = "ansible-dev-tools", specifier = ">=26.4.4" },
     { name = "ansible-lint", specifier = "==26.4.0" },
     { name = "ara", specifier = "==1.7.5" },
     { name = "bcrypt", specifier = "==5.0.0" },
