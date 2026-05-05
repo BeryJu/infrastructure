@@ -3,7 +3,9 @@
   become: true
 
   strategy: free # noqa: run-once[play]
-  gather_facts: false
+  gather_facts: true
+  roles:
+    - beryjuio_common_touch_motd
   tasks:
     - name: Apt | update cache
       ansible.builtin.apt:

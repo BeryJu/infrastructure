@@ -1,3 +1,4 @@
 - ansible.builtin.import_tasks: common-packages.yml
 - ansible.builtin.import_tasks: common-settings.yml
 - ansible.builtin.import_tasks: users.yml
+- ansible.builtin.import_tasks: motd.yml

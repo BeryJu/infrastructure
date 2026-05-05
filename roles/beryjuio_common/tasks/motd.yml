@@ -1,0 +1,38 @@
+- name: Ensure Ansible state directory exists
+  ansible.builtin.file:
+    path: "{{ motd_state_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+- name: Write applied-roles manifest
+  ansible.builtin.copy:
+    dest: "{{ motd_state_dir }}/applied_roles"
+    content: "{{ ansible_role_names | sort | join('\n') }}\n"
+    owner: root
+    group: root
+    mode: "0644"
+- name: Deploy dynamic MOTD script
+  ansible.builtin.template:
+    src: motd_script.j2
+    dest: "/etc/update-motd.d/{{ motd_script_priority }}-{{ motd_script_name }}"
+    owner: root
+    group: root
+    mode: "0755"
+  notify: Refresh MOTD cache
+- name: Disable Ubuntu MOTD news / advertisement scripts
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: "0644"   # remove execute bit — update-motd.d ignores non-executable files
+  loop:
+    - /etc/update-motd.d/10-help-text
+    - /etc/update-motd.d/50-motd-news
+    - /etc/update-motd.d/88-esm-announce
+    - /etc/update-motd.d/91-contract-ua-esm-status
+  failed_when: false   # silently skip files that don't exist on this release
+  when: motd_disable_ubuntu_news | bool
+- name: Ensure /etc/motd is managed by update-motd
+  ansible.builtin.file:
+    path: /etc/motd
+    state: absent          # remove any static file so PAM falls back to dynamic
+  notify: Refresh MOTD cache

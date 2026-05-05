@@ -1,6 +1,8 @@
 - import_playbook: ../bootstrap.yaml
 - hosts: docker
   become: true
+  roles:
+    - beryjuio_common_touch_motd
   tasks:
     - name: Clean Docker Images (all)
       # noqa 301
@@ -14,6 +16,8 @@
           dangling: false
 - hosts: kube
   become: true
+  roles:
+    - beryjuio_common_touch_motd
   tasks:
     - name: Clean Containerd Images (all)
       # noqa 301

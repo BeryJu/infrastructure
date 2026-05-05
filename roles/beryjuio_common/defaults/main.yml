@@ -1,0 +1,22 @@
+---
+# Directory where Ansible writes its state files on the managed host
+motd_state_dir: /etc/ansible/motd-state
+
+# Path for the update-motd.d script (lower numbers run first; 99 runs last)
+motd_script_priority: "10"
+motd_script_name: ansible-info
+
+# Whether to disable the default Ubuntu MOTD scripts that show ads / news
+motd_disable_ubuntu_news: true
+
+# Colour theme: uses ANSI 256-colour codes.
+# Override to "" to produce a plain-text MOTD.
+motd_color_primary: "\\e[38;5;214m"   # orange
+motd_color_secondary: "\\e[38;5;250m" # light grey
+motd_color_ok: "\\e[38;5;82m"         # green
+motd_color_warn: "\\e[38;5;220m"      # yellow
+motd_color_reset: "\\e[0m"
+
+# Warn when the host has not been reconciled for more than this many seconds.
+# Default: 604800 = 7d
+motd_stale_threshold_seconds: 604800

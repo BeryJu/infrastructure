@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+# {{ ansible_managed }}
+# Deployed by the dynamic_motd Ansible role.
+# This script is executed by PAM / update-motd on every interactive login.
+# It is intentionally self-contained (pure bash + coreutils) so it works
+# on minimal Ubuntu installs without Python or other extras.
+
+set -euo pipefail
+
+# ── Colour palette ─────────────────────────────────────────────────────────────
+PRIMARY="{{ motd_color_primary }}"
+SECONDARY="{{ motd_color_secondary }}"
+OK="{{ motd_color_ok }}"
+WARN="{{ motd_color_warn }}"
+RESET="{{ motd_color_reset }}"
+
+# ── Helper: human-readable duration from seconds ───────────────────────────────
+fmt_duration() {
+  local secs="${1:-0}"
+  local days=$(( secs / 86400 ))
+  local hours=$(( (secs % 86400) / 3600 ))
+  local mins=$(( (secs % 3600) / 60 ))
+  local s=$(( secs % 60 ))
+
+  local parts=()
+  (( days  > 0 )) && parts+=("${days}d")
+  (( hours > 0 )) && parts+=("${hours}h")
+  (( mins  > 0 )) && parts+=("${mins}m")
+  # Only show seconds when the total is less than 2 minutes
+  {% raw %}(( ${#parts[@]} == 0 )) && parts+=("${s}s"){% endraw %}
+
+  printf '%s' "${parts[*]}"
+}
+
+# ── Read state files written by Ansible ───────────────────────────────────────
+STATE_DIR="{{ motd_state_dir }}"
+ROLES_FILE="${STATE_DIR}/applied_roles"
+TIMESTAMP_FILE="${STATE_DIR}/last_reconcile"
+
+# Roles
+mapfile -t ROLES < <(
+  if [[ -r "${ROLES_FILE}" ]]; then
+    grep -v '^[[:space:]]*$' "${ROLES_FILE}"
+  else
+    echo "(unknown — state file missing)"
+  fi
+)
+
+# Reconcile timestamp → live delta
+NOW=$(date +%s)
+if [[ -r "${TIMESTAMP_FILE}" ]]; then
+  LAST_EPOCH=$(tr -dc '0-9' < "${TIMESTAMP_FILE}")
+  DELTA_SECS=$(( NOW - LAST_EPOCH ))
+  LAST_HUMAN=$(date -d "@${LAST_EPOCH}" '+%Y-%m-%d %H:%M:%S %Z' 2>/dev/null \
+               || date -r "${LAST_EPOCH}" '+%Y-%m-%d %H:%M:%S %Z')
+  DELTA_HUMAN=$(fmt_duration "${DELTA_SECS}")
+
+  if (( DELTA_SECS > {{ motd_stale_threshold_seconds }} )); then
+    DELTA_COLOR="${WARN}"
+    DELTA_SUFFIX=" ⚠  (stale — exceeds {{ motd_stale_threshold_seconds }}s threshold)"
+  else
+    DELTA_COLOR="${OK}"
+    DELTA_SUFFIX=""
+  fi
+else
+  LAST_HUMAN="never"
+  DELTA_HUMAN="unknown"
+  DELTA_COLOR="${WARN}"
+  DELTA_SUFFIX=" ⚠  (timestamp file missing)"
+fi
+
+# ── Banner width ───────────────────────────────────────────────────────────────
+WIDTH=62
+LINE=$(printf '%*s' "${WIDTH}" '' | tr ' ' '─')
+
+# ── Print MOTD ─────────────────────────────────────────────────────────────────
+printf '\n'
+printf "${PRIMARY}%s${RESET}\n" "${LINE}"
+
+printf "${PRIMARY}  %-18s${RESET}${SECONDARY}%s${RESET}\n" \
+  "Hostname:" "$(hostname -f)"
+
+printf "${PRIMARY}  %-18s${RESET}${SECONDARY}%s${RESET}\n" \
+  "OS:" "$(lsb_release -ds 2>/dev/null || cat /etc/os-release | grep PRETTY | cut -d= -f2- | tr -d '"')"
+
+printf "${PRIMARY}%s${RESET}\n" "${LINE}"
+
+# Roles block
+printf "${PRIMARY}  Ansible roles applied:${RESET}\n"
+for role in "${ROLES[@]}"; do
+  printf "${SECONDARY}    • %s${RESET}\n" "${role}"
+done
+
+printf "${PRIMARY}%s${RESET}\n" "${LINE}"
+
+# Reconcile block
+printf "${PRIMARY}  %-18s${RESET}${SECONDARY}%s${RESET}\n" \
+  "Last reconciled:" "${LAST_HUMAN}"
+
+printf "${PRIMARY}  %-18s${RESET}${DELTA_COLOR}%s ago%s${RESET}\n" \
+  "Time since:" "${DELTA_HUMAN}" "${DELTA_SUFFIX}"
+
+printf "${PRIMARY}%s${RESET}\n" "${LINE}"

@@ -1,0 +1,8 @@
+- name: Stamp reconcile timestamp (Unix epoch)
+  ansible.builtin.copy:
+    dest: "{{ motd_state_dir }}/last_reconcile"
+    content: "{{ ansible_date_time.epoch }}\n"
+    owner: root
+    group: root
+    mode: "0644"
+  changed_when: false

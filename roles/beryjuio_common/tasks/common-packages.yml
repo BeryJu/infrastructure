@@ -12,3 +12,11 @@
   register: apt_res
   retries: 5
   until: apt_res is success
+- name: Ensure sure some packages are _not_ installed
+  ansible.builtin.apt:
+    pkg:
+      - landscape-common # Remove motd system info
+    state: absent
+  register: apt_res
+  retries: 5
+  until: apt_res is success

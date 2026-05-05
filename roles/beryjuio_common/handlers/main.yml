@@ -10,3 +10,9 @@
   ansible.builtin.service:
     name: sshd
     state: restarted
+- name: Refresh MOTD cache
+  ansible.builtin.shell:
+    cmd: run-parts /etc/update-motd.d > /dev/null
+  register: _motd_refresh
+  changed_when: false
+  failed_when: _motd_refresh.rc != 0

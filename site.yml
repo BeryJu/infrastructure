@@ -18,3 +18,7 @@
     - standalone
   roles:
     - beryjuio_monitoring
+- hosts: all
+  become: true
+  roles:
+    - beryjuio_common_touch_motd
