@@ -9,7 +9,7 @@ dependencies = [
     "ansible==14.1.0",
     "ansible-dev-tools>=26.7.1",
     "ansible-lint==26.6.0",
-    "ara==1.7.5",
+    "ara==1.8.0",
     "bcrypt==5.0.0",
     "boto3==1.43.46",
     "hvac==2.4.0",
