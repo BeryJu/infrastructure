@@ -11,7 +11,7 @@ dependencies = [
     "ansible-lint==26.6.0",
     "ara==1.8.0",
     "bcrypt==5.0.0",
-    "boto3==1.43.54",
+    "boto3==1.43.55",
     "hvac==2.4.0",
     "passlib==1.7.4",
     "python-dateutil==2.9.0.post0",
