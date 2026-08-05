@@ -1,7 +1,6 @@
 - name: Ensure sure some packages are installed
   ansible.builtin.apt:
     pkg:
-      - open-vm-tools
       - vim
       - htop
       - sudo
