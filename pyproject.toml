@@ -8,7 +8,7 @@ authors = [{ name = "Jens Langhammer", email ="jens.langhammer@beryju.org" }]
 dependencies = [
     "ansible==14.3.0",
     "ansible-dev-tools>=26.7.2",
-    "ansible-lint==26.6.0",
+    "ansible-lint==26.8.0",
     "ara==1.8.0",
     "bcrypt==5.0.0",
     "boto3==1.43.69",
