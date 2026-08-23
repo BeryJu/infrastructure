@@ -78,3 +78,6 @@ module "minio-prod" {
 module "minio-backup" {
   source = "./minio/backup/"
 }
+module "fleetdm" {
+  source = "./fleetdm/"
+}

@@ -32,7 +32,7 @@ resource "authentik_provider_saml" "aws" {
   assertion_valid_not_on_or_after = "minutes=5"
   audience                        = "urn:amazon:webservices"
   digest_algorithm                = "http://www.w3.org/2001/04/xmlenc#sha256"
-  issuer                          = "authentik"
+  issuer_override                 = "authentik"
   property_mappings = concat([
     authentik_property_mapping_provider_saml.aws-role-session-name.id,
     authentik_property_mapping_provider_saml.aws-role.id,

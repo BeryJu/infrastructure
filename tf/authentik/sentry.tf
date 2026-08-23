@@ -8,7 +8,7 @@ resource "authentik_provider_saml" "sentry" {
   assertion_valid_not_on_or_after = "minutes=5"
   digest_algorithm                = "http://www.w3.org/2001/04/xmlenc#sha256"
   signature_algorithm             = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
-  issuer                          = "authentik"
+  issuer_override                 = "authentik"
   property_mappings               = data.authentik_property_mapping_provider_saml.defaults.ids
   session_valid_not_on_or_after   = "minutes=86400"
   signing_kp                      = data.authentik_certificate_key_pair.generated.id

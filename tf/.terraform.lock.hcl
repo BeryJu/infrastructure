@@ -261,6 +261,27 @@ provider "registry.terraform.io/hashicorp/vault" {
   ]
 }
 
+provider "registry.terraform.io/l-teles/fleetdm" {
+  version     = "0.8.1"
+  constraints = "0.8.1"
+  hashes = [
+    "h1:mmPYnYfu4s+GmTYWN3Y6cqxfjOlf0lFyLF26r4Jy5Sw=",
+    "zh:0dde99e7b343fa01f8eefc378171fb8621bedb20f59157d6cc8e3d46c738105f",
+    "zh:31ba7cf0e3026c7b88154874f22e354140e731d9d022cb0f84f4a0d63503b108",
+    "zh:44a4c505d2c95505a73e1529f5f95f7e7d79c808b3b211950e9579e3909c3a29",
+    "zh:548dee332aadfbe8c7eaa8b9b39fcd6579655b26288128b00371cd95d5664460",
+    "zh:5bc5a53042ce9ce8eabea9003c20b1bbfa8d90471d6fea116b9262612b946f02",
+    "zh:6c72ebd8691db7bee8894f1ffbb527aeb0fa454b088fa1c01efc1599a65adfef",
+    "zh:6fb38189e3ac5065dda3c9b91db794280d6bc9344f2d551528afd80bcd3942b6",
+    "zh:7405924cc50e630700929bee1a54dbb11002864441c617116c0a309cc0665a11",
+    "zh:98282c75def7b80bf3b7ce782dc3ca8e56981877bc9a9e788c426c8c0683be7a",
+    "zh:aad895da7b039058478a824783324d673883b729923e04d220cee352fd0e5ec1",
+    "zh:ab105ed362b4617b256f3324acafb35d40f9f8eeab117e411c02fae4edd287c6",
+    "zh:b82ce2d4f954d4824ec77e473a1e5057c387b1d9635b8250ca3aac7b16d4699b",
+    "zh:eb1a32bd5b4195415036478fe613c95ddb4c29548b465dac2101562cd1fdb346",
+  ]
+}
+
 provider "registry.terraform.io/linode/linode" {
   version = "3.8.0"
   hashes = [
