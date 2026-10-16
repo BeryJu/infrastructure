@@ -1,5 +1,5 @@
 version = 1
-revision = 5
+revision = 3
 requires-python = ">=3.14"
 
 [[package]]
@@ -91,7 +91,7 @@ wheels = [
 
 [[package]]
 name = "ansible-dev-tools"
-version = "26.9.0"
+version = "26.10.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ansible-builder" },
@@ -106,9 +106,9 @@ dependencies = [
     { name = "setuptools" },
     { name = "tox-ansible" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d8/02/50fb829eae66a8154008c2e850f43477833c40d9b261ea894f17383c9e69/ansible_dev_tools-26.9.0.tar.gz", hash = "sha256:016abe4061799ef5ce303db31b5b4b29a0162534c784eea3961c532316a64884", size = 1055346, upload-time = "2026-09-23T11:26:41.024Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/11/12/f5d63069266781cd23a528fc25c65ce52f274fc553151288cc68d896d588/ansible_dev_tools-26.10.0.tar.gz", hash = "sha256:4820647e90945a8330943236c1217503b00a6d7d45d46448c697f26f8e183075", size = 1068194, upload-time = "2026-10-12T12:40:23.196Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/30/79/edfb5ef251ce122d08413ed7cc7ecb1978ebc56fba2ebb707be836c2b4bc/ansible_dev_tools-26.9.0-py3-none-any.whl", hash = "sha256:58fb0267138e4e58d7d45b622e1aab0bc70eaa193308529589ef500afddab92a", size = 50495, upload-time = "2026-09-23T11:26:39.633Z" },
+    { url = "https://files.pythonhosted.org/packages/2d/ad/772450191dd580d9b8876a8f0b8c5c7298a68976a83de875cdfe13deeeb5/ansible_dev_tools-26.10.0-py3-none-any.whl", hash = "sha256:d0c933815ee69c55fceb9299cd0932d552212a26823d5f8dfdb9900571524d5c", size = 50510, upload-time = "2026-10-12T12:40:21.526Z" },
 ]
 
 [[package]]
@@ -612,7 +612,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "ansible", specifier = "==14.5.0" },
-    { name = "ansible-dev-tools", specifier = ">=26.9.0" },
+    { name = "ansible-dev-tools", specifier = ">=26.10.0" },
     { name = "ansible-lint", specifier = "==26.10.1" },
     { name = "ara", specifier = "==1.8.0" },
     { name = "bcrypt", specifier = "==5.0.0" },
