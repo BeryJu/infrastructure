@@ -14,7 +14,7 @@ dependencies = [
     "boto3==1.43.118",
     "hvac==2.4.0",
     "passlib==1.7.4",
-    "python-dateutil==2.9.0.post0",
+    "python-dateutil==3.0.0",
     "python-gitlab==8.6.0",
     "pytz==2026.5",
 ]
