@@ -5,7 +5,7 @@
     - beryjuio_common_touch_motd
   tasks:
     - name: Clean Docker Images (all)
-      # noqa 301
+      # noqa: no-changed-when
       ansible.builtin.command: docker image prune -a -f
     - name: Clean Docker images
       community.docker.docker_prune:
@@ -20,5 +20,5 @@
     - beryjuio_common_touch_motd
   tasks:
     - name: Clean Containerd Images (all)
-      # noqa 301
+      # noqa: no-changed-when
       ansible.builtin.command: crictl rmi --prune

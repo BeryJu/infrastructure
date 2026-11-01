@@ -4,7 +4,7 @@
     dest: /etc/mailname
     regexp: ".*"
     create: true
-    line: "{{ ansible_fqdn }}"
+    line: "{{ ansible_facts.fqdn }}"
     owner: root
     group: root
     mode: "644"

@@ -4,7 +4,7 @@
   vars:
     bucket_name: sentry-backups
     sentry_dir: "/home/jens/self-hosted"
-    filename: "sentry_{{ ansible_date_time.date }}.json"
+    filename: "sentry_{{ ansible_facts.date_time.date }}.json"
     s3_connection: &s3_connection
       endpoint_url: "https://s3.beryju.io/"
       access_key: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/minio/main:username") }}'
