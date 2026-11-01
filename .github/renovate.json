@@ -12,6 +12,13 @@
       "matchPackageNames": [
         "plexinc/pms-docker"
       ]
+    },
+    {
+      "description": "botocore requires python-dateutil<3",
+      "matchPackageNames": [
+        "python-dateutil"
+      ],
+      "allowedVersions": "<3"
     }
   ]
 }
