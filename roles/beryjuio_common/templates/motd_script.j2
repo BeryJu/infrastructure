@@ -71,7 +71,9 @@ fi
 
 # ── Banner width ───────────────────────────────────────────────────────────────
 WIDTH=62
-LINE=$(printf '%*s' "${WIDTH}" '' | tr ' ' '─')
+printf -v LINE '%*s' "${WIDTH}" ''
+# tr is byte-based and would only emit the first byte of the multibyte '─'
+LINE=${LINE// /─}
 
 # ── Print MOTD ─────────────────────────────────────────────────────────────────
 printf '\n'
