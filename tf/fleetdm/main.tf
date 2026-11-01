@@ -2,7 +2,7 @@ terraform {
   required_providers {
     fleetdm = {
       source  = "l-teles/fleetdm"
-      version = "0.8.1"
+      version = "0.12.0"
     }
   }
 }
