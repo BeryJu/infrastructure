@@ -3,6 +3,11 @@
     gitlab_connection: &gitlab_connection
       api_url: "https://gitlab.beryjuio-home.k8s.beryju.io"
       api_token: '{{ lookup("community.hashi_vault.hashi_vault", "secret=kv/data/services/gitlab/backup:token") }}'
+    vault_secret: &vault_secret
+      url: '{{ lookup("env", "ANSIBLE_HASHI_VAULT_ADDR") }}'
+      token: '{{ lookup("env", "ANSIBLE_HASHI_VAULT_TOKEN") }}'
+      engine_mount_point: kv
+      path: services/gitlab/backup
     tmp_path: /tmp/backup
     backup_group: "backups"
     projects:
@@ -39,6 +44,28 @@
       - src: BeryJu/hass-ticktick
         dst: hass-ticktick
   tasks:
+    - name: Token | Read current secret
+      community.hashi_vault.vault_kv2_get:
+        <<: *vault_secret
+      register: gitlab_secret
+      no_log: true
+    - name: Token | Rotate
+      ansible.builtin.uri:
+        url: "{{ gitlab_connection.api_url }}/api/v4/personal_access_tokens/self/rotate"
+        method: POST
+        headers:
+          PRIVATE-TOKEN: "{{ gitlab_connection.api_token }}"
+      register: gitlab_rotated
+      no_log: true
+    - name: Token | Store rotated token
+      community.hashi_vault.vault_kv2_write:
+        <<: *vault_secret
+        data: "{{ gitlab_secret.secret | combine({'token': gitlab_rotated.json.token}) }}"
+      register: gitlab_stored
+      until: gitlab_stored is succeeded
+      retries: 5
+      delay: 10
+      no_log: true
     - name: Dst | Ensure gitlab project exists
       community.general.gitlab_project:
         name: "{{ item.dst }}"

@@ -10,6 +10,10 @@ permissions:
   contents: read
   id-token: write
 
+# Overlapping runs would reuse a rotated token, which makes GitLab revoke it
+concurrency:
+  group: ansible-backup
+
 jobs:
   ansible:
     runs-on: self-hosted
