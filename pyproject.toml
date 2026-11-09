@@ -7,7 +7,7 @@ requires-python = ">=3.14,<3.15"
 authors = [{ name = "Jens Langhammer", email ="jens.langhammer@beryju.org" }]
 dependencies = [
     "ansible==14.6.0",
-    "ansible-dev-tools>=26.10.0",
+    "ansible-dev-tools>=26.11.0",
     "ansible-lint==26.11.0",
     "ara==1.8.0",
     "bcrypt==5.0.0",
