@@ -13,7 +13,7 @@ dependencies = [
     "bcrypt==5.0.0",
     "boto3==1.44.9",
     "hvac==2.4.0",
-    "passlib==1.7.4",
+    "passlib==1.9.5",
     "python-dateutil==2.9.0.post0",
     "python-gitlab==8.6.0",
     "pytz==2026.6",
